@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAR ANTIGRAVITY | インタラクティブ・カクテル・シミュレーター</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="ベースのお酒と割り材を組み合わせてカクテルを作る、インタラクティブなビジュアルシミュレーター。あなたのお気に入りの一杯とレシピを見つけましょう。">
+  <meta name="keywords" content="カクテル, シミュレーター, ジン, ウォッカ, ラム, テキーラ, カシス, コーヒーリキュール, レシピ">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- CSS Style -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-decor-1"></div>
+  <div class="background-decor-2"></div>
+
+  <div class="app-container">
+    <header class="app-header">
+      <p class="brand-sub">MEMBERS ONLY BAR</p>
+      <h1 class="brand-title">BAR ANTIGRAVITY</h1>
+      <p class="brand-description">ベーススピリッツと割り材を直感的に組み合わせ、美しいカクテルと本格的なレシピをお楽しみください。</p>
+    </header>
+
+    <main class="simulator-layout">
+      <!-- Left: Visualizer -->
+      <section class="visualizer-card" aria-label="カクテルビジュアル表示">
+        <div class="glass-display-area">
+          <div class="glass-container" id="cocktail-glass">
+            
+            <!-- Garnish Elements -->
+            <div class="garnish-layer" id="garnish-layer">
+              <!-- Dynamically populated garnishes (lime, lemon, orange, coffee beans) -->
+            </div>
+
+            <!-- Glass Outer Frame (SVG for crisp details) -->
+            <svg class="glass-svg" viewBox="0 0 100 120" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="glass-reflection" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="rgba(255, 255, 255, 0.15)"/>
+                  <stop offset="20%" stop-color="rgba(255, 255, 255, 0.3)"/>
+                  <stop offset="35%" stop-color="rgba(255, 255, 255, 0.05)"/>
+                  <stop offset="90%" stop-color="rgba(255, 255, 255, 0.05)"/>
+                  <stop offset="95%" stop-color="rgba(255, 255, 255, 0.4)"/>
+                  <stop offset="100%" stop-color="rgba(255, 255, 255, 0.15)"/>
+                </linearGradient>
+                
+                <clipPath id="glass-clip">
+                  <polygon points="12,10 88,10 83,110 17,110" />
+                </clipPath>
+              </defs>
+
+              <polygon points="10,5 90,5 85,112 15,112" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="1.5" />
+              <path d="M 15,112 L 85,112 L 83,105 L 17,105 Z" fill="rgba(255, 255, 255, 0.15)" stroke="rgba(255, 255, 255, 0.2)" stroke-width="0.5"/>
+            </svg>
+
+            <!-- Inner Liquid Area (Canvas, clipped by CSS wrapper) -->
+            <div class="liquid-wrapper">
+              <canvas id="cocktail-canvas" width="180" height="250"></canvas>
+            </div>
+
+            <!-- Condensation (droplets on glass) -->
+            <div class="condensation-layer">
+              <span class="drop drop-1"></span>
+              <span class="drop drop-2"></span>
+              <span class="drop drop-3"></span>
+              <span class="drop drop-4"></span>
+              <span class="drop drop-5"></span>
+            </div>
+          </div>
+          
+          <div class="glass-shadow"></div>
+        </div>
+
+        <!-- Pouring effects / notifications -->
+        <div class="status-indicator" id="status-indicator">
+          ベースとなるお酒を選択してください
+        </div>
+      </section>
+
+      <!-- Controls Card (Visible during cocktail creation) -->
+      <section class="controls-card" id="controls-card" aria-label="カクテル作成コントロール">
+        <!-- Mode Tabs -->
+        <div class="mode-tabs">
+          <button class="tab-btn active" id="tab-build" data-mode="build">
+            素材から作る (ビルド)
+          </button>
+          <button class="tab-btn" id="tab-dictionary" data-mode="dictionary">
+            名前から選ぶ (辞書)
+          </button>
+        </div>
+
+        <!-- Mode A: Build View -->
+        <div id="view-build" class="mode-view">
+          <!-- Step 1: Base Selection -->
+          <div class="control-group">
+            <h2 class="control-title"><span class="step-num">01</span> ベーススピリッツを選択</h2>
+            <div class="options-grid base-options">
+              <button class="select-btn base-btn" data-base="gin" id="btn-gin">
+                <span class="btn-icon">🍸</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">ジン</span>
+                  <span class="btn-en">GIN</span>
+                </div>
+              </button>
+              <button class="select-btn base-btn" data-base="vodka" id="btn-vodka">
+                <span class="btn-icon">🥃</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">ウォッカ</span>
+                  <span class="btn-en">VODKA</span>
+                </div>
+              </button>
+              <button class="select-btn base-btn" data-base="rum" id="btn-rum">
+                <span class="btn-icon">🧉</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">ラム</span>
+                  <span class="btn-en">RUM</span>
+                </div>
+              </button>
+              <button class="select-btn base-btn" data-base="tequila" id="btn-tequila">
+                <span class="btn-icon">🌵</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">テキーラ</span>
+                  <span class="btn-en">TEQUILA</span>
+                </div>
+              </button>
+              <button class="select-btn base-btn" data-base="whiskey" id="btn-whiskey">
+                <span class="btn-icon">🥃</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">ウイスキー</span>
+                  <span class="btn-en">WHISKEY</span>
+                </div>
+              </button>
+              <button class="select-btn base-btn" data-base="brandy" id="btn-brandy">
+                <span class="btn-icon">🍷</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">ブランデー</span>
+                  <span class="btn-en">BRANDY</span>
+                </div>
+              </button>
+              <button class="select-btn base-btn" data-base="peach" id="btn-peach">
+                <span class="btn-icon">🍑</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">ピーチ</span>
+                  <span class="btn-en">PEACH</span>
+                </div>
+              </button>
+              <button class="select-btn base-btn" data-base="cassis" id="btn-cassis">
+                <span class="btn-icon">🫐</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">カシス</span>
+                  <span class="btn-en">CASSIS</span>
+                </div>
+              </button>
+              <button class="select-btn base-btn" data-base="coffee" id="btn-coffee">
+                <span class="btn-icon">☕</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">コーヒー</span>
+                  <span class="btn-en">COFFEE</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Mixer Selection (Dynamically populated) -->
+          <div class="control-group" style="margin-top: 25px;">
+            <h2 class="control-title"><span class="step-num">02</span> 割り材 / リキュールを選択</h2>
+            <div class="options-grid mixer-options" id="mixer-container">
+              <!-- Dynamically populated mixers -->
+            </div>
+          </div>
+
+          <!-- Step 3: Ice Selection -->
+          <div class="control-group" style="margin-top: 25px;">
+            <h2 class="control-title"><span class="step-num">03</span> 氷のスタイルを選択</h2>
+            <div class="options-grid ice-options">
+              <button class="select-btn ice-btn" data-ice="cube" id="btn-ice-cube">
+                <span class="btn-icon">🧊</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">キューブアイス</span>
+                  <span class="btn-en">CUBE ICE</span>
+                </div>
+              </button>
+              <button class="select-btn ice-btn" data-ice="crushed" id="btn-ice-crushed">
+                <span class="btn-icon">🍧</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">クラッシュアイス</span>
+                  <span class="btn-en">CRUSHED</span>
+                </div>
+              </button>
+              <button class="select-btn ice-btn" data-ice="none" id="btn-ice-none">
+                <span class="btn-icon">🚫</span>
+                <div class="btn-label-group">
+                  <span class="btn-jp">氷なし</span>
+                  <span class="btn-en">NO ICE</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode B: Dictionary View -->
+        <div id="view-dictionary" class="mode-view hidden">
+          <div class="dictionary-group">
+            <label class="control-label" for="cocktail-select">カクテル名を選択してください</label>
+            <select id="cocktail-select" class="premium-select">
+              <option value="">-- カクテルを選択 --</option>
+              <!-- JSで動的にカクテル一覧を挿入 -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Action row -->
+        <div class="action-row" style="margin-top: 30px;">
+          <button class="reset-btn" id="btn-reset" aria-label="リセット">
+            <span class="reset-icon">↺</span> グラスを空にする
+          </button>
+        </div>
+      </section>
+
+      <!-- Result Section (Revealed upon cocktail completion) -->
+      <section class="result-section hidden" id="result-panel">
+        <!-- Cocktail Profile -->
+        <div class="profile-card">
+          <div class="result-header">
+            <span class="cocktail-tag">COCKTAIL COMPLETED</span>
+            <h2 class="cocktail-name" id="cocktail-name">ジントニック</h2>
+            <p class="cocktail-en-name" id="cocktail-en-name">Gin & Tonic</p>
+          </div>
+
+          <div class="profile-meta">
+            <!-- ABV bar gauge -->
+            <div class="meta-item">
+              <span class="meta-label">アルコール度数 (ABV)</span>
+              <div class="abv-container">
+                <div class="abv-bar">
+                  <div class="abv-fill" id="abv-fill" style="width: 10%;"></div>
+                </div>
+                <span class="abv-value" id="abv-value">約 10%</span>
+              </div>
+            </div>
+            
+            <!-- Taste Badges -->
+            <div class="meta-item">
+              <span class="meta-label">味の傾向</span>
+              <div class="taste-badges" id="taste-badges">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Ice Style -->
+            <div class="meta-item">
+              <span class="meta-label">氷のスタイル</span>
+              <div class="ice-style-container" id="ice-style-display">
+                <!-- Dynamically filled -->
+              </div>
+            </div>
+          </div>
+
+          <div class="cocktail-desc">
+            <h3 class="section-sub-title">カクテルの特徴</h3>
+            <p id="cocktail-description">ジンのハーブ香とトニックのほろ苦さがマッチした、世界中で愛される定番中の定番ロングカクテル。</p>
+          </div>
+        </div>
+
+        <!-- Recipe Detail -->
+        <div class="recipe-card">
+          <h3 class="section-sub-title">レシピ ＆ 作り方 (Recipe)</h3>
+          
+          <div class="recipe-content">
+            <div class="ingredients-list">
+              <h4>材料</h4>
+              <ul id="ingredients-ul">
+                <!-- Dynamically generated list -->
+              </ul>
+            </div>
+
+            <div class="method-steps">
+              <h4>作り方</h4>
+              <ol id="method-ol">
+                <!-- Dynamically generated steps -->
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action row for Completed screen (Back to Build button) -->
+        <div class="action-row" style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+          <button class="reset-btn" id="btn-back-to-build" aria-label="新しいカクテルを作る">
+            <span class="reset-icon">↺</span> 新しいカクテルを作る
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="app-footer">
+    <p>&copy; 2026 BAR ANTIGRAVITY. Drink Responsibly.</p>
+  </footer>
+
+  <!-- Simulator JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1237 @@
+/* ==========================================================================
+   CSS VARIABLES & THEME SETTINGS
+   ========================================================================== */
+:root {
+  --bg-primary: #0a0b10;
+  --bg-secondary: #12131a;
+  --card-bg: rgba(20, 22, 33, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-active: rgba(212, 175, 55, 0.5); /* Gold */
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a0a5c0;
+  --text-muted: #626888;
+  
+  --gold: #d4af37;
+  --gold-hover: #f3cf59;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+  --danger: #cf6679;
+  
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --font-accent: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', 'Noto Serif JP', serif;
+  
+  /* Liquid default color placeholders */
+  --liquid-base-color: rgba(255, 255, 255, 0.2);
+  --liquid-mix-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Ambient Orbs */
+.background-decor-1 {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(98, 0, 234, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  top: -100px;
+  right: -100px;
+  z-index: -1;
+  pointer-events: none;
+  animation: pulseOrb 12s infinite alternate ease-in-out;
+}
+
+.background-decor-2 {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+  bottom: -150px;
+  left: -150px;
+  z-index: -1;
+  pointer-events: none;
+  animation: pulseOrb 15s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes pulseOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 40px) scale(1.1); }
+}
+
+/* ==========================================================================
+   LAYOUT STRUCTURE
+   ========================================================================== */
+.app-container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.brand-sub {
+  font-family: var(--font-accent);
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px var(--gold-glow);
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.brand-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.brand-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Main Grid Layout */
+.simulator-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1.9fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+@media (max-width: 850px) {
+  .simulator-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   GLASSMORPHISM CARD STYLING
+   ========================================================================== */
+.visualizer-card, .controls-card, .result-section {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   LEFT COLUMN: COCKTAIL VISUALIZER
+   ========================================================================== */
+.visualizer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: visible;
+  min-height: 400px;
+}
+
+.glass-display-area {
+  position: relative;
+  width: 180px;
+  height: 250px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+/* Glass Wrapper */
+.glass-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: visible; /* Let garnishes stand out */
+}
+
+/* Glass Overlay SVG */
+.glass-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5; /* Sit on top of liquid and ice */
+}
+
+/* Inner Liquid Wrapper (Clipped to glass inner dimensions) */
+.liquid-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(14% 8%, 86% 8%, 81.3% 88.5%, 18.7% 88.5%);
+  z-index: 1;
+}
+
+/* Base Liquid Layer */
+.liquid-base {
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  width: 100%;
+  height: 0%; /* Default empty */
+  background: var(--liquid-base-color);
+  transition: height 1.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.8s ease;
+  z-index: 2;
+  box-shadow: inset 0 5px 15px rgba(255,255,255,0.1), inset 0 -5px 15px rgba(0,0,0,0.1);
+}
+
+/* Combined/Blended Liquid Layer */
+.liquid-mix {
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  width: 100%;
+  height: 0%; /* Default empty */
+  background: var(--liquid-mix-color);
+  transition: height 1.5s cubic-bezier(0.25, 1, 0.5, 1), background-color 1s ease;
+  z-index: 3;
+  box-shadow: inset 0 8px 20px rgba(255,255,255,0.15), inset 0 -8px 20px rgba(0,0,0,0.2);
+}
+
+/* Dynamic wave animation overlay for liquid surface (using horizontal translation of inline SVG wave) */
+.liquid-base::before, .liquid-mix::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: -100%;
+  width: 300%;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q 25 5, 50 10 T 100 10 L 100 20 L 0 20 Z' fill='%23ffffff' fill-opacity='0.16'/%3E%3C/svg%3E");
+  background-size: 80px 16px;
+  background-repeat: repeat-x;
+  animation: waveMotion 4s infinite linear;
+  border-radius: 0;
+  z-index: 5;
+}
+
+@keyframes waveMotion {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-80px); }
+}
+
+/* Ice Cubes */
+.ice-container {
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.glass-container.has-cube-ice .ice-container,
+.glass-container.has-crushed-ice .ice-container {
+  opacity: 1;
+}
+
+.ice-cube {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(3px);
+}
+
+.ice-1 {
+  bottom: 5%;
+  left: 31%;
+  transform: rotate(8deg);
+  animation: floatIce1 4s infinite ease-in-out;
+}
+
+.ice-2 {
+  bottom: 35%;
+  left: 28%;
+  transform: rotate(-10deg);
+  animation: floatIce2 4.5s infinite ease-in-out;
+}
+
+.ice-3 {
+  bottom: 65%;
+  left: 32%;
+  transform: rotate(5deg);
+  animation: floatIce3 5s infinite ease-in-out;
+}
+
+@keyframes floatIce1 {
+  0%, 100% { transform: translateY(0px) rotate(8deg); }
+  50% { transform: translateY(-3px) rotate(11deg); }
+}
+@keyframes floatIce2 {
+  0%, 100% { transform: translateY(0px) rotate(-10deg); }
+  50% { transform: translateY(-4px) rotate(-7deg); }
+}
+@keyframes floatIce3 {
+  0%, 100% { transform: translateY(0px) rotate(5deg); }
+  50% { transform: translateY(-3px) rotate(8deg); }
+}
+
+/* Condensation Droplets */
+.condensation-layer {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  pointer-events: none;
+  z-index: 6;
+  opacity: 0.6;
+}
+
+.drop {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+  width: 3px;
+  border-radius: 3px;
+}
+
+.drop-1 { top: 20%; left: 22%; height: 5px; }
+.drop-2 { top: 45%; right: 25%; height: 8px; border-radius: 2px; width: 2px; }
+.drop-3 { top: 60%; left: 30%; height: 4px; }
+.drop-4 { top: 35%; left: 75%; height: 6px; }
+.drop-5 { top: 70%; right: 35%; height: 5px; }
+
+/* Carbonation Bubbles */
+.bubble-container {
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: riseBubble 2s infinite linear;
+}
+
+@keyframes riseBubble {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-160px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Garnishes */
+.garnish-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; /* Out of the glass, hanging */
+  pointer-events: none;
+}
+
+.garnish-item {
+  position: absolute;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  transform-origin: center;
+  animation: garnishAppear 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes garnishAppear {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Garnish styling */
+.lime-garnish {
+  top: -5px;
+  right: -5px;
+  width: 60px;
+  height: 60px;
+}
+.lemon-garnish {
+  top: -5px;
+  left: -5px;
+  width: 60px;
+  height: 60px;
+}
+.orange-garnish {
+  top: 10px;
+  right: -10px;
+  width: 70px;
+  height: 70px;
+  transform: rotate(15deg);
+}
+.coffee-beans {
+  top: 15%;
+  left: 45%;
+  width: 35px;
+  height: 25px;
+  display: flex;
+  gap: 4px;
+}
+
+/* Glass Shadow */
+.glass-shadow {
+  width: 140px;
+  height: 15px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%);
+  margin-top: 10px;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Status Indicator */
+.status-indicator {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: auto;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 8px 16px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-indicator.ready {
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+  background: rgba(212, 175, 55, 0.05);
+  border-color: rgba(212, 175, 55, 0.15);
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: SELECTION CONTROLS
+   ========================================================================== */
+.controls-card {
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.control-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
+}
+
+.step-num {
+  font-family: var(--font-accent);
+  font-size: 0.95rem;
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  font-weight: 600;
+}
+
+/* Button Grids */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+/* Base button specific configuration */
+.base-options {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 550px) {
+  .base-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Selection Buttons */
+.select-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  outline: none;
+}
+
+.select-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.select-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.select-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Glowing Button States */
+@keyframes pulseGlowYellow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(253, 216, 53, 0.15), inset 0 0 4px rgba(253, 216, 53, 0.08);
+    border-color: rgba(253, 216, 53, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(253, 216, 53, 0.55), inset 0 0 8px rgba(253, 216, 53, 0.2);
+    border-color: rgba(253, 216, 53, 0.7);
+  }
+}
+
+@keyframes pulseGlowGreen {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.15), inset 0 0 4px rgba(76, 175, 80, 0.08);
+    border-color: rgba(76, 175, 80, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(76, 175, 80, 0.65), inset 0 0 8px rgba(76, 175, 80, 0.3);
+    border-color: rgba(76, 175, 80, 0.75);
+  }
+}
+
+.select-btn.glow-yellow:not(:disabled) {
+  animation: pulseGlowYellow 2.2s infinite ease-in-out;
+  color: #fffde7;
+}
+
+.select-btn.glow-green:not(:disabled) {
+  animation: pulseGlowGreen 2.2s infinite ease-in-out;
+  color: #e8f5e9;
+}
+
+/* Active glowing button overrides */
+.select-btn.glow-yellow.active {
+  background: rgba(253, 216, 53, 0.12) !important;
+  border-color: #fdd835 !important;
+  box-shadow: 0 0 18px rgba(253, 216, 53, 0.55) !important;
+  animation: none;
+}
+
+.select-btn.glow-green.active {
+  background: rgba(76, 175, 80, 0.15) !important;
+  border-color: #4caf50 !important;
+  box-shadow: 0 0 18px rgba(76, 175, 80, 0.65) !important;
+  animation: none;
+}
+
+/* Active State Styles */
+.select-btn.active {
+  color: var(--text-primary);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Base Button Theme Colors (When selected) */
+.base-btn.active[data-base="gin"] {
+  border-color: #80cbc4;
+  background: rgba(128, 203, 196, 0.08);
+  box-shadow: 0 0 15px rgba(128, 203, 196, 0.2);
+}
+.base-btn.active[data-base="vodka"] {
+  border-color: #cfd8dc;
+  background: rgba(207, 216, 220, 0.08);
+  box-shadow: 0 0 15px rgba(207, 216, 220, 0.2);
+}
+.base-btn.active[data-base="rum"] {
+  border-color: #ffe082;
+  background: rgba(255, 224, 130, 0.08);
+  box-shadow: 0 0 15px rgba(255, 224, 130, 0.2);
+}
+.base-btn.active[data-base="tequila"] {
+  border-color: #c5e1a5;
+  background: rgba(197, 225, 165, 0.08);
+  box-shadow: 0 0 15px rgba(197, 225, 165, 0.2);
+}
+.base-btn.active[data-base="whiskey"] {
+  border-color: #ffb74d;
+  background: rgba(255, 183, 77, 0.08);
+  box-shadow: 0 0 15px rgba(255, 183, 77, 0.2);
+}
+.base-btn.active[data-base="brandy"] {
+  border-color: #ff8a65;
+  background: rgba(255, 138, 101, 0.08);
+  box-shadow: 0 0 15px rgba(255, 138, 101, 0.2);
+}
+.base-btn.active[data-base="peach"] {
+  border-color: #ffab91;
+  background: rgba(255, 171, 145, 0.08);
+  box-shadow: 0 0 15px rgba(255, 171, 145, 0.2);
+}
+.base-btn.active[data-base="cassis"] {
+  border-color: #ec407a;
+  background: rgba(236, 64, 122, 0.08);
+  box-shadow: 0 0 15px rgba(236, 64, 122, 0.2);
+}
+.base-btn.active[data-base="coffee"] {
+  border-color: #a1887f;
+  background: rgba(161, 136, 127, 0.08);
+  box-shadow: 0 0 15px rgba(161, 136, 127, 0.2);
+}
+
+/* Mixer Button Theme Colors (When selected) */
+.mixer-btn.active[data-mixer="tonic"] {
+  border-color: #b2dfdb;
+  background: rgba(178, 223, 219, 0.1);
+  box-shadow: 0 0 15px rgba(178, 223, 219, 0.2);
+}
+.mixer-btn.active[data-mixer="orange"] {
+  border-color: #ffb74d;
+  background: rgba(255, 183, 77, 0.1);
+  box-shadow: 0 0 15px rgba(255, 183, 77, 0.2);
+}
+.mixer-btn.active[data-mixer="cola"] {
+  border-color: #8d6e63;
+  background: rgba(141, 110, 99, 0.1);
+  box-shadow: 0 0 15px rgba(141, 110, 99, 0.2);
+}
+.mixer-btn.active[data-mixer="ginger"] {
+  border-color: #ffd54f;
+  background: rgba(255, 213, 79, 0.1);
+  box-shadow: 0 0 15px rgba(255, 213, 79, 0.2);
+}
+.mixer-btn.active[data-mixer="soda"] {
+  border-color: #e0f7fa;
+  background: rgba(224, 247, 250, 0.1);
+  box-shadow: 0 0 15px rgba(224, 247, 250, 0.2);
+}
+.mixer-btn.active[data-mixer="milk"] {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Button Substructures */
+.btn-icon {
+  font-size: 1.5rem;
+}
+
+.btn-label-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-jp {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.btn-en {
+  font-family: var(--font-accent);
+  font-size: 0.65rem;
+  font-weight: 400;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+/* Action Rows & Reset Button */
+.action-row {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reset-btn {
+  background: rgba(207, 102, 121, 0.05);
+  border: 1px solid rgba(207, 102, 121, 0.2);
+  color: var(--danger);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: rgba(207, 102, 121, 0.12);
+  border-color: rgba(207, 102, 121, 0.35);
+  box-shadow: 0 0 10px rgba(207, 102, 121, 0.1);
+  transform: translateY(-1px);
+}
+
+.reset-btn:active {
+  transform: translateY(1px);
+}
+
+.reset-icon {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   BOTTOM PANEL: RECIPE & PROFILE DISPLAY
+   ========================================================================== */
+/* ==========================================================================
+   CONTENT COLUMN CONTAINER
+   ========================================================================== */
+.content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+/* ==========================================================================
+   BOTTOM PANEL: RECIPE & PROFILE DISPLAY (Now housed in right column)
+   ========================================================================== */
+.result-section {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  background: var(--card-bg);
+  border: 1px solid rgba(212, 175, 55, 0.15); /* Sleek gold accent border */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  padding: 35px 30px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.result-section.hidden {
+  display: none !important;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.result-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Left Card: Profile */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.cocktail-tag {
+  font-family: var(--font-accent);
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+
+.cocktail-name {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-top: 4px;
+  color: var(--text-primary);
+}
+
+.cocktail-en-name {
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+/* Meta Info Grid */
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ABV Bar styling */
+.abv-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.abv-bar {
+  flex-grow: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.abv-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d4af37, #f3cf59);
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.abv-value {
+  font-family: var(--font-accent);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--gold);
+}
+
+/* Taste Badges */
+.taste-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 0.8rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 4px 12px;
+  border-radius: 30px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--gold);
+  color: var(--text-primary);
+}
+
+/* Description Text */
+.section-sub-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-sub-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 15px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.cocktail-desc p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Right Card: Recipe Details */
+.recipe-card {
+  background: rgba(255, 255, 255, 0.01);
+  border-left: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-left: 0;
+  padding-top: 25px;
+}
+
+@media (max-width: 800px) {
+  .recipe-card {
+    border-left: none;
+    padding-left: 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+.recipe-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.ingredients-list h4, .method-steps h4 {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ingredients-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ingredients-list li {
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+  padding-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+.ingredients-list li span.ing-name {
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.ingredients-list li span.ing-amount {
+  font-family: var(--font-accent);
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.method-steps ol {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.method-steps li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   FOOTER STYLING
+   ========================================================================== */
+.app-footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: var(--font-accent);
+  letter-spacing: 0.1em;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  width: 100%;
+}
+
+/* ==========================================================================
+   CRUSHED ICE & EXTRA DISPLAY STYLING
+   ========================================================================== */
+.ice-shard {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.18);
+  border: 0.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3), 0 1px 3px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  backdrop-filter: blur(1.5px);
+  animation: floatShard 4s infinite ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes floatShard {
+  0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-3px) rotate(calc(var(--rot, 0deg) + 4deg)); }
+}
+
+.ice-style-container {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+/* ==========================================================================
+   TABS & PREMIUM SELECT STYLE
+   ========================================================================== */
+.mode-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 15px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  outline: none;
+  font-family: var(--font-sans);
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tab-btn.active {
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+}
+
+.dictionary-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.control-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.premium-select {
+  width: 100%;
+  background: rgba(18, 19, 26, 0.8);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d4af37'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 20px;
+}
+
+.premium-select:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(18, 19, 26, 0.95);
+}
+
+.premium-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.premium-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   ICE SELECTION BUTTONS STYLING
+   ========================================================================== */
+.ice-options {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 550px) {
+  .ice-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ice-btn.active {
+  border-color: #80deea !important;
+  background: rgba(128, 222, 234, 0.08) !important;
+  box-shadow: 0 0 15px rgba(128, 222, 234, 0.2) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ==========================================================================
+   COMPLETED STATE (2-COLUMN VISUALIZER FIXED & INDEPENDENT DETAILS SCROLL)
+   ========================================================================== */
+
+@media (min-width: 851px) {
+  /* Make the glass visualizer card sticky so it stays visible during scrolling */
+  .visualizer-card {
+    position: sticky;
+    top: 30px;
+    align-self: start;
+    z-index: 20;
+  }
+
+  /* Make the recipe details panel internally scrollable */
+  .result-section {
+    max-height: calc(100vh - 230px);
+    min-height: 480px;
+    overflow-y: auto;
+    padding-right: 20px;
+    border-color: rgba(212, 175, 55, 0.25) !important;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  /* Dark gold custom scrollbar for the scrollable details panel */
+  .result-section::-webkit-scrollbar {
+    width: 6px;
+  }
+  .result-section::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+  }
+  .result-section::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.25);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+  .result-section::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+  }
+
+  /* Infographic meta item layout (ABV, Taste, Ice) side-by-side */
+  .result-section .profile-meta {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+  .result-section .profile-meta .meta-item {
+    margin-bottom: 0;
+  }
+
+  /* Recipe Content layout (Ingredients, Method) side-by-side */
+  .result-section .recipe-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+  }
+}
+
+
+
