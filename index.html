@@ -94,6 +94,9 @@
           <button class="tab-btn" id="tab-dictionary" data-mode="dictionary">
             名前から選ぶ (辞書)
           </button>
+          <button class="tab-btn" id="tab-mybar" data-mode="mybar">
+            手持ちから選ぶ (マイバー)
+          </button>
         </div>
 
         <!-- Mode A: Build View -->
@@ -205,14 +208,69 @@
           </div>
         </div>
 
-        <!-- Mode B: Dictionary View -->
+        <!-- Mode B: Dictionary View (Gallery) -->
         <div id="view-dictionary" class="mode-view hidden">
-          <div class="dictionary-group">
-            <label class="control-label" for="cocktail-select">カクテル名を選択してください</label>
-            <select id="cocktail-select" class="premium-select">
-              <option value="">-- カクテルを選択 --</option>
-              <!-- JSで動的にカクテル一覧を挿入 -->
-            </select>
+          <!-- Search Bar -->
+          <div class="gallery-search-wrapper">
+            <span class="gallery-search-icon">🔍</span>
+            <input type="text" id="gallery-search" class="gallery-search-input" placeholder="カクテル名やベース（ジン、ウォッカ等）で検索…" autocomplete="off" />
+          </div>
+          <!-- Gallery Grid -->
+          <div class="gallery-grid" id="gallery-grid">
+            <!-- Dynamically populated cocktail cards -->
+          </div>
+        </div>
+
+        <!-- Mode C: My Bar View -->
+        <div id="view-mybar" class="mode-view hidden">
+          <!-- Starter Set Accordion -->
+          <div class="starter-set-accordion" id="starter-set-accordion">
+            <button class="starter-set-toggle" id="starter-set-toggle">
+              <span class="starter-set-title">👑 コスパ最強！おすすめスターターセット</span>
+              <span class="starter-set-icon">▼</span>
+            </button>
+            <div class="starter-set-content" id="starter-set-content">
+              <p class="starter-set-desc" id="starter-set-desc">計算中...</p>
+              <div class="starter-set-items" id="starter-set-items">
+                <!-- Dynamically populated items -->
+              </div>
+              <div class="gallery-grid" id="starter-gallery-grid" style="margin-top: 20px;">
+                <!-- Dynamically populated cocktail cards -->
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group" style="margin-top: 25px;">
+            <h2 class="control-title">手持ちの材料を選択</h2>
+            <p class="mybar-desc" style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 15px;">家にあるお酒や割り材を選んで、作れるカクテルを見つけましょう。</p>
+            
+            <div class="mybar-category" style="margin-bottom: 20px;">
+              <h3 style="font-size: 0.95rem; color: rgba(255,255,255,0.8); margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">ベーススピリッツ</h3>
+              <div class="mybar-checkbox-group" id="mybar-base-container">
+                <!-- Dynamically populated checkboxes -->
+              </div>
+            </div>
+
+            <div class="mybar-category" style="margin-bottom: 20px;">
+              <h3 style="font-size: 0.95rem; color: rgba(255,255,255,0.8); margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">リキュール・割り材・その他</h3>
+              <div class="mybar-checkbox-group" id="mybar-mixer-container">
+                <!-- Dynamically populated checkboxes -->
+              </div>
+            </div>
+          </div>
+
+          <div class="mybar-results-section" style="margin-top: 35px;">
+            <h2 class="control-title" id="mybar-result-count" style="margin-bottom: 15px;">現在作れるカクテル：0種類</h2>
+            <div class="gallery-grid" id="mybar-gallery-grid">
+              <!-- Dynamically populated cocktail cards -->
+            </div>
+          </div>
+
+          <div class="mybar-tips-section" id="mybar-tips-section">
+            <h3 class="tips-title">💡 TIPS: 次に買うべきおすすめの1本</h3>
+            <ul id="mybar-tips-list" class="tips-list">
+              <li>材料を選択してください...</li>
+            </ul>
           </div>
         </div>
 
@@ -230,6 +288,10 @@
         <div class="profile-card">
           <div class="result-header">
             <span class="cocktail-tag">COCKTAIL COMPLETED</span>
+            <span class="iba-badge hidden" id="iba-badge-result" title="IBA Official Cocktail">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              IBA OFFICIAL
+            </span>
             <h2 class="cocktail-name" id="cocktail-name">ジントニック</h2>
             <p class="cocktail-en-name" id="cocktail-en-name">Gin & Tonic</p>
           </div>
