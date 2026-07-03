@@ -694,7 +694,7 @@ const cocktailDatabase = {
       "氷を入れたシェイカーに材料を注ぎ、よくシェイクしてグラスに注ぎます。"
     ]
   },
-  "tequila+pineapple+lime": {
+  "tequila+lime+pineapple": {
     name: "マタドール",
     enName: "Matador",
     abv: 12,
@@ -714,7 +714,7 @@ const cocktailDatabase = {
       "氷を満たしたグラスに注ぎ入れます。"
     ]
   },
-  "tequila+cassis+lime+ginger": {
+  "tequila+cassis+ginger+lime": {
     name: "エル・ディアブロ",
     enName: "El Diablo",
     abv: 14,
@@ -1524,36 +1524,38 @@ const baseTints = {
 
 // All available 15 mixers information for dynamic rendering
 const mixerDefinitions = {
-  tonic: { name: "トニックウォーター", en: "TONIC WATER", icon: "🫧", color: "rgba(224, 247, 250, 0.4)" },
-  orange: { name: "オレンジジュース", en: "ORANGE JUICE", icon: "🍊", color: "rgba(255, 167, 38, 0.8)" },
-  cola: { name: "コーラ", en: "COLA", icon: "🥤", color: "rgba(62, 39, 35, 0.9)" },
-  ginger: { name: "ジンジャーエール", en: "GINGER ALE", icon: "🫚", color: "rgba(244, 208, 63, 0.5)" },
-  soda: { name: "ソーダ (炭酸水)", en: "SODA WATER", icon: "💧", color: "rgba(224, 242, 241, 0.3)" },
-  milk: { name: "牛乳", en: "MILK", icon: "🥛", color: "rgba(255, 255, 255, 0.95)" },
-  curacao: { name: "ホワイトキュラソー", en: "TRIPLE SEC", icon: "🍊", color: "rgba(255, 255, 255, 0.3)" },
-  lime: { name: "ライムジュース", en: "LIME JUICE", icon: "🍋", color: "rgba(197, 225, 165, 0.5)" },
-  grapefruit: { name: "グレープフルーツ", en: "GRAPEFRUIT JUICE", icon: "🍊", color: "rgba(255, 245, 157, 0.7)" },
-  salt: { name: "食塩 (スノースタイル用)", en: "SALT RIM", icon: "🧂", color: "rgba(255, 255, 255, 0.9)" },
-  pineapple: { name: "パイナップル", en: "PINEAPPLE JUICE", icon: "🍍", color: "rgba(255, 235, 59, 0.7)" },
-  tomato: { name: "トマトジュース", en: "TOMATO JUICE", icon: "🍅", color: "rgba(211, 47, 47, 0.9)" },
-  mint: { name: "ミントリキュール", en: "MINT LIQUEUR", icon: "🍃", color: "rgba(76, 175, 80, 0.7)" },
-  absinthe: { name: "アブサン", en: "ABSINTHE", icon: "🧚", color: "rgba(129, 199, 132, 0.6)" },
-  whiskey: { name: "ウイスキー (ブレンド用)", en: "WHISKEY MIX", icon: "🥃", color: "rgba(212, 143, 56, 0.6)" },
-  dry_vermouth: { name: "ドライ・ベルモット", en: "DRY VERMOUTH", icon: "🍷", color: "rgba(238, 232, 170, 0.4)" },
-  sweet_vermouth: { name: "スイート・ベルモット", en: "SWEET VERMOUTH", icon: "🍷", color: "rgba(139, 0, 0, 0.8)" },
-  campari: { name: "カンパリ", en: "CAMPARI", icon: "🔴", color: "rgba(213, 0, 0, 0.85)" },
-  bitters: { name: "アンゴスチュラ・ビターズ", en: "BITTERS", icon: "🤎", color: "rgba(93, 64, 55, 0.9)" },
-  olive: { name: "オリーブ", en: "OLIVE", icon: "🫒", color: "rgba(158, 157, 36, 0.9)" },
-  lemon: { name: "レモンジュース", en: "LEMON JUICE", icon: "🍋", color: "rgba(255, 235, 59, 0.5)" },
-  grenadine: { name: "グレナデンシロップ", en: "GRENADINE", icon: "🩸", color: "rgba(229, 57, 53, 0.9)" },
-  cream: { name: "生クリーム", en: "FRESH CREAM", icon: "🥛", color: "rgba(255, 255, 255, 0.95)" },
-  cacao: { name: "クレーム・ド・カカオ", en: "CACAO LIQUEUR", icon: "🍫", color: "rgba(121, 85, 72, 0.8)" },
-  coffee_liq: { name: "コーヒーリキュール", en: "COFFEE LIQUEUR", icon: "☕", color: "rgba(62, 39, 35, 0.9)" },
-  espresso: { name: "エスプレッソ", en: "ESPRESSO", icon: "☕", color: "rgba(33, 33, 33, 0.95)" },
-  maraschino_liq: { name: "マラスキーノ", en: "MARASCHINO LIQUEUR", icon: "🍒", color: "rgba(255, 255, 255, 0.1)" },
-  maraschino_cherry: { name: "マラスキーノ・チェリー", en: "MARASCHINO CHERRY", icon: "🍒", color: "rgba(213, 0, 0, 0.9)" },
-  sugar: { name: "砂糖 / シロップ", en: "SUGAR", icon: "🧂", color: "rgba(255, 255, 255, 0.3)" },
-  brandy: { name: "ブランデー (ブレンド用)", en: "BRANDY MIX", icon: "🥃", color: "rgba(189, 93, 30, 0.6)" }
+  tonic: { name: "トニックウォーター", en: "TONIC WATER", icon: "TW", color: "rgba(224, 247, 250, 0.4)" },
+  orange: { name: "オレンジジュース", en: "ORANGE JUICE", icon: "OJ", color: "rgba(255, 167, 38, 0.8)" },
+  cola: { name: "コーラ", en: "COLA", icon: "CL", color: "rgba(62, 39, 35, 0.9)" },
+  ginger: { name: "ジンジャーエール", en: "GINGER ALE", icon: "GA", color: "rgba(244, 208, 63, 0.5)" },
+  soda: { name: "ソーダ (炭酸水)", en: "SODA WATER", icon: "SW", color: "rgba(224, 242, 241, 0.3)" },
+  milk: { name: "牛乳", en: "MILK", icon: "MK", color: "rgba(255, 255, 255, 0.95)" },
+  curacao: { name: "ホワイトキュラソー", en: "TRIPLE SEC", icon: "TS", color: "rgba(255, 255, 255, 0.3)" },
+  lime: { name: "ライムジュース", en: "LIME JUICE", icon: "LI", color: "rgba(197, 225, 165, 0.5)" },
+  grapefruit: { name: "グレープフルーツ", en: "GRAPEFRUIT JUICE", icon: "GF", color: "rgba(255, 245, 157, 0.7)" },
+  salt: { name: "食塩 (スノースタイル用)", en: "SALT RIM", icon: "SL", color: "rgba(255, 255, 255, 0.9)" },
+  pineapple: { name: "パイナップル", en: "PINEAPPLE JUICE", icon: "PJ", color: "rgba(255, 235, 59, 0.7)" },
+  tomato: { name: "トマトジュース", en: "TOMATO JUICE", icon: "TJ", color: "rgba(211, 47, 47, 0.9)" },
+  mint: { name: "ミントリキュール", en: "MINT LIQUEUR", icon: "MT", color: "rgba(76, 175, 80, 0.7)" },
+  absinthe: { name: "アブサン", en: "ABSINTHE", icon: "AB", color: "rgba(129, 199, 132, 0.6)" },
+  whiskey: { name: "ウイスキー (ブレンド用)", en: "WHISKEY MIX", icon: "WH", color: "rgba(212, 143, 56, 0.6)" },
+  dry_vermouth: { name: "ドライ・ベルモット", en: "DRY VERMOUTH", icon: "DV", color: "rgba(238, 232, 170, 0.4)" },
+  sweet_vermouth: { name: "スイート・ベルモット", en: "SWEET VERMOUTH", icon: "SV", color: "rgba(139, 0, 0, 0.8)" },
+  campari: { name: "カンパリ", en: "CAMPARI", icon: "CP", color: "rgba(213, 0, 0, 0.85)" },
+  bitters: { name: "アンゴスチュラ・ビターズ", en: "BITTERS", icon: "BT", color: "rgba(93, 64, 55, 0.9)" },
+  olive: { name: "オリーブ", en: "OLIVE", icon: "OL", color: "rgba(158, 157, 36, 0.9)" },
+  lemon: { name: "レモンジュース", en: "LEMON JUICE", icon: "LE", color: "rgba(255, 235, 59, 0.5)" },
+  grenadine: { name: "グレナデンシロップ", en: "GRENADINE", icon: "GR", color: "rgba(229, 57, 53, 0.9)" },
+  cream: { name: "生クリーム", en: "FRESH CREAM", icon: "CR", color: "rgba(255, 255, 255, 0.95)" },
+  cacao: { name: "クレーム・ド・カカオ", en: "CACAO LIQUEUR", icon: "CC", color: "rgba(121, 85, 72, 0.8)" },
+  coffee_liq: { name: "コーヒーリキュール", en: "COFFEE LIQUEUR", icon: "KL", color: "rgba(62, 39, 35, 0.9)" },
+  coffee: { name: "コーヒーリキュール", en: "COFFEE LIQUEUR", icon: "KL", color: "rgba(62, 39, 35, 0.9)" },
+  cassis: { name: "カシスリキュール", en: "CASSIS LIQUEUR", icon: "CA", color: "rgba(136, 14, 79, 0.8)" },
+  espresso: { name: "エスプレッソ", en: "ESPRESSO", icon: "ES", color: "rgba(33, 33, 33, 0.95)" },
+  maraschino_liq: { name: "マラスキーノ", en: "MARASCHINO LIQUEUR", icon: "ML", color: "rgba(255, 255, 255, 0.1)" },
+  maraschino_cherry: { name: "マラスキーノ・チェリー", en: "MARASCHINO CHERRY", icon: "MC", color: "rgba(213, 0, 0, 0.9)" },
+  sugar: { name: "砂糖 / シロップ", en: "SUGAR", icon: "SG", color: "rgba(255, 255, 255, 0.3)" },
+  brandy: { name: "ブランデー (ブレンド用)", en: "BRANDY MIX", icon: "BR", color: "rgba(189, 93, 30, 0.6)" }
 };
 
 // ==========================================================================
@@ -1561,6 +1563,7 @@ const mixerDefinitions = {
 // ==========================================================================
 const state = {
   currentMode: 'build',  // 'build' | 'dictionary' | 'mybar'
+  showResult: false,     // True when the user explicitly opens an extensible recipe
   selectedBase: null,    // 'gin' | 'vodka' | 'rum' | ...
   selectedMixers: [],    // Array of selected mixers
   selectedIce: 'cube',   // 'cube' | 'crushed' | 'none'
@@ -1616,6 +1619,7 @@ const DOM = {
   mixerContainer: document.getElementById('mixer-container'),
   iceBtns: document.querySelectorAll('.ice-btn'),
   resetBtn: document.getElementById('btn-reset'),
+  viewRecipeBtn: document.getElementById('btn-view-recipe'),
   backToBuildBtn: document.getElementById('btn-back-to-build'),
   
   // Dictionary Mode Gallery
@@ -1638,8 +1642,10 @@ const DOM = {
   
   // Visualizer Canvas & Overlays
   canvas: document.getElementById('cocktail-canvas'),
+  recipeCanvas: document.getElementById('recipe-canvas'),
   garnishLayer: document.getElementById('garnish-layer'),
   statusIndicator: document.getElementById('status-indicator'),
+  stageNumber: document.getElementById('stage-number'),
   glass: document.getElementById('cocktail-glass'),
   simulatorLayout: document.querySelector('.simulator-layout'),
   visualizerCard: document.querySelector('.visualizer-card'),
@@ -1763,7 +1769,22 @@ function updateBubbles(currentY) {
 function drawCocktail(timestamp) {
   const w = DOM.canvas.width;
   const h = DOM.canvas.height;
-  
+
+  // Named recipes share the exact same glass renderer as the archive cards.
+  const previewKey = [state.selectedBase, ...[...state.selectedMixers].sort()].join('+');
+  const previewCocktail = cocktailDatabase[previewKey];
+  if (previewCocktail) {
+    state.wavePhase += 0.04;
+    drawGalleryPhoto(DOM.recipeCanvas, previewCocktail, {
+      phase: state.wavePhase,
+      mainPreview: true
+    });
+    requestAnimationFrame(drawCocktail);
+    return;
+  }
+
+  const recipeCtx = DOM.recipeCanvas.getContext('2d');
+  recipeCtx.clearRect(0, 0, DOM.recipeCanvas.width, DOM.recipeCanvas.height);
   ctx.clearRect(0, 0, w, h);
   
   state.animLevel += (state.targetLevel - state.animLevel) * 0.08;
@@ -2018,13 +2039,15 @@ function renderMixerButtons() {
     btn.className = 'select-btn mixer-btn';
     btn.dataset.mixer = mKey;
     btn.id = `btn-${mKey}`;
+    const mixerColor = parseRGBA(def.color);
+    btn.style.setProperty('--ingredient-rgb', `${mixerColor[0]}, ${mixerColor[1]}, ${mixerColor[2]}`);
     
     if (state.selectedMixers.includes(mKey)) {
       btn.classList.add('active');
     }
     
     btn.innerHTML = `
-      <span class="btn-icon">${def.icon}</span>
+      <span class="btn-icon" aria-hidden="true">${def.icon}</span>
       <div class="btn-label-group">
         <span class="btn-jp">${def.name}</span>
         <span class="btn-en">${def.en}</span>
@@ -2070,10 +2093,12 @@ function updateMixerButtonsAvailability() {
     } else {
       btn.classList.remove('active');
     }
+    btn.setAttribute('aria-pressed', String(state.selectedMixers.includes(mKey)));
     
     // Glow logic
-    btn.classList.remove('glow-yellow', 'glow-green');
+    btn.classList.remove('glow-yellow', 'glow-green', 'is-available');
     if (isValid && !state.selectedMixers.includes(mKey)) {
+      btn.classList.add('is-available');
       let canBeMultiMixer = false;
       let canBeSingleMixerIrregular = false;
       
@@ -2101,6 +2126,7 @@ function updateMixerButtonsAvailability() {
 }
 
 function toggleMixer(mixerKey) {
+  state.showResult = false;
   const index = state.selectedMixers.indexOf(mixerKey);
   
   if (index > -1) {
@@ -2137,6 +2163,7 @@ function updateIceButtonsUI() {
     } else {
       btn.classList.remove('active');
     }
+    btn.setAttribute('aria-pressed', String(btn.dataset.ice === state.selectedIce));
   });
 }
 
@@ -2149,31 +2176,26 @@ const baseNameMap = {
 
 // Base spirit key to icon lookup
 const baseIconMap = {
-  gin: '🍸', vodka: '🥃', rum: '🧉', tequila: '🌵',
-  whiskey: '🥃', brandy: '🍷', peach: '🍑',
-  cassis: '🫐', coffee: '☕'
+  gin: 'GI', vodka: 'VO', rum: 'RU', tequila: 'TE',
+  whiskey: 'WH', brandy: 'BR', peach: 'PE',
+  cassis: 'CA', coffee: 'CO'
 };
 
 /**
- * Automatically determine the garnish based on recipe ingredients if not explicitly set.
+ * Return only a garnish that is visibly served on the glass.
+ * Citrus juice, a squeezed wedge, or a peel must not become a full wheel by inference.
  */
 function getEffectiveGarnish(cocktail) {
   if (!cocktail) return null;
-  if (cocktail.garnish) return cocktail.garnish;
-  
-  if (cocktail.ingredients) {
-    const hasLemon = cocktail.ingredients.some(ing => 
-      ing.name.includes('レモン') || 
-      ing.name.includes('lemon')
-    );
-    const hasLime = cocktail.ingredients.some(ing => 
-      ing.name.includes('ライム') || 
-      ing.name.includes('lime')
-    );
-    if (hasLemon) return 'lemon';
-    if (hasLime) return 'lime';
-  }
-  return null;
+  const garnish = cocktail.garnish;
+  if (!['lime', 'lemon', 'orange'].includes(garnish)) return garnish || null;
+
+  const methodText = (cocktail.method || []).join(' ');
+  const isPeelOnly = /(ピール|レモンの皮)/.test(methodText) && !/スライス/.test(methodText);
+  if (isPeelOnly) return null;
+
+  const isVisiblyServed = /(飾|添え|皮ごと|そのままグラスに入れ)/.test(methodText);
+  return isVisiblyServed ? garnish : null;
 }
 
 /**
@@ -2550,16 +2572,211 @@ function drawMiniThumbnailAnimated(canvas, cocktail, baseKey, animState) {
 /**
  * Render the gallery grid with cocktail cards. Accepts optional search query.
  */
-function renderGallery(query) {
-  // Clear any running animations first to avoid memory leaks
-  const activeCards = DOM.galleryGrid.querySelectorAll('.gallery-card');
-  activeCards.forEach(card => {
+function getGalleryGlassType(cocktail) {
+  if (cocktail.ice === 'none') return 'stemmed';
+  if (cocktail.ice === 'crushed') return 'julep';
+  if (cocktail.abv >= 20 || !cocktail.hasBubbles) return 'rocks';
+  return 'highball';
+}
+
+function getGalleryLiquidStyle(ctx, cocktail, top, bottom) {
+  if (cocktail.color.includes('linear-gradient')) {
+    const gradient = ctx.createLinearGradient(0, bottom, 0, top);
+    if (cocktail.name === 'テキーラ・サンライズ') {
+      gradient.addColorStop(0, 'rgba(170, 28, 18, .96)');
+      gradient.addColorStop(.38, 'rgba(226, 76, 22, .94)');
+      gradient.addColorStop(1, 'rgba(245, 169, 48, .88)');
+    } else if (cocktail.name === 'カシス・オレンジ') {
+      gradient.addColorStop(0, 'rgba(91, 8, 49, .96)');
+      gradient.addColorStop(.42, 'rgba(137, 22, 79, .9)');
+      gradient.addColorStop(1, 'rgba(242, 145, 34, .88)');
+    } else {
+      gradient.addColorStop(0, 'rgba(66, 38, 28, .96)');
+      gradient.addColorStop(.52, 'rgba(160, 98, 63, .9)');
+      gradient.addColorStop(1, 'rgba(244, 234, 214, .86)');
+    }
+    return gradient;
+  }
+  return cocktail.color;
+}
+
+function drawGalleryPhoto(canvas, cocktail, animState = null) {
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width;
+  const h = canvas.height;
+  const type = getGalleryGlassType(cocktail);
+  const phase = animState?.phase || 0;
+  const isMainPreview = Boolean(animState?.mainPreview);
+  ctx.clearRect(0, 0, w, h);
+
+  // Contact shadow on the generated walnut counter.
+  const shadowY = h * (isMainPreview ? .91 : .84);
+  const shadow = ctx.createRadialGradient(w / 2, shadowY, 2, w / 2, shadowY, w * .38);
+  shadow.addColorStop(0, 'rgba(0,0,0,.72)');
+  shadow.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = shadow;
+  ctx.beginPath();
+  ctx.ellipse(w / 2, shadowY, w * .36, h * .055, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  let top = h * .17;
+  let bottom = h * .81;
+  let leftTop = w * .29;
+  let rightTop = w * .71;
+  let leftBottom = w * .34;
+  let rightBottom = w * .66;
+
+  if (isMainPreview) {
+    top = h * .08;
+    bottom = h * .89;
+    leftTop = w * .15;
+    rightTop = w * .85;
+    leftBottom = w * .24;
+    rightBottom = w * .76;
+  }
+
+  if (type === 'rocks') {
+    top = h * (isMainPreview ? .22 : .35);
+    bottom = h * (isMainPreview ? .88 : .81);
+    leftTop = w * (isMainPreview ? .1 : .23);
+    rightTop = w * (isMainPreview ? .9 : .77);
+    leftBottom = w * (isMainPreview ? .18 : .28);
+    rightBottom = w * (isMainPreview ? .82 : .72);
+  } else if (type === 'julep') {
+    top = h * (isMainPreview ? .12 : .24);
+    bottom = h * (isMainPreview ? .89 : .81);
+    leftTop = w * (isMainPreview ? .14 : .25);
+    rightTop = w * (isMainPreview ? .86 : .75);
+    leftBottom = w * (isMainPreview ? .23 : .32);
+    rightBottom = w * (isMainPreview ? .77 : .68);
+  } else if (type === 'stemmed') {
+    top = h * (isMainPreview ? .08 : .2);
+    bottom = h * (isMainPreview ? .55 : .58);
+    leftTop = w * (isMainPreview ? .06 : .18);
+    rightTop = w * (isMainPreview ? .94 : .82);
+    leftBottom = w * .47;
+    rightBottom = w * .53;
+  }
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(leftTop, top);
+  ctx.lineTo(rightTop, top);
+  ctx.lineTo(rightBottom, bottom);
+  ctx.lineTo(leftBottom, bottom);
+  ctx.closePath();
+  ctx.clip();
+
+  const liquidTop = type === 'stemmed' ? top + h * .07 : top + (bottom - top) * .18;
+  const liquidStyle = getGalleryLiquidStyle(ctx, cocktail, liquidTop, bottom);
+  ctx.fillStyle = liquidStyle;
+  ctx.fillRect(leftTop, liquidTop, rightTop - leftTop, bottom - liquidTop);
+
+  const glow = ctx.createLinearGradient(leftTop, 0, rightTop, 0);
+  glow.addColorStop(0, 'rgba(255,255,255,.04)');
+  glow.addColorStop(.18, 'rgba(255,255,255,.2)');
+  glow.addColorStop(.3, 'rgba(255,255,255,.035)');
+  glow.addColorStop(.76, 'rgba(255,255,255,.02)');
+  glow.addColorStop(.94, 'rgba(255,255,255,.16)');
+  glow.addColorStop(1, 'rgba(255,255,255,.03)');
+  ctx.fillStyle = glow;
+  ctx.fillRect(leftTop, top, rightTop - leftTop, bottom - top);
+
+  if (cocktail.ice !== 'none') {
+    const cubes = cocktail.ice === 'crushed' ? 15 : 3;
+    for (let i = 0; i < cubes; i++) {
+      const baseSize = cocktail.ice === 'crushed' ? 5 + (i % 3) * 2 : 20 + i * 2;
+      const size = baseSize * (isMainPreview ? 1.22 : 1);
+      const xRange = (rightBottom - leftBottom) * .72;
+      const x = w / 2 - xRange / 2 + ((i * 31) % Math.max(xRange, 1));
+      const y = liquidTop + 11 + ((i * 23) % Math.max(bottom - liquidTop - size - 8, 1));
+      ctx.save();
+      ctx.translate(x, y + Math.sin(phase + i) * .7);
+      ctx.rotate((i % 2 ? -.14 : .1) + Math.sin(phase * .25 + i) * .02);
+      ctx.fillStyle = 'rgba(230,240,238,.13)';
+      ctx.strokeStyle = 'rgba(245,248,244,.4)';
+      ctx.lineWidth = .8;
+      ctx.beginPath();
+      ctx.roundRect(-size / 2, -size / 2, size, size, cocktail.ice === 'crushed' ? 1 : 4);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  if (cocktail.hasBubbles) {
+    ctx.fillStyle = 'rgba(255,255,255,.45)';
+    for (let i = 0; i < 13; i++) {
+      const x = w * (.36 + ((i * 17) % 31) / 100);
+      const travel = Math.max(bottom - liquidTop - 10, 1);
+      const y = bottom - 7 - ((i * 19 + phase * 8) % travel);
+      ctx.beginPath();
+      ctx.arc(x, y, .65 + (i % 3) * .35, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  ctx.restore();
+
+  // Glass edges, rim and physically plausible specular reflections.
+  ctx.strokeStyle = 'rgba(235,240,236,.5)';
+  ctx.lineWidth = 1.15;
+  ctx.beginPath();
+  ctx.moveTo(leftTop, top);
+  ctx.lineTo(leftBottom, bottom);
+  ctx.lineTo(rightBottom, bottom);
+  ctx.lineTo(rightTop, top);
+  ctx.stroke();
+
+  ctx.strokeStyle = 'rgba(255,255,255,.68)';
+  ctx.lineWidth = .8;
+  ctx.beginPath();
+  ctx.ellipse(w / 2, top, (rightTop - leftTop) / 2, 2.1, 0, 0, Math.PI * 2);
+  ctx.stroke();
+
+  ctx.strokeStyle = 'rgba(255,255,255,.22)';
+  ctx.beginPath();
+  ctx.moveTo(leftTop + 5, top + 9);
+  ctx.lineTo(leftBottom + 5, bottom - 9);
+  ctx.stroke();
+
+  if (type === 'stemmed') {
+    ctx.strokeStyle = 'rgba(245,245,238,.52)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(w / 2, bottom);
+    ctx.lineTo(w / 2, h * .81);
+    ctx.moveTo(w * .34, h * .82);
+    ctx.quadraticCurveTo(w / 2, h * .79, w * .66, h * .82);
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = 'rgba(255,255,255,.08)';
+    ctx.fillRect(leftBottom + 2, bottom - 3, rightBottom - leftBottom - 4, 3);
+  }
+
+  const garnish = getEffectiveGarnish(cocktail);
+  drawGarnishOnCanvas(ctx, garnish, leftTop, rightTop, top);
+}
+
+// Gallery thumbnails use the same renderer for still and hover states.
+function drawMiniThumbnail(canvas, cocktail) {
+  drawGalleryPhoto(canvas, cocktail);
+}
+
+function drawMiniThumbnailAnimated(canvas, cocktail, baseKey, animState) {
+  drawGalleryPhoto(canvas, cocktail, animState);
+}
+
+function cancelCardAnimations(container = document) {
+  container.querySelectorAll('.gallery-card').forEach(card => {
     if (card._animId) {
       cancelAnimationFrame(card._animId);
       card._animId = null;
     }
   });
+}
 
+function renderGallery(query) {
+  cancelCardAnimations(DOM.galleryGrid);
   DOM.galleryGrid.innerHTML = '';
   const q = (query || '').trim().toLowerCase();
   
@@ -2590,7 +2807,8 @@ function renderGallery(query) {
   }
   
   filtered.forEach(({ key, data, baseKey, baseJp }) => {
-    const card = document.createElement('div');
+    const card = document.createElement('button');
+    card.type = 'button';
     card.className = 'gallery-card';
     card.dataset.key = key;
 
@@ -2606,8 +2824,8 @@ function renderGallery(query) {
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gallery-card-thumb';
     const thumbCanvas = document.createElement('canvas');
-    thumbCanvas.width = 140;
-    thumbCanvas.height = 140;
+    thumbCanvas.width = 180;
+    thumbCanvas.height = 230;
     thumbDiv.appendChild(thumbCanvas);
     
     // Info
@@ -2625,7 +2843,7 @@ function renderGallery(query) {
     const tagEl = document.createElement('div');
     tagEl.className = 'gallery-card-tag';
     const icon = baseIconMap[baseKey] || '🍹';
-    tagEl.innerHTML = `<span class="gallery-card-tag-icon">${icon}</span> ${baseJp}ベース`;
+    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース`;
     
     infoDiv.appendChild(nameEl);
     infoDiv.appendChild(enEl);
@@ -2642,6 +2860,7 @@ function renderGallery(query) {
         state.selectedBase = parts[0];
         state.selectedMixers = parts.slice(1);
         state.selectedIce = cocktail.ice;
+        state.showResult = true;
         updateUI();
       }
     });
@@ -2694,6 +2913,12 @@ function renderGallery(query) {
 // Sync State with UI and layout views
 function updateUI() {
   const { selectedBase, selectedMixers, selectedIce } = state;
+  DOM.simulatorLayout.dataset.mode = state.currentMode;
+  if (DOM.stageNumber) {
+    const labels = { build: '01 / BUILD', dictionary: '02 / ARCHIVE', mybar: '03 / MY BAR' };
+    DOM.stageNumber.textContent = labels[state.currentMode] || '01 / BUILD';
+  }
+  DOM.viewRecipeBtn.classList.add('hidden');
   
   // Sync Base Buttons active
   DOM.baseBtns.forEach(btn => {
@@ -2702,6 +2927,7 @@ function updateUI() {
     } else {
       btn.classList.remove('active');
     }
+    btn.setAttribute('aria-pressed', String(btn.dataset.base === selectedBase));
   });
   
   // Sync Ice Buttons active
@@ -2713,6 +2939,14 @@ function updateUI() {
   // Check matching cocktail
   const key = [selectedBase, ...[...selectedMixers].sort()].join('+');
   const cocktail = cocktailDatabase[key];
+  DOM.glass.classList.toggle('archive-glass', Boolean(cocktail));
+  const hasRecipeExtension = !!cocktail && Object.keys(cocktailDatabase).some(candidateKey => {
+    const parts = candidateKey.split('+');
+    if (parts[0] !== selectedBase) return false;
+    const candidateMixers = parts.slice(1);
+    return candidateMixers.length > selectedMixers.length
+      && selectedMixers.every(mixer => candidateMixers.includes(mixer));
+  });
   
   if (!selectedBase && selectedMixers.length === 0) {
     // 6.1 NOTHING SELECTED
@@ -2738,7 +2972,7 @@ function updateUI() {
     renderGarnish(null);
     
     const baseJp = document.getElementById(`btn-${selectedBase}`).querySelector('.btn-jp').textContent;
-    DOM.statusIndicator.textContent = `${baseJp}を選択中。次に光っている割り材を選んでください。`;
+    DOM.statusIndicator.textContent = `${baseJp}を選択中。＋の付いた割り材を選んでください。`;
     DOM.statusIndicator.classList.remove('ready');
     
     DOM.controlsCard.classList.remove('hidden');
@@ -2752,7 +2986,9 @@ function updateUI() {
     state.saltRim = !!cocktail.saltRim;
     renderGarnish(getEffectiveGarnish(cocktail));
     
-    DOM.statusIndicator.textContent = `完成！: ${cocktail.name}`;
+    DOM.statusIndicator.textContent = hasRecipeExtension && !state.showResult
+      ? `${cocktail.name}が作れます。レシピを見るか、素材を追加してください。`
+      : `完成：${cocktail.name}`;
     DOM.statusIndicator.classList.add('ready');
     
     // Populate Completed Recipe UI
@@ -2767,9 +3003,9 @@ function updateUI() {
     DOM.abvValue.textContent = `約 ${cocktail.abv}%`;
     DOM.abvFill.style.width = `${Math.min((cocktail.abv / 40) * 100, 100)}%`;
     
-    let iceText = '🚫 氷なし';
-    if (selectedIce === 'cube') iceText = '🧊 キューブアイス';
-    else if (selectedIce === 'crushed') iceText = '🍧 クラッシュアイス';
+    let iceText = '氷なし';
+    if (selectedIce === 'cube') iceText = 'キューブアイス';
+    else if (selectedIce === 'crushed') iceText = 'クラッシュアイス';
     DOM.iceStyleDisplay.textContent = iceText;
     
     DOM.tasteBadges.innerHTML = '';
@@ -2796,7 +3032,18 @@ function updateUI() {
       DOM.methodOl.appendChild(li);
     });
     
+    if (hasRecipeExtension && !state.showResult) {
+      // A valid recipe may still lead to a multi-ingredient recipe.
+      DOM.viewRecipeBtn.classList.remove('hidden');
+      DOM.controlsCard.classList.remove('hidden');
+      DOM.resultPanel.classList.add('hidden');
+      DOM.simulatorLayout.classList.remove('completed');
+      return;
+    }
+
     // UI Panels transition: Hide controls, Show result in the right column
+    DOM.simulatorLayout.dataset.mode = 'result';
+    if (DOM.stageNumber) DOM.stageNumber.textContent = '04 / RECIPE';
     DOM.controlsCard.classList.add('hidden');
     DOM.resultPanel.classList.remove('hidden');
     
@@ -2818,7 +3065,7 @@ function updateUI() {
     state.targetLevel = 0.35 + (selectedMixers.length * 0.15);
     state.targetColor = calculateCurrentBlendColor();
     state.saltRim = false;
-    renderGarnish(selectedMixers.includes('lime') ? 'lime' : null);
+    renderGarnish(null);
     
     DOM.statusIndicator.textContent = "カスタムビルド中... 別の材料を加えるか、氷を調整してください。";
     DOM.statusIndicator.classList.remove('ready');
@@ -2836,18 +3083,15 @@ function updateUI() {
 function setMode(mode) {
   state.currentMode = mode;
   
-  // Stop all gallery card animations when leaving dictionary mode
-  const activeCards = DOM.galleryGrid.querySelectorAll('.gallery-card');
-  activeCards.forEach(card => {
-    if (card._animId) {
-      cancelAnimationFrame(card._animId);
-      card._animId = null;
-    }
-  });
+  // Hidden cards must not leave hover animation loops running.
+  cancelCardAnimations();
   
   DOM.tabBuild.classList.remove('active');
   DOM.tabDictionary.classList.remove('active');
   DOM.tabMyBar.classList.remove('active');
+  DOM.tabBuild.setAttribute('aria-selected', String(mode === 'build'));
+  DOM.tabDictionary.setAttribute('aria-selected', String(mode === 'dictionary'));
+  DOM.tabMyBar.setAttribute('aria-selected', String(mode === 'mybar'));
   DOM.viewBuild.classList.add('hidden');
   DOM.viewDictionary.classList.add('hidden');
   DOM.viewMyBar.classList.add('hidden');
@@ -2906,6 +3150,7 @@ function createMyBarCheckbox(id, name, icon) {
     } else {
       state.myBarIngredients.delete(id);
     }
+    syncMyBarCheckboxes();
     updateMyBarResults();
   });
   
@@ -2917,7 +3162,14 @@ function createMyBarCheckbox(id, name, icon) {
   return label;
 }
 
+function syncMyBarCheckboxes() {
+  document.querySelectorAll('.mybar-chip input[type="checkbox"]').forEach(checkbox => {
+    checkbox.checked = state.myBarIngredients.has(checkbox.value);
+  });
+}
+
 function updateMyBarResults() {
+  cancelCardAnimations(DOM.myBarGalleryGrid);
   DOM.myBarGalleryGrid.innerHTML = '';
   const makeable = [];
   const missingCounts = {}; // For N-1 recommendations
@@ -2958,7 +3210,8 @@ function updateMyBarResults() {
       const baseKey = key.split('+')[0];
       const baseJp = baseNameMap[baseKey] || baseKey;
       
-      const card = document.createElement('div');
+      const card = document.createElement('button');
+      card.type = 'button';
       card.className = 'gallery-card';
       card.dataset.key = key;
 
@@ -2973,8 +3226,8 @@ function updateMyBarResults() {
       const thumbDiv = document.createElement('div');
       thumbDiv.className = 'gallery-card-thumb';
       const thumbCanvas = document.createElement('canvas');
-      thumbCanvas.width = 140;
-      thumbCanvas.height = 140;
+      thumbCanvas.width = 180;
+      thumbCanvas.height = 230;
       thumbDiv.appendChild(thumbCanvas);
       
       const infoDiv = document.createElement('div');
@@ -2991,7 +3244,7 @@ function updateMyBarResults() {
       const tagEl = document.createElement('div');
       tagEl.className = 'gallery-card-tag';
       const icon = baseIconMap[baseKey] || '🍹';
-      tagEl.innerHTML = `<span class="gallery-card-tag-icon">${icon}</span> ${baseJp}ベース`;
+      tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース`;
       
       infoDiv.appendChild(nameEl);
       infoDiv.appendChild(enEl);
@@ -3006,6 +3259,7 @@ function updateMyBarResults() {
         state.selectedBase = parts[0];
         state.selectedMixers = parts.slice(1);
         state.selectedIce = data.ice;
+        state.showResult = true;
         updateUI();
       });
       
@@ -3078,6 +3332,7 @@ function resetGlass() {
   state.selectedBase = null;
   state.selectedMixers = [];
   state.selectedIce = 'cube';
+  state.showResult = false;
   updateUI();
 }
 
@@ -3096,6 +3351,7 @@ function initEventListeners() {
         state.selectedBase = base;
         state.selectedMixers = [];
       }
+      state.showResult = false;
       updateUI();
     });
   });
@@ -3108,6 +3364,10 @@ function initEventListeners() {
   });
   
   DOM.resetBtn.addEventListener('click', resetGlass);
+  DOM.viewRecipeBtn.addEventListener('click', () => {
+    state.showResult = true;
+    updateUI();
+  });
   
   // Bind Back to Build button on Completed card
   DOM.backToBuildBtn.addEventListener('click', resetGlass);
@@ -3116,6 +3376,48 @@ function initEventListeners() {
   DOM.gallerySearch.addEventListener('input', (e) => {
     renderGallery(e.target.value);
   });
+}
+
+function initAtmosphere() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const panel = DOM.simulatorLayout;
+
+  if (!prefersReducedMotion && panel) {
+    let pointerFrame = null;
+    let pointerEvent = null;
+
+    panel.addEventListener('pointermove', (event) => {
+      pointerEvent = event;
+      if (pointerFrame) return;
+
+      pointerFrame = requestAnimationFrame(() => {
+        const rect = panel.getBoundingClientRect();
+        const x = ((pointerEvent.clientX - rect.left) / rect.width) * 100;
+        const y = ((pointerEvent.clientY - rect.top) / rect.height) * 100;
+        panel.style.setProperty('--spot-x', `${x.toFixed(1)}%`);
+        panel.style.setProperty('--spot-y', `${y.toFixed(1)}%`);
+        pointerFrame = null;
+      });
+    }, { passive: true });
+  }
+
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const revealTargets = document.querySelectorAll('.intro, .simulator-layout, .result-section, .site-footer');
+    document.documentElement.classList.add('motion-ready');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+
+    revealTargets.forEach((target) => {
+      target.classList.add('reveal-section');
+      observer.observe(target);
+    });
+  }
 }
 
 function calculateStarterSet() {
@@ -3169,12 +3471,14 @@ function calculateStarterSet() {
     DOM.starterSetItems.appendChild(span);
   });
   
+  cancelCardAnimations(DOM.starterGalleryGrid);
   DOM.starterGalleryGrid.innerHTML = '';
   makeable.forEach(({ key, data }) => {
     const baseKey = key.split('+')[0];
     const baseJp = baseNameMap[baseKey] || baseKey;
     
-    const card = document.createElement('div');
+    const card = document.createElement('button');
+    card.type = 'button';
     card.className = 'gallery-card';
     card.dataset.key = key;
 
@@ -3189,8 +3493,8 @@ function calculateStarterSet() {
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gallery-card-thumb';
     const thumbCanvas = document.createElement('canvas');
-    thumbCanvas.width = 140;
-    thumbCanvas.height = 140;
+    thumbCanvas.width = 180;
+    thumbCanvas.height = 230;
     thumbDiv.appendChild(thumbCanvas);
     
     const infoDiv = document.createElement('div');
@@ -3207,7 +3511,7 @@ function calculateStarterSet() {
     const tagEl = document.createElement('div');
     tagEl.className = 'gallery-card-tag';
     const icon = baseIconMap[baseKey] || '🍹';
-    tagEl.innerHTML = `<span class="gallery-card-tag-icon">${icon}</span> ${baseJp}ベース`;
+    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース`;
     
     infoDiv.appendChild(nameEl);
     infoDiv.appendChild(enEl);
@@ -3222,6 +3526,7 @@ function calculateStarterSet() {
       state.selectedBase = parts[0];
       state.selectedMixers = parts.slice(1);
       state.selectedIce = data.ice;
+      state.showResult = true;
       updateUI();
     });
     
@@ -3262,4 +3567,5 @@ function calculateStarterSet() {
 }
 initMyBarUI();
 initEventListeners();
+initAtmosphere();
 updateUI();
