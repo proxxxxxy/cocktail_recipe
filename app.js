@@ -35,7 +35,7 @@ const cocktailDatabase = {
     enName: "Gin Buck",
     abv: 10,
     taste: ["スパイシー", "甘酸っぱい", "爽快"],
-    description: "ジンにレモンを加え、ジンジャーエールでアップした超定番カクテル。「バック(Buck)」とは雄鹿のことで、キックのある力強い飲み口を意味します。",
+    description: "ジンにレモンを加え、ジンジャーエールで割った超定番カクテル。「バック(Buck)」とは雄鹿のことで、キックのある力強い飲み口を意味します。",
     color: "rgba(245, 222, 179, 0.65)",
     hasBubbles: true,
     garnish: "lemon",
@@ -102,7 +102,6 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lime",
     ice: "none",
-    isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
       { name: "ライムジュース", amount: "15 ml" }
@@ -110,27 +109,6 @@ const cocktailDatabase = {
     method: [
       "シェイカーに氷とジン、ライムジュースを入れます。",
       "しっかりとシェイクしてカクテルグラスに注ぎます。"
-    ]
-  },
-  "gin+curacao+lime": {
-    name: "ホワイト・レディ",
-    enName: "White Lady",
-    abv: 26,
-    taste: ["甘酸っぱい", "すっきり", "フルーティー"],
-    description: "「白い貴婦人」と呼ばれるIBA公認クラシックカクテル。ジンのハーブ香とオレンジリキュールの甘み、フレッシュな酸味が洗練された調和を生み出します。",
-    color: "rgba(255, 255, 255, 0.4)",
-    hasBubbles: false,
-    garnish: "lemon",
-    ice: "none",
-    isIBA: true,
-    ingredients: [
-      { name: "ドライ・ジン", amount: "40 ml" },
-      { name: "ホワイトキュラソー", amount: "30 ml" },
-      { name: "レモンジュース", amount: "20 ml" }
-    ],
-    method: [
-      "シェイカーに氷とすべての材料を入れます。",
-      "しっかりとシェイクし、冷やしたカクテルグラスに注ぎます。"
     ]
   },
   "gin+absinthe+whiskey": {
@@ -171,6 +149,29 @@ const cocktailDatabase = {
     method: [
       "材料をすべて氷とともにシェイカーに入れ、よくシェイクします。",
       "冷やしたカクテルグラスに注ぎ入れます。"
+    ]
+  },
+  "gin+lemon+soda+sugar": {
+    name: "ジン・フィズ",
+    enName: "Gin Fizz",
+    abv: 14,
+    taste: ["甘酸っぱい", "爽快", "きめ細かい泡"],
+    description: "シェイクしたジンとレモン、シロップにソーダを注いだ「フィズ」スタイルの元祖であり代表格。IBA公認のクラシックで、きめ細かな泡とレモンの香りが心地よい万人向けの一杯です。",
+    color: "rgba(250, 250, 235, 0.42)",
+    hasBubbles: true,
+    garnish: "lemon",
+    ice: "cube",
+    isIBA: true,
+    ingredients: [
+      { name: "ドライ・ジン", amount: "45 ml" },
+      { name: "フレッシュ・レモン果汁", amount: "30 ml" },
+      { name: "シュガーシロップ", amount: "10 ml" },
+      { name: "ソーダ (炭酸水)", amount: "約 80 ml" }
+    ],
+    method: [
+      "シェイカーにジン、レモン果汁、シロップ、氷を入れてしっかりシェイクします。",
+      "氷を入れたタンブラーに注ぎ、冷えたソーダで満たして軽く1回ステアします。",
+      "レモンスライスを飾ります。"
     ]
   },
   "gin+soda+tonic": {
@@ -366,7 +367,7 @@ const cocktailDatabase = {
     enName: "Black Russian",
     abv: 25,
     taste: ["極甘", "濃厚", "香ばしい"],
-    description: "ウォッカのクリアな力強さと、コーヒーリキュールの甘く芳醇な香りが結びついた、世界的に有名なIBA公認ショートカクテル。",
+    description: "ウォッカのクリアな力強さと、コーヒーリキュールの甘く芳醇な香りが結びついた、世界的に有名なIBA公認カクテル。ロックグラスで氷とともに楽しむ、食後の定番です。",
     color: "rgba(78, 52, 46, 0.85)",
     hasBubbles: false,
     garnish: null,
@@ -391,7 +392,6 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lime",
     ice: "none",
-    isIBA: true,
     ingredients: [
       { name: "ウォッカ", amount: "40 ml" },
       { name: "ホワイトキュラソー", amount: "10 ml" },
@@ -400,6 +400,26 @@ const cocktailDatabase = {
     method: [
       "シェイカーに氷とすべての材料を入れてシェイクします。",
       "冷やしたカクテルグラス（氷なし）に注ぎます。"
+    ]
+  },
+  "vodka+coffee+cream": {
+    name: "ホワイト・ルシアン",
+    enName: "White Russian",
+    abv: 18,
+    taste: ["クリーミー", "甘口", "香ばしい"],
+    description: "ブラック・ルシアンに生クリームを浮かべた、デザート感覚のカクテル。映画『ビッグ・リボウスキ』の主人公が愛飲したことでも有名で、コーヒーの香ばしさとクリームのコクがとろけ合います。",
+    color: "linear-gradient(to top, rgba(78, 52, 46, 0.9) 0%, rgba(240, 230, 215, 0.92) 75%)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "cube",
+    ingredients: [
+      { name: "ウォッカ", amount: "40 ml" },
+      { name: "コーヒーリキュール", amount: "20 ml" },
+      { name: "生クリーム", amount: "20 ml" }
+    ],
+    method: [
+      "氷を入れたロックグラスにウォッカとコーヒーリキュールを注ぎ、ステアします。",
+      "生クリームを表面に静かに浮かべます。混ぜながらいただきます。"
     ]
   },
   "vodka+soda+tonic": {
@@ -460,11 +480,11 @@ const cocktailDatabase = {
       { name: "フレッシュ・ライム果汁", amount: "10 ml" }
     ],
     method: [
-      "グラスに氷を入れ、ラムとライムジュースを注ぎ軽くかかき混ぜます。",
+      "グラスに氷を入れ、ラムとライムジュースを注ぎ軽くかき混ぜます。",
       "冷えたコーラをごく静かに注ぎ満たし、軽く1回ステアします。"
     ]
   },
-  "rum+soda": {
+  "rum+lime+mint+soda": {
     name: "モヒート",
     enName: "Mojito",
     abv: 8,
@@ -472,7 +492,7 @@ const cocktailDatabase = {
     description: "ホワイト・ラムに大量のフレッシュミントとライム、砂糖を加え、クラッシュアイスを敷き詰めてソーダで満たした世界的超有名カクテル。",
     color: "rgba(220, 240, 220, 0.45)",
     hasBubbles: true,
-    garnish: "lime",
+    garnish: "mint",
     ice: "crushed",
     isIBA: true,
     ingredients: [
@@ -484,7 +504,69 @@ const cocktailDatabase = {
     ],
     method: [
       "グラスの底にミント、砂糖、ライム果汁を入れ、マドラーで優しく潰します。",
-      "クラッシュアイスを山盛りに入れ、ラムとソーダを注ぎ底からしっかりかき混ぜます。"
+      "クラッシュアイスを山盛りに入れ、ラムとソーダを注ぎ底からしっかりかき混ぜます。",
+      "ミントの穂先を飾ります。"
+    ]
+  },
+  "rum+soda": {
+    name: "ラム・ソーダ",
+    enName: "Rum & Soda",
+    abv: 10,
+    taste: ["ドライ", "さっぱり", "ラム香"],
+    description: "ホワイト・ラムを炭酸水だけで割った、糖分を加えないシンプルで爽快な一杯。サトウキビ由来のほのかな甘い香りがソーダの泡とともに立ち上がります。ライムを絞れば「ラム・リッキー」スタイルに。",
+    color: "rgba(245, 248, 242, 0.28)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "45 ml" },
+      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" },
+      { name: "ライムカット", amount: "1個" }
+    ],
+    method: [
+      "氷を満たしたグラスにラムを注ぎ、軽くステアして冷やします。",
+      "冷えたソーダを静かに注ぎ、底から軽く1回ステアしてライムを添えます。"
+    ]
+  },
+  "rum+grapefruit+tonic": {
+    name: "ソル・クバーノ",
+    enName: "Sol Cubano",
+    abv: 8,
+    taste: ["ほろ苦い", "フルーティー", "爽快"],
+    description: "「キューバの太陽」という名を持つ、日本生まれのトロピカルカクテル。グレープフルーツの酸味と苦味に、トニックウォーターの甘苦さが重なる、夏にぴったりの一杯です。",
+    color: "rgba(255, 246, 190, 0.55)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "45 ml" },
+      { name: "グレープフルーツジュース", amount: "60 ml" },
+      { name: "トニックウォーター", amount: "適量" }
+    ],
+    method: [
+      "氷を満たしたグラスにラムとグレープフルーツジュースを注ぎ、ステアします。",
+      "冷えたトニックウォーターを静かに満たし、軽く1回混ぜてライムを飾ります。"
+    ]
+  },
+  "rum+ginger+lemon+sugar": {
+    name: "ボストン・クーラー",
+    enName: "Boston Cooler",
+    abv: 9,
+    taste: ["甘酸っぱい", "スパイシー", "爽快"],
+    description: "レモンの酸味とシロップの甘み、ジンジャーエールの辛みがホワイト・ラムを軽やかに包む、クーラースタイルの代表的クラシックカクテル。",
+    color: "rgba(242, 220, 170, 0.5)",
+    hasBubbles: true,
+    garnish: "lemon",
+    ice: "cube",
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "45 ml" },
+      { name: "フレッシュ・レモン果汁", amount: "20 ml" },
+      { name: "シュガーシロップ", amount: "1 tsp" },
+      { name: "ジンジャーエール", amount: "適量" }
+    ],
+    method: [
+      "シェイカーにラム、レモン果汁、シロップ、氷を入れてシェイクします。",
+      "氷を入れたグラスに注ぎ、冷えたジンジャーエールで満たして軽くステアし、レモンスライスを飾ります。"
     ]
   },
   "rum+lime": {
@@ -508,20 +590,20 @@ const cocktailDatabase = {
       "冷やしたカクテルグラス（氷なし）に注ぎ入れます。"
     ]
   },
-  "rum+curacao+lime": {
+  "rum+curacao+lemon": {
     name: "XYZ",
     enName: "X.Y.Z.",
-    abv: 28,
+    abv: 26,
     taste: ["強い", "甘酸っぱい", "フルーティー"],
-    description: "アルファベットの最後である「XYZ」は「これ以上のものは無い」「究極の一杯」を意味します。ラムの甘い香りにキュラソーの華やかさ、ライムの酸味が調和したショートカクテルです。",
+    description: "アルファベットの最後である「XYZ」は「これ以上のものは無い」「究極の一杯」を意味します。ラムの甘い香りにキュラソーの華やかさ、レモンの酸味が調和したショートカクテルです。",
     color: "rgba(240, 245, 240, 0.35)",
     hasBubbles: false,
-    garnish: "lime",
+    garnish: "lemon",
     ice: "none",
     ingredients: [
-      { name: "ホワイト・ラム", amount: "40 ml" },
-      { name: "ホワイトキュラソー", amount: "10 ml" },
-      { name: "ライムジュース", amount: "10 ml" }
+      { name: "ホワイト・ラム", amount: "30 ml" },
+      { name: "ホワイトキュラソー", amount: "15 ml" },
+      { name: "レモンジュース", amount: "15 ml" }
     ],
     method: [
       "シェイカーに氷と全ての材料を入れて強くシェイクします。",
@@ -735,6 +817,28 @@ const cocktailDatabase = {
       "冷えたジンジャーエールを静かに注ぎ、軽く混ぜてライムを添えます。"
     ]
   },
+  "tequila+grapefruit+soda": {
+    name: "パローマ",
+    enName: "Paloma",
+    abv: 8,
+    taste: ["ほろ苦い", "さっぱり", "爽快"],
+    description: "メキシコで最も日常的に飲まれているとされる、IBA公認カクテル。テキーラをグレープフルーツとソーダで割った、軽やかでほろ苦い喉ごしが魅力。塩をひとつまみ加えるのも定番です。",
+    color: "rgba(255, 244, 180, 0.5)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    isIBA: true,
+    ingredients: [
+      { name: "テキーラ", amount: "45 ml" },
+      { name: "グレープフルーツジュース", amount: "60 ml" },
+      { name: "ソーダ (炭酸水)", amount: "適量" },
+      { name: "ライムカット", amount: "1個" }
+    ],
+    method: [
+      "氷を満たしたグラスにテキーラとグレープフルーツジュースを注ぎ、ステアします。",
+      "冷えたソーダを静かに満たし、軽く1回混ぜてライムを絞り入れます。"
+    ]
+  },
   "tequila+soda+tonic": {
     name: "テキーラ・ソニック",
     enName: "Tequila Sonic",
@@ -852,15 +956,15 @@ const cocktailDatabase = {
       "冷えたソーダをゆっくりと満たし、底から氷を持ち上げるように軽く混ぜます。"
     ]
   },
-  "brandy+curacao+lime": {
+  "brandy+curacao+lemon": {
     name: "サイドカー",
     enName: "Sidecar",
     abv: 26,
     taste: ["強い", "甘酸っぱい", "芳醇"],
-    description: "ブランデーベースを代表するIBA公認クラシックショートカクテル。ブランデーの豊かなコク、ホワイトキュラソーのオレンジの甘味、ライムの酸味が三位一体となった最高峰のカクテルです。",
+    description: "ブランデーベースを代表するIBA公認クラシックショートカクテル。ブランデーの豊かなコク、ホワイトキュラソーのオレンジの甘味、レモンの酸味が三位一体となった最高峰のカクテルです。",
     color: "rgba(235, 160, 60, 0.65)",
     hasBubbles: false,
-    garnish: "lime",
+    garnish: "lemon",
     ice: "none",
     isIBA: true,
     ingredients: [
@@ -883,6 +987,7 @@ const cocktailDatabase = {
     hasBubbles: true,
     garnish: "lemon",
     ice: "cube",
+    isIBA: true,
     ingredients: [
       { name: "ブランデー", amount: "45 ml" },
       { name: "ジンジャーエール", amount: "適量" },
@@ -930,6 +1035,25 @@ const cocktailDatabase = {
     ],
     method: [
       "氷を満たしたグラスにリキュールを注ぎ、冷えたソーダを満たして底から優しく1回ステアします。レモンを添えます。"
+    ]
+  },
+  "peach+oolong": {
+    name: "レゲエ・パンチ",
+    enName: "Reggae Punch",
+    abv: 5,
+    taste: ["すっきり甘い", "お茶の香ばしさ", "低アルコール"],
+    description: "ピーチリキュールをウーロン茶で割った、仙台発祥の大人気カクテル。「ピーチ・ウーロン」とも呼ばれます。桃の甘い香りとウーロン茶のすっきりした渋みで、驚くほど飲みやすい一杯です。",
+    color: "rgba(196, 138, 70, 0.55)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "cube",
+    ingredients: [
+      { name: "ピーチリキュール", amount: "45 ml" },
+      { name: "ウーロン茶", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を満たしたグラスにピーチリキュールを注ぎます。",
+      "ウーロン茶で満たし、底からしっかりとステアします。"
     ]
   },
   "peach+milk": {
@@ -1029,11 +1153,11 @@ const cocktailDatabase = {
     ]
   },
   "cassis+ginger": {
-    name: "エル・ディアブロ・カシスジンジャー",
-    enName: "El Diablo style Cassis Ginger",
+    name: "カシス・ジンジャー",
+    enName: "Cassis Ginger",
     abv: 6,
     taste: ["甘酸っぱい", "スパイシー", "すっきり"],
-    description: "有名な「エル・ディアブロ」からテキーラを除き、カシスリキュールをジンジャーエールとレモンだけで割った、爽やかで上品な甘酸っぱさとスパイシーさを持つカクテル。",
+    description: "カシスリキュールをジンジャーエールで割った、居酒屋でもバーでも定番の一杯。ベリーの上品な甘酸っぱさにジンジャーのピリッとした辛みが重なり、甘すぎず飲み飽きしません。",
     color: "rgba(180, 25, 45, 0.8)",
     hasBubbles: true,
     garnish: "lemon",
@@ -1046,6 +1170,25 @@ const cocktailDatabase = {
     method: [
       "氷を入れたグラスにカシスとレモン果汁を注ぎ、軽くステアします。",
       "冷えたジンジャーエールを静かに満たし、軽く1回混ぜ、レモンを飾ります。"
+    ]
+  },
+  "cassis+oolong": {
+    name: "カシス・ウーロン",
+    enName: "Cassis & Oolong",
+    abv: 5,
+    taste: ["甘酸っぱい", "すっきり", "食事に合う"],
+    description: "カシスリキュールをウーロン茶で割った、日本の居酒屋定番カクテル。ベリーの甘酸っぱさをウーロン茶の渋みが引き締め、油ものの食事とも相性抜群。甘いお酒が苦手な人にも好まれます。",
+    color: "rgba(150, 60, 60, 0.6)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "cube",
+    ingredients: [
+      { name: "カシスリキュール", amount: "45 ml" },
+      { name: "ウーロン茶", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を満たしたグラスにカシスリキュールを注ぎます。",
+      "ウーロン茶で満たし、底からしっかりとステアします。"
     ]
   },
   "cassis+soda+tonic": {
@@ -1231,26 +1374,6 @@ const cocktailDatabase = {
       "冷やしたカクテルグラスに注ぎます。"
     ]
   },
-  "gin+lime": {
-    name: "ギムレット",
-    enName: "Gimlet",
-    abv: 28,
-    taste: ["強い", "シャープ", "スッキリ"],
-    description: "ジンベースのショートカクテルを代表する名作。「ギムレット(錐)」の名の通り、突き刺すような鋭い味わいと爽快なキレが特徴です。",
-    color: "rgba(224, 242, 241, 0.35)",
-    hasBubbles: false,
-    garnish: "lime",
-    ice: "none",
-    isIBA: true,
-    ingredients: [
-      { name: "ドライ・ジン", amount: "45 ml" },
-      { name: "ライムジュース", amount: "15 ml" }
-    ],
-    method: [
-      "シェイカーに氷とジン、ライムジュースを入れ、しっかりとシェイクします。",
-      "冷やしたカクテルグラスに注ぎます。"
-    ]
-  },
   "whiskey+bitters+maraschino_cherry+sweet_vermouth": {
     name: "マンハッタン",
     enName: "Manhattan",
@@ -1368,7 +1491,6 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "cherry",
     ice: "none",
-    isIBA: true,
     ingredients: [
       { name: "バカルディ・ホワイト・ラム", amount: "45 ml" },
       { name: "ライムジュース", amount: "20 ml" },
@@ -1401,29 +1523,8 @@ const cocktailDatabase = {
       "冷やしたカクテルグラスに注ぎます。"
     ]
   },
-  "tequila+curacao+lime+salt": {
-    name: "マルガリータ",
-    enName: "Margarita",
-    abv: 26,
-    taste: ["甘酸っぱい", "塩味", "爽快"],
-    description: "テキーラベースの代表的カクテル。グラスの縁に塩をあしらう「スノースタイル」が特徴で、テキーラの香りとライムの酸味、塩気が絶妙なハーモニーを奏でます。",
-    color: "rgba(249, 251, 231, 0.35)",
-    hasBubbles: false,
-    garnish: "lime",
-    ice: "none",
-    isIBA: true,
-    ingredients: [
-      { name: "テキーラ", amount: "50 ml" },
-      { name: "ホワイトキュラソー", amount: "20 ml" },
-      { name: "ライムジュース", amount: "15 ml" }
-    ],
-    method: [
-      "グラスの縁にライムを塗り、塩をつけてスノースタイルにします。",
-      "シェイカーに氷と材料を入れ、シェイクしてグラスに注ぎます。"
-    ]
-  },
   "vodka+ginger+lime": {
-    name: "モスコ・ミュール",
+    name: "モスコミュール",
     enName: "Moscow Mule",
     abv: 12,
     taste: ["スパイシー", "爽快", "キレがある"],
@@ -1465,7 +1566,7 @@ const cocktailDatabase = {
       "レモンやセロリスティックなどを飾ります。"
     ]
   },
-  "vodka+coffee_liq+espresso": {
+  "vodka+coffee+espresso": {
     name: "エスプレッソ・マティーニ",
     enName: "Espresso Martini",
     abv: 20,
@@ -1498,9 +1599,9 @@ const cocktailDatabase = {
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "ドライ・ジン", amount: "30 ml" },
-      { name: "ホワイトキュラソー", amount: "15 ml" },
-      { name: "レモンジュース", amount: "15 ml" }
+      { name: "ドライ・ジン", amount: "40 ml" },
+      { name: "ホワイトキュラソー", amount: "30 ml" },
+      { name: "レモンジュース", amount: "20 ml" }
     ],
     method: [
       "シェイカーに氷と全ての材料を入れ、シェイクします。",
@@ -1536,7 +1637,8 @@ const mixerDefinitions = {
   salt: { name: "食塩 (スノースタイル用)", en: "SALT RIM", icon: "SL", color: "rgba(255, 255, 255, 0.9)" },
   pineapple: { name: "パイナップル", en: "PINEAPPLE JUICE", icon: "PJ", color: "rgba(255, 235, 59, 0.7)" },
   tomato: { name: "トマトジュース", en: "TOMATO JUICE", icon: "TJ", color: "rgba(211, 47, 47, 0.9)" },
-  mint: { name: "ミントリキュール", en: "MINT LIQUEUR", icon: "MT", color: "rgba(76, 175, 80, 0.7)" },
+  mint: { name: "ミント", en: "MINT", icon: "MT", color: "rgba(76, 175, 80, 0.7)" },
+  oolong: { name: "ウーロン茶", en: "OOLONG TEA", icon: "OT", color: "rgba(150, 90, 40, 0.55)" },
   absinthe: { name: "アブサン", en: "ABSINTHE", icon: "AB", color: "rgba(129, 199, 132, 0.6)" },
   whiskey: { name: "ウイスキー (ブレンド用)", en: "WHISKEY MIX", icon: "WH", color: "rgba(212, 143, 56, 0.6)" },
   dry_vermouth: { name: "ドライ・ベルモット", en: "DRY VERMOUTH", icon: "DV", color: "rgba(238, 232, 170, 0.4)" },
@@ -1548,7 +1650,6 @@ const mixerDefinitions = {
   grenadine: { name: "グレナデンシロップ", en: "GRENADINE", icon: "GR", color: "rgba(229, 57, 53, 0.9)" },
   cream: { name: "生クリーム", en: "FRESH CREAM", icon: "CR", color: "rgba(255, 255, 255, 0.95)" },
   cacao: { name: "クレーム・ド・カカオ", en: "CACAO LIQUEUR", icon: "CC", color: "rgba(121, 85, 72, 0.8)" },
-  coffee_liq: { name: "コーヒーリキュール", en: "COFFEE LIQUEUR", icon: "KL", color: "rgba(62, 39, 35, 0.9)" },
   coffee: { name: "コーヒーリキュール", en: "COFFEE LIQUEUR", icon: "KL", color: "rgba(62, 39, 35, 0.9)" },
   cassis: { name: "カシスリキュール", en: "CASSIS LIQUEUR", icon: "CA", color: "rgba(136, 14, 79, 0.8)" },
   espresso: { name: "エスプレッソ", en: "ESPRESSO", icon: "ES", color: "rgba(33, 33, 33, 0.95)" },
@@ -1563,6 +1664,7 @@ const mixerDefinitions = {
 // ==========================================================================
 const state = {
   currentMode: 'build',  // 'build' | 'dictionary' | 'mybar'
+  galleryFilter: 'all',  // 'all' | 'iba' | base spirit key
   showResult: false,     // True when the user explicitly opens an extensible recipe
   selectedBase: null,    // 'gin' | 'vodka' | 'rum' | ...
   selectedMixers: [],    // Array of selected mixers
@@ -1625,6 +1727,7 @@ const DOM = {
   // Dictionary Mode Gallery
   gallerySearch: document.getElementById('gallery-search'),
   galleryGrid: document.getElementById('gallery-grid'),
+  galleryFilters: document.getElementById('gallery-filters'),
   
   // My Bar Mode
   myBarBaseContainer: document.getElementById('mybar-base-container'),
@@ -2202,8 +2305,157 @@ function getEffectiveGarnish(cocktail) {
  * Draw a garnish slice (lime, lemon, or orange) onto a 2D canvas context.
  */
 function drawGarnishOnCanvas(ctx, garnish, topL, topR, glassTop) {
+  if (!garnish) return;
+
+  const centerX = (topL + topR) / 2;
+
+  // --- Non-citrus garnishes -----------------------------------------------
+  if (garnish === 'cherry') {
+    ctx.save();
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+    ctx.shadowBlur = 3;
+    const cx = topR - 4;
+    const cy = glassTop + 5;
+    // Stem
+    ctx.strokeStyle = '#6d4c41';
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - 6);
+    ctx.quadraticCurveTo(cx + 5, cy - 15, cx + 2, cy - 19);
+    ctx.stroke();
+    // Fruit
+    const cherryGrad = ctx.createRadialGradient(cx - 2.5, cy - 2.5, 1, cx, cy, 8);
+    cherryGrad.addColorStop(0, '#ef5350');
+    cherryGrad.addColorStop(0.6, '#c62828');
+    cherryGrad.addColorStop(1, '#8e0000');
+    ctx.fillStyle = cherryGrad;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 7.5, 0, Math.PI * 2);
+    ctx.fill();
+    // Highlight
+    ctx.fillStyle = 'rgba(255,255,255,.55)';
+    ctx.beginPath();
+    ctx.ellipse(cx - 2.5, cy - 3, 2.2, 1.4, -0.6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+    return;
+  }
+
+  if (garnish === 'olive') {
+    ctx.save();
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+    ctx.shadowBlur = 3;
+    const ox = centerX + 6;
+    const oy = glassTop + 9;
+    // Cocktail pick
+    ctx.strokeStyle = 'rgba(235, 224, 200, .9)';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(ox - 14, oy - 15);
+    ctx.lineTo(ox + 5, oy + 3);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(235, 224, 200, .9)';
+    ctx.beginPath();
+    ctx.arc(ox - 14, oy - 15, 1.8, 0, Math.PI * 2);
+    ctx.fill();
+    // Olive body
+    const oliveGrad = ctx.createRadialGradient(ox - 2, oy - 2, 1, ox, oy, 8);
+    oliveGrad.addColorStop(0, '#9ccc65');
+    oliveGrad.addColorStop(0.65, '#689f38');
+    oliveGrad.addColorStop(1, '#33691e');
+    ctx.fillStyle = oliveGrad;
+    ctx.beginPath();
+    ctx.ellipse(ox, oy, 7, 5.6, 0.35, 0, Math.PI * 2);
+    ctx.fill();
+    // Pimento
+    ctx.fillStyle = '#d84315';
+    ctx.beginPath();
+    ctx.arc(ox + 3.2, oy + 1.4, 2.1, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+    return;
+  }
+
+  if (garnish === 'mint') {
+    ctx.save();
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
+    ctx.shadowBlur = 3;
+    const mx = topR - 10;
+    const my = glassTop + 2;
+    const leaf = (lx, ly, rot, len) => {
+      ctx.save();
+      ctx.translate(lx, ly);
+      ctx.rotate(rot);
+      const leafGrad = ctx.createLinearGradient(0, 0, 0, -len);
+      leafGrad.addColorStop(0, '#2e7d32');
+      leafGrad.addColorStop(1, '#66bb6a');
+      ctx.fillStyle = leafGrad;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.quadraticCurveTo(-len * 0.42, -len * 0.5, 0, -len);
+      ctx.quadraticCurveTo(len * 0.42, -len * 0.5, 0, 0);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(200, 230, 201, .5)';
+      ctx.lineWidth = 0.6;
+      ctx.beginPath();
+      ctx.moveTo(0, -len * 0.12);
+      ctx.lineTo(0, -len * 0.88);
+      ctx.stroke();
+      ctx.restore();
+    };
+    leaf(mx, my, -0.55, 15);
+    leaf(mx + 2, my, 0.5, 14);
+    leaf(mx + 1, my - 1, -0.05, 17);
+    leaf(mx - 5, my + 1, -0.95, 11);
+    leaf(mx + 7, my + 1, 0.9, 11);
+    ctx.restore();
+    return;
+  }
+
+  if (garnish === 'coffee_bean') {
+    ctx.save();
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
+    ctx.shadowBlur = 2;
+    const positions = [[centerX - 7, glassTop + 9, 0.5], [centerX + 6, glassTop + 8, -0.4], [centerX, glassTop + 13, 0.1]];
+    positions.forEach(([bx, by, rot]) => {
+      ctx.save();
+      ctx.translate(bx, by);
+      ctx.rotate(rot);
+      const beanGrad = ctx.createRadialGradient(-1, -1, 0.5, 0, 0, 5);
+      beanGrad.addColorStop(0, '#8d6e63');
+      beanGrad.addColorStop(1, '#3e2723');
+      ctx.fillStyle = beanGrad;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 4.6, 3.2, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(62, 39, 35, .9)';
+      ctx.lineWidth = 0.9;
+      ctx.beginPath();
+      ctx.moveTo(-3.4, 0);
+      ctx.quadraticCurveTo(0, 1.4, 3.4, 0);
+      ctx.stroke();
+      ctx.restore();
+    });
+    ctx.restore();
+    return;
+  }
+
+  if (garnish === 'nutmeg') {
+    ctx.save();
+    ctx.fillStyle = 'rgba(109, 76, 65, .8)';
+    for (let i = 0; i < 26; i++) {
+      const nx = centerX + (Math.sin(i * 12.9898) * 43758.5453 % 1) * (topR - topL) * 0.32;
+      const ny = glassTop + 7 + (Math.sin(i * 78.233) * 12543.123 % 1) * 5;
+      ctx.beginPath();
+      ctx.arc(nx, ny, Math.abs(Math.sin(i * 3.7)) * 0.7 + 0.4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+    return;
+  }
+
   if (garnish !== 'lime' && garnish !== 'lemon' && garnish !== 'orange') return;
-  
+
   ctx.save();
   
   let gx, gy;
@@ -2292,281 +2544,6 @@ function drawGarnishOnCanvas(ctx, garnish, topL, topR, glassTop) {
   ctx.fill();
 
   ctx.restore();
-}
-
-/**
- * Draw a static mini-cocktail thumbnail onto a small canvas.
- * This is a simplified, non-animated version of drawCocktail for gallery cards.
- */
-function drawMiniThumbnail(canvas, cocktail, baseKey) {
-  const w = canvas.width;
-  const h = canvas.height;
-  const miniCtx = canvas.getContext('2d');
-  miniCtx.clearRect(0, 0, w, h);
-  
-  // Draw glass outline
-  miniCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-  miniCtx.lineWidth = 1.2;
-  miniCtx.beginPath();
-  // Trapezoid glass shape
-  const glassTop = h * 0.08;
-  const glassBot = h * 0.88;
-  const topL = w * 0.18;
-  const topR = w * 0.82;
-  const botL = w * 0.24;
-  const botR = w * 0.76;
-  miniCtx.moveTo(topL, glassTop);
-  miniCtx.lineTo(topR, glassTop);
-  miniCtx.lineTo(botR, glassBot);
-  miniCtx.lineTo(botL, glassBot);
-  miniCtx.closePath();
-  miniCtx.stroke();
-  
-  // Draw liquid fill
-  const liquidTop = h * 0.22;
-  const liquidTopL = topL + (botL - topL) * ((liquidTop - glassTop) / (glassBot - glassTop));
-  const liquidTopR = topR + (botR - topR) * ((liquidTop - glassTop) / (glassBot - glassTop));
-  
-  let fillStyle;
-  if (cocktail.color.includes('linear-gradient')) {
-    const grad = miniCtx.createLinearGradient(0, glassBot, 0, liquidTop);
-    if (cocktail.name === 'テキーラ・サンライズ') {
-      grad.addColorStop(0, 'rgba(230, 74, 25, 0.9)');
-      grad.addColorStop(0.35, 'rgba(230, 74, 25, 0.9)');
-      grad.addColorStop(0.85, 'rgba(255, 183, 77, 0.85)');
-    } else if (cocktail.name === 'カシス・オレンジ') {
-      grad.addColorStop(0, 'rgba(136, 14, 79, 0.9)');
-      grad.addColorStop(0.35, 'rgba(136, 14, 79, 0.8)');
-      grad.addColorStop(0.8, 'rgba(255, 167, 38, 0.8)');
-    } else if (cocktail.name === 'カルーア・ミルク') {
-      grad.addColorStop(0, 'rgba(78, 52, 46, 0.9)');
-      grad.addColorStop(0.35, 'rgba(78, 52, 46, 0.8)');
-      grad.addColorStop(0.65, 'rgba(255, 255, 255, 0.85)');
-    } else {
-      grad.addColorStop(0, 'rgba(215, 110, 50, 0.8)');
-      grad.addColorStop(1, 'rgba(255, 183, 77, 0.6)');
-    }
-    fillStyle = grad;
-  } else {
-    fillStyle = cocktail.color;
-  }
-  
-  miniCtx.beginPath();
-  miniCtx.moveTo(liquidTopL, liquidTop);
-  miniCtx.lineTo(liquidTopR, liquidTop);
-  miniCtx.lineTo(botR, glassBot);
-  miniCtx.lineTo(botL, glassBot);
-  miniCtx.closePath();
-  miniCtx.fillStyle = fillStyle;
-  miniCtx.fill();
-  
-  // Subtle wave on liquid surface
-  miniCtx.save();
-  miniCtx.beginPath();
-  for (let x = liquidTopL; x <= liquidTopR; x++) {
-    const wave = Math.sin(x * 0.08) * 2;
-    miniCtx.lineTo(x, liquidTop + wave);
-  }
-  miniCtx.lineTo(liquidTopR, liquidTop + 5);
-  miniCtx.lineTo(liquidTopL, liquidTop + 5);
-  miniCtx.closePath();
-  miniCtx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-  miniCtx.fill();
-  miniCtx.restore();
-  
-  // Draw a few bubbles if carbonated
-  if (cocktail.hasBubbles) {
-    miniCtx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-    const bubblePositions = [
-      [w * 0.38, h * 0.5], [w * 0.55, h * 0.6], [w * 0.45, h * 0.72],
-      [w * 0.6, h * 0.45], [w * 0.35, h * 0.35]
-    ];
-    bubblePositions.forEach(([bx, by]) => {
-      miniCtx.beginPath();
-      miniCtx.arc(bx, by, 1.5 + Math.random(), 0, Math.PI * 2);
-      miniCtx.fill();
-    });
-  }
-  
-  // Draw ice cubes if applicable
-  if (cocktail.ice === 'cube') {
-    miniCtx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-    miniCtx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-    miniCtx.lineWidth = 0.8;
-    const cubeSize = w * 0.14;
-    const cubes = [[w * 0.42, h * 0.4], [w * 0.52, h * 0.55], [w * 0.46, h * 0.68]];
-    cubes.forEach(([cx, cy]) => {
-      miniCtx.beginPath();
-      miniCtx.roundRect(cx - cubeSize/2, cy - cubeSize/2, cubeSize, cubeSize, 3);
-      miniCtx.fill();
-      miniCtx.stroke();
-    });
-  } else if (cocktail.ice === 'crushed') {
-    miniCtx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-    for (let i = 0; i < 12; i++) {
-      const sx = w * (0.3 + Math.random() * 0.4);
-      const sy = h * (0.3 + Math.random() * 0.5);
-      const ss = 2 + Math.random() * 3;
-      miniCtx.fillRect(sx, sy, ss, ss * 0.7);
-    }
-  }
-  
-  // Draw garnish on top
-  const garnish = getEffectiveGarnish(cocktail);
-  drawGarnishOnCanvas(miniCtx, garnish, topL, topR, glassTop);
-}
-
-/**
- * Draw an animated mini-cocktail thumbnail frame onto a canvas.
- */
-function drawMiniThumbnailAnimated(canvas, cocktail, baseKey, animState) {
-  const w = canvas.width;
-  const h = canvas.height;
-  const miniCtx = canvas.getContext('2d');
-  miniCtx.clearRect(0, 0, w, h);
-  
-  // Draw glass outline
-  miniCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-  miniCtx.lineWidth = 1.2;
-  miniCtx.beginPath();
-  const glassTop = h * 0.08;
-  const glassBot = h * 0.88;
-  const topL = w * 0.18;
-  const topR = w * 0.82;
-  const botL = w * 0.24;
-  const botR = w * 0.76;
-  miniCtx.moveTo(topL, glassTop);
-  miniCtx.lineTo(topR, glassTop);
-  miniCtx.lineTo(botR, glassBot);
-  miniCtx.lineTo(botL, glassBot);
-  miniCtx.closePath();
-  miniCtx.stroke();
-  
-  // Draw liquid fill
-  const liquidTop = h * 0.22;
-  const liquidTopL = topL + (botL - topL) * ((liquidTop - glassTop) / (glassBot - glassTop));
-  const liquidTopR = topR + (botR - topR) * ((liquidTop - glassTop) / (glassBot - glassTop));
-  
-  let fillStyle;
-  if (cocktail.color.includes('linear-gradient')) {
-    const grad = miniCtx.createLinearGradient(0, glassBot, 0, liquidTop);
-    if (cocktail.name === 'テキーラ・サンライズ') {
-      grad.addColorStop(0, 'rgba(230, 74, 25, 0.9)');
-      grad.addColorStop(0.35, 'rgba(230, 74, 25, 0.9)');
-      grad.addColorStop(0.85, 'rgba(255, 183, 77, 0.85)');
-    } else if (cocktail.name === 'カシス・オレンジ') {
-      grad.addColorStop(0, 'rgba(136, 14, 79, 0.9)');
-      grad.addColorStop(0.35, 'rgba(136, 14, 79, 0.8)');
-      grad.addColorStop(0.8, 'rgba(255, 167, 38, 0.8)');
-    } else if (cocktail.name === 'カルーア・ミルク') {
-      grad.addColorStop(0, 'rgba(78, 52, 46, 0.9)');
-      grad.addColorStop(0.35, 'rgba(78, 52, 46, 0.8)');
-      grad.addColorStop(0.65, 'rgba(255, 255, 255, 0.85)');
-    } else {
-      grad.addColorStop(0, 'rgba(215, 110, 50, 0.8)');
-      grad.addColorStop(1, 'rgba(255, 183, 77, 0.6)');
-    }
-    fillStyle = grad;
-  } else {
-    fillStyle = cocktail.color;
-  }
-  
-  miniCtx.beginPath();
-  miniCtx.moveTo(liquidTopL, liquidTop);
-  miniCtx.lineTo(liquidTopR, liquidTop);
-  miniCtx.lineTo(botR, glassBot);
-  miniCtx.lineTo(botL, glassBot);
-  miniCtx.closePath();
-  miniCtx.fillStyle = fillStyle;
-  miniCtx.fill();
-  
-  // Wave on liquid surface
-  miniCtx.save();
-  miniCtx.beginPath();
-  for (let x = liquidTopL; x <= liquidTopR; x++) {
-    const wave = Math.sin(x * 0.08 + animState.phase) * 2.2;
-    miniCtx.lineTo(x, liquidTop + wave);
-  }
-  miniCtx.lineTo(liquidTopR, liquidTop + 5);
-  miniCtx.lineTo(liquidTopL, liquidTop + 5);
-  miniCtx.closePath();
-  miniCtx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-  miniCtx.fill();
-  miniCtx.restore();
-  
-  // Draw and animate bubbles if carbonated
-  if (cocktail.hasBubbles) {
-    miniCtx.save();
-    miniCtx.fillStyle = 'rgba(255, 255, 255, 0.35)';
-    
-    // Periodically spawn a new bubble
-    if (Math.random() < 0.15 && animState.bubbles.length < 8) {
-      animState.bubbles.push({
-        x: liquidTopL + Math.random() * (liquidTopR - liquidTopL),
-        y: glassBot - 10,
-        size: 1 + Math.random() * 1.5,
-        speed: 0.5 + Math.random() * 0.8,
-        wobbleSpeed: 0.05 + Math.random() * 0.05,
-        wobblePhase: Math.random() * 10
-      });
-    }
-    
-    // Update and draw existing bubbles
-    animState.bubbles = animState.bubbles.filter(b => {
-      b.y -= b.speed;
-      b.x += Math.sin(b.y * b.wobbleSpeed + b.wobblePhase) * 0.2;
-      
-      const waveAtX = Math.sin(b.x * 0.08 + animState.phase) * 2.2;
-      const surfaceY = liquidTop + waveAtX;
-      
-      if (b.y > surfaceY) {
-        miniCtx.beginPath();
-        miniCtx.arc(b.x, b.y, b.size, 0, Math.PI * 2);
-        miniCtx.fill();
-        return true;
-      }
-      return false;
-    });
-    miniCtx.restore();
-  }
-  
-  // Draw ice cubes/shards (animated jiggle/floating)
-  if (cocktail.ice === 'cube') {
-    miniCtx.save();
-    miniCtx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-    miniCtx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-    miniCtx.lineWidth = 0.8;
-    const cubeSize = w * 0.14;
-    
-    const cubes = [[w * 0.42, h * 0.4], [w * 0.52, h * 0.55], [w * 0.46, h * 0.68]];
-    cubes.forEach(([cx, cy], index) => {
-      const floatOffset = Math.sin(animState.phase * 0.6 + index) * 1.2;
-      const jiggleRot = Math.sin(animState.phase * 0.3 + index) * 0.02;
-      
-      miniCtx.save();
-      miniCtx.translate(cx, cy + floatOffset);
-      miniCtx.rotate(jiggleRot);
-      
-      miniCtx.beginPath();
-      miniCtx.roundRect(-cubeSize/2, -cubeSize/2, cubeSize, cubeSize, 3);
-      miniCtx.fill();
-      miniCtx.stroke();
-      miniCtx.restore();
-    });
-    miniCtx.restore();
-  } else if (cocktail.ice === 'crushed') {
-    miniCtx.save();
-    miniCtx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-    animState.crushedIce.forEach(shard => {
-      const floatOffset = Math.sin(animState.phase * 0.8 + shard.wigglePhase) * 0.6;
-      miniCtx.fillRect(shard.x, shard.y + floatOffset, shard.size, shard.size * 0.7);
-    });
-    miniCtx.restore();
-  }
-  
-  // Draw garnish on top
-  const garnish = getEffectiveGarnish(cocktail);
-  drawGarnishOnCanvas(miniCtx, garnish, topL, topR, glassTop);
 }
 
 /**
@@ -2733,6 +2710,23 @@ function drawGalleryPhoto(canvas, cocktail, animState = null) {
   ctx.ellipse(w / 2, top, (rightTop - leftTop) / 2, 2.1, 0, 0, Math.PI * 2);
   ctx.stroke();
 
+  // Snow-style salt rim (Margarita, Salty Dog ...)
+  if (cocktail.saltRim) {
+    ctx.save();
+    ctx.fillStyle = 'rgba(255,255,255,.85)';
+    const rimRx = (rightTop - leftTop) / 2;
+    for (let a = 0; a < Math.PI * 2; a += 0.055) {
+      const jitter = ((Math.sin(a * 91.7) * 43758.5453) % 1) * 2.4;
+      const sx = w / 2 + Math.cos(a) * rimRx;
+      const sy = top + Math.sin(a) * 2.1 + jitter - 1.2;
+      const sr = Math.abs(Math.sin(a * 57.3)) * 0.75 + 0.35;
+      ctx.beginPath();
+      ctx.arc(sx, sy, sr, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
   ctx.strokeStyle = 'rgba(255,255,255,.22)';
   ctx.beginPath();
   ctx.moveTo(leftTop + 5, top + 9);
@@ -2758,8 +2752,33 @@ function drawGalleryPhoto(canvas, cocktail, animState = null) {
 }
 
 // Gallery thumbnails use the same renderer for still and hover states.
-function drawMiniThumbnail(canvas, cocktail) {
-  drawGalleryPhoto(canvas, cocktail);
+function drawMiniThumbnail(canvas, cocktail, baseKey, animState) {
+  drawGalleryPhoto(canvas, cocktail, animState);
+}
+
+/**
+ * Compact ingredient list shown under My Bar / starter-set cards.
+ * Row height is fixed; the grid's --recipe-rows variable pads every card
+ * to the same number of rows so all cards share an identical height.
+ */
+function buildRecipeBlock(data) {
+  const recipeDiv = document.createElement('div');
+  recipeDiv.className = 'gallery-card-recipe';
+  const ul = document.createElement('ul');
+  data.ingredients.forEach(ing => {
+    const li = document.createElement('li');
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'recipe-ing-name';
+    nameSpan.textContent = ing.name;
+    const amountSpan = document.createElement('span');
+    amountSpan.className = 'recipe-ing-amount';
+    amountSpan.textContent = ing.amount.replace(/ /g, '');
+    li.appendChild(nameSpan);
+    li.appendChild(amountSpan);
+    ul.appendChild(li);
+  });
+  recipeDiv.appendChild(ul);
+  return recipeDiv;
 }
 
 function drawMiniThumbnailAnimated(canvas, cocktail, baseKey, animState) {
@@ -2792,14 +2811,17 @@ function renderGallery(query) {
   });
   
   list.sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'));
-  
-  // Filter by search query (match cocktail name, english name, or base name)
-  const filtered = q ? list.filter(item => {
+
+  // Filter by base/IBA chip, then by search query (name, english name, or base)
+  const filtered = list.filter(item => {
+    if (state.galleryFilter === 'iba' && !item.data.isIBA) return false;
+    if (state.galleryFilter !== 'all' && state.galleryFilter !== 'iba' && item.baseKey !== state.galleryFilter) return false;
+    if (!q) return true;
     return item.data.name.toLowerCase().includes(q)
         || item.data.enName.toLowerCase().includes(q)
         || item.baseJp.includes(q)
         || item.baseKey.includes(q);
-  }) : list;
+  });
   
   if (filtered.length === 0) {
     DOM.galleryGrid.innerHTML = '<div class="gallery-empty">該当するカクテルが見つかりませんでした。</div>';
@@ -2843,7 +2865,7 @@ function renderGallery(query) {
     const tagEl = document.createElement('div');
     tagEl.className = 'gallery-card-tag';
     const icon = baseIconMap[baseKey] || '🍹';
-    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース`;
+    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">約${data.abv}%</span>`;
     
     infoDiv.appendChild(nameEl);
     infoDiv.appendChild(enEl);
@@ -2907,6 +2929,32 @@ function renderGallery(query) {
       }
       drawMiniThumbnail(thumbCanvas, data, baseKey);
     });
+  });
+}
+
+// Build the base/IBA filter chips shown above the archive gallery
+function initGalleryFilters() {
+  if (!DOM.galleryFilters) return;
+  const chips = [
+    { id: 'all', label: 'すべて' },
+    { id: 'iba', label: '★ IBA公認' },
+    ...Object.keys(baseNameMap).map(b => ({ id: b, label: baseNameMap[b] }))
+  ];
+  DOM.galleryFilters.innerHTML = '';
+  chips.forEach(chip => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gallery-filter-chip' + (state.galleryFilter === chip.id ? ' active' : '');
+    btn.dataset.filter = chip.id;
+    btn.textContent = chip.label;
+    btn.addEventListener('click', () => {
+      state.galleryFilter = chip.id;
+      DOM.galleryFilters.querySelectorAll('.gallery-filter-chip').forEach(c => {
+        c.classList.toggle('active', c.dataset.filter === chip.id);
+      });
+      renderGallery(DOM.gallerySearch.value);
+    });
+    DOM.galleryFilters.appendChild(btn);
   });
 }
 
@@ -3131,8 +3179,10 @@ function initMyBarUI() {
     DOM.myBarBaseContainer.appendChild(label);
   });
   
-  // Render Mixers
+  // Render Mixers (skip ingredients already listed as base spirits above,
+  // e.g. whiskey/brandy/cassis/coffee, to avoid duplicated chips)
   Object.entries(mixerDefinitions).forEach(([mixerId, def]) => {
+    if (baseTints[mixerId]) return;
     const label = createMyBarCheckbox(mixerId, def.name, def.icon);
     DOM.myBarMixerContainer.appendChild(label);
   });
@@ -3206,6 +3256,9 @@ function updateMyBarResults() {
   if (makeable.length === 0) {
     DOM.myBarGalleryGrid.innerHTML = '<div class="gallery-empty">手持ちの材料で作れるカクテルはまだありません。材料を追加してください。</div>';
   } else {
+    // Every card pads its recipe list to the longest one so heights stay uniform.
+    const maxRecipeRows = makeable.reduce((max, item) => Math.max(max, item.data.ingredients.length), 2);
+    DOM.myBarGalleryGrid.style.setProperty('--recipe-rows', maxRecipeRows);
     makeable.forEach(({ key, data }) => {
       const baseKey = key.split('+')[0];
       const baseJp = baseNameMap[baseKey] || baseKey;
@@ -3244,15 +3297,16 @@ function updateMyBarResults() {
       const tagEl = document.createElement('div');
       tagEl.className = 'gallery-card-tag';
       const icon = baseIconMap[baseKey] || '🍹';
-      tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース`;
+      tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">約${data.abv}%</span>`;
       
       infoDiv.appendChild(nameEl);
       infoDiv.appendChild(enEl);
       infoDiv.appendChild(tagEl);
-      
+
+      thumbDiv.appendChild(infoDiv);
       card.appendChild(thumbDiv);
-      card.appendChild(infoDiv);
-      
+      card.appendChild(buildRecipeBlock(data));
+
       card.addEventListener('click', () => {
         setMode('build');
         const parts = key.split('+');
@@ -3473,6 +3527,8 @@ function calculateStarterSet() {
   
   cancelCardAnimations(DOM.starterGalleryGrid);
   DOM.starterGalleryGrid.innerHTML = '';
+  const maxRecipeRows = makeable.reduce((max, item) => Math.max(max, item.data.ingredients.length), 2);
+  DOM.starterGalleryGrid.style.setProperty('--recipe-rows', maxRecipeRows);
   makeable.forEach(({ key, data }) => {
     const baseKey = key.split('+')[0];
     const baseJp = baseNameMap[baseKey] || baseKey;
@@ -3511,15 +3567,16 @@ function calculateStarterSet() {
     const tagEl = document.createElement('div');
     tagEl.className = 'gallery-card-tag';
     const icon = baseIconMap[baseKey] || '🍹';
-    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース`;
+    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">約${data.abv}%</span>`;
     
     infoDiv.appendChild(nameEl);
     infoDiv.appendChild(enEl);
     infoDiv.appendChild(tagEl);
-    
+
+    thumbDiv.appendChild(infoDiv);
     card.appendChild(thumbDiv);
-    card.appendChild(infoDiv);
-    
+    card.appendChild(buildRecipeBlock(data));
+
     card.addEventListener('click', () => {
       setMode('build');
       const parts = key.split('+');
@@ -3566,6 +3623,7 @@ function calculateStarterSet() {
   });
 }
 initMyBarUI();
+initGalleryFilters();
 initEventListeners();
 initAtmosphere();
 updateUI();

@@ -748,6 +748,45 @@ input:focus-visible {
   color: #716c63;
 }
 
+.gallery-filters {
+  max-width: 760px;
+  margin: 0 auto 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gallery-filter-chip {
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  background: rgba(6, 7, 6, .4);
+  color: #9d968a;
+  cursor: pointer;
+  font-size: .66rem;
+  letter-spacing: .06em;
+  transition: border-color .25s ease, color .25s ease, background .25s ease;
+}
+
+.gallery-filter-chip:hover {
+  border-color: rgba(205, 171, 103, .5);
+  color: var(--paper);
+}
+
+.gallery-filter-chip.active {
+  border-color: var(--brass);
+  background: rgba(199, 164, 99, .12);
+  color: #e6d7b8;
+  box-shadow: 0 0 14px rgba(199, 164, 99, .16);
+}
+
+.gallery-card-abv {
+  margin-left: auto;
+  color: var(--brass);
+  font: 500 .56rem/1 var(--sans);
+  letter-spacing: .08em;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
@@ -854,6 +893,49 @@ input:focus-visible {
   place-items: center;
   color: var(--brass);
   font: 500 .48rem/1 var(--sans);
+}
+
+/* Compact recipe list under My Bar / starter-set cards.
+   Fixed row height + --recipe-rows (set per grid from JS) keeps every
+   card in the grid exactly the same height. */
+.gallery-card-recipe {
+  padding: 9px 13px 11px;
+  border-top: 1px solid var(--line);
+  background: rgba(4, 5, 4, .62);
+  font-size: .6rem;
+}
+
+.gallery-card-recipe ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-height: calc(var(--recipe-rows, 4) * 1.95em);
+}
+
+.gallery-card-recipe li {
+  height: 1.95em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.gallery-card-recipe li + li {
+  border-top: 1px solid rgba(232, 220, 194, .06);
+}
+
+.recipe-ing-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #b9b2a2;
+}
+
+.recipe-ing-amount {
+  flex-shrink: 0;
+  color: var(--brass);
+  font-family: var(--sans);
+  letter-spacing: .03em;
 }
 
 .iba-badge {
