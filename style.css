@@ -646,16 +646,28 @@ input:focus-visible {
 
 /* --------------------------------------------------------------------------
    Cocktail / mocktail switch
-   Sits above the three search tabs rather than beside them, because it is a
-   larger question than "how do I want to look": it decides which half of the
-   index exists tonight. Three fixed columns, so the sliding highlight is pure
-   CSS arithmetic and needs no measuring.
+   Stands between the masthead and the index proper, on its own, because it is
+   a larger question than any of the three tabs below it: it decides which
+   half of the index exists tonight. It was first placed above those tabs,
+   which was true to what it does and useless in practice — on a phone that
+   put it a screen and a quarter down, behind the hero and the glass, where
+   nobody found it. Three fixed columns, so the sliding highlight is pure CSS
+   arithmetic and needs no measuring.
    -------------------------------------------------------------------------- */
+.drink-type-bar {
+  width: min(520px, 100%);
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.drink-type-bar .eyebrow {
+  margin-bottom: 12px;
+}
+
 .drink-type-switch {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 26px;
   border: 1px solid var(--line);
   background: rgba(6, 7, 6, .5);
   overflow: hidden;

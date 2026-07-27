@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260727-mocktail-11">
+  <link rel="stylesheet" href="style.css?v=20260727-mocktail-12">
 </head>
 <body>
   <div class="intro-curtain" id="intro-curtain" aria-hidden="true">
@@ -55,6 +55,28 @@
       </div>
     </section>
 
+    <div class="drink-type-bar">
+      <p class="eyebrow">TONIGHT, YOU ARE DRINKING</p>
+      <div class="drink-type-switch" id="drink-type-switch" role="group" aria-label="お酒の有無で切り替え">
+        <button type="button" class="drink-type-btn active" data-drink-type="all" aria-pressed="true">
+          <small>EVERYTHING</small>
+          <span class="dt-label">すべて</span>
+          <span class="dt-count" data-count="all"></span>
+        </button>
+        <button type="button" class="drink-type-btn" data-drink-type="cocktail" aria-pressed="false">
+          <small>WITH SPIRITS</small>
+          <span class="dt-label">カクテル</span>
+          <span class="dt-count" data-count="cocktail"></span>
+        </button>
+        <button type="button" class="drink-type-btn" data-drink-type="mocktail" aria-pressed="false">
+          <small>ALCOHOL FREE</small>
+          <span class="dt-label">モクテル</span>
+          <span class="dt-count" data-count="mocktail"></span>
+        </button>
+        <span class="drink-type-thumb" id="drink-type-thumb" aria-hidden="true"></span>
+      </div>
+    </div>
+
     <div class="simulator-layout" data-mode="build">
       <section class="visualizer-card" aria-label="カクテルプレビュー">
         <div class="stage-heading">
@@ -84,25 +106,6 @@
       </section>
 
       <section class="controls-card" id="controls-card" aria-label="カクテルを探す">
-        <div class="drink-type-switch" id="drink-type-switch" role="group" aria-label="お酒の有無で切り替え">
-          <button type="button" class="drink-type-btn active" data-drink-type="all" aria-pressed="true">
-            <small>EVERYTHING</small>
-            <span class="dt-label">すべて</span>
-            <span class="dt-count" data-count="all"></span>
-          </button>
-          <button type="button" class="drink-type-btn" data-drink-type="cocktail" aria-pressed="false">
-            <small>WITH SPIRITS</small>
-            <span class="dt-label">カクテル</span>
-            <span class="dt-count" data-count="cocktail"></span>
-          </button>
-          <button type="button" class="drink-type-btn" data-drink-type="mocktail" aria-pressed="false">
-            <small>ALCOHOL FREE</small>
-            <span class="dt-label">モクテル</span>
-            <span class="dt-count" data-count="mocktail"></span>
-          </button>
-          <span class="drink-type-thumb" id="drink-type-thumb" aria-hidden="true"></span>
-        </div>
-
         <div class="mode-tabs" role="tablist" aria-label="検索方法">
           <button class="tab-btn active" id="tab-build" data-mode="build" role="tab" aria-selected="true" aria-controls="view-build">
             <span>01</span>素材から
@@ -276,6 +279,6 @@
     <span>DRINK RESPONSIBLY</span>
   </footer>
 
-  <script src="app.js?v=20260727-mocktail-11"></script>
+  <script src="app.js?v=20260727-mocktail-12"></script>
 </body>
 </html>
