@@ -485,15 +485,18 @@ input:focus-visible {
   transition: opacity .32s ease, transform .52s cubic-bezier(.22,.75,.2,1), filter .32s ease;
 }
 
+/* No CSS filter on this canvas, deliberately. WebKit renders a filtered
+   <canvas> as an opaque box, which turned the finished drink into a solid
+   white rectangle on iPhone. The entrance rides on opacity and transform
+   alone — the same thing the gallery thumbnails do — which also composites
+   instead of repainting. The canvas paints its own contact shadow. */
 #recipe-canvas {
   z-index: 2;
   opacity: 0;
   transform: translateY(9px) scale(.93);
-  filter: blur(4px) drop-shadow(0 18px 18px rgba(0,0,0,.58));
   transition:
     opacity .42s ease .08s,
-    transform .62s cubic-bezier(.2,.8,.2,1),
-    filter .48s ease;
+    transform .62s cubic-bezier(.2,.8,.2,1);
 }
 
 .glass-shadow {
@@ -520,9 +523,12 @@ input:focus-visible {
   transition: background 1.1s ease;
 }
 
+/* Transform only. This element wraps both canvases, so animating a filter on
+   it put them under the same WebKit hazard and repainted the canvas subtree
+   on every frame, forever. The rise and fall alone reads as the breath. */
 @keyframes glassBreath {
-  0%, 100% { transform: translateY(0); filter: brightness(.96); }
-  50% { transform: translateY(-4px); filter: brightness(1.04); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 @keyframes shadowBreath {
@@ -577,16 +583,16 @@ input:focus-visible {
   transform: translateY(5px) scale(.96);
 }
 
+/* This wraps #cocktail-canvas, so it is the same WebKit hazard; it is fading
+   to invisible here anyway, so the blur bought nothing. */
 .glass-container.archive-glass .liquid-wrapper {
   opacity: 0;
   transform: translateY(5px) scale(.96);
-  filter: blur(3px);
 }
 
 .glass-container.archive-glass #recipe-canvas {
   opacity: 1;
   transform: translateY(0) scale(1);
-  filter: blur(0) drop-shadow(0 18px 18px rgba(0,0,0,.58));
 }
 
 .lemon-garnish {
@@ -1920,10 +1926,13 @@ input:focus-visible {
 
 /* --- Mode view transitions ---------------------------------------------- */
 
-/* `backwards`, never `forwards`: a retained clip-path would crop the hover
-   shadows of everything inside once the entrance has finished. */
+/* Opacity and transform only. This element wraps a whole tab — with the
+   archive open that is ~1200x7900px holding 81 cards — so the house
+   `liquidRise` was animating a 7px blur and a clip-path across nine
+   megapixels on every tab switch, and putting every thumbnail canvas under a
+   filter. The cards inside stagger in on their own, which carries the reveal. */
 .mode-view {
-  animation: liquidRise .72s var(--ease-out) backwards;
+  animation: fadeUp .5s var(--ease-out) backwards;
 }
 
 .result-section:not(.hidden) > * {
