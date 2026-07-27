@@ -234,8 +234,12 @@
           'menu: one bar button per course');
 
     // Every course button must land its heading clear of the pinned chrome.
+    // Opening a recipe schedules a smooth scrollIntoView 100ms out; left to
+    // land mid-measurement it drags the page from under the first reading.
     const behind = [];
     document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo({ top: 0 });
+    await wait(200);
     nav.querySelectorAll('.course-nav-btn').forEach(btn => {
       const section = document.getElementById(btn.dataset.course);
       window.scrollTo({ top: courseScrollTarget(section) });

@@ -2008,6 +2008,782 @@ const cocktailDatabase = {
     ]
   },
 
+  // --- THE STANDARD BOOK ---
+  // The drinks a bar is expected to know. Specs follow the IBA where one
+  // exists and the earliest reliable printing otherwise.
+  "gin+champagne+lemon+sugar": {
+    name: "フレンチ75",
+    enName: "French 75",
+    abv: 16,
+    taste: ["爽快", "甘酸っぱい", "華やか"],
+    description: "第一次大戦下のパリ「ハリーズ・ニューヨーク・バー」で生まれ、当時のフランス軍75mm砲の衝撃になぞらえて名付けられた一杯。ジンのサワーをシャンパンで伸ばすため、軽やかに見えて芯が強く残ります。",
+    color: "rgba(246, 232, 178, 0.6)",
+    hasBubbles: true,
+    garnish: "lemon",
+    ice: "none",
+    isIBA: true,
+    ingredients: [
+      { name: "ドライ・ジン", amount: "30 ml" },
+      { name: "レモンジュース", amount: "15 ml" },
+      { name: "シュガーシロップ", amount: "1 tsp" },
+      { name: "シャンパン (辛口)", amount: "適量" }
+    ],
+    method: [
+      "シェイカーに氷、ジン、レモンジュース、シロップを入れてシェイクします。",
+      "冷やしたフルートグラスに注ぎます。",
+      "よく冷えたシャンパンで静かに満たし、レモンピールを飾ります。"
+    ]
+  },
+  "gin+chartreuse+lime+maraschino_liq": {
+    name: "ラスト・ワード",
+    enName: "Last Word",
+    abv: 26,
+    taste: ["ハーバル", "甘酸っぱい", "複雑"],
+    description: "禁酒法前のデトロイト・アスレチック・クラブで供され、半世紀忘れられた後に再発見された等量カクテル。シャルトリューズの薬草香とマラスキーノの核の甘みが、ライムの酸で一本にまとまります。",
+    color: "rgba(198, 214, 140, 0.7)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "none",
+    ingredients: [
+      { name: "ドライ・ジン", amount: "22 ml" },
+      { name: "シャルトリューズ・ヴェール", amount: "22 ml" },
+      { name: "マラスキーノ・リキュール", amount: "22 ml" },
+      { name: "ライムジュース", amount: "22 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を等量ずつ入れます。",
+      "しっかりとシェイクし、冷やしたカクテルグラスに注ぎます。",
+      "ライムを飾ります。"
+    ]
+  },
+  "gin+absinthe+curacao+dry_vermouth+lemon": {
+    name: "コープス・リヴァイヴァー No.2",
+    enName: "Corpse Reviver No.2",
+    abv: 24,
+    taste: ["爽快", "甘酸っぱい", "ハーバル"],
+    description: "「死者をも蘇らせる」迎え酒として1930年の『サヴォイ・カクテルブック』に載った一杯。同書は「四杯続けて飲めば再び死ぬ」と釘を刺しています。アブサンはグラスに回して香りだけを残します。",
+    color: "rgba(238, 240, 205, 0.6)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "none",
+    ingredients: [
+      { name: "ドライ・ジン", amount: "22 ml" },
+      { name: "ホワイトキュラソー", amount: "22 ml" },
+      { name: "ドライ・ベルモット", amount: "22 ml" },
+      { name: "レモンジュース", amount: "22 ml" },
+      { name: "アブサン", amount: "グラスに回す分" }
+    ],
+    method: [
+      "冷やしたカクテルグラスにアブサンを少量入れ、内側に回してから余りを捨てます。",
+      "シェイカーに氷と残りの材料を入れ、しっかりシェイクします。",
+      "用意したグラスに注ぎ、レモンピールを飾ります。"
+    ]
+  },
+  "gin+egg_white+lemon+raspberry": {
+    name: "クローバー・クラブ",
+    enName: "Clover Club",
+    abv: 18,
+    taste: ["まろやか", "甘酸っぱい", "ベリー"],
+    description: "20世紀初頭フィラデルフィアの紳士クラブの名を冠した、淡紅色のサワー。卵白を硬くシェイクして立てた泡が、ラズベリーの酸味をやわらかく包みます。",
+    color: "rgba(228, 132, 148, 0.82)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "none",
+    ingredients: [
+      { name: "ドライ・ジン", amount: "45 ml" },
+      { name: "フランボワーズ・リキュール", amount: "15 ml" },
+      { name: "レモンジュース", amount: "15 ml" },
+      { name: "卵白", amount: "1 個分" }
+    ],
+    method: [
+      "シェイカーに氷なしで全材料を入れ、まず氷を入れずに強く振って卵白を立てます。",
+      "氷を加え、もう一度しっかりとシェイクして冷やします。",
+      "冷やしたカクテルグラスに漉しながら注ぎます。"
+    ]
+  },
+  "gin+egg_white+grenadine": {
+    name: "ピンク・レディ",
+    enName: "Pink Lady",
+    abv: 20,
+    taste: ["まろやか", "甘口", "華やか"],
+    description: "1912年ロンドンで上演された同名の舞台の主演女優に捧げられた一杯。名の通りの淡い桜色と、卵白の生むベルベットのような口当たりが身上です。",
+    color: "rgba(240, 150, 160, 0.85)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "none",
+    ingredients: [
+      { name: "ドライ・ジン", amount: "45 ml" },
+      { name: "グレナデンシロップ", amount: "15 ml" },
+      { name: "卵白", amount: "1 個分" }
+    ],
+    method: [
+      "シェイカーに氷なしで材料を入れ、強く振って卵白を立てます。",
+      "氷を加えて、さらにしっかりとシェイクします。",
+      "冷やしたカクテルグラスに漉しながら注ぎます。"
+    ]
+  },
+  "gin+honey+lemon": {
+    name: "ビーズ・ニーズ",
+    enName: "Bee's Knees",
+    abv: 22,
+    taste: ["まろやか", "甘酸っぱい", "蜂蜜の香り"],
+    description: "禁酒法時代、質の悪いジンの匂いを蜂蜜とレモンで覆うために生まれたと伝わります。名前は当時の俗語で「最高のもの」。今では隠すもののない良いジンでこそ映える一杯です。",
+    color: "rgba(240, 216, 140, 0.7)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "none",
+    ingredients: [
+      { name: "ドライ・ジン", amount: "60 ml" },
+      { name: "ハニーシロップ (蜂蜜:水 = 1:1)", amount: "20 ml" },
+      { name: "レモンジュース", amount: "20 ml" }
+    ],
+    method: [
+      "蜂蜜は同量のぬるま湯で溶いてシロップにしておきます。",
+      "シェイカーに氷と全材料を入れ、しっかりシェイクします。",
+      "冷やしたカクテルグラスに注ぎ、レモンピールを飾ります。"
+    ]
+  },
+  "gin+lime+mint+sugar": {
+    name: "サウスサイド",
+    enName: "Southside",
+    abv: 22,
+    taste: ["清涼感", "甘酸っぱい", "ハーバル"],
+    description: "シカゴ南部の密造酒業者が荒いジンを飲みやすくするために考えたとも、ロングアイランドの同名クラブの定番だったとも言われる一杯。モヒートをジンで、ショートに仕立てた姿です。",
+    color: "rgba(214, 232, 196, 0.6)",
+    hasBubbles: false,
+    garnish: "mint",
+    ice: "none",
+    summer: true,
+    ingredients: [
+      { name: "ドライ・ジン", amount: "60 ml" },
+      { name: "ライムジュース", amount: "22 ml" },
+      { name: "シュガーシロップ", amount: "15 ml" },
+      { name: "ミントの葉", amount: "6 〜 8 枚" }
+    ],
+    method: [
+      "シェイカーにミントとシュガーシロップを入れ、軽く押して香りを移します。",
+      "氷、ジン、ライムジュースを加えてしっかりシェイクします。",
+      "冷やしたカクテルグラスに漉しながら注ぎ、ミントを飾ります。"
+    ]
+  },
+  "gin+lemon+raspberry+sugar": {
+    name: "ブランブル",
+    enName: "Bramble",
+    abv: 20,
+    taste: ["甘酸っぱい", "ベリー", "さっぱり"],
+    description: "1980年代ロンドンのバー「フレッズ・クラブ」でディック・ブラッドセルが創作した、現代の古典。クラッシュアイスの上からベリーのリキュールを垂らし、藪いちご（ブランブル）の名の通りの流れを作ります。",
+    color: "rgba(190, 60, 96, 0.75)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "crushed",
+    summer: true,
+    ingredients: [
+      { name: "ドライ・ジン", amount: "50 ml" },
+      { name: "レモンジュース", amount: "25 ml" },
+      { name: "シュガーシロップ", amount: "10 ml" },
+      { name: "フランボワーズ・リキュール", amount: "15 ml" }
+    ],
+    method: [
+      "シェイカーに氷、ジン、レモン、シロップを入れてシェイクします。",
+      "クラッシュアイスを詰めたロックグラスに注ぎます。",
+      "上からフランボワーズ・リキュールを静かに垂らし、模様を描かせます。"
+    ]
+  },
+  "gin+benedictine+bitters+cherry_brandy+curacao+grenadine+lime+pineapple": {
+    name: "シンガポール・スリング",
+    enName: "Singapore Sling",
+    abv: 12,
+    taste: ["フルーティー", "甘酸っぱい", "複雑"],
+    description: "1915年頃、シンガポールのラッフルズ・ホテル「ロング・バー」で生まれた南国の名作。当時、淑女が人前で酒を飲みにくかった時代に、果実飲料に見えるよう仕立てられたと伝わります。",
+    color: "rgba(226, 92, 92, 0.78)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "cube",
+    isIBA: true,
+    summer: true,
+    ingredients: [
+      { name: "ドライ・ジン", amount: "30 ml" },
+      { name: "チェリーブランデー", amount: "15 ml" },
+      { name: "ベネディクティン", amount: "7.5 ml" },
+      { name: "ホワイトキュラソー", amount: "7.5 ml" },
+      { name: "パイナップルジュース", amount: "120 ml" },
+      { name: "ライムジュース", amount: "15 ml" },
+      { name: "グレナデンシロップ", amount: "10 ml" },
+      { name: "アンゴスチュラ・ビターズ", amount: "1 dash" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "しっかりとシェイクします。",
+      "氷を入れた背の高いグラスに注ぎ、パイナップルとチェリーを飾ります。"
+    ]
+  },
+  "vodka+galliano+orange": {
+    name: "ハーヴェイ・ウォールバンガー",
+    enName: "Harvey Wallbanger",
+    abv: 11,
+    taste: ["フルーティー", "甘口", "バニラ香"],
+    description: "1970年代アメリカで一世を風靡した一杯。負けたサーファーのハーヴェイが飲みすぎて壁にぶつかりながら帰った、という作り話とともに広まりました。ガリアーノのバニラとアニスが最後に香ります。",
+    color: "rgba(250, 176, 50, 0.85)",
+    hasBubbles: false,
+    garnish: "orange",
+    ice: "cube",
+    ingredients: [
+      { name: "ウォッカ", amount: "45 ml" },
+      { name: "オレンジジュース", amount: "90 ml" },
+      { name: "ガリアーノ", amount: "15 ml" }
+    ],
+    method: [
+      "氷を入れた背の高いグラスにウォッカとオレンジジュースを注ぎ、ステアします。",
+      "ガリアーノを静かに浮かべます。",
+      "オレンジを飾ります。"
+    ]
+  },
+  "vodka+cola+curacao+gin+lemon+rum+sugar+tequila": {
+    name: "ロング・アイランド・アイス・ティー",
+    enName: "Long Island Iced Tea",
+    abv: 22,
+    taste: ["強い", "甘酸っぱい", "紅茶のような色"],
+    description: "紅茶は一滴も入らないのに紅茶の色と風味に見える、禁酒法時代の偽装に由来すると言われる一杯。白いスピリッツを4種も重ねながら、レモンとコーラで涼しい顔にまとまってしまうのが恐ろしいところです。",
+    color: "rgba(150, 96, 52, 0.85)",
+    hasBubbles: true,
+    garnish: "lemon",
+    ice: "cube",
+    isIBA: true,
+    summer: true,
+    ingredients: [
+      { name: "ウォッカ", amount: "15 ml" },
+      { name: "ドライ・ジン", amount: "15 ml" },
+      { name: "ホワイト・ラム", amount: "15 ml" },
+      { name: "テキーラ", amount: "15 ml" },
+      { name: "ホワイトキュラソー", amount: "15 ml" },
+      { name: "レモンジュース", amount: "25 ml" },
+      { name: "シュガーシロップ", amount: "1 tsp" },
+      { name: "コーラ", amount: "適量" }
+    ],
+    method: [
+      "氷を満たした背の高いグラスに、コーラ以外の材料を全て注ぎます。",
+      "軽くステアして冷やします。",
+      "コーラで満たし、底から一度だけ持ち上げるように混ぜ、レモンを飾ります。"
+    ]
+  },
+  "vodka+amaretto": {
+    name: "ゴッドマザー",
+    enName: "Godmother",
+    abv: 30,
+    taste: ["甘口", "杏仁の香り", "まろやか"],
+    description: "スコッチで作るゴッドファーザーを、ウォッカに置き換えた姉妹分。アマレットの杏仁のような甘い香りだけが立ち、酒の角は驚くほど丸くなります。",
+    color: "rgba(178, 120, 70, 0.6)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "cube",
+    ingredients: [
+      { name: "ウォッカ", amount: "45 ml" },
+      { name: "アマレット", amount: "15 ml" }
+    ],
+    method: [
+      "氷を入れたロックグラスに材料を注ぎます。",
+      "軽くステアします。"
+    ]
+  },
+
+  "rum+curacao+lime+orgeat": {
+    name: "マイタイ",
+    enName: "Mai Tai",
+    abv: 24,
+    taste: ["フルーティー", "甘酸っぱい", "芳醇"],
+    description: "1944年カリフォルニアのトレーダー・ヴィックが創作し、供された客が「マイタイ・ロア・アエ（最高だ）」と叫んだことから名がついたとされます。オルジェーのアーモンド香がラムの樽感と結び付く、ティキの原点。",
+    color: "rgba(226, 150, 74, 0.82)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "crushed",
+    isIBA: true,
+    summer: true,
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "40 ml" },
+      { name: "ホワイトキュラソー", amount: "15 ml" },
+      { name: "オルジェー・シロップ", amount: "15 ml" },
+      { name: "ライムジュース", amount: "20 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、しっかりシェイクします。",
+      "クラッシュアイスを詰めたグラスに注ぎます。",
+      "絞ったライムの殻とミントを飾ります。"
+    ]
+  },
+  "rum+ginger+lime": {
+    name: "ダーク・アンド・ストーミー",
+    enName: "Dark 'n' Stormy",
+    abv: 10,
+    taste: ["スパイシー", "コクのある甘み", "爽快"],
+    description: "バミューダの国民的一杯で、ダークラムがジンジャービアの上に落とす影を「嵐雲」に見立てた名前。混ぜずに層のまま供し、飲み手が崩していくのが作法です。",
+    color: "rgba(150, 96, 44, 0.8)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "ダーク・ラム", amount: "60 ml" },
+      { name: "ジンジャービア (またはジンジャーエール)", amount: "100 ml" },
+      { name: "ライムジュース", amount: "10 ml" }
+    ],
+    method: [
+      "氷を満たしたグラスにジンジャービアとライムジュースを注ぎます。",
+      "ダークラムを静かに浮かべ、層を作ります。",
+      "混ぜずに、ライムを添えて供します。"
+    ]
+  },
+  "whiskey+absinthe+peychaud+sugar": {
+    name: "サゼラック",
+    enName: "Sazerac",
+    abv: 30,
+    taste: ["芳醇", "アニス香", "ほんのり甘い"],
+    description: "ニューオーリンズが生んだアメリカ最古級のカクテルで、同市の公式カクテルにも指定されています。アブサンはグラスに香りを移すためだけに使い、ペイショーズ・ビターズの薬草感が土台を作ります。",
+    color: "rgba(196, 128, 56, 0.75)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "none",
+    isIBA: true,
+    ingredients: [
+      { name: "ライ・ウイスキー", amount: "50 ml" },
+      { name: "角砂糖 (またはシロップ)", amount: "1 個" },
+      { name: "ペイショーズ・ビターズ", amount: "3 dash" },
+      { name: "アブサン", amount: "グラスに回す分" }
+    ],
+    method: [
+      "冷やしたロックグラスにアブサンを入れて内側に回し、余りを捨てます。",
+      "別のグラスで角砂糖にビターズを含ませ、潰してウイスキーと混ぜます。",
+      "氷を加えてステアし、よく冷えたら用意したグラスに氷なしで注ぎます。",
+      "レモンピールの香りを絞りかけます。"
+    ]
+  },
+  "whiskey+benedictine+bitters+brandy+sweet_vermouth": {
+    name: "ヴュー・カレ",
+    enName: "Vieux Carré",
+    abv: 28,
+    taste: ["芳醇", "ビター＆スイート", "複雑"],
+    description: "ニューオーリンズのホテル・モンテレオーネにある回転バーで1930年代に生まれ、フレンチ・クオーターの旧称「ヴュー・カレ（古い四角形）」を名に持ちます。ライとコニャックを半々に据える構成が独特です。",
+    color: "rgba(168, 96, 48, 0.8)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "cube",
+    ingredients: [
+      { name: "ライ・ウイスキー", amount: "30 ml" },
+      { name: "コニャック", amount: "30 ml" },
+      { name: "スイート・ベルモット", amount: "30 ml" },
+      { name: "ベネディクティン", amount: "1 tsp" },
+      { name: "アンゴスチュラ・ビターズ", amount: "2 dash" }
+    ],
+    method: [
+      "ミキシンググラスに氷と全ての材料を入れます。",
+      "十分に冷えるまでステアします。",
+      "氷を入れたロックグラスに注ぎ、チェリーとレモンピールを飾ります。"
+    ]
+  },
+  "whiskey+drambuie": {
+    name: "ラスティ・ネイル",
+    enName: "Rusty Nail",
+    abv: 33,
+    taste: ["甘口", "スモーキー", "蜂蜜の香り"],
+    description: "スコッチに、スコッチと蜂蜜とハーブから作るドランブイを合わせただけの二材料。「錆びた釘」という無骨な名に反して、蜂蜜とピートが溶け合う滑らかな食後酒です。",
+    color: "rgba(190, 130, 50, 0.72)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "cube",
+    isIBA: true,
+    ingredients: [
+      { name: "スコッチ・ウイスキー", amount: "45 ml" },
+      { name: "ドランブイ", amount: "20 ml" }
+    ],
+    method: [
+      "氷を入れたロックグラスに材料を注ぎます。",
+      "軽くステアします。",
+      "レモンピールの香りを絞りかけます。"
+    ]
+  },
+  "whiskey+amaretto": {
+    name: "ゴッドファーザー",
+    enName: "Godfather",
+    abv: 33,
+    taste: ["甘口", "杏仁の香り", "スモーキー"],
+    description: "1972年の同名映画の公開に合わせて広まったとされる、スコッチとアマレットだけの一杯。アマレットの杏仁の甘さがスコッチの煙をやわらげ、食後にゆっくり傾けるのに向きます。",
+    color: "rgba(180, 116, 58, 0.7)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "cube",
+    ingredients: [
+      { name: "スコッチ・ウイスキー", amount: "45 ml" },
+      { name: "アマレット", amount: "15 ml" }
+    ],
+    method: [
+      "氷を入れたロックグラスに材料を注ぎます。",
+      "軽くステアします。"
+    ]
+  },
+  "whiskey+honey+lemon": {
+    name: "ペニシリン",
+    enName: "Penicillin",
+    abv: 22,
+    taste: ["スモーキー", "甘酸っぱい", "生姜の香り"],
+    description: "2005年ニューヨークのサム・ロスが創作した現代の古典。蜂蜜と生姜とレモンという風邪の民間薬の組み合わせに、アイラの煙を最後に浮かべます。名前はその処方箋めいた構成から。",
+    color: "rgba(214, 166, 74, 0.75)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "cube",
+    ingredients: [
+      { name: "ブレンデッド・スコッチ", amount: "60 ml" },
+      { name: "ハニーシロップ (生姜を漬けたもの)", amount: "22 ml" },
+      { name: "レモンジュース", amount: "22 ml" },
+      { name: "アイラ・モルト (フロート用)", amount: "1 tsp" }
+    ],
+    method: [
+      "蜂蜜シロップに薄切りの生姜を漬け込んでおきます。",
+      "シェイカーに氷、スコッチ、シロップ、レモンを入れてシェイクします。",
+      "氷を入れたロックグラスに注ぎ、アイラ・モルトを静かに浮かべます。"
+    ]
+  },
+  "brandy+creme_de_menthe": {
+    name: "スティンガー",
+    enName: "Stinger",
+    abv: 32,
+    taste: ["清涼感", "甘口", "芳醇"],
+    description: "「針を刺す」の名の通り、ブランデーの芳醇さの後にミントが鋭く抜けていく食後の定番。20世紀初頭のニューヨーク社交界で愛され、映画にもたびたび登場しました。",
+    color: "rgba(198, 214, 190, 0.55)",
+    hasBubbles: false,
+    garnish: "mint",
+    ice: "none",
+    isIBA: true,
+    ingredients: [
+      { name: "ブランデー", amount: "45 ml" },
+      { name: "クレーム・ド・ミント (ホワイト)", amount: "15 ml" }
+    ],
+    method: [
+      "シェイカーに氷と材料を入れ、しっかりシェイクします。",
+      "冷やしたカクテルグラスに注ぎます。",
+      "ミントを飾ります。"
+    ]
+  },
+  "brandy+bitters+chartreuse+lemon": {
+    name: "シャンゼリゼ",
+    enName: "Champs-Élysées",
+    abv: 26,
+    taste: ["ハーバル", "甘酸っぱい", "芳醇"],
+    description: "パリの大通りの名を冠した、サイドカーのキュラソーをシャルトリューズに置き換えた姿。修道院の薬草酒がコニャックの樽香と重なり、一段と深いところに落ち着きます。",
+    color: "rgba(206, 190, 110, 0.72)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "none",
+    ingredients: [
+      { name: "コニャック", amount: "45 ml" },
+      { name: "シャルトリューズ・ヴェール", amount: "15 ml" },
+      { name: "レモンジュース", amount: "15 ml" },
+      { name: "アンゴスチュラ・ビターズ", amount: "1 dash" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "しっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎ、レモンピールを飾ります。"
+    ]
+  },
+  "champagne+cassis": {
+    name: "キール・ロワイヤル",
+    enName: "Kir Royal",
+    abv: 12,
+    taste: ["フルーティー", "甘酸っぱい", "華やか"],
+    description: "白ワインで作るキールを、シャンパンに格上げした「王室風」。ディジョン市長フェリックス・キールが地元のカシスとワインを広めるために供したのが始まりです。",
+    color: "rgba(180, 60, 110, 0.7)",
+    hasBubbles: true,
+    garnish: null,
+    ice: "none",
+    ingredients: [
+      { name: "クレーム・ド・カシス", amount: "10 ml" },
+      { name: "シャンパン (辛口)", amount: "適量" }
+    ],
+    method: [
+      "冷やしたフルートグラスにカシスを注ぎます。",
+      "よく冷えたシャンパンで静かに満たします。",
+      "泡を潰さないよう、必要なら一度だけ軽く混ぜます。"
+    ]
+  },
+  "champagne+orange": {
+    name: "ミモザ",
+    enName: "Mimosa",
+    abv: 8,
+    taste: ["フルーティー", "爽快", "軽やか"],
+    description: "1925年パリのリッツ・ホテルで生まれ、黄色い花のミモザに色を見立てて名付けられました。「シャンパンとオレンジ」というだけの構成ゆえ、両方をよく冷やすことが全てです。",
+    color: "rgba(250, 190, 80, 0.7)",
+    hasBubbles: true,
+    garnish: "orange",
+    ice: "none",
+    isIBA: true,
+    ingredients: [
+      { name: "シャンパン (辛口)", amount: "60 ml" },
+      { name: "オレンジジュース", amount: "60 ml" }
+    ],
+    method: [
+      "冷やしたフルートグラスにオレンジジュースを注ぎます。",
+      "よく冷えたシャンパンを等量、静かに注ぎます。",
+      "泡が落ち着くのを待ってから供します。"
+    ]
+  },
+  "champagne+peach": {
+    name: "ベリーニ",
+    enName: "Bellini",
+    abv: 8,
+    taste: ["フルーティー", "みずみずしい甘口", "軽やか"],
+    description: "1948年ヴェネツィアのハリーズ・バーで生まれ、画家ベリーニの絵に見た桃色から名付けられました。本来は白桃のピューレを使い、プロセッコで伸ばします。",
+    color: "rgba(250, 190, 170, 0.75)",
+    hasBubbles: true,
+    garnish: null,
+    ice: "none",
+    isIBA: true,
+    ingredients: [
+      { name: "白桃のピューレ (またはピーチリキュール)", amount: "50 ml" },
+      { name: "プロセッコ / シャンパン", amount: "100 ml" }
+    ],
+    method: [
+      "冷やしたフルートグラスに白桃のピューレを入れます。",
+      "よく冷えたプロセッコを静かに注ぎます。",
+      "バースプーンで底から一度だけ持ち上げるように混ぜます。"
+    ]
+  },
+  "champagne+aperol+soda": {
+    name: "アペロール・スプリッツ",
+    enName: "Aperol Spritz",
+    abv: 8,
+    taste: ["ほろ苦い", "さっぱり", "爽快"],
+    description: "北イタリアの夕暮れの定番。3・2・1（プロセッコ3、アペロール2、ソーダ1）の比率が公式に定められており、食前の一杯として世界中に広まりました。",
+    color: "rgba(240, 120, 40, 0.72)",
+    hasBubbles: true,
+    garnish: "orange",
+    ice: "cube",
+    isIBA: true,
+    summer: true,
+    ingredients: [
+      { name: "プロセッコ", amount: "90 ml" },
+      { name: "アペロール", amount: "60 ml" },
+      { name: "ソーダ (炭酸水)", amount: "30 ml" }
+    ],
+    method: [
+      "氷を満たした大きめのワイングラスにプロセッコを注ぎます。",
+      "アペロールを加え、最後にソーダを少量落とします。",
+      "軽く一度だけ混ぜ、オレンジスライスを飾ります。"
+    ]
+  },
+  "champagne+absinthe": {
+    name: "デス・イン・ジ・アフタヌーン",
+    enName: "Death in the Afternoon",
+    abv: 18,
+    taste: ["アニス香", "ドライ", "爽快"],
+    description: "ヘミングウェイが1935年の著名人カクテル集に寄せた自作。同名の闘牛論から名を取り、本人は「これを3〜5杯、ゆっくり飲むこと」と書き添えました。注ぐと乳白色に濁ります。",
+    color: "rgba(226, 236, 214, 0.62)",
+    hasBubbles: true,
+    garnish: null,
+    ice: "none",
+    ingredients: [
+      { name: "アブサン", amount: "30 ml" },
+      { name: "シャンパン (辛口)", amount: "適量" }
+    ],
+    method: [
+      "冷やしたフルートグラスにアブサンを注ぎます。",
+      "よく冷えたシャンパンを、乳白色に濁るまで静かに注ぎます。"
+    ]
+  },
+  "white_wine+cassis": {
+    name: "キール",
+    enName: "Kir",
+    abv: 11,
+    taste: ["フルーティー", "甘酸っぱい", "さっぱり"],
+    description: "ブルゴーニュ・ディジョンの市長キール氏が、地元の辛口白ワインとカシスを広めるために公式行事で供した一杯。食前酒として世界に定着しました。",
+    color: "rgba(186, 78, 118, 0.65)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "none",
+    ingredients: [
+      { name: "辛口白ワイン", amount: "90 ml" },
+      { name: "クレーム・ド・カシス", amount: "10 ml" }
+    ],
+    method: [
+      "冷やしたワイングラスにカシスを注ぎます。",
+      "よく冷えた白ワインで満たします。",
+      "軽くステアします。"
+    ]
+  },
+  "white_wine+soda": {
+    name: "スプリッツァー",
+    enName: "Spritzer",
+    abv: 7,
+    taste: ["さっぱり", "軽やか", "爽快"],
+    description: "白ワインをソーダで割っただけの、ヨーロッパで最も飲まれている食前酒のひとつ。度数が下がり喉の渇きを癒すため、暑い時期の昼から夕方にかけて選ばれます。",
+    color: "rgba(238, 234, 202, 0.45)",
+    hasBubbles: true,
+    garnish: "lemon",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "辛口白ワイン", amount: "90 ml" },
+      { name: "ソーダ (炭酸水)", amount: "60 ml" }
+    ],
+    method: [
+      "氷を入れたワイングラスに冷えた白ワインを注ぎます。",
+      "ソーダを静かに加えます。",
+      "軽く一度だけ混ぜ、レモンを飾ります。"
+    ]
+  },
+  "white_wine+ginger+lime": {
+    name: "オペレーター",
+    enName: "Operator",
+    abv: 8,
+    taste: ["さっぱり", "スパイシー", "甘酸っぱい"],
+    description: "1970年代のアメリカでオフィス勤めの女性たちに好まれたことから名がついたとされる、白ワインのジンジャーエール割り。ライムがワインの酸を引き締めます。",
+    color: "rgba(240, 226, 170, 0.55)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "辛口白ワイン", amount: "60 ml" },
+      { name: "ジンジャーエール", amount: "60 ml" },
+      { name: "ライムジュース", amount: "10 ml" }
+    ],
+    method: [
+      "氷を入れたグラスに白ワインとライムジュースを注ぎます。",
+      "冷えたジンジャーエールで満たします。",
+      "軽く一度だけ混ぜ、ライムを飾ります。"
+    ]
+  },
+  "pisco+bitters+egg_white+lemon+sugar": {
+    name: "ピスコ・サワー",
+    enName: "Pisco Sour",
+    abv: 20,
+    taste: ["甘酸っぱい", "まろやか", "フルーティー"],
+    description: "ペルーとチリが起源を争う、ぶどうの蒸留酒ピスコのサワー。卵白の泡の上にビターズを数滴落とし、その模様ごと供するのが決まりです。ペルーでは2月の第一土曜が「ピスコ・サワーの日」。",
+    color: "rgba(246, 240, 214, 0.8)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "none",
+    isIBA: true,
+    ingredients: [
+      { name: "ピスコ", amount: "60 ml" },
+      { name: "レモン (またはライム) ジュース", amount: "30 ml" },
+      { name: "シュガーシロップ", amount: "20 ml" },
+      { name: "卵白", amount: "1 個分" },
+      { name: "アンゴスチュラ・ビターズ", amount: "3 dash" }
+    ],
+    method: [
+      "シェイカーに氷なしでピスコ、レモン、シロップ、卵白を入れ、強く振って泡立てます。",
+      "氷を加えてもう一度しっかりシェイクします。",
+      "グラスに漉しながら注ぎ、泡が落ち着いてからビターズを数滴落とします。"
+    ]
+  },
+  "cachaca+lime+sugar": {
+    name: "カイピリーニャ",
+    enName: "Caipirinha",
+    abv: 22,
+    taste: ["甘酸っぱい", "さっぱり", "力強い"],
+    description: "ブラジルの国民的カクテルで、名は「田舎の娘」の意。さとうきびの搾り汁から直接造るカシャッサに、ライムを皮ごと潰して砂糖を合わせます。グラスの中で組み立てるのが作法です。",
+    color: "rgba(214, 232, 190, 0.6)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "crushed",
+    isIBA: true,
+    summer: true,
+    ingredients: [
+      { name: "カシャッサ", amount: "60 ml" },
+      { name: "ライム", amount: "1 個 (くし形に)" },
+      { name: "グラニュー糖", amount: "2 tsp" }
+    ],
+    method: [
+      "ロックグラスにくし形のライムと砂糖を入れます。",
+      "ペストルで潰し、果汁と皮の油分を出します。",
+      "クラッシュアイスを詰めてカシャッサを注ぎ、よく混ぜます。"
+    ]
+  },
+  "apple_brandy+grenadine+lime": {
+    name: "ジャック・ローズ",
+    enName: "Jack Rose",
+    abv: 21,
+    taste: ["フルーティー", "甘酸っぱい", "芳醇"],
+    description: "りんごの蒸留酒アップルジャックを使う、20世紀初頭アメリカの古典。ヘミングウェイの『日はまた昇る』にも登場します。グレナデンの薔薇色から名がついたという説が有力です。",
+    color: "rgba(226, 106, 96, 0.8)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "none",
+    ingredients: [
+      { name: "カルヴァドス / アップルジャック", amount: "45 ml" },
+      { name: "ライムジュース", amount: "15 ml" },
+      { name: "グレナデンシロップ", amount: "15 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "しっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎます。"
+    ]
+  },
+  "apple_brandy+benedictine+curacao+lemon": {
+    name: "ハネムーン",
+    enName: "Honeymoon",
+    abv: 22,
+    taste: ["フルーティー", "甘酸っぱい", "ハーバル"],
+    description: "禁酒法時代のニューヨーク近郊、ブライトン・ビーチのレストランで供されたと伝わる一杯。りんごの蒸留酒に修道院の薬草酒を合わせ、レモンで締めます。",
+    color: "rgba(226, 172, 96, 0.75)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "none",
+    ingredients: [
+      { name: "カルヴァドス", amount: "30 ml" },
+      { name: "ベネディクティン", amount: "15 ml" },
+      { name: "ホワイトキュラソー", amount: "2 dash" },
+      { name: "レモンジュース", amount: "15 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "しっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎ、レモンピールを飾ります。"
+    ]
+  },
+  "cacao+cream+creme_de_menthe": {
+    name: "グラスホッパー",
+    enName: "Grasshopper",
+    abv: 15,
+    taste: ["クリーミー", "甘口", "清涼感"],
+    description: "1918年ニューオーリンズのタジャック・バーが考案コンテストに出した一杯。「ばった」の名の通りの淡い緑と、ミントとカカオと生クリームが作るデザートそのものの味わいです。",
+    color: "rgba(178, 226, 190, 0.9)",
+    hasBubbles: false,
+    garnish: "mint",
+    ice: "none",
+    isIBA: true,
+    ingredients: [
+      { name: "クレーム・ド・ミント (グリーン)", amount: "20 ml" },
+      { name: "クレーム・ド・カカオ (ホワイト)", amount: "20 ml" },
+      { name: "生クリーム", amount: "20 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を等量ずつ入れます。",
+      "クリームが完全に混ざるまで、しっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎ、ミントを飾ります。"
+    ]
+  },
+  "cacao+cream": {
+    name: "エンジェルス・キッス",
+    enName: "Angel's Kiss",
+    abv: 16,
+    taste: ["極甘", "クリーミー", "デザート感覚"],
+    description: "リキュールの上に生クリームを静かに重ねる、二層のプース・カフェ。天使の口づけの名の通り、頂に載せたチェリーが顔のように見える姿で供されます。",
+    color: "rgba(150, 112, 96, 0.9)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "none",
+    ingredients: [
+      { name: "クレーム・ド・カカオ (ブラウン)", amount: "30 ml" },
+      { name: "生クリーム", amount: "15 ml" }
+    ],
+    method: [
+      "リキュールグラスにクレーム・ド・カカオを注ぎます。",
+      "バースプーンの背を伝わせ、生クリームを静かに重ねます。",
+      "混ざらないよう、そっとチェリーを飾ります。"
+    ]
+  },
+
   // --- NON-ALCOHOLIC (MOCKTAIL) ---
   // Keyed on a non-alcoholic base exactly like every other drink, so the
   // build view, My Bar and the archive all reach them by the same route.
@@ -2256,6 +3032,71 @@ const cocktailDatabase = {
       "ライムを飾ります。"
     ]
   },
+  "ginger+lime": {
+    name: "ヴァージン・モスコミュール",
+    enName: "Virgin Moscow Mule",
+    abv: 0,
+    taste: ["スパイシー", "さっぱり", "爽快"],
+    description: "モスコミュールからウォッカを抜いた一杯。もともとこのカクテルの正体はジンジャーとライムの取り合わせなので、酒がなくても味の骨格はほとんど変わりません。銅マグで供せばなお冷えます。",
+    color: "rgba(238, 214, 150, 0.55)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "フレッシュ・ライム果汁", amount: "15 ml" },
+      { name: "ジンジャービア (またはジンジャーエール)", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を満たしたマグまたはタンブラーにライム果汁を注ぎます。",
+      "冷えたジンジャービアで満たします。",
+      "底から一度だけ持ち上げるように混ぜ、ライムを飾ります。"
+    ]
+  },
+  "grapefruit+soda+sugar": {
+    name: "グレープフルーツ・スカッシュ",
+    enName: "Grapefruit Squash",
+    abv: 0,
+    taste: ["ほろ苦い", "さっぱり", "爽快"],
+    description: "搾りたてのグレープフルーツを、ごく少量の砂糖とソーダだけで立ち上げた一杯。苦味を殺さない程度に甘みを足すのがこつで、食前にも食事中にも寄り添います。",
+    color: "rgba(246, 232, 160, 0.6)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "グレープフルーツ果汁", amount: "60 ml" },
+      { name: "シュガーシロップ", amount: "1 tsp" },
+      { name: "ソーダ (炭酸水)", amount: "適量" }
+    ],
+    method: [
+      "氷を入れたグラスにグレープフルーツ果汁とシロップを注ぎ、軽く混ぜます。",
+      "冷えたソーダで静かに満たします。",
+      "一度だけ混ぜ、ライムを飾ります。"
+    ]
+  },
+  "soda+honey+lemon": {
+    name: "ハニー・レモン・ソーダ",
+    enName: "Honey Lemon Soda",
+    abv: 0,
+    taste: ["まろやか", "甘酸っぱい", "爽快"],
+    description: "蜂蜜をぬるま湯で溶いてから合わせるのが唯一のこつで、冷たい液体に直接落とすと底に沈んだまま溶けません。砂糖のレモネードより丸く、喉にやさしい後口になります。",
+    color: "rgba(244, 226, 160, 0.55)",
+    hasBubbles: true,
+    garnish: "lemon",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "ハニーシロップ (蜂蜜:湯 = 1:1)", amount: "20 ml" },
+      { name: "フレッシュ・レモン果汁", amount: "25 ml" },
+      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "蜂蜜は同量のぬるま湯で溶いてシロップにしておきます。",
+      "氷を入れたグラスにシロップとレモン果汁を注ぎ、よく混ぜます。",
+      "冷えたソーダで満たし、一度だけ混ぜてレモンを飾ります。"
+    ]
+  },
   "orange+grenadine+pineapple+soda": {
     name: "フルーツ・パンチ",
     enName: "Fruit Punch",
@@ -2292,6 +3133,15 @@ const baseTints = {
   peach: "rgba(255, 240, 220, 0.25)",    // Pale warm peach tint
   cassis: "rgba(136, 14, 79, 0.6)",      // Rich violet/ruby syrup color
   coffee: "rgba(78, 52, 46, 0.7)",       // Rich dark coffee syrup color
+
+  // Wine, grape spirits and the two liqueurs that carry a drink by
+  // themselves. A bar that stocks these can pour most of the standard book.
+  champagne: "rgba(247, 231, 190, 0.45)",  // Pale straw, fine bead
+  white_wine: "rgba(240, 234, 200, 0.4)",  // Dry white
+  pisco: "rgba(250, 250, 245, 0.2)",       // Clear grape brandy
+  cachaca: "rgba(250, 248, 235, 0.2)",     // Clear cane spirit
+  apple_brandy: "rgba(205, 133, 63, 0.45)",// Calvados amber
+  cacao: "rgba(121, 85, 72, 0.8)",         // Crème de cacao
 
   // Non-alcoholic bases. These ids are shared with mixerDefinitions on
   // purpose — a carton of orange juice is one bottle on the shelf whether it
@@ -2343,7 +3193,27 @@ const mixerDefinitions = {
   maraschino_cherry: { name: "マラスキーノ・チェリー", en: "MARASCHINO CHERRY", icon: "MC", color: "rgba(213, 0, 0, 0.9)" },
   sugar: { name: "砂糖 / シロップ", en: "SUGAR", icon: "SG", color: "rgba(255, 255, 255, 0.3)" },
   brandy: { name: "ブランデー (ブレンド用)", en: "BRANDY MIX", icon: "BR", color: "rgba(189, 93, 30, 0.6)" },
-  egg_yolk: { name: "卵黄", en: "EGG YOLK", icon: "EY", color: "rgba(255, 193, 7, 0.9)" }
+  egg_yolk: { name: "卵黄", en: "EGG YOLK", icon: "EY", color: "rgba(255, 193, 7, 0.9)" },
+
+  // The back bar a standard book actually calls for.
+  champagne: { name: "シャンパン / スパークリング", en: "CHAMPAGNE", icon: "CH", color: "rgba(247, 231, 190, 0.5)" },
+  white_wine: { name: "白ワイン (辛口)", en: "DRY WHITE WINE", icon: "WW", color: "rgba(240, 234, 200, 0.45)" },
+  aperol: { name: "アペロール", en: "APEROL", icon: "AP", color: "rgba(240, 96, 20, 0.8)" },
+  amaretto: { name: "アマレット", en: "AMARETTO", icon: "AM", color: "rgba(150, 75, 30, 0.75)" },
+  chartreuse: { name: "シャルトリューズ・ヴェール", en: "GREEN CHARTREUSE", icon: "CT", color: "rgba(150, 190, 40, 0.75)" },
+  benedictine: { name: "ベネディクティン", en: "BENEDICTINE", icon: "BN", color: "rgba(196, 140, 50, 0.7)" },
+  drambuie: { name: "ドランブイ", en: "DRAMBUIE", icon: "DR", color: "rgba(190, 130, 45, 0.75)" },
+  creme_de_menthe: { name: "クレーム・ド・ミント (グリーン)", en: "CREME DE MENTHE", icon: "CM", color: "rgba(60, 190, 130, 0.8)" },
+  egg_white: { name: "卵白", en: "EGG WHITE", icon: "EW", color: "rgba(255, 255, 255, 0.55)" },
+  raspberry: { name: "フランボワーズ・リキュール", en: "RASPBERRY LIQUEUR", icon: "RB", color: "rgba(180, 30, 70, 0.8)" },
+  peychaud: { name: "ペイショーズ・ビターズ", en: "PEYCHAUD'S BITTERS", icon: "PB", color: "rgba(190, 40, 40, 0.85)" },
+  honey: { name: "ハニーシロップ", en: "HONEY SYRUP", icon: "HN", color: "rgba(230, 180, 60, 0.7)" },
+  orgeat: { name: "オルジェー・シロップ", en: "ORGEAT", icon: "OG", color: "rgba(250, 240, 220, 0.8)" },
+  cherry_brandy: { name: "チェリーブランデー", en: "CHERRY BRANDY", icon: "CY", color: "rgba(170, 30, 50, 0.8)" },
+  galliano: { name: "ガリアーノ", en: "GALLIANO", icon: "GL", color: "rgba(240, 200, 60, 0.8)" },
+  gin: { name: "ジン (ブレンド用)", en: "GIN MIX", icon: "GI", color: "rgba(224, 242, 241, 0.3)" },
+  rum: { name: "ラム (ブレンド用)", en: "RUM MIX", icon: "RU", color: "rgba(255, 248, 220, 0.35)" },
+  tequila: { name: "テキーラ (ブレンド用)", en: "TEQUILA MIX", icon: "TE", color: "rgba(244, 255, 220, 0.3)" }
 };
 
 // ==========================================================================
@@ -2369,7 +3239,13 @@ const SPIRIT_BASES = Object.keys(baseTints).filter(b => !NON_ALCOHOLIC_BASES.has
 const ALCOHOLIC_MIXERS = new Set([
   'curacao', 'blue_curacao', 'absinthe', 'whiskey', 'brandy', 'cassis',
   'peach', 'coffee', 'cacao', 'campari', 'dry_vermouth', 'sweet_vermouth',
-  'maraschino_liq'
+  'maraschino_liq',
+  'champagne', 'white_wine', 'aperol', 'amaretto', 'chartreuse', 'benedictine',
+  'drambuie', 'creme_de_menthe', 'raspberry', 'cherry_brandy', 'galliano',
+  'gin', 'rum', 'tequila',
+  // Peychaud's is left out for the same reason as Angostura: a dash is a
+  // fifth of a millilitre, and the drinks that use it that way are
+  // catalogued as non-alcoholic everywhere.
 ]);
 
 function isMocktailKey(key) {
@@ -2469,6 +3345,12 @@ const SHELF_VOCABULARY = [
   'lemon', 'grenadine', 'cream', 'cacao',
   'espresso', 'maraschino_liq', 'maraschino_cherry', 'sugar',
   'egg_yolk',
+  // Appended 2026-07-28. Never reorder anything above this line.
+  'champagne', 'white_wine', 'pisco', 'cachaca',
+  'apple_brandy', 'aperol', 'amaretto', 'chartreuse',
+  'benedictine', 'drambuie', 'creme_de_menthe', 'egg_white',
+  'raspberry', 'peychaud', 'honey', 'orgeat',
+  'cherry_brandy', 'galliano',
 ];
 
 // URL-safe base64 alphabet: nothing here needs escaping in a fragment.
@@ -3268,6 +4150,8 @@ const baseNameMap = {
   gin: 'ジン', vodka: 'ウォッカ', rum: 'ラム', tequila: 'テキーラ',
   whiskey: 'ウイスキー', brandy: 'ブランデー', peach: 'ピーチ',
   cassis: 'カシス', coffee: 'コーヒー',
+  champagne: 'シャンパン', white_wine: '白ワイン', pisco: 'ピスコ',
+  cachaca: 'カシャッサ', apple_brandy: 'カルヴァドス', cacao: 'カカオ',
   ginger: 'ジンジャーエール', orange: 'オレンジ', soda: 'ソーダ',
   tomato: 'トマト', pineapple: 'パイナップル', grapefruit: 'グレープフルーツ',
   cranberry: 'クランベリー'
@@ -3278,6 +4162,8 @@ const baseIconMap = {
   gin: 'GI', vodka: 'VO', rum: 'RU', tequila: 'TE',
   whiskey: 'WH', brandy: 'BR', peach: 'PE',
   cassis: 'CA', coffee: 'CO',
+  champagne: 'CH', white_wine: 'WW', pisco: 'PS',
+  cachaca: 'CQ', apple_brandy: 'CV', cacao: 'CC',
   ginger: 'GA', orange: 'OJ', soda: 'SW', tomato: 'TJ',
   pineapple: 'PJ', grapefruit: 'GF', cranberry: 'CB'
 };
@@ -4319,6 +5205,10 @@ const SERVE_ORDER = {
     'ドライ・マティーニ', 'ネグローニ', 'アビエイション', 'ブールヴァルディエ',
     'バカルディ', 'ホワイト・レディ', 'ブルー・マルガリータ',
     'サラトガ・クーラー', 'シンデレラ', 'フロリダ', 'ヴァージン・メアリー',
+    'フレンチ75', 'コープス・リヴァイヴァー No.2', 'クローバー・クラブ',
+    'サウスサイド', 'キール・ロワイヤル', 'ミモザ', 'ベリーニ',
+    'アペロール・スプリッツ', 'キール', 'スプリッツァー', 'ピスコ・サワー',
+    'ジャック・ローズ', 'グレープフルーツ・スカッシュ',
   ],
   digestif: [
     'アースクェイク', 'ジン・ミルク・パンチ', 'ブラック・ルシアン',
@@ -4327,6 +5217,9 @@ const SERVE_ORDER = {
     'アレキサンダー', 'マンハッタン', 'オールド・ファッションド',
     'ビトウィーン・ザ・シーツ', 'エスプレッソ・マティーニ',
     'プッシーフット', 'ヴァージン・ピニャコラーダ',
+    'ゴッドマザー', 'サゼラック', 'ヴュー・カレ', 'ラスティ・ネイル',
+    'ゴッドファーザー', 'スティンガー', 'シャンゼリゼ',
+    'グラスホッパー', 'エンジェルス・キッス',
   ],
 };
 
@@ -4341,12 +5234,16 @@ const SEASONS = {
     'オレンジ・ブロッサム', 'アビエイション', 'ファジーネーブル', 'ピーチ・フィズ',
     'ピーチ・ミルク', 'バカルディ', 'ホワイト・レディ', 'カシス・オレンジ',
     'カシス・ソーダ', 'シャーリー・テンプル', 'ジン・フィズ', 'シンデレラ',
+    'フレンチ75', 'クローバー・クラブ', 'ピンク・レディ', 'ビーズ・ニーズ',
+    'キール・ロワイヤル', 'ミモザ', 'ベリーニ', 'キール',
   ],
   autumn: [
     'ウイスキー・サワー', 'オールド・ファッションド', 'マンハッタン',
     'ブールヴァルディエ', 'サイドカー', 'ホーセズ・ネック', 'フレンチ・ハイボール',
     'フレンチ・コーク', 'ウイスキー・バック', 'ジャック・コーク', 'ネグローニ',
     'ボストン・クーラー', 'レゲエ・パンチ', 'カシス・ウーロン', 'エル・ディアブロ',
+    'サゼラック', 'ヴュー・カレ', 'ペニシリン', 'シャンゼリゼ',
+    'ジャック・ローズ', 'ハネムーン',
   ],
   winter: [
     'アレキサンダー', 'ブラック・ルシアン', 'ホワイト・ルシアン', 'カルーア・ミルク',
@@ -4354,6 +5251,9 @@ const SEASONS = {
     'ビトウィーン・ザ・シーツ', 'XYZ', 'アースクェイク', 'ドライ・マティーニ',
     'オールド・ファッションド', 'カシス・ミルク', 'プッシーフット',
     'ヴァージン・メアリー', 'コーヒー・トニック',
+    'サゼラック', 'ヴュー・カレ', 'ラスティ・ネイル', 'ゴッドファーザー',
+    'ゴッドマザー', 'スティンガー', 'グラスホッパー', 'エンジェルス・キッス',
+    'ペニシリン',
   ],
 };
 
@@ -5128,7 +6028,9 @@ function initMyBarUI() {
     DOM.starterSetAccordion.classList.toggle('open');
     if (!starterSetBuilt && DOM.starterSetAccordion.classList.contains('open')) {
       starterSetBuilt = true;
-      calculateStarterSet();
+      // Let the panel open first. Building the grid takes long enough to be
+      // felt, and there is no reason for the animation to wait on it.
+      whenIdle(() => calculateStarterSet());
     }
   });
 
@@ -5498,6 +6400,14 @@ function initAtmosphere() {
 const STARTER_SET_SIZE = 5;
 
 /**
+ * The search below costs over a tenth of a second on the full book and grows
+ * with it, but its answer depends only on the database and which half of the
+ * index is showing — neither of which moves during a session. So it is paid
+ * for once per half, and never again.
+ */
+const starterSetCache = new Map();
+
+/**
  * Choose the five bottles that finish the most recipes outright.
  *
  * The obvious shortcut — the two most common bases plus the three most common
@@ -5531,68 +6441,82 @@ function pickStarterItems(recipes) {
     return items;
   };
 
-  // A shelf is one bit per ingredient, across two words because a JS bitwise
-  // operand is only 32 bits wide. Sets and string keys were the obvious way
-  // to write this and cost over a tenth of a second on the full list — long
-  // enough to hitch the accordion open on a phone. Past 64 ingredients the
-  // search would need a third word, so rather than quietly return a wrong
-  // answer it falls back to raw frequency; the index would have to grow half
-  // again in variety before that can happen.
+  // A shelf is one bit per ingredient, packed into as many 32-bit words as
+  // the vocabulary needs — a JS bitwise operand is only ever 32 bits wide.
+  // Sets and string keys were the obvious way to write this and cost over a
+  // tenth of a second on the full list, long enough to hitch the accordion
+  // open on a phone. It was two fixed words until the back bar grew; a
+  // word count derived from the vocabulary cannot be outgrown quietly.
   const WORD = 32;
-  if (names.length > WORD * 2) return fill(new Set());
+  const WORDS = Math.ceil(names.length / WORD) || 1;
 
+  // A drink needing more bottles than the whole starter set can never be
+  // covered by one, so it has no business in the search. Dropping those keeps
+  // the tree from growing with every long tiki recipe added to the book.
   const index = new Map(names.map((n, i) => [n, i]));
-  const masks = parts.map(p => {
-    let lo = 0, hi = 0;
-    p.forEach(x => {
-      const i = index.get(x);
-      if (i < WORD) lo |= 1 << i;
-      else hi |= 1 << (i - WORD);
+  const masks = parts
+    .filter(p => p.length <= STARTER_SET_SIZE)
+    .map(p => {
+      const m = new Int32Array(WORDS);
+      p.forEach(x => {
+        const i = index.get(x);
+        m[(i / WORD) | 0] |= 1 << (i % WORD);
+      });
+      return m;
     });
-    return { lo, hi };
-  });
 
   const popcount = (n) => {
     n -= (n >>> 1) & 0x55555555;
     n = (n & 0x33333333) + ((n >>> 2) & 0x33333333);
     return (((n + (n >>> 4)) & 0x0f0f0f0f) * 0x01010101) >>> 24;
   };
-  const size = (lo, hi) => popcount(lo) + popcount(hi);
+  const size = (m) => {
+    let n = 0;
+    for (let w = 0; w < WORDS; w++) n += popcount(m[w]);
+    return n;
+  };
+  const covers = (shelf, recipe) => {
+    for (let w = 0; w < WORDS; w++) if ((recipe[w] & ~shelf[w]) !== 0) return false;
+    return true;
+  };
 
   // Fewest bottles wins a tie, so the spare slots are still free to be spent.
-  let bestCount = 0, bestLo = 0, bestHi = 0, bestSize = Infinity;
+  let bestCount = 0, bestSize = Infinity;
+  let best = new Int32Array(WORDS);
 
   // Dozens of orderings arrive at the same shelf. What a shelf is worth, and
   // what can still be added to it, depend only on the shelf — so each
   // distinct one is walked exactly once.
   const visited = new Set();
 
-  const walk = (lo, hi) => {
-    const id = lo + ':' + hi;
+  const walk = (shelf) => {
+    const id = shelf.join(':');
     if (visited.has(id)) return;
     visited.add(id);
 
     let count = 0;
-    for (let i = 0; i < masks.length; i++) {
-      if ((masks[i].lo & ~lo) === 0 && (masks[i].hi & ~hi) === 0) count++;
-    }
-    const s = size(lo, hi);
+    for (let i = 0; i < masks.length; i++) if (covers(shelf, masks[i])) count++;
+    const s = size(shelf);
     if (count > bestCount || (count === bestCount && s < bestSize)) {
-      bestCount = count; bestLo = lo; bestHi = hi; bestSize = s;
+      bestCount = count; bestSize = s; best = shelf.slice();
     }
 
     for (let i = 0; i < masks.length; i++) {
-      const nextLo = lo | masks[i].lo;
-      const nextHi = hi | masks[i].hi;
-      if (nextLo === lo && nextHi === hi) continue;           // adds nothing
-      if (size(nextLo, nextHi) > STARTER_SET_SIZE) continue;
-      walk(nextLo, nextHi);
+      const next = shelf.slice();
+      let grew = false;
+      for (let w = 0; w < WORDS; w++) {
+        next[w] |= masks[i][w];
+        if (next[w] !== shelf[w]) grew = true;
+      }
+      if (!grew) continue;                                   // adds nothing
+      if (size(next) > STARTER_SET_SIZE) continue;
+      walk(next);
     }
   };
-  walk(0, 0);
+  walk(new Int32Array(WORDS));
 
   return fill(new Set(names.filter((_, i) =>
-    i < WORD ? (bestLo >>> i) & 1 : (bestHi >>> (i - WORD)) & 1
+    (best[(i / WORD) | 0] >>> (i % WORD)) & 1
   )));
 }
 
@@ -5609,7 +6533,10 @@ function calculateStarterSet() {
     usedAsBase.add(key.split('+')[0]);
   });
 
-  const starterItems = pickStarterItems(validCocktails);
+  if (!starterSetCache.has(state.drinkType)) {
+    starterSetCache.set(state.drinkType, pickStarterItems(validCocktails));
+  }
+  const starterItems = starterSetCache.get(state.drinkType);
 
   const makeable = validCocktails.filter(item =>
     item.key.split('+').every(part => starterItems.has(part))
