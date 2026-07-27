@@ -2130,7 +2130,24 @@ input:focus-visible {
     border: 0 !important;
     background: none !important;
     box-shadow: none !important;
+  }
+
+  /* display is set separately, and never on something the app has hidden.
+     `.hidden` and `.result-section` have the same specificity and both carry
+     !important, so a blanket display here wins purely by coming later in the
+     file — which printed the recipe panel underneath the menu, and the whole
+     141-card gallery underneath a recipe. :not(.hidden) simply does not
+     match the elements the app has taken away. */
+  .app-shell,
+  .simulator-layout,
+  .controls-card:not(.hidden),
+  .result-section:not(.hidden) {
     display: block !important;
+  }
+
+  /* Held off-page by a transform, which paper does not honour. */
+  .skip-link {
+    display: none !important;
   }
 
   .menu-masthead {

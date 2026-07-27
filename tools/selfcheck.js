@@ -76,9 +76,19 @@
     check(!unknownMixer.length, 'every recipe mixer exists', unknownMixer.join(' '));
     check(!missingFields.length, 'every recipe has the required fields', missingFields.join(' | '));
 
-    // Names are the join key for collections and for routing.
+    // Names are the join key for collections and for routing, so a drink
+    // that exists under several keys — margarita with and without a salt
+    // rim — must still be one drink everywhere downstream. This used to
+    // read `new Set(names).size === new Set(names).size`, which is a
+    // tautology: it passed while testing nothing at all.
     const names = Object.values(cocktailDatabase).map(c => c.name);
-    check(new Set(names).size === new Set(names).size, 'names resolve');
+    const distinct = new Set(names);
+    check(buildDrinkList(null).length === distinct.size,
+          'the gallery lists each drink exactly once',
+          `${buildDrinkList(null).length} cards for ${distinct.size} names (${names.length} keys)`);
+    check(routeSlugByName.size === distinct.size,
+          'each drink has exactly one route slug',
+          `${routeSlugByName.size} slugs for ${distinct.size} names`);
 
     const slugs = new Set();
     let slugClash = 0;
@@ -128,14 +138,39 @@
     });
     check(!prose.length, 'recipe prose is well formed', prose.slice(0, 8).join(' | '));
 
+    // The glass label is derived; the method text is written by hand. When
+    // they disagree the page tells a bartender two different things, and the
+    // method — being specific to the drink — is the one to believe.
+    const NAMED_GLASS = [
+      ['コリンズグラス', /コリンズ/], ['タンブラー', /タンブラー/], ['ロックグラス', /ロックグラス/],
+      ['カクテルグラス', /カクテルグラス/], ['フルートグラス', /フルート/],
+      ['ワイングラス', /ワイングラス/], ['銅マグ', /マグ/], ['ハリケーングラス', /ハリケーン/],
+      ['ジュレップカップ', /ジュレップ/], ['リキュールグラス', /リキュールグラス/],
+    ];
+    const glassClash = [];
+    Object.values(cocktailDatabase).forEach(d => {
+      const method = d.method.join(' ');
+      const named = NAMED_GLASS.filter(([, re]) => re.test(method)).map(([n]) => n);
+      if (named.length && !named.includes(glassLabel(d))) {
+        glassClash.push(`${d.name}: shows ${glassLabel(d)}, method says ${named.join('/')}`);
+      }
+    });
+    check(!glassClash.length, 'the glass shown agrees with the method text',
+          glassClash.join(' | '));
+
     const vocab = new Set(SHELF_VOCABULARY);
     const unlisted = [...Object.keys(baseTints), ...Object.keys(mixerDefinitions)]
       .filter(id => !vocab.has(id));
     check(!unlisted.length, 'every ingredient is in SHELF_VOCABULARY', unlisted.join(' '));
     check(SHELF_VOCABULARY.length === new Set(SHELF_VOCABULARY).size,
           'SHELF_VOCABULARY has no duplicates');
-    check(SHELF_VOCABULARY.length <= 64,
-          'SHELF_VOCABULARY still fits two 32-bit words', `${SHELF_VOCABULARY.length}/64`);
+    // There used to be a <= 64 limit asserted here, from when the starter
+    // search packed a shelf into two fixed words. It derives its word count
+    // now, so the ceiling is gone and the assertion would only have started
+    // failing at 65 with nothing actually wrong.
+    check(SHELF_VOCABULARY.length >= Object.keys(mixerDefinitions).length,
+          'SHELF_VOCABULARY covers at least every mixer',
+          `${SHELF_VOCABULARY.length} vs ${Object.keys(mixerDefinitions).length}`);
   }
 
   // --------------------------------------------------------------- codec ---

@@ -2044,6 +2044,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lime",
     ice: "none",
+    isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "22 ml" },
       { name: "シャルトリューズ・ヴェール", amount: "22 ml" },
@@ -2066,6 +2067,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lemon",
     ice: "none",
+    isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "22 ml" },
       { name: "ホワイトキュラソー", amount: "22 ml" },
@@ -2089,9 +2091,10 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: null,
     ice: "none",
+    isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
-      { name: "フランボワーズ・リキュール", amount: "15 ml" },
+      { name: "クレーム・ド・フランボワーズ (ラズベリー)", amount: "15 ml" },
       { name: "レモンジュース", amount: "15 ml" },
       { name: "卵白", amount: "1 個分" }
     ],
@@ -2171,17 +2174,18 @@ const cocktailDatabase = {
     enName: "Bramble",
     abv: 20,
     taste: ["甘酸っぱい", "ベリー", "さっぱり"],
-    description: "1980年代ロンドンのバー「フレッズ・クラブ」でディック・ブラッドセルが創作した、現代の古典。クラッシュアイスの上からベリーのリキュールを垂らし、藪いちご（ブランブル）の名の通りの流れを作ります。",
+    description: "1980年代ロンドンのバー「フレッズ・クラブ」でディック・ブラッドセルが創作した、現代の古典。クラッシュアイスの上からクレーム・ド・ミュール（黒すぐり色のブラックベリー・リキュール）を垂らし、茨（ブランブル）の名の通りの筋を描かせます。",
     color: "rgba(190, 60, 96, 0.75)",
     hasBubbles: false,
     garnish: "lemon",
     ice: "crushed",
+    isIBA: true,
     summer: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "50 ml" },
       { name: "レモンジュース", amount: "25 ml" },
       { name: "シュガーシロップ", amount: "10 ml" },
-      { name: "フランボワーズ・リキュール", amount: "15 ml" }
+      { name: "クレーム・ド・ミュール (ブラックベリー)", amount: "15 ml" }
     ],
     method: [
       "シェイカーに氷、ジン、レモン、シロップを入れてシェイクします。",
@@ -2291,7 +2295,7 @@ const cocktailDatabase = {
     enName: "Mai Tai",
     abv: 24,
     taste: ["フルーティー", "甘酸っぱい", "芳醇"],
-    description: "1944年カリフォルニアのトレーダー・ヴィックが創作し、供された客が「マイタイ・ロア・アエ（最高だ）」と叫んだことから名がついたとされます。オルジェーのアーモンド香がラムの樽感と結び付く、ティキの原点。",
+    description: "1944年カリフォルニアのトレーダー・ヴィックが創作し、供された客が「マイタイ・ロア・アエ（最高だ）」と叫んだことから名がついたとされます。ホワイトとダークを半々に重ねるのが要で、オルジェーのアーモンド香がダークラムの樽感と結び付きます。",
     color: "rgba(226, 150, 74, 0.82)",
     hasBubbles: false,
     garnish: "lime",
@@ -2299,7 +2303,8 @@ const cocktailDatabase = {
     isIBA: true,
     summer: true,
     ingredients: [
-      { name: "ホワイト・ラム", amount: "40 ml" },
+      { name: "ホワイト・ラム", amount: "30 ml" },
+      { name: "ダーク・ラム", amount: "30 ml" },
       { name: "ホワイトキュラソー", amount: "15 ml" },
       { name: "オルジェー・シロップ", amount: "15 ml" },
       { name: "ライムジュース", amount: "20 ml" }
@@ -2429,6 +2434,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lemon",
     ice: "cube",
+    isIBA: true,
     ingredients: [
       { name: "ブレンデッド・スコッチ", amount: "60 ml" },
       { name: "ハニーシロップ (生姜を漬けたもの)", amount: "22 ml" },
@@ -3208,7 +3214,9 @@ const mixerDefinitions = {
   // matters to a shelf. Each recipe says which it wants.
   creme_de_menthe: { name: "クレーム・ド・ミント", en: "CREME DE MENTHE", icon: "CM", color: "rgba(60, 190, 130, 0.8)" },
   egg_white: { name: "卵白", en: "EGG WHITE", icon: "EW", color: "rgba(255, 255, 255, 0.55)" },
-  raspberry: { name: "フランボワーズ・リキュール", en: "RASPBERRY LIQUEUR", icon: "RB", color: "rgba(180, 30, 70, 0.8)" },
+  // One berry slot on the shelf. A Bramble wants mûre (blackberry) and a
+  // Clover Club framboise (raspberry); each recipe names its own.
+  raspberry: { name: "ベリーのリキュール", en: "BERRY LIQUEUR", icon: "RB", color: "rgba(180, 30, 70, 0.8)" },
   peychaud: { name: "ペイショーズ・ビターズ", en: "PEYCHAUD'S BITTERS", icon: "PB", color: "rgba(190, 40, 40, 0.85)" },
   honey: { name: "ハニーシロップ", en: "HONEY SYRUP", icon: "HN", color: "rgba(230, 180, 60, 0.7)" },
   orgeat: { name: "オルジェー・シロップ", en: "ORGEAT", icon: "OG", color: "rgba(250, 240, 220, 0.8)" },
@@ -4957,9 +4965,11 @@ function buildDrinkList(shelf = state.menuShelf) {
 function searchHaystack(item) {
   if (item.data._haystack) return item.data._haystack;
   const parts = item.key.split('+');
+  // Glassware is deliberately absent. It looked like a free extra field to
+  // index, but "カクテルグラス" made a search for カクテル return 41 drinks
+  // and "グラス" returned 73 — noise drowning the names someone was typing.
   const words = [
     item.data.name, item.data.enName, item.baseJp, item.baseKey,
-    glassLabel(item.data),
     ...item.data.taste,
     ...item.data.ingredients.map(i => i.name),
     ...parts,
@@ -5349,15 +5359,21 @@ const GLASS_BY_NAME = {
   'ベリーニ': 'flute', 'デス・イン・ジ・アフタヌーン': 'flute',
   'キール': 'wine', 'スプリッツァー': 'wine', 'オペレーター': 'wine',
   'アペロール・スプリッツ': 'wine',
+  // The copper mug belongs to the Mule and its alcohol-free twin. A Dark 'n'
+  // Stormy is a highball and always was.
   'モスコミュール': 'mug', 'ヴァージン・モスコミュール': 'mug',
-  'ダーク・アンド・ストーミー': 'mug',
   'ピニャ・コラーダ': 'hurricane', 'チチ': 'hurricane', 'ブルー・ハワイ': 'hurricane',
   'ヴァージン・ピニャコラーダ': 'hurricane', 'プランターズ・パンチ': 'hurricane',
-  'ジン・フィズ': 'collins', 'ピーチ・フィズ': 'collins', 'ボストン・クーラー': 'collins',
+  'ピーチ・フィズ': 'collins', 'ボストン・クーラー': 'collins',
   'レモネード': 'collins', 'シンガポール・スリング': 'collins',
   'エンジェルス・キッス': 'liqueur',
   'サゼラック': 'rocks', 'オールド・ファッションド': 'rocks', 'ネグローニ': 'rocks',
   'ブールヴァルディエ': 'rocks', 'ミント・ジュレップ': 'julep',
+  // Crushed ice does not mean a julep cup, and a drink under 20% is not
+  // always a highball. These are built in, and served from, a rocks glass —
+  // as each of their own methods already said.
+  'カイピリーニャ': 'rocks', 'ブランブル': 'rocks', 'マイタイ': 'rocks',
+  'ホワイト・ルシアン': 'rocks', 'ピーチ・ミルク': 'rocks',
 };
 
 function glassOf(data) {
@@ -5473,6 +5489,14 @@ function applyRoute() {
   applyingRoute = true;
   try {
     const hash = normalizedHash();
+
+    // Only '#/…' is ours. A plain fragment — the skip link, a find-on-page
+    // anchor, anything a browser might put there — is an in-page jump and
+    // must not be read as navigation. Treating one as an unknown route sent
+    // it to the bottom of the chain and called setMode('build'), which threw
+    // a guest out of the menu they had been given and cleared the code, with
+    // no way back but the original link.
+    if (!hash.startsWith('#/')) return;
 
     const menu = hash.match(/^#\/menu\/([A-Za-z0-9\-_]+)(?:\/recipe\/(.+))?$/);
     if (menu) {
@@ -6275,6 +6299,7 @@ function updateMyBarResults() {
       const thumbCanvas = document.createElement('canvas');
       thumbCanvas.width = 180;
       thumbCanvas.height = 230;
+      thumbCanvas.setAttribute('aria-hidden', 'true');
       thumbDiv.appendChild(thumbCanvas);
       
       const infoDiv = document.createElement('div');
@@ -6380,6 +6405,21 @@ function initEventListeners() {
   
   DOM.shareMenuBtn.addEventListener('click', shareMenu);
   DOM.omakaseBtn.addEventListener('click', pourOmakase);
+
+  // Move focus without writing to location.hash at all. applyRoute() now
+  // ignores foreign fragments, so this is belt and braces — but leaving a
+  // '#controls-card' in the address bar of a menu someone was given is
+  // still a URL that no longer opens what they were looking at.
+  const skipLink = document.getElementById('skip-link');
+  if (skipLink) {
+    skipLink.addEventListener('click', (event) => {
+      const target = document.getElementById('controls-card');
+      if (!target) return;
+      event.preventDefault();
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: 'start' });
+    });
+  }
 
   // Time-throttled rather than rAF-throttled: highlighting which course you
   // are in is not animation, and this keeps working when frames do not.
@@ -6706,6 +6746,7 @@ function calculateStarterSet() {
     const thumbCanvas = document.createElement('canvas');
     thumbCanvas.width = 180;
     thumbCanvas.height = 230;
+    thumbCanvas.setAttribute('aria-hidden', 'true');
     thumbDiv.appendChild(thumbCanvas);
     
     const infoDiv = document.createElement('div');

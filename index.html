@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090a08">
-  <meta name="description" content="スタンダードカクテル141種（IBA公認40種・ノンアルコール15種）のレシピを、手元の材料・名前・棚のボトルから引けるビジュアルリファレンス。作れる一杯だけを並べたメニューを、そのまま友人に渡せます。">
+  <meta name="description" content="スタンダードカクテル141種（IBA公認45種・ノンアルコール15種）のレシピを、手元の材料・名前・棚のボトルから引けるビジュアルリファレンス。作れる一杯だけを並べたメニューを、そのまま友人に渡せます。">
   <title>ANTIGRAVITY — Cocktail Index</title>
 
   <!-- The menu is meant to be sent to someone, and a link sent into a chat
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ANTIGRAVITY Cocktail Index">
   <meta property="og:title" content="ANTIGRAVITY — Cocktail Index">
-  <meta property="og:description" content="今夜お出しできる一杯を。スタンダードカクテル141種とノンアルコール15種のレシピ集。">
+  <meta property="og:description" content="今夜お出しできる一杯を。スタンダードカクテル141種（うちノンアルコール15種）のレシピ集。">
   <meta property="og:url" content="https://proxxxxxy.github.io/">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:image" content="https://proxxxxxy.github.io/assets/cocktail-studio-bg.png">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260728-2ba743dd">
+  <link rel="stylesheet" href="style.css?v=20260728-034a72d2">
 </head>
 <body>
   <div class="intro-curtain" id="intro-curtain" aria-hidden="true">
@@ -36,7 +36,7 @@
     <span class="curtain-sub">COCKTAIL INDEX</span>
   </div>
 
-  <a class="skip-link" href="#controls-card">本文へスキップ</a>
+  <a class="skip-link" href="#controls-card" id="skip-link">本文へスキップ</a>
 
   <div class="site-backdrop" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
@@ -63,7 +63,7 @@
         <span class="hero-line" style="--i:2"><span><em>美しく選ぶ。</em></span></span>
       </h1>
       <span class="intro-rule hero-item" style="--i:3" aria-hidden="true"></span>
-      <p class="intro-copy hero-item" style="--i:4">ベース、割り材、手元のボトルから。スタンダード141種とノンアルコール15種の正確なレシピへ、迷わず辿り着けます。</p>
+      <p class="intro-copy hero-item" style="--i:4">ベース、割り材、手元のボトルから。スタンダード141種（うちノンアルコール15種）の正確なレシピへ、迷わず辿り着けます。</p>
       <div class="intro-note hero-item" style="--i:5" aria-hidden="true">
         <span>THE BAR IS OPEN</span>
         <strong>After dark,<br>choose well.</strong>
@@ -131,7 +131,7 @@
         <div class="status-indicator" id="status-indicator" aria-live="polite">ベースとなるお酒を選択してください</div>
       </section>
 
-      <section class="controls-card" id="controls-card" aria-label="カクテルを探す">
+      <section class="controls-card" id="controls-card" tabindex="-1" aria-label="カクテルを探す">
         <div class="mode-tabs" role="tablist" aria-label="検索方法">
           <button class="tab-btn active" id="tab-build" data-mode="build" role="tab" aria-selected="true" aria-controls="view-build">
             <span>01</span>素材から
@@ -318,6 +318,6 @@
     <span>DRINK RESPONSIBLY</span>
   </footer>
 
-  <script src="app.js?v=20260728-2ba743dd"></script>
+  <script src="app.js?v=20260728-034a72d2"></script>
 </body>
 </html>

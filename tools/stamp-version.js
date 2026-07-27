@@ -54,10 +54,22 @@ const stamped = html.replace(
 );
 
 if (checkOnly) {
-  if (stamped === html) {
-    console.log(`index.html is stamped correctly (?v=${stamp}).`);
+  // Only the hash half decides staleness. The date is there to be read by a
+  // person, and comparing it would fail every midnight on files nobody had
+  // touched — a check that cries wolf gets ignored, which is worse than not
+  // having one.
+  const current = [...html.matchAll(/(?:style\.css|app\.js)\?v=[^"']*-([0-9a-f]{8})/g)]
+    .map(m => m[1]);
+  const want = stamp.slice(-8);
+  const inStep = current.length === ASSETS.length && current.every(h => h === want);
+
+  if (inStep) {
+    console.log(`index.html is stamped correctly (…-${want}).`);
   } else {
-    console.error(`index.html is stale. Run: node tools/stamp-version.js`);
+    console.error(
+      `index.html is stale (has ${current.join(', ') || 'no hash'}, want ${want}). ` +
+      `Run: node tools/stamp-version.js`
+    );
     process.exit(1);
   }
 } else if (stamped === html) {
