@@ -3473,6 +3473,7 @@ const DOM = {
 
   // Guest menu
   courseNav: document.getElementById('course-nav'),
+  omakaseBtn: document.getElementById('btn-omakase'),
   menuMasthead: document.getElementById('menu-masthead'),
   menuNote: document.getElementById('menu-note'),
   shareMenuBtn: document.getElementById('btn-share-menu'),
@@ -6089,6 +6090,27 @@ async function shareMenu() {
   }
 }
 
+/**
+ * "お任せで" — the oldest order at any bar.
+ *
+ * It picks from the cards actually on screen rather than from the database,
+ * which means it inherits the shelf, the cocktail/mocktail switch and
+ * whatever filter is set without knowing that any of them exist. It also
+ * refuses to serve the same drink twice running, because being told to have
+ * another Negroni is not an answer.
+ */
+let lastOmakase = null;
+
+function pourOmakase() {
+  let cards = [...DOM.galleryGrid.querySelectorAll('.gallery-card')];
+  if (!cards.length) return;
+  if (cards.length > 1) cards = cards.filter(c => c.dataset.key !== lastOmakase);
+
+  const pick = cards[Math.floor(Math.random() * cards.length)];
+  lastOmakase = pick.dataset.key;
+  openRecipe(pick.dataset.key);
+}
+
 function exitMenuMode() {
   state.menuCode = null;
   state.menuShelf = null;
@@ -6342,6 +6364,7 @@ function initEventListeners() {
   });
   
   DOM.shareMenuBtn.addEventListener('click', shareMenu);
+  DOM.omakaseBtn.addEventListener('click', pourOmakase);
 
   // Time-throttled rather than rAF-throttled: highlighting which course you
   // are in is not animation, and this keeps working when frames do not.

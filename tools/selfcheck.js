@@ -289,6 +289,25 @@
     });
     check(!behind.length, 'menu: every jump clears the pinned bar', behind.join(' '));
 
+    // "お任せで" must only ever pour what the host can actually make, and
+    // must respect the half of the index the guest is looking at.
+    const omakase = document.getElementById('btn-omakase');
+    check(visible(omakase), 'menu: the omakase button is offered');
+    setDrinkType('mocktail');
+    const poured = [];
+    for (let i = 0; i < 8; i++) {
+      pourOmakase();
+      poured.push(document.getElementById('cocktail-name').textContent);
+      location.hash = `#/menu/${code}`;
+      applyRoute();
+    }
+    check(poured.every(n => collectionsByName.mocktail.has(n)),
+          'omakase pours nothing alcoholic under the mocktail switch',
+          [...new Set(poured)].join(' '));
+    check(poured.every((n, i) => i === 0 || n !== poured[i - 1]),
+          'omakase does not pour the same drink twice running');
+    setDrinkType('all');
+
     // A shared link must open even when the reader is on the other half.
     const mocktailKey = Object.keys(cocktailDatabase).find(k => isMocktailKey(k));
     const mocktailSlug = routeSlugByName.get(cocktailDatabase[mocktailKey].name);

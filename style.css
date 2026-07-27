@@ -916,6 +916,32 @@ input:focus-visible {
   line-height: 2;
 }
 
+/* For the guest who would rather be handed something than choose. */
+.omakase-btn {
+  min-height: 44px;
+  margin-top: 20px;
+  padding: 11px 26px;
+  border: 1px solid var(--line-strong);
+  background: rgba(var(--brass-rgb), .07);
+  color: #e6d7b8;
+  cursor: pointer;
+  font-size: .76rem;
+  letter-spacing: .12em;
+  transition: background .3s ease, border-color .3s ease, color .3s ease, transform .3s var(--ease-out);
+}
+
+.omakase-btn:hover {
+  background: rgba(var(--brass-rgb), .16);
+  border-color: var(--brass);
+  color: var(--paper);
+  transform: translateY(-1px);
+}
+
+/* Paper has no one to ask. */
+@media print {
+  .omakase-btn { display: none !important; }
+}
+
 /* --------------------------------------------------------------------------
    Handing the menu over
    One control, inside My Bar, beside the count it acts on. It is the only
