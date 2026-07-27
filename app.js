@@ -3123,6 +3123,10 @@ function tintCard(card, data) {
 
 function cancelCardAnimations(container = document) {
   container.querySelectorAll('.gallery-card').forEach(card => {
+    if (card._hoverDelay) {
+      clearTimeout(card._hoverDelay);
+      card._hoverDelay = null;
+    }
     if (card._animId) {
       cancelAnimationFrame(card._animId);
       card._animId = null;
@@ -3141,6 +3145,7 @@ function cancelCardAnimations(container = document) {
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const HOVER_FRAME_MS = 1000 / 30;
+const HOVER_SETTLE_MS = 90;
 const IDLE_THUMB_CHUNK = 6;
 
 const whenIdle = window.requestIdleCallback
@@ -3207,26 +3212,37 @@ function attachThumb(card, canvas, data, baseKey) {
 
   const animState = { phase: 0, bubbles: [], crushedIce: [] };
 
+  // Sweeping the cursor across the grid used to start and tear down a redraw
+  // loop for every card it passed over, stealing frames from the glow the user
+  // is actually looking at. The drink only starts moving once the pointer
+  // settles; lighting up stays immediate, and is pure CSS.
   card.addEventListener('mouseenter', () => {
-    if (card._animId) return;
-    let last = 0;
-    const tick = (now) => {
-      if (now - last >= HOVER_FRAME_MS) {
-        last = now;
-        animState.phase += 0.12;
-        drawMiniThumbnailAnimated(canvas, data, baseKey, animState);
-      }
+    if (card._animId || card._hoverDelay) return;
+    card._hoverDelay = setTimeout(() => {
+      card._hoverDelay = null;
+      let last = 0;
+      const tick = (now) => {
+        if (now - last >= HOVER_FRAME_MS) {
+          last = now;
+          animState.phase += 0.12;
+          drawMiniThumbnailAnimated(canvas, data, baseKey, animState);
+        }
+        card._animId = requestAnimationFrame(tick);
+      };
       card._animId = requestAnimationFrame(tick);
-    };
-    card._animId = requestAnimationFrame(tick);
+    }, HOVER_SETTLE_MS);
   });
 
   card.addEventListener('mouseleave', () => {
+    if (card._hoverDelay) {
+      clearTimeout(card._hoverDelay);
+      card._hoverDelay = null;
+    }
     if (card._animId) {
       cancelAnimationFrame(card._animId);
       card._animId = null;
+      canvas._drawStill();
     }
-    drawStill();
   });
 }
 
