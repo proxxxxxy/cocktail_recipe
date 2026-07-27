@@ -4941,6 +4941,30 @@ function buildDrinkList(shelf = state.menuShelf) {
   return list.sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'));
 }
 
+/**
+ * Everything one drink can be searched by, lowercased and joined once.
+ *
+ * Names and the base were all it matched, which answers "where is the
+ * Negroni" and nothing else. The question actually asked across a bar is
+ * "what can you make with chartreuse" — so the ingredient list, the mixer
+ * ids, the taste words and the glass are all in here too. Cached on the
+ * recipe, because a fast typist re-filters the whole book on every keystroke.
+ */
+function searchHaystack(item) {
+  if (item.data._haystack) return item.data._haystack;
+  const parts = item.key.split('+');
+  const words = [
+    item.data.name, item.data.enName, item.baseJp, item.baseKey,
+    glassLabel(item.data),
+    ...item.data.taste,
+    ...item.data.ingredients.map(i => i.name),
+    ...parts,
+    ...parts.map(p => mixerDefinitions[p]?.name || baseNameMap[p] || ''),
+    ...parts.map(p => mixerDefinitions[p]?.en || ''),
+  ];
+  return (item.data._haystack = words.join(' ').toLowerCase());
+}
+
 function renderGallery(query, animate = false) {
   cancelCardAnimations(DOM.galleryGrid);
   DOM.galleryGrid.innerHTML = '';
@@ -4964,10 +4988,7 @@ function renderGallery(query, animate = false) {
       return false;
     }
     if (!q) return true;
-    return item.data.name.toLowerCase().includes(q)
-        || item.data.enName.toLowerCase().includes(q)
-        || item.baseJp.includes(q)
-        || item.baseKey.includes(q);
+    return searchHaystack(item).includes(q);
   });
   
   if (filtered.length === 0) {
@@ -5113,6 +5134,9 @@ function createGalleryCard({ key, data, baseKey, baseJp }, index) {
   const thumbCanvas = document.createElement('canvas');
   thumbCanvas.width = 180;
   thumbCanvas.height = 230;
+  // A painting of the drink, next to the drink's name. Announcing it would
+  // only make a screen reader say the same thing twice.
+  thumbCanvas.setAttribute('aria-hidden', 'true');
   thumbDiv.appendChild(thumbCanvas);
 
   const infoDiv = document.createElement('div');
@@ -5290,6 +5314,56 @@ function serveOf(data) {
   if (collectionsByName.digestif.has(data.name)) return 'digestif';
   return 'anytime';
 }
+
+/**
+ * Glassware.
+ *
+ * Most of it follows from how the drink is iced — no ice means a stemmed
+ * glass, crushed means something you can pack, cubes mean a tumbler — and
+ * that derivation is right for the great majority. It is wrong in exactly
+ * the places tradition overrules physics: sparkling drinks want a flute
+ * whatever their ice, a Moscow Mule wants copper, a Sazerac is served in a
+ * chilled rocks glass with no ice in it at all. Those are named.
+ */
+const GLASS_NAMES = {
+  cocktail: 'カクテルグラス',
+  rocks: 'ロックグラス',
+  highball: 'タンブラー',
+  collins: 'コリンズグラス',
+  flute: 'フルートグラス',
+  wine: 'ワイングラス',
+  mug: '銅マグ',
+  hurricane: 'ハリケーングラス',
+  julep: 'ジュレップカップ',
+  liqueur: 'リキュールグラス',
+};
+
+const GLASS_BY_NAME = {
+  'フレンチ75': 'flute', 'キール・ロワイヤル': 'flute', 'ミモザ': 'flute',
+  'ベリーニ': 'flute', 'デス・イン・ジ・アフタヌーン': 'flute',
+  'キール': 'wine', 'スプリッツァー': 'wine', 'オペレーター': 'wine',
+  'アペロール・スプリッツ': 'wine',
+  'モスコミュール': 'mug', 'ヴァージン・モスコミュール': 'mug',
+  'ダーク・アンド・ストーミー': 'mug',
+  'ピニャ・コラーダ': 'hurricane', 'チチ': 'hurricane', 'ブルー・ハワイ': 'hurricane',
+  'ヴァージン・ピニャコラーダ': 'hurricane', 'プランターズ・パンチ': 'hurricane',
+  'ジン・フィズ': 'collins', 'ピーチ・フィズ': 'collins', 'ボストン・クーラー': 'collins',
+  'レモネード': 'collins', 'シンガポール・スリング': 'collins',
+  'エンジェルス・キッス': 'liqueur',
+  'サゼラック': 'rocks', 'オールド・ファッションド': 'rocks', 'ネグローニ': 'rocks',
+  'ブールヴァルディエ': 'rocks', 'ミント・ジュレップ': 'julep',
+};
+
+function glassOf(data) {
+  const named = GLASS_BY_NAME[data.name];
+  if (named) return named;
+  if (data.ice === 'none') return 'cocktail';
+  if (data.ice === 'crushed') return 'julep';
+  if (data.abv >= 20) return 'rocks';
+  return 'highball';
+}
+
+const glassLabel = (data) => GLASS_NAMES[glassOf(data)] || GLASS_NAMES.highball;
 
 /** Northern-hemisphere meteorological seasons, which is what Tokyo uses. */
 function currentSeason(month = new Date().getMonth() + 1) {
@@ -5782,7 +5856,9 @@ function updateUI() {
     let iceText = '氷なし';
     if (selectedIce === 'cube') iceText = 'キューブアイス';
     else if (selectedIce === 'crushed') iceText = 'クラッシュアイス';
-    DOM.iceStyleDisplay.textContent = iceText;
+    // What it is served in comes before what is in it: a bartender reaches
+    // for the glass first.
+    DOM.iceStyleDisplay.textContent = `${glassLabel(cocktail)} ・ ${iceText}`;
     
     DOM.tasteBadges.innerHTML = '';
     cocktail.taste.forEach(t => {

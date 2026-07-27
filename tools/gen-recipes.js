@@ -21,6 +21,37 @@ const ALCOHOL_FREE_BASES = new Set([
   'ginger', 'orange', 'soda', 'tomato', 'pineapple', 'grapefruit', 'cranberry',
 ]);
 
+// Kept in step with GLASS_BY_NAME / glassOf() in app.js. app.js cannot be
+// required from here — it touches window the moment it loads — so the rule
+// is restated rather than shared.
+const GLASS_BY_NAME = {
+  'フレンチ75': 'フルートグラス', 'キール・ロワイヤル': 'フルートグラス',
+  'ミモザ': 'フルートグラス', 'ベリーニ': 'フルートグラス',
+  'デス・イン・ジ・アフタヌーン': 'フルートグラス',
+  'キール': 'ワイングラス', 'スプリッツァー': 'ワイングラス',
+  'オペレーター': 'ワイングラス', 'アペロール・スプリッツ': 'ワイングラス',
+  'モスコミュール': '銅マグ', 'ヴァージン・モスコミュール': '銅マグ',
+  'ダーク・アンド・ストーミー': '銅マグ',
+  'ピニャ・コラーダ': 'ハリケーングラス', 'チチ': 'ハリケーングラス',
+  'ブルー・ハワイ': 'ハリケーングラス', 'ヴァージン・ピニャコラーダ': 'ハリケーングラス',
+  'プランターズ・パンチ': 'ハリケーングラス',
+  'ジン・フィズ': 'コリンズグラス', 'ピーチ・フィズ': 'コリンズグラス',
+  'ボストン・クーラー': 'コリンズグラス', 'レモネード': 'コリンズグラス',
+  'シンガポール・スリング': 'コリンズグラス',
+  'エンジェルス・キッス': 'リキュールグラス',
+  'サゼラック': 'ロックグラス', 'オールド・ファッションド': 'ロックグラス',
+  'ネグローニ': 'ロックグラス', 'ブールヴァルディエ': 'ロックグラス',
+  'ミント・ジュレップ': 'ジュレップカップ',
+};
+
+function glassOf(data) {
+  if (GLASS_BY_NAME[data.name]) return GLASS_BY_NAME[data.name];
+  if (data.ice === 'none') return 'カクテルグラス';
+  if (data.ice === 'crushed') return 'ジュレップカップ';
+  if (data.abv >= 20) return 'ロックグラス';
+  return 'タンブラー';
+}
+
 // Section order and headings. A base spirit missing from this list is an error
 // rather than a silent omission from the document.
 const SECTIONS = [
@@ -101,7 +132,7 @@ function build(db) {
   const lines = [
     '# カクテル・レシピ集 (実在カクテル厳選版)',
     '',
-    `本書は、16種のベース（6大スピリッツ ＋ 3種のリキュール ＋ 7種のノンアルコール素材）と各種割り材を組み合わせた、実在するスタンダードカクテル（IBA公認レシピ含む全${total}種類、うちノンアルコールのモクテル${mocktails}種類）のレシピ集です。架空のカクテルは収録せず、各カクテルに最適な**氷のスタイル（キューブアイス、クラッシュアイス、氷なし）**を明記しています。`,
+    `本書は、${SECTIONS.length}種のベース（酒${SECTIONS.length - ALCOHOL_FREE_BASES.size}種 ＋ ノンアルコール素材${ALCOHOL_FREE_BASES.size}種）と各種割り材を組み合わせた、実在するスタンダードカクテル（IBA公認レシピ含む全${total}種類、うちノンアルコールのモクテル${mocktails}種類）のレシピ集です。架空のカクテルは収録せず、各カクテルについて**グラス**と**氷のスタイル（キューブアイス、クラッシュアイス、氷なし）**を明記しています。`,
     '',
     '> このファイルは `app.js` のカクテルデータベースから自動生成されています。内容を変更する場合は `app.js` を編集し、`node tools/gen-recipes.js` を実行してください。',
     '',
@@ -124,7 +155,8 @@ function build(db) {
       lines.push(
         `### ${n}. ${data.name} (${data.enName})${tag}`,
         `*   **組み合わせ**: ${key.split('+').join(' + ')}`,
-        `*   **度数**: ${strength} | **味わい**: ${data.taste.join('・')} | **氷のスタイル**: ${ice}`,
+        `*   **度数**: ${strength} | **味わい**: ${data.taste.join('・')}`,
+        `*   **グラス**: ${glassOf(data)} | **氷のスタイル**: ${ice}`,
         `*   **材料**: ${materials}`,
         `*   **作り方**: ${data.method.join(' ')}`,
         '',

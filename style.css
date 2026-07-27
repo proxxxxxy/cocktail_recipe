@@ -73,6 +73,29 @@ input:focus-visible {
   display: none !important;
 }
 
+/* Out of the way until it is tabbed to, then the first thing on the page.
+   Without it, reaching the drinks by keyboard means passing the masthead,
+   the hero and the switch on every single visit. */
+.skip-link {
+  position: fixed;
+  z-index: 200;
+  top: 8px;
+  left: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--brass);
+  background: var(--panel-solid);
+  color: var(--paper);
+  font: 500 .72rem/1 var(--sans);
+  letter-spacing: .08em;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform .2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-backdrop {
   position: fixed;
   inset: 0;
@@ -2020,6 +2043,187 @@ input:focus-visible {
 .motion-ready .reveal-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Print
+   A menu handed round a table is sometimes a piece of paper. Everything that
+   makes this beautiful on a screen — the photograph behind it, the grain, the
+   painted glasses, the gold on near-black — is either invisible or ruinous in
+   ink, so print gets the other treatment entirely: black on white, the names,
+   what is in them, and nothing else.
+   -------------------------------------------------------------------------- */
+@media print {
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Atmosphere, navigation, and every control: none of it survives paper. */
+  .site-backdrop,
+  .grain,
+  .intro-curtain,
+  .site-header-bar,
+  .intro,
+  .drink-type-bar,
+  .mode-tabs,
+  .course-nav,
+  .gallery-filters,
+  .gallery-search-wrapper,
+  .visualizer-card,
+  .action-row,
+  .starter-set-accordion,
+  .mybar-checkbox-group,
+  .mybar-tips-section,
+  .menu-share-btn,
+  .menu-share-status,
+  .site-footer,
+  .gallery-card-thumb,
+  .gallery-card::after {
+    display: none !important;
+  }
+
+  .app-shell,
+  .simulator-layout,
+  .controls-card,
+  .result-section {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+
+  .menu-masthead {
+    margin-bottom: 10mm;
+    text-align: left;
+  }
+
+  .menu-title,
+  .menu-course-heading h2,
+  .cocktail-name {
+    color: #000 !important;
+    font-size: 16pt;
+  }
+
+  .menu-title {
+    font-size: 22pt;
+  }
+
+  .eyebrow,
+  .menu-course-heading > span,
+  .detail-label {
+    color: #555 !important;
+    font-size: 7pt;
+    letter-spacing: .2em;
+  }
+
+  .menu-note,
+  .menu-course-heading p {
+    color: #333 !important;
+    font-size: 9pt;
+  }
+
+  /* Courses should not be split down the middle by a page break. */
+  .menu-course {
+    break-inside: avoid;
+    margin-top: 8mm;
+    padding-top: 4mm;
+    border-top: .3pt solid #999;
+  }
+
+  /* Without their photographs the cards become a plain two-column list. */
+  .gallery-grid,
+  .simulator-layout[data-mode="dictionary"] .gallery-grid,
+  .simulator-layout[data-mode="menu"] .gallery-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2mm 8mm !important;
+  }
+
+  .gallery-card {
+    break-inside: avoid;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    padding: 1mm 0 !important;
+  }
+
+  .gallery-card-info {
+    position: static !important;
+    padding: 0 !important;
+    background: none !important;
+  }
+
+  .gallery-card-name {
+    color: #000 !important;
+    font-size: 10pt;
+  }
+
+  .gallery-card-en {
+    display: block !important;
+    color: #666 !important;
+    font-size: 7pt;
+  }
+
+  .gallery-card-base {
+    display: inline !important;
+  }
+
+  .gallery-card-tag,
+  .gallery-card-abv {
+    color: #444 !important;
+    font-size: 7.5pt;
+  }
+
+  .iba-badge,
+  .mocktail-badge {
+    position: static !important;
+    border-color: #999 !important;
+    background: none !important;
+    color: #333 !important;
+    font-size: 6pt;
+  }
+
+  .badge-long { display: inline !important; }
+  .badge-short { display: none !important; }
+
+  /* A recipe printed on its own is a card for the well. */
+  .result-section {
+    color: #000 !important;
+  }
+
+  .cocktail-desc p,
+  .ingredients-list li,
+  .method-steps li,
+  .abv-value,
+  .ice-style-container,
+  .badge {
+    color: #000 !important;
+    font-size: 10pt;
+  }
+
+  .ing-amount,
+  .recipe-ing-amount {
+    color: #000 !important;
+  }
+
+  .recipe-content {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm;
+  }
+
+  a[href]::after {
+    content: "";
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

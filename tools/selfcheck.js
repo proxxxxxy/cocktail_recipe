@@ -233,22 +233,29 @@
           document.querySelectorAll('.menu-course').length,
           'menu: one bar button per course');
 
-    // Every course button must land its heading clear of the pinned chrome.
-    // Opening a recipe schedules a smooth scrollIntoView 100ms out; left to
-    // land mid-measurement it drags the page from under the first reading.
+    // Every course button must land its heading clear of the pinned bar.
+    //
+    // Asserted as geometry rather than by actually scrolling: opening a
+    // recipe schedules a smooth scrollIntoView 100ms out, and letting that
+    // land mid-measurement made this check flap between runs for reasons
+    // that had nothing to do with the thing being tested. Where the bar
+    // comes to rest and where a jump puts the heading are both knowable
+    // without moving the page.
+    const barRestsAt = parseFloat(getComputedStyle(nav).top) || 0;
+    const barBottom = barRestsAt + nav.offsetHeight;
     const behind = [];
-    document.documentElement.style.scrollBehavior = 'auto';
-    window.scrollTo({ top: 0 });
-    await wait(200);
     nav.querySelectorAll('.course-nav-btn').forEach(btn => {
       const section = document.getElementById(btn.dataset.course);
-      window.scrollTo({ top: courseScrollTarget(section) });
-      const heading = section.querySelector('.menu-course-heading').getBoundingClientRect().top;
-      const barBottom = nav.getBoundingClientRect().bottom;
-      if (heading < barBottom) behind.push(btn.dataset.course);
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const headingTop = section.querySelector('.menu-course-heading')
+        .getBoundingClientRect().top + window.scrollY;
+      // Where the heading sits in the viewport once the jump has landed.
+      const restingTop = headingTop - courseScrollTarget(section);
+      if (restingTop < barBottom) {
+        behind.push(`${btn.dataset.course} by ${Math.round(barBottom - restingTop)}px`);
+      }
+      if (sectionTop < 0) behind.push(`${btn.dataset.course} above the page`);
     });
-    window.scrollTo({ top: 0 });
-    document.documentElement.style.scrollBehavior = '';
     check(!behind.length, 'menu: every jump clears the pinned bar', behind.join(' '));
 
     // A shared link must open even when the reader is on the other half.
