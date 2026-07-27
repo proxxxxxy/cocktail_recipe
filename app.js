@@ -328,6 +328,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: null,
     ice: "cube",
+    summer: true,
     saltRim: true,
     ingredients: [
       { name: "ウォッカ", amount: "40 ml" },
@@ -473,6 +474,7 @@ const cocktailDatabase = {
     hasBubbles: true,
     garnish: "lime",
     ice: "cube",
+    summer: true,
     isIBA: true,
     ingredients: [
       { name: "ホワイト・ラム", amount: "50 ml" },
@@ -494,6 +496,7 @@ const cocktailDatabase = {
     hasBubbles: true,
     garnish: "mint",
     ice: "crushed",
+    summer: true,
     isIBA: true,
     ingredients: [
       { name: "ホワイト・ラム", amount: "45 ml" },
@@ -763,6 +766,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lime",
     ice: "none",
+    summer: true,
     saltRim: true,
     isIBA: true,
     ingredients: [
@@ -827,6 +831,7 @@ const cocktailDatabase = {
     hasBubbles: true,
     garnish: "lime",
     ice: "cube",
+    summer: true,
     isIBA: true,
     ingredients: [
       { name: "テキーラ", amount: "45 ml" },
@@ -1533,6 +1538,7 @@ const cocktailDatabase = {
     hasBubbles: true,
     garnish: "lime",
     ice: "cube",
+    summer: true,
     isIBA: true,
     ingredients: [
       { name: "ウォッカ", amount: "45 ml" },
@@ -1620,6 +1626,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lemon",
     ice: "cube",
+    summer: true,
     ingredients: [
       { name: "ウォッカ", amount: "30 ml" },
       { name: "ブルーキュラソー", amount: "20 ml" },
@@ -1641,6 +1648,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "cherry",
     ice: "crushed",
+    summer: true,
     ingredients: [
       { name: "ホワイト・ラム", amount: "30 ml" },
       { name: "ブルーキュラソー", amount: "15 ml" },
@@ -1663,6 +1671,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lime",
     ice: "none",
+    summer: true,
     saltRim: true,
     ingredients: [
       { name: "テキーラ", amount: "30 ml" },
@@ -1687,6 +1696,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lemon",
     ice: "cube",
+    summer: true,
     ingredients: [
       { name: "ピーチリキュール", amount: "20 ml" },
       { name: "ブルーキュラソー", amount: "10 ml" },
@@ -1708,6 +1718,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lemon",
     ice: "none",
+    summer: true,
     ingredients: [
       { name: "ブルーキュラソー", amount: "30 ml" },
       { name: "ドライ・ジン", amount: "15 ml" },
@@ -1730,6 +1741,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "cherry",
     ice: "crushed",
+    summer: true,
     isIBA: true,
     ingredients: [
       { name: "ホワイト・ラム", amount: "30 ml" },
@@ -1752,6 +1764,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "mint",
     ice: "crushed",
+    summer: true,
     isIBA: true,
     ingredients: [
       { name: "バーボン・ウイスキー", amount: "60 ml" },
@@ -1764,6 +1777,234 @@ const cocktailDatabase = {
       "クラッシュアイスをグラスの半分まで詰め、バーボンを注ぎます。",
       "グラスの外側が白く霜で覆われるまでステアします。",
       "クラッシュアイスを山盛りに足し、ミントの束を高く飾ります。"
+    ]
+  },
+
+  // --- CRANBERRY FAMILY ---
+  "vodka+cranberry+curacao+lime": {
+    name: "コスモポリタン",
+    enName: "Cosmopolitan",
+    abv: 24,
+    taste: ["甘酸っぱい", "華やか", "ドライ"],
+    description: "90年代のニューヨークで一世を風靡し、今なお愛され続けるモダンクラシック。クランベリーのルビー色と、ライムとキュラソーが描く輪郭の美しさで知られます。",
+    color: "rgba(199, 43, 74, 0.85)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "none",
+    isIBA: true,
+    summer: true,
+    ingredients: [
+      { name: "ウォッカ (シトロン)", amount: "40 ml" },
+      { name: "ホワイトキュラソー", amount: "15 ml" },
+      { name: "クランベリージュース", amount: "30 ml" },
+      { name: "ライムジュース", amount: "15 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、しっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎます。",
+      "ライムを飾ります。"
+    ]
+  },
+  "vodka+cranberry+grapefruit": {
+    name: "シーブリーズ",
+    enName: "Sea Breeze",
+    abv: 10,
+    taste: ["さっぱり", "ほろ苦い", "フルーティー"],
+    description: "「海風」の名の通り、クランベリーの酸味とグレープフルーツのほろ苦さが涼やかに抜けていく一杯。夏の午後にふさわしい、軽やかなロングドリンクです。",
+    color: "rgba(214, 74, 74, 0.75)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "ウォッカ", amount: "30 ml" },
+      { name: "クランベリージュース", amount: "60 ml" },
+      { name: "グレープフルーツジュース", amount: "60 ml" }
+    ],
+    method: [
+      "氷を詰めたタンブラーにウォッカを注ぎます。",
+      "クランベリージュースとグレープフルーツジュースを加えます。",
+      "軽くステアし、ライムを飾ります。"
+    ]
+  },
+  "vodka+cranberry": {
+    name: "ケープ・コッダー",
+    enName: "Cape Codder",
+    abv: 12,
+    taste: ["さっぱり", "甘酸っぱい", "すっきり"],
+    description: "クランベリーの名産地であるアメリカ・ケープコッド岬にちなんだ、シンプルきわまりない一杯。材料は2つだけですが、それゆえにクランベリーの酸味が素直に立ちます。",
+    color: "rgba(190, 33, 55, 0.85)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "ウォッカ", amount: "45 ml" },
+      { name: "クランベリージュース", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を詰めたタンブラーにウォッカを注ぎます。",
+      "冷えたクランベリージュースで満たし、軽くステアします。",
+      "ライムを絞って飾ります。"
+    ]
+  },
+  "vodka+cranberry+orange": {
+    name: "マドラス",
+    enName: "Madras",
+    abv: 10,
+    taste: ["フルーティー", "甘酸っぱい", "ジューシー"],
+    description: "クランベリーにオレンジを重ねた、二層のグラデーションが美しいロングドリンク。インドの古都マドラスで織られる鮮やかな更紗の色合いが名前の由来です。",
+    color: "rgba(206, 68, 47, 0.8)",
+    hasBubbles: false,
+    garnish: "orange",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "ウォッカ", amount: "45 ml" },
+      { name: "クランベリージュース", amount: "90 ml" },
+      { name: "オレンジジュース", amount: "30 ml" }
+    ],
+    method: [
+      "氷を詰めたタンブラーにウォッカとクランベリージュースを注ぎ、ステアします。",
+      "オレンジジュースを静かに注ぎ、層を作ります。",
+      "オレンジスライスを飾ります。"
+    ]
+  },
+  "vodka+cranberry+orange+peach": {
+    name: "セックス・オン・ザ・ビーチ",
+    enName: "Sex on the Beach",
+    abv: 12,
+    taste: ["フルーティー", "甘い", "トロピカル"],
+    description: "80年代のフロリダで生まれ、映画『カクテル』で一躍有名になった一杯。ピーチの甘い香りとクランベリーの酸味が溶け合う、名前もろとも夏そのもののカクテルです。",
+    color: "rgba(224, 92, 76, 0.8)",
+    hasBubbles: false,
+    garnish: "orange",
+    ice: "cube",
+    isIBA: true,
+    summer: true,
+    ingredients: [
+      { name: "ウォッカ", amount: "40 ml" },
+      { name: "ピーチリキュール", amount: "20 ml" },
+      { name: "クランベリージュース", amount: "40 ml" },
+      { name: "オレンジジュース", amount: "40 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、シェイクします。",
+      "クラッシュアイスまたは氷を詰めたグラスに注ぎます。",
+      "オレンジスライスを飾ります。"
+    ]
+  },
+
+  // --- TROPICAL & SUMMER STANDARDS ---
+  "rum+blue_curacao+lime": {
+    name: "スカイダイビング",
+    enName: "Sky Diving",
+    abv: 25,
+    taste: ["爽快", "甘酸っぱい", "キレがある"],
+    description: "1967年、全日本バーテンダー協会のコンクールで最優秀賞に輝いた日本生まれのクラシック。抜けるような青空に飛び込む瞬間を、ブルーキュラソーの青で表現しています。",
+    color: "rgba(20, 132, 200, 0.85)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "none",
+    summer: true,
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "30 ml" },
+      { name: "ブルーキュラソー", amount: "20 ml" },
+      { name: "ライムジュース", amount: "10 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、シェイクします。",
+      "冷やしたカクテルグラスに注ぎます。"
+    ]
+  },
+  "vodka+coconut+pineapple": {
+    name: "チチ",
+    enName: "Chi Chi",
+    abv: 9,
+    taste: ["まろやか", "トロピカル", "甘い"],
+    description: "ピニャ・コラーダのラムをウォッカに替えた、より軽やかな姉妹分。ハワイの言葉で「粋な」「おしゃれな」を意味し、クセのないウォッカがココナッツの風味を素直に通します。",
+    color: "rgba(250, 245, 230, 0.92)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "crushed",
+    summer: true,
+    ingredients: [
+      { name: "ウォッカ", amount: "30 ml" },
+      { name: "ココナッツミルク", amount: "45 ml" },
+      { name: "パイナップルジュース", amount: "80 ml" }
+    ],
+    method: [
+      "シェイカー（またはブレンダー）に氷と全ての材料を入れます。",
+      "全体が滑らかになるまでしっかりとシェイクします。",
+      "クラッシュアイスを詰めたグラスに注ぎ、パイナップルとチェリーを飾ります。"
+    ]
+  },
+  "rum+grenadine+maraschino_liq+pineapple": {
+    name: "メアリー・ピックフォード",
+    enName: "Mary Pickford",
+    abv: 18,
+    taste: ["フルーティー", "甘い", "華やか"],
+    description: "禁酒法時代のキューバで、サイレント映画の大スターに捧げられた一杯。パイナップルの果実味にマラスキーノの気品ある香りが重なり、淡い珊瑚色に仕上がります。",
+    color: "rgba(233, 128, 118, 0.82)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "none",
+    summer: true,
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "45 ml" },
+      { name: "パイナップルジュース", amount: "45 ml" },
+      { name: "グレナデンシロップ", amount: "1 tsp" },
+      { name: "マラスキーノ", amount: "1 tsp" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、しっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎます。",
+      "マラスキーノ・チェリーを沈めます。"
+    ]
+  },
+  "rum+grenadine+lemon+orange+pineapple": {
+    name: "プランターズ・パンチ",
+    enName: "Planter's Punch",
+    abv: 15,
+    taste: ["フルーティー", "甘酸っぱい", "芳醇"],
+    description: "カリブの農園主（プランター）たちが暑さをしのぐために飲んだとされる、トロピカルカクテルの原点。ダークラムの深いコクを、たっぷりの果汁が受け止めます。",
+    color: "rgba(226, 108, 48, 0.82)",
+    hasBubbles: false,
+    garnish: "orange",
+    ice: "crushed",
+    summer: true,
+    ingredients: [
+      { name: "ダーク・ラム", amount: "45 ml" },
+      { name: "オレンジジュース", amount: "30 ml" },
+      { name: "パイナップルジュース", amount: "30 ml" },
+      { name: "レモンジュース", amount: "20 ml" },
+      { name: "グレナデンシロップ", amount: "1 tsp" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、シェイクします。",
+      "クラッシュアイスを詰めた大きめのグラスに注ぎます。",
+      "オレンジとチェリーを飾ります。"
+    ]
+  },
+  "gin+curacao+pineapple": {
+    name: "ハワイアン",
+    enName: "Hawaiian",
+    abv: 24,
+    taste: ["フルーティー", "甘酸っぱい", "華やか"],
+    description: "南国の名を冠しながら、実際はきりりと冷えたショートカクテル。ジンのボタニカルにパイナップルの甘酸っぱさが乗り、キュラソーが全体を一本の線でまとめます。",
+    color: "rgba(240, 219, 138, 0.8)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "none",
+    summer: true,
+    ingredients: [
+      { name: "ドライ・ジン", amount: "40 ml" },
+      { name: "パイナップルジュース", amount: "15 ml" },
+      { name: "ホワイトキュラソー", amount: "1 tsp" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、シェイクします。",
+      "冷やしたカクテルグラスに注ぎます。"
     ]
   }
 };
@@ -1794,6 +2035,7 @@ const mixerDefinitions = {
   coconut: { name: "ココナッツミルク", en: "COCONUT MILK", icon: "CN", color: "rgba(252, 248, 235, 0.95)" },
   lime: { name: "ライムジュース", en: "LIME JUICE", icon: "LI", color: "rgba(197, 225, 165, 0.5)" },
   grapefruit: { name: "グレープフルーツ", en: "GRAPEFRUIT JUICE", icon: "GF", color: "rgba(255, 245, 157, 0.7)" },
+  cranberry: { name: "クランベリージュース", en: "CRANBERRY JUICE", icon: "CB", color: "rgba(178, 24, 44, 0.82)" },
   salt: { name: "食塩 (スノースタイル用)", en: "SALT RIM", icon: "SL", color: "rgba(255, 255, 255, 0.9)" },
   pineapple: { name: "パイナップル", en: "PINEAPPLE JUICE", icon: "PJ", color: "rgba(255, 235, 59, 0.7)" },
   tomato: { name: "トマトジュース", en: "TOMATO JUICE", icon: "TJ", color: "rgba(211, 47, 47, 0.9)" },
@@ -1812,6 +2054,7 @@ const mixerDefinitions = {
   cacao: { name: "クレーム・ド・カカオ", en: "CACAO LIQUEUR", icon: "CC", color: "rgba(121, 85, 72, 0.8)" },
   coffee: { name: "コーヒーリキュール", en: "COFFEE LIQUEUR", icon: "KL", color: "rgba(62, 39, 35, 0.9)" },
   cassis: { name: "カシスリキュール", en: "CASSIS LIQUEUR", icon: "CA", color: "rgba(136, 14, 79, 0.8)" },
+  peach: { name: "ピーチリキュール", en: "PEACH LIQUEUR", icon: "PC", color: "rgba(255, 183, 156, 0.75)" },
   espresso: { name: "エスプレッソ", en: "ESPRESSO", icon: "ES", color: "rgba(33, 33, 33, 0.95)" },
   maraschino_liq: { name: "マラスキーノ", en: "MARASCHINO LIQUEUR", icon: "ML", color: "rgba(255, 255, 255, 0.1)" },
   maraschino_cherry: { name: "マラスキーノ・チェリー", en: "MARASCHINO CHERRY", icon: "MC", color: "rgba(213, 0, 0, 0.9)" },
@@ -1848,6 +2091,53 @@ const state = {
 
 // Pour timeline: 0→1 fills the glass, 1→POUR_END lets the surface settle.
 const POUR_END = 1.55;
+
+// ==========================================================================
+// 2b. PERSISTENCE
+// The bottle shelf is the one thing worth remembering between visits — it is
+// tedious to re-tick thirty ingredients, especially on a phone. Everything
+// else is cheap to re-derive, so nothing else is stored.
+// ==========================================================================
+const MY_BAR_STORAGE_KEY = 'antigravity.mybar.v1';
+
+/** Private browsing and blocked storage both throw; neither is worth an error. */
+function readStoredShelf() {
+  let raw;
+  try {
+    raw = localStorage.getItem(MY_BAR_STORAGE_KEY);
+  } catch {
+    return [];
+  }
+  if (!raw) return [];
+
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return [];
+  }
+  if (!Array.isArray(parsed)) return [];
+
+  // Drop anything the app no longer knows about, so a renamed or removed
+  // ingredient cannot resurrect itself as an unmatchable entry. Checked with
+  // hasOwnProperty rather than a plain lookup: "__proto__" and "constructor"
+  // are truthy on any object literal and would otherwise sail through.
+  const known = (obj, id) => Object.prototype.hasOwnProperty.call(obj, id);
+  return parsed.filter(id =>
+    typeof id === 'string' && (known(baseTints, id) || known(mixerDefinitions, id))
+  );
+}
+
+function saveShelf() {
+  try {
+    localStorage.setItem(
+      MY_BAR_STORAGE_KEY,
+      JSON.stringify([...state.myBarIngredients])
+    );
+  } catch {
+    // Storage full or unavailable — the shelf just will not persist.
+  }
+}
 
 // Pre-generate positions for crushed ice shards so they remain steady
 const crushedIceData = [];
@@ -3278,10 +3568,15 @@ function renderGallery(query, animate = false) {
   
   list.sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'));
 
-  // Filter by base/IBA chip, then by search query (name, english name, or base)
+  // Filter by the active chip, then by search query (name, english name, base).
+  // A chip is either one of the data-driven predicates or a base spirit key.
+  const predicate = galleryPredicates[state.galleryFilter];
   const filtered = list.filter(item => {
-    if (state.galleryFilter === 'iba' && !item.data.isIBA) return false;
-    if (state.galleryFilter !== 'all' && state.galleryFilter !== 'iba' && item.baseKey !== state.galleryFilter) return false;
+    if (predicate) {
+      if (!predicate(item.data)) return false;
+    } else if (item.baseKey !== state.galleryFilter) {
+      return false;
+    }
     if (!q) return true;
     return item.data.name.toLowerCase().includes(q)
         || item.data.enName.toLowerCase().includes(q)
@@ -3307,7 +3602,7 @@ function renderGallery(query, animate = false) {
     card.style.setProperty('--i', index);
     tintCard(card, data);
 
-    if (data.isIBA) {
+    if (isIBACocktail(data)) {
       const ibaBadge = document.createElement('span');
       ibaBadge.className = 'iba-badge';
       ibaBadge.title = 'IBA Official Cocktail';
@@ -3348,17 +3643,7 @@ function renderGallery(query, animate = false) {
     card.appendChild(infoDiv);
     
     // Click handler: select this cocktail
-    card.addEventListener('click', () => {
-      const cocktail = cocktailDatabase[key];
-      if (cocktail) {
-        const parts = key.split('+');
-        state.selectedBase = parts[0];
-        state.selectedMixers = parts.slice(1);
-        state.selectedIce = cocktail.ice;
-        state.showResult = true;
-        updateUI();
-      }
-    });
+    card.addEventListener('click', () => openRecipe(key));
     
     fragment.appendChild(card);
     attachThumb(card, thumbCanvas, data, baseKey);
@@ -3386,11 +3671,140 @@ function countUpABV(el, target, animate) {
   el._numAnim = requestAnimationFrame(tick);
 }
 
-// Build the base/IBA filter chips shown above the archive gallery
+/**
+ * Collection membership is resolved by drink name, not by recipe key.
+ * Several cocktails exist under more than one key — margarita with and without
+ * a salt rim, moscow mule with and without lime — while the gallery shows one
+ * card per name. A flag set on the variant that loses the de-duplication would
+ * otherwise vanish from its collection without a trace.
+ */
+const collectionsByName = (() => {
+  const summer = new Set();
+  const iba = new Set();
+  Object.values(cocktailDatabase).forEach(c => {
+    if (c.summer) summer.add(c.name);
+    if (c.isIBA) iba.add(c.name);
+  });
+  return { summer, iba };
+})();
+
+const isIBACocktail = (data) => collectionsByName.iba.has(data.name);
+
+// ==========================================================================
+// 2c. ROUTING
+// The view lives in location.hash so a drink can be linked to directly, and
+// so the browser's back button steps back through the app instead of leaving
+// it — which on a phone is the difference between "back to the list" and
+// "goodbye". Slugs come from the English name, which is what a person would
+// expect to see in a shared URL.
+// ==========================================================================
+const routeKeyBySlug = new Map();
+const routeSlugByName = new Map();
+
+Object.entries(cocktailDatabase).forEach(([key, data]) => {
+  if (routeSlugByName.has(data.name)) return;   // one route per drink, like the gallery
+  const base = data.enName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  let slug = base || 'cocktail';
+  for (let n = 2; routeKeyBySlug.has(slug); n++) slug = `${base}-${n}`;
+  routeKeyBySlug.set(slug, key);
+  routeSlugByName.set(data.name, slug);
+});
+
+// While a route is being applied the view is following the URL, so it must not
+// turn around and write the URL back.
+let applyingRoute = false;
+
+// A bare URL and '#/' are the same view; compare them in one form so the
+// first tap back to the build tab does not push a redundant entry.
+const normalizedHash = () => location.hash || '#/';
+
+function currentRoute() {
+  if (state.showResult) {
+    const key = [state.selectedBase, ...[...state.selectedMixers].sort()].join('+');
+    const data = cocktailDatabase[key];
+    if (data && routeSlugByName.has(data.name)) {
+      return `#/recipe/${routeSlugByName.get(data.name)}`;
+    }
+  }
+  if (state.currentMode === 'dictionary') return '#/archive';
+  if (state.currentMode === 'mybar') return '#/mybar';
+  return '#/';
+}
+
+/** Push a history entry whenever the view genuinely changes identity. */
+function syncRoute() {
+  if (applyingRoute) return;
+  const desired = currentRoute();
+  if (normalizedHash() === desired) return;
+  // Intermediate build states all collapse to '#/', so fiddling with mixers
+  // does not litter the history.
+  history.pushState(null, '', desired);
+}
+
+function applyRoute() {
+  // The view already matches the URL. Browsers disagree about which events a
+  // fragment navigation fires — WebKit leans on hashchange, Chromium raises
+  // popstate as well — so both are listened for and the redundant one lands
+  // here and stops.
+  if (normalizedHash() === currentRoute()) return;
+
+  applyingRoute = true;
+  try {
+    const hash = normalizedHash();
+    const recipe = hash.match(/^#\/recipe\/(.+)$/);
+    if (recipe) {
+      const key = routeKeyBySlug.get(decodeURIComponent(recipe[1]));
+      if (key) {
+        // Land in the archive so "一覧へ戻る" has a list to return to.
+        setMode('dictionary');
+        openRecipe(key);
+        return;
+      }
+    }
+    if (hash === '#/archive') setMode('dictionary');
+    else if (hash === '#/mybar') setMode('mybar');
+    else setMode('build');
+  } finally {
+    applyingRoute = false;
+  }
+}
+
+/** Select a recipe by key and show it. The one way into the result panel. */
+function openRecipe(key) {
+  const cocktail = cocktailDatabase[key];
+  if (!cocktail) return false;
+  const parts = key.split('+');
+  state.selectedBase = parts[0];
+  state.selectedMixers = parts.slice(1);
+  state.selectedIce = cocktail.ice;
+  state.showResult = true;
+  updateUI();
+  return true;
+}
+
+/**
+ * Filters that read the data the cards already carry, rather than needing a
+ * field of their own. `summer` is the exception: what belongs in a seasonal
+ * collection is a judgement call, so it is tagged by hand in the database.
+ */
+const galleryPredicates = {
+  all: () => true,
+  iba: (data) => isIBACocktail(data),
+  summer: (data) => collectionsByName.summer.has(data.name),
+  light: (data) => data.abv <= 10,
+  strong: (data) => data.abv >= 25,
+  refreshing: (data) => data.taste.some(t => /さっぱり|爽快|すっきり|清涼感/.test(t)),
+};
+
+// Build the filter chips shown above the archive gallery
 function initGalleryFilters() {
   if (!DOM.galleryFilters) return;
   const chips = [
     { id: 'all', label: 'すべて' },
+    { id: 'summer', label: '☀ 夏向き' },
+    { id: 'refreshing', label: 'さっぱり' },
+    { id: 'light', label: '低アルコール' },
+    { id: 'strong', label: '強め' },
     { id: 'iba', label: '★ IBA公認' },
     ...Object.keys(baseNameMap).map(b => ({ id: b, label: baseNameMap[b] }))
   ];
@@ -3500,7 +3914,7 @@ function updateUI() {
     // Populate Completed Recipe UI
     const ibaBadgeResult = document.getElementById('iba-badge-result');
     if (ibaBadgeResult) {
-      if (cocktail.isIBA) ibaBadgeResult.classList.remove('hidden');
+      if (isIBACocktail(cocktail)) ibaBadgeResult.classList.remove('hidden');
       else ibaBadgeResult.classList.add('hidden');
     }
     
@@ -3594,6 +4008,8 @@ function updateUI() {
   } else {
     startPreviewLoop();
   }
+
+  syncRoute();
 }
 
 // ==========================================================================
@@ -3665,6 +4081,14 @@ function initMyBarUI() {
     const label = createMyBarCheckbox(mixerId, def.name, def.icon);
     DOM.myBarMixerContainer.appendChild(label);
   });
+
+  // Bring last visit's shelf back, now that there are boxes to tick.
+  const stored = readStoredShelf();
+  if (stored.length) {
+    state.myBarIngredients = new Set(stored);
+    syncMyBarCheckboxes();
+    updateMyBarResults();
+  }
 }
 
 function createMyBarCheckbox(id, name, icon) {
@@ -3679,6 +4103,7 @@ function createMyBarCheckbox(id, name, icon) {
     } else {
       state.myBarIngredients.delete(id);
     }
+    saveShelf();
     syncMyBarCheckboxes();
     updateMyBarResults();
   });
@@ -3753,7 +4178,7 @@ function updateMyBarResults() {
       card.style.setProperty('--i', index);
       tintCard(card, data);
 
-      if (data.isIBA) {
+      if (isIBACocktail(data)) {
         const ibaBadge = document.createElement('span');
         ibaBadge.className = 'iba-badge';
         ibaBadge.title = 'IBA Official Cocktail';
@@ -3794,14 +4219,9 @@ function updateMyBarResults() {
 
       card.addEventListener('click', () => {
         setMode('build');
-        const parts = key.split('+');
-        state.selectedBase = parts[0];
-        state.selectedMixers = parts.slice(1);
-        state.selectedIce = data.ice;
-        state.showResult = true;
-        updateUI();
+        openRecipe(key);
       });
-      
+
       fragment.appendChild(card);
       attachThumb(card, thumbCanvas, data, baseKey);
     });
@@ -4062,7 +4482,7 @@ function calculateStarterSet() {
     card.style.setProperty('--i', index);
     tintCard(card, data);
 
-    if (data.isIBA) {
+    if (isIBACocktail(data)) {
       const ibaBadge = document.createElement('span');
       ibaBadge.className = 'iba-badge';
       ibaBadge.title = 'IBA Official Cocktail';
@@ -4103,14 +4523,9 @@ function calculateStarterSet() {
 
     card.addEventListener('click', () => {
       setMode('build');
-      const parts = key.split('+');
-      state.selectedBase = parts[0];
-      state.selectedMixers = parts.slice(1);
-      state.selectedIce = data.ice;
-      state.showResult = true;
-      updateUI();
+      openRecipe(key);
     });
-    
+
     fragment.appendChild(card);
     attachThumb(card, thumbCanvas, data, baseKey);
   });
@@ -4121,4 +4536,10 @@ initMyBarUI();
 initGalleryFilters();
 initEventListeners();
 initAtmosphere();
-updateUI();
+
+// Back/forward moves through the app rather than out of it.
+window.addEventListener('popstate', applyRoute);
+window.addEventListener('hashchange', applyRoute);
+
+// Opens whatever the URL asks for, or the build view when it asks for nothing.
+applyRoute();
