@@ -1412,17 +1412,17 @@ input:focus-visible {
   grid-template-columns: 1fr;
 }
 
-.simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="dictionary"] .visualizer-card,
 .simulator-layout[data-mode="menu"] .visualizer-card {
   display: none;
 }
 
-.simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="dictionary"] .controls-card,
 .simulator-layout[data-mode="menu"] .controls-card {
   padding: 32px 42px 45px;
 }
 
-.simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="dictionary"] .gallery-grid,
 .simulator-layout[data-mode="menu"] .gallery-grid {
   grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
   gap: 22px;
@@ -1787,7 +1787,7 @@ input:focus-visible {
     min-height: 0;
   }
 
-  .simulator-layout[data-mode="dictionary"],
+  .simulator-layout[data-mode="dictionary"] .controls-card,
 .simulator-layout[data-mode="menu"] .controls-card {
     padding-inline: 28px;
   }
@@ -1828,7 +1828,7 @@ input:focus-visible {
 
   .controls-card,
   .result-section,
-  .simulator-layout[data-mode="dictionary"],
+  .simulator-layout[data-mode="dictionary"] .controls-card,
 .simulator-layout[data-mode="menu"] .controls-card {
     padding: 24px 15px 28px;
   }
@@ -1848,7 +1848,7 @@ input:focus-visible {
   }
 
   .gallery-grid,
-  .simulator-layout[data-mode="dictionary"],
+  .simulator-layout[data-mode="dictionary"] .gallery-grid,
 .simulator-layout[data-mode="menu"] .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 9px;
