@@ -5,20 +5,32 @@
   --panel: rgba(10, 11, 9, .87);
   --panel-solid: #10110e;
   --line: rgba(232, 220, 194, .16);
-  --line-strong: rgba(205, 171, 103, .56);
+  --line-strong: rgba(var(--brass-soft-rgb), .56);
   --paper: #f0eadc;
   --muted: #a8a092;
   --faint: #716d65;
   --brass: #c7a463;
+  --brass-rgb: 199, 164, 99;
+  --brass-soft-rgb: 205, 171, 103;
   --serif: 'Noto Serif JP', serif;
   --display: 'Cormorant Garamond', 'Noto Serif JP', serif;
   --sans: 'Outfit', sans-serif;
 
   /* Ambient light of the drink currently in the glass. JS retints this from
      the selected cocktail so the whole room picks up its colour. */
-  --drink-rgb: 199, 164, 99;
+  --drink-rgb: var(--brass-rgb);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --ease-soft: cubic-bezier(.22, .75, .2, 1);
+}
+
+/* The alcohol-free half of the index runs on a cooler accent — the brass of a
+   spirits bar swapped for something closer to citrus leaf. Every gold in the
+   stylesheet is drawn from these three variables, so the whole room turns
+   over at once rather than the switch merely filtering a list. */
+:root[data-drink-type="mocktail"] {
+  --brass: #8ecfa4;
+  --brass-rgb: 142, 207, 164;
+  --brass-soft-rgb: 158, 214, 178;
 }
 
 * {
@@ -248,7 +260,7 @@ input:focus-visible {
   width: min(360px, 60%);
   height: 1px;
   margin-top: 30px;
-  background: linear-gradient(90deg, rgba(199,164,99,.75), rgba(199,164,99,.05));
+  background: linear-gradient(90deg, rgba(var(--brass-rgb),.75), rgba(var(--brass-rgb),.05));
   transform-origin: left center;
 }
 
@@ -266,7 +278,7 @@ input:focus-visible {
   right: clamp(10px, 6vw, 96px);
   width: min(290px, 26vw);
   padding: 22px 0 20px 27px;
-  border-left: 1px solid rgba(199,164,99,.36);
+  border-left: 1px solid rgba(var(--brass-rgb),.36);
   color: var(--muted);
 }
 
@@ -279,7 +291,7 @@ input:focus-visible {
   height: 5px;
   border-radius: 50%;
   background: var(--brass);
-  box-shadow: 0 0 18px rgba(199,164,99,.8);
+  box-shadow: 0 0 18px rgba(var(--brass-rgb),.8);
   animation: serviceLight 3.8s ease-in-out infinite;
 }
 
@@ -310,8 +322,8 @@ input:focus-visible {
 }
 
 @keyframes serviceLight {
-  0%, 100% { opacity: .5; box-shadow: 0 0 10px rgba(199,164,99,.45); }
-  50% { opacity: 1; box-shadow: 0 0 22px rgba(199,164,99,.9); }
+  0%, 100% { opacity: .5; box-shadow: 0 0 10px rgba(var(--brass-rgb),.45); }
+  50% { opacity: 1; box-shadow: 0 0 22px rgba(var(--brass-rgb),.9); }
 }
 
 .simulator-layout {
@@ -632,6 +644,116 @@ input:focus-visible {
     linear-gradient(180deg, rgba(16,17,14,.9), rgba(10,11,9,.82));
 }
 
+/* --------------------------------------------------------------------------
+   Cocktail / mocktail switch
+   Sits above the three search tabs rather than beside them, because it is a
+   larger question than "how do I want to look": it decides which half of the
+   index exists tonight. Three fixed columns, so the sliding highlight is pure
+   CSS arithmetic and needs no measuring.
+   -------------------------------------------------------------------------- */
+.drink-type-switch {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 26px;
+  border: 1px solid var(--line);
+  background: rgba(6, 7, 6, .5);
+  overflow: hidden;
+}
+
+.drink-type-thumb {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: calc(100% / 3);
+  height: 100%;
+  background:
+    linear-gradient(180deg, rgba(var(--brass-rgb), .16), rgba(var(--brass-rgb), .05));
+  box-shadow: inset 0 -2px 0 var(--brass);
+  transition: transform .5s var(--ease-out), background .5s ease, box-shadow .5s ease;
+  pointer-events: none;
+}
+
+.drink-type-switch[data-active="cocktail"] .drink-type-thumb { transform: translateX(100%); }
+.drink-type-switch[data-active="mocktail"] .drink-type-thumb { transform: translateX(200%); }
+
+.drink-type-btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 6px 12px;
+  background: transparent;
+  color: #837c72;
+  cursor: pointer;
+  font-size: .76rem;
+  letter-spacing: .05em;
+  transition: color .3s ease;
+}
+
+.drink-type-btn + .drink-type-btn {
+  border-left: 1px solid var(--line);
+}
+
+.drink-type-btn small {
+  color: #5d5b55;
+  font: 500 .46rem/1 var(--sans);
+  letter-spacing: .17em;
+  transition: color .3s ease;
+}
+
+.drink-type-btn .dt-count {
+  color: var(--faint);
+  font: 400 .5rem/1 var(--sans);
+  letter-spacing: .1em;
+  transition: color .3s ease;
+}
+
+.drink-type-btn:hover { color: var(--paper); }
+.drink-type-btn.active { color: var(--paper); }
+.drink-type-btn.active small,
+.drink-type-btn.active .dt-count { color: var(--brass); }
+
+@media (max-width: 420px) {
+  .drink-type-btn {
+    gap: 4px;
+    padding: 9px 3px 10px;
+    font-size: .68rem;
+  }
+  .drink-type-btn small { letter-spacing: .1em; }
+}
+
+/* Alcohol-free counterpart to the IBA badge. Same corner, same footprint —
+   the two never appear on one card, so they share the slot. */
+.mocktail-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 7px;
+  border: 1px solid rgba(142, 207, 164, .5);
+  background: rgba(5, 6, 5, .64);
+  color: #a5dcb6;
+  font: 500 .5rem/1 var(--sans);
+  letter-spacing: .1em;
+}
+
+.gallery-card .mocktail-badge {
+  position: absolute;
+  z-index: 5;
+  top: 11px;
+  left: 11px;
+}
+
+/* "ALCOHOL FREE" is a phrase, not a number — it should not be set in the
+   oversized figure the percentage uses. */
+.abv-value.is-alcohol-free {
+  font-size: .62rem;
+  letter-spacing: .16em;
+}
+
 .mode-tabs {
   position: relative;
   display: grid;
@@ -647,7 +769,7 @@ input:focus-visible {
   width: 0;
   height: 1px;
   background: var(--brass);
-  box-shadow: 0 0 16px rgba(199,164,99,.55);
+  box-shadow: 0 0 16px rgba(var(--brass-rgb),.55);
   transition: transform .52s var(--ease-out), width .52s var(--ease-out);
   pointer-events: none;
 }
@@ -656,7 +778,7 @@ input:focus-visible {
   content: "";
   position: absolute;
   inset: -14px 0 -6px;
-  background: linear-gradient(180deg, transparent, rgba(199,164,99,.09));
+  background: linear-gradient(180deg, transparent, rgba(var(--brass-rgb),.09));
 }
 
 .tab-btn {
@@ -748,7 +870,7 @@ input:focus-visible {
 }
 
 .select-btn:hover:not(:disabled) {
-  border-color: rgba(205,171,103,.62);
+  border-color: rgba(var(--brass-soft-rgb),.62);
   color: var(--paper);
 }
 
@@ -779,7 +901,7 @@ input:focus-visible {
   width: 32px;
   height: 28px;
   flex: 0 0 32px;
-  border-right: 1px solid rgba(205,171,103,.3);
+  border-right: 1px solid rgba(var(--brass-soft-rgb),.3);
   display: grid;
   place-items: center;
   color: var(--brass);
@@ -909,15 +1031,15 @@ input:focus-visible {
 }
 
 .gallery-filter-chip:hover {
-  border-color: rgba(205, 171, 103, .5);
+  border-color: rgba(var(--brass-soft-rgb), .5);
   color: var(--paper);
 }
 
 .gallery-filter-chip.active {
   border-color: var(--brass);
-  background: rgba(199, 164, 99, .12);
+  background: rgba(var(--brass-rgb), .12);
   color: #e6d7b8;
-  box-shadow: 0 0 14px rgba(199, 164, 99, .16);
+  box-shadow: 0 0 14px rgba(var(--brass-rgb), .16);
 }
 
 .gallery-card-abv {
@@ -1049,7 +1171,7 @@ input:focus-visible {
 .gallery-card-tag-icon {
   min-width: 24px;
   height: 17px;
-  border: 1px solid rgba(205,171,103,.42);
+  border: 1px solid rgba(var(--brass-soft-rgb),.42);
   display: inline-grid;
   place-items: center;
   color: var(--brass);
@@ -1104,7 +1226,7 @@ input:focus-visible {
   align-items: center;
   width: fit-content;
   padding: 4px 7px;
-  border: 1px solid rgba(205,171,103,.58);
+  border: 1px solid rgba(var(--brass-soft-rgb),.58);
   background: rgba(5,6,5,.64);
   color: #d2b77e;
   font: 500 .5rem/1 var(--sans);
@@ -1608,7 +1730,7 @@ input:focus-visible {
 
 /* Build mode uses the same photographic, backlit language as the archive. */
 #view-build .select-btn {
-  --ingredient-rgb: 199, 164, 99;
+  --ingredient-rgb: var(--brass-rgb);
   position: relative;
   isolation: isolate;
   min-height: 78px;
@@ -1672,6 +1794,15 @@ input:focus-visible {
 #view-build .btn-jp {
   color: #e2dbce;
   font-size: .78rem;
+}
+
+/* The soft bases carry the two longest names in the index — ジンジャーエール
+   and グレープフルーツ, eight characters where no spirit runs past five. Set
+   a shade tighter so they read in full on a phone rather than ellipsising
+   down to a guess. */
+#view-build #base-group-soft .btn-jp {
+  font-size: .66rem;
+  letter-spacing: -.01em;
 }
 
 #view-build .btn-en {
@@ -1785,13 +1916,13 @@ input:focus-visible {
 }
 
 ::selection {
-  background: rgba(199, 164, 99, .3);
+  background: rgba(var(--brass-rgb), .3);
   color: var(--paper);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(199, 164, 99, .32) transparent;
+  scrollbar-color: rgba(var(--brass-rgb), .32) transparent;
 }
 
 *::-webkit-scrollbar {
@@ -1802,11 +1933,11 @@ input:focus-visible {
 *::-webkit-scrollbar-thumb {
   border: 3px solid transparent;
   border-radius: 9px;
-  background: rgba(199, 164, 99, .32) padding-box;
+  background: rgba(var(--brass-rgb), .32) padding-box;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(199, 164, 99, .55) padding-box;
+  background: rgba(var(--brass-rgb), .55) padding-box;
 }
 
 /* --- Film grain ---------------------------------------------------------- */
@@ -2077,7 +2208,7 @@ input:focus-visible {
 
 .finish-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -8px rgba(199,164,99,.55);
+  box-shadow: 0 14px 30px -8px rgba(var(--brass-rgb),.55);
 }
 
 .finish-btn::after {

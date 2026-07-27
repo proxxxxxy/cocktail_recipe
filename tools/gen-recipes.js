@@ -16,6 +16,11 @@ const target = path.join(root, 'recipes.md');
 
 const ICE = { cube: 'キューブアイス', crushed: 'クラッシュアイス', none: '氷なし' };
 
+// Kept in step with NON_ALCOHOLIC_BASES in app.js.
+const ALCOHOL_FREE_BASES = new Set([
+  'ginger', 'orange', 'soda', 'tomato', 'pineapple', 'grapefruit', 'cranberry',
+]);
+
 // Section order and headings. A base spirit missing from this list is an error
 // rather than a silent omission from the document.
 const SECTIONS = [
@@ -28,6 +33,13 @@ const SECTIONS = [
   ['peach', 'ピーチリキュールベースのカクテル', 'Peach Base'],
   ['cassis', 'カシスリキュールベースのカクテル', 'Cassis Base'],
   ['coffee', 'コーヒーリキュールベースのカクテル', 'Coffee Base'],
+  ['ginger', 'ジンジャーエールベースのモクテル', 'Ginger Ale Base · Alcohol Free'],
+  ['orange', 'オレンジジュースベースのモクテル', 'Orange Base · Alcohol Free'],
+  ['soda', 'ソーダベースのモクテル', 'Soda Base · Alcohol Free'],
+  ['grapefruit', 'グレープフルーツベースのモクテル', 'Grapefruit Base · Alcohol Free'],
+  ['pineapple', 'パイナップルベースのモクテル', 'Pineapple Base · Alcohol Free'],
+  ['cranberry', 'クランベリーベースのモクテル', 'Cranberry Base · Alcohol Free'],
+  ['tomato', 'トマトジュースベースのモクテル', 'Tomato Base · Alcohol Free'],
 ];
 
 /**
@@ -77,10 +89,13 @@ function build(db) {
   }
 
   const total = seen.size;
+  const mocktails = [...byBase]
+    .filter(([base]) => ALCOHOL_FREE_BASES.has(base))
+    .reduce((n, [, items]) => n + items.length, 0);
   const lines = [
     '# カクテル・レシピ集 (実在カクテル厳選版)',
     '',
-    `本書は、9種のベース（6大スピリッツ ＋ 3種のリキュール）と各種割り材を組み合わせた、実在するスタンダードカクテル（IBA公認レシピ含む全${total}種類）のレシピ集です。架空のカクテルは収録せず、各カクテルに最適な**氷のスタイル（キューブアイス、クラッシュアイス、氷なし）**を明記しています。`,
+    `本書は、16種のベース（6大スピリッツ ＋ 3種のリキュール ＋ 7種のノンアルコール素材）と各種割り材を組み合わせた、実在するスタンダードカクテル（IBA公認レシピ含む全${total}種類、うちノンアルコールのモクテル${mocktails}種類）のレシピ集です。架空のカクテルは収録せず、各カクテルに最適な**氷のスタイル（キューブアイス、クラッシュアイス、氷なし）**を明記しています。`,
     '',
     '> このファイルは `app.js` のカクテルデータベースから自動生成されています。内容を変更する場合は `app.js` を編集し、`node tools/gen-recipes.js` を実行してください。',
     '',
@@ -96,12 +111,14 @@ function build(db) {
     for (const { key, data } of items) {
       n++;
       const iba = data.isIBA ? ' 【IBA公認】' : '';
+      const tag = ALCOHOL_FREE_BASES.has(base) ? ' 【ノンアルコール】' : iba;
       const ice = ICE[data.ice] + (data.saltRim ? '（グラスのフチに塩）' : '');
       const materials = data.ingredients.map(i => `${i.name}：${i.amount}`).join('、');
+      const strength = data.abv === 0 ? 'ノンアルコール (0%)' : `約 ${data.abv}%`;
       lines.push(
-        `### ${n}. ${data.name} (${data.enName})${iba}`,
+        `### ${n}. ${data.name} (${data.enName})${tag}`,
         `*   **組み合わせ**: ${key.split('+').join(' + ')}`,
-        `*   **度数**: 約 ${data.abv}% | **味わい**: ${data.taste.join('・')} | **氷のスタイル**: ${ice}`,
+        `*   **度数**: ${strength} | **味わい**: ${data.taste.join('・')} | **氷のスタイル**: ${ice}`,
         `*   **材料**: ${materials}`,
         `*   **作り方**: ${data.method.join(' ')}`,
         '',

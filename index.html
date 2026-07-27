@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260727-routing-10">
+  <link rel="stylesheet" href="style.css?v=20260727-mocktail-11">
 </head>
 <body>
   <div class="intro-curtain" id="intro-curtain" aria-hidden="true">
@@ -84,6 +84,25 @@
       </section>
 
       <section class="controls-card" id="controls-card" aria-label="カクテルを探す">
+        <div class="drink-type-switch" id="drink-type-switch" role="group" aria-label="お酒の有無で切り替え">
+          <button type="button" class="drink-type-btn active" data-drink-type="all" aria-pressed="true">
+            <small>EVERYTHING</small>
+            <span class="dt-label">すべて</span>
+            <span class="dt-count" data-count="all"></span>
+          </button>
+          <button type="button" class="drink-type-btn" data-drink-type="cocktail" aria-pressed="false">
+            <small>WITH SPIRITS</small>
+            <span class="dt-label">カクテル</span>
+            <span class="dt-count" data-count="cocktail"></span>
+          </button>
+          <button type="button" class="drink-type-btn" data-drink-type="mocktail" aria-pressed="false">
+            <small>ALCOHOL FREE</small>
+            <span class="dt-label">モクテル</span>
+            <span class="dt-count" data-count="mocktail"></span>
+          </button>
+          <span class="drink-type-thumb" id="drink-type-thumb" aria-hidden="true"></span>
+        </div>
+
         <div class="mode-tabs" role="tablist" aria-label="検索方法">
           <button class="tab-btn active" id="tab-build" data-mode="build" role="tab" aria-selected="true" aria-controls="view-build">
             <span>01</span>素材から
@@ -98,7 +117,7 @@
         </div>
 
         <div id="view-build" class="mode-view" role="tabpanel" aria-labelledby="tab-build">
-          <section class="control-group">
+          <section class="control-group" id="base-group-spirits">
             <div class="section-heading">
               <span>BASE SPIRIT</span>
               <h2>ベースを選ぶ</h2>
@@ -113,6 +132,22 @@
               <button class="select-btn base-btn" data-base="peach" id="btn-peach"><span class="btn-icon" aria-hidden="true">PE</span><span class="btn-label-group"><span class="btn-jp">ピーチ</span><span class="btn-en">PEACH</span></span></button>
               <button class="select-btn base-btn" data-base="cassis" id="btn-cassis"><span class="btn-icon" aria-hidden="true">CA</span><span class="btn-label-group"><span class="btn-jp">カシス</span><span class="btn-en">CASSIS</span></span></button>
               <button class="select-btn base-btn" data-base="coffee" id="btn-coffee"><span class="btn-icon" aria-hidden="true">CO</span><span class="btn-label-group"><span class="btn-jp">コーヒー</span><span class="btn-en">COFFEE</span></span></button>
+            </div>
+          </section>
+
+          <section class="control-group is-soft-base" id="base-group-soft">
+            <div class="section-heading">
+              <span>NON-ALCOHOLIC BASE</span>
+              <h2>ノンアルコールのベース</h2>
+            </div>
+            <div class="options-grid base-options">
+              <button class="select-btn base-btn" data-base="ginger"><span class="btn-icon" aria-hidden="true">GA</span><span class="btn-label-group"><span class="btn-jp">ジンジャーエール</span><span class="btn-en">GINGER ALE</span></span></button>
+              <button class="select-btn base-btn" data-base="orange"><span class="btn-icon" aria-hidden="true">OJ</span><span class="btn-label-group"><span class="btn-jp">オレンジ</span><span class="btn-en">ORANGE</span></span></button>
+              <button class="select-btn base-btn" data-base="soda"><span class="btn-icon" aria-hidden="true">SW</span><span class="btn-label-group"><span class="btn-jp">ソーダ</span><span class="btn-en">SODA</span></span></button>
+              <button class="select-btn base-btn" data-base="grapefruit"><span class="btn-icon" aria-hidden="true">GF</span><span class="btn-label-group"><span class="btn-jp">グレープフルーツ</span><span class="btn-en">GRAPEFRUIT</span></span></button>
+              <button class="select-btn base-btn" data-base="pineapple"><span class="btn-icon" aria-hidden="true">PJ</span><span class="btn-label-group"><span class="btn-jp">パイナップル</span><span class="btn-en">PINEAPPLE</span></span></button>
+              <button class="select-btn base-btn" data-base="cranberry"><span class="btn-icon" aria-hidden="true">CB</span><span class="btn-label-group"><span class="btn-jp">クランベリー</span><span class="btn-en">CRANBERRY</span></span></button>
+              <button class="select-btn base-btn" data-base="tomato"><span class="btn-icon" aria-hidden="true">TJ</span><span class="btn-label-group"><span class="btn-jp">トマト</span><span class="btn-en">TOMATO</span></span></button>
             </div>
           </section>
 
@@ -170,7 +205,7 @@
             </div>
           </div>
 
-          <section class="mybar-category">
+          <section class="mybar-category" id="mybar-base-category">
             <h3>ベーススピリッツ</h3>
             <div class="mybar-checkbox-group" id="mybar-base-container"></div>
           </section>
@@ -198,8 +233,9 @@
       <section class="result-section hidden" id="result-panel">
         <div class="result-header">
           <div>
-            <span class="cocktail-tag">YOUR COCKTAIL</span>
+            <span class="cocktail-tag" id="result-tag">YOUR COCKTAIL</span>
             <span class="iba-badge hidden" id="iba-badge-result" title="IBA Official Cocktail">IBA OFFICIAL</span>
+            <span class="mocktail-badge hidden" id="mocktail-badge-result" title="ノンアルコールカクテル">ALCOHOL FREE</span>
           </div>
           <h2 class="cocktail-name" id="cocktail-name">ジントニック</h2>
           <p class="cocktail-en-name" id="cocktail-en-name">Gin &amp; Tonic</p>
@@ -240,6 +276,6 @@
     <span>DRINK RESPONSIBLY</span>
   </footer>
 
-  <script src="app.js?v=20260727-routing-10"></script>
+  <script src="app.js?v=20260727-mocktail-11"></script>
 </body>
 </html>

@@ -2006,6 +2006,278 @@ const cocktailDatabase = {
       "シェイカーに氷と全ての材料を入れ、シェイクします。",
       "冷やしたカクテルグラスに注ぎます。"
     ]
+  },
+
+  // --- NON-ALCOHOLIC (MOCKTAIL) ---
+  // Keyed on a non-alcoholic base exactly like every other drink, so the
+  // build view, My Bar and the archive all reach them by the same route.
+  // Nothing here needs a flag: the base decides whether a drink is a mocktail.
+  "ginger+grenadine+maraschino_cherry": {
+    name: "シャーリー・テンプル",
+    enName: "Shirley Temple",
+    abv: 0,
+    taste: ["甘い", "フルーティー", "爽快"],
+    description: "1930年代の子役スター、シャーリー・テンプルのために作られたと伝わるノンアルコールカクテルの代名詞。ジンジャーエールの辛口な炭酸をグレナデンシロップの甘みが包み、深紅からゴールドへのグラデーションが美しい一杯です。",
+    color: "rgba(226, 96, 72, 0.72)",
+    hasBubbles: true,
+    garnish: "cherry",
+    ice: "cube",
+    ingredients: [
+      { name: "グレナデンシロップ", amount: "15 ml" },
+      { name: "ジンジャーエール", amount: "適量 (約 120 ml)" },
+      { name: "マラスキーノ・チェリー", amount: "1 個" }
+    ],
+    method: [
+      "氷を満たしたタンブラーグラスにグレナデンシロップを注ぎます。",
+      "冷えたジンジャーエールを氷に当てないよう静かに注ぎます。",
+      "底に沈んだシロップを混ぜすぎないよう、軽く1回だけステアします。",
+      "マラスキーノ・チェリーを飾ります。"
+    ]
+  },
+  "ginger+lime+sugar": {
+    name: "サラトガ・クーラー",
+    enName: "Saratoga Cooler",
+    abv: 0,
+    taste: ["さっぱり", "甘酸っぱい", "爽快"],
+    description: "アメリカの避暑地サラトガ・スプリングスの名を持つ、ノンアルコールの定番クーラー。ライムの酸味とジンジャーエールのスパイス感が重なり、食事の前後どちらにも合う端正な味わいです。",
+    color: "rgba(233, 214, 160, 0.58)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "フレッシュ・ライム果汁", amount: "20 ml" },
+      { name: "シュガーシロップ", amount: "1 tsp" },
+      { name: "ジンジャーエール", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を入れたタンブラーグラスにライム果汁とシュガーシロップを入れ、軽くステアします。",
+      "冷えたジンジャーエールを静かに注ぎます。",
+      "炭酸を逃さないよう底から1回だけ持ち上げるように混ぜ、ライムを飾ります。"
+    ]
+  },
+  "orange+lemon+pineapple": {
+    name: "シンデレラ",
+    enName: "Cinderella",
+    abv: 0,
+    taste: ["フルーティー", "甘酸っぱい", "ジューシー"],
+    description: "3種の果汁を等量で合わせただけの、ノンアルコールカクテルの最高峰。シェイクして空気を含ませることで角が取れ、ただのミックスジュースとは別物のまろやかな口当たりになります。",
+    color: "rgba(252, 176, 64, 0.85)",
+    hasBubbles: false,
+    garnish: "orange",
+    ice: "none",
+    summer: true,
+    ingredients: [
+      { name: "オレンジジュース", amount: "20 ml" },
+      { name: "レモンジュース", amount: "20 ml" },
+      { name: "パイナップルジュース", amount: "20 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての果汁を入れます。",
+      "十分に冷えるまでしっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎ、オレンジを飾ります。"
+    ]
+  },
+  "orange+bitters+lemon+sugar": {
+    name: "フロリダ",
+    enName: "Florida",
+    abv: 0,
+    taste: ["甘酸っぱい", "フレッシュ", "ほろ苦い"],
+    description: "禁酒法時代のアメリカで、フロリダ州産の柑橘を讃えて生まれたノンアルコールカクテル。オレンジの甘みをレモンが引き締め、ビターズがひと匙分の複雑さを与えます。仕上げのビターズにはごく微量のアルコールが含まれるため、完全に避けたい場合は省いてください。",
+    color: "rgba(250, 160, 52, 0.85)",
+    hasBubbles: false,
+    garnish: "orange",
+    ice: "none",
+    summer: true,
+    ingredients: [
+      { name: "オレンジジュース", amount: "40 ml" },
+      { name: "レモンジュース", amount: "20 ml" },
+      { name: "砂糖 (またはシュガーシロップ)", amount: "1 tsp" },
+      { name: "アンゴスチュラ・ビターズ", amount: "1 dash" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "砂糖が溶けきるまでしっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎ、オレンジを飾ります。"
+    ]
+  },
+  "orange+egg_yolk+grenadine+lemon": {
+    name: "プッシーフット",
+    enName: "Pussyfoot",
+    abv: 0,
+    taste: ["まろやか", "濃厚", "フルーティー"],
+    description: "「忍び足」を意味する名は、禁酒法を推進した運動家ジョンソンのあだ名に由来します。卵黄を加えて硬くシェイクすることで、果汁がクリームのようになめらかにまとまる、飲みごたえのある一杯です。",
+    color: "rgba(248, 150, 60, 0.9)",
+    hasBubbles: false,
+    garnish: "orange",
+    ice: "none",
+    ingredients: [
+      { name: "オレンジジュース", amount: "45 ml" },
+      { name: "レモンジュース", amount: "15 ml" },
+      { name: "グレナデンシロップ", amount: "1 tsp" },
+      { name: "卵黄", amount: "1 個分" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "卵黄が完全に乳化するまで、通常より長く強くシェイクします。",
+      "大きめのグラスに注ぎ、オレンジを飾ります。"
+    ]
+  },
+  "soda+lime+mint+sugar": {
+    name: "ヴァージン・モヒート",
+    enName: "Virgin Mojito",
+    abv: 0,
+    taste: ["清涼感", "さっぱり", "ハーバル"],
+    description: "モヒートからラムだけを抜いた、真夏の定番ノンアルコール。ミントを潰さずに押し当てて香りだけを移すのがコツで、青臭さの出ない澄んだ清涼感に仕上がります。",
+    color: "rgba(198, 228, 190, 0.5)",
+    hasBubbles: true,
+    garnish: "mint",
+    ice: "crushed",
+    summer: true,
+    ingredients: [
+      { name: "フレッシュ・ライム", amount: "1/2 個" },
+      { name: "ミントの葉", amount: "10 〜 15 枚" },
+      { name: "砂糖 (またはシュガーシロップ)", amount: "2 tsp" },
+      { name: "ソーダ (炭酸水)", amount: "適量" }
+    ],
+    method: [
+      "グラスにライムを絞り入れ、砂糖とミントの葉を加えます。",
+      "ミントを潰さないよう、ペストルで数回そっと押し当てて香りを移します。",
+      "クラッシュアイスをグラスいっぱいに詰めます。",
+      "冷えたソーダを注ぎ、底から軽く持ち上げるように混ぜてミントを飾ります。"
+    ]
+  },
+  "soda+lemon+sugar": {
+    name: "レモネード",
+    enName: "Lemonade",
+    abv: 0,
+    taste: ["さっぱり", "甘酸っぱい", "爽快"],
+    description: "17世紀のパリで売り歩かれた記録が残る、最も古い清涼飲料のひとつ。生のレモンと砂糖とソーダだけという構成ゆえに、果汁の鮮度がそのまま味に出ます。",
+    color: "rgba(250, 240, 180, 0.52)",
+    hasBubbles: true,
+    garnish: "lemon",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "フレッシュ・レモン果汁", amount: "30 ml" },
+      { name: "砂糖 (またはシュガーシロップ)", amount: "2 tsp" },
+      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "グラスにレモン果汁と砂糖を入れ、砂糖が溶けるまでよく混ぜます。",
+      "氷を満たし、冷えたソーダを静かに注ぎます。",
+      "軽く1回ステアし、レモンスライスを飾ります。"
+    ]
+  },
+  "tomato+lemon": {
+    name: "ヴァージン・メアリー",
+    enName: "Virgin Mary",
+    abv: 0,
+    taste: ["旨味", "スパイシー", "さっぱり"],
+    description: "ブラッディ・メアリーからウォッカを抜いた一杯で、「ブラッディ・シェイム（血まみれの恥）」という洒落た別名でも呼ばれます。塩と胡椒、タバスコの量で自分好みに詰められる、食事に寄り添うノンアルコールです。",
+    color: "rgba(198, 46, 42, 0.9)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "cube",
+    ingredients: [
+      { name: "トマトジュース", amount: "適量 (約 120 ml)" },
+      { name: "フレッシュ・レモン果汁", amount: "10 ml" },
+      { name: "塩・黒胡椒", amount: "各少々" },
+      { name: "タバスコ / ウスターソース", amount: "お好みで" }
+    ],
+    method: [
+      "氷を入れたタンブラーグラスにレモン果汁を注ぎます。",
+      "よく冷やしたトマトジュースを満たします。",
+      "塩、黒胡椒、お好みでタバスコを加えてステアし、レモンを添えます。"
+    ]
+  },
+  "pineapple+coconut": {
+    name: "ヴァージン・ピニャコラーダ",
+    enName: "Virgin Piña Colada",
+    abv: 0,
+    taste: ["甘い", "濃厚", "トロピカル"],
+    description: "プエルトリコ生まれの「ピニャコラーダ（漉したパイナップル）」からラムを抜いた、南国そのものの一杯。ココナッツミルクの脂質がパイナップルの酸をまろやかに包みます。",
+    color: "rgba(250, 240, 214, 0.92)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "crushed",
+    summer: true,
+    ingredients: [
+      { name: "パイナップルジュース", amount: "80 ml" },
+      { name: "ココナッツミルク", amount: "30 ml" }
+    ],
+    method: [
+      "シェイカー（またはブレンダー）にクラッシュアイスと材料を入れます。",
+      "しっかりとシェイクし、全体が白く一体になるまで混ぜます。",
+      "クラッシュアイスを詰めた大きめのグラスに注ぎ、チェリーを飾ります。"
+    ]
+  },
+  "grapefruit+grenadine+lime+soda": {
+    name: "サマー・ディライト",
+    enName: "Summer Delight",
+    abv: 0,
+    taste: ["さっぱり", "甘酸っぱい", "爽快"],
+    description: "グレープフルーツのほろ苦さにライムの酸味を重ね、ソーダで軽やかに伸ばした夏向きのノンアルコール。グレナデンをほんの少し沈めることで、淡いサンセットの色合いが生まれます。",
+    color: "rgba(244, 150, 120, 0.62)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "グレープフルーツジュース", amount: "45 ml" },
+      { name: "フレッシュ・ライム果汁", amount: "15 ml" },
+      { name: "グレナデンシロップ", amount: "1 tsp" },
+      { name: "ソーダ (炭酸水)", amount: "適量" }
+    ],
+    method: [
+      "氷を入れたグラスにグレープフルーツジュースとライム果汁を注ぎ、ステアします。",
+      "グレナデンシロップを静かに沈めます。",
+      "冷えたソーダで満たし、混ぜすぎないようにしてライムを飾ります。"
+    ]
+  },
+  "cranberry+grapefruit": {
+    name: "ヴァージン・シーブリーズ",
+    enName: "Virgin Sea Breeze",
+    abv: 0,
+    taste: ["さっぱり", "甘酸っぱい", "フルーティー"],
+    description: "シーブリーズ（海風）からウォッカを抜いた、二つの果汁だけで成立する一杯。クランベリーの渋みとグレープフルーツの苦みが合わさり、糖分の割に後口が驚くほど乾いています。",
+    color: "rgba(206, 60, 70, 0.82)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "クランベリージュース", amount: "60 ml" },
+      { name: "グレープフルーツジュース", amount: "60 ml" }
+    ],
+    method: [
+      "氷を満たしたタンブラーグラスに両方の果汁を注ぎます。",
+      "全体が均一になるまで軽くステアします。",
+      "ライムを飾ります。"
+    ]
+  },
+  "orange+grenadine+pineapple+soda": {
+    name: "フルーツ・パンチ",
+    enName: "Fruit Punch",
+    abv: 0,
+    taste: ["フルーティー", "甘い", "爽快"],
+    description: "サンスクリット語で「5」を意味する「パンチ」が語源の、パーティーの定番。果汁とシロップを合わせてソーダで割るだけで、人数分をまとめて用意できるのが本来の魅力です。",
+    color: "rgba(246, 130, 80, 0.8)",
+    hasBubbles: true,
+    garnish: "orange",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "オレンジジュース", amount: "45 ml" },
+      { name: "パイナップルジュース", amount: "45 ml" },
+      { name: "グレナデンシロップ", amount: "1 tsp" },
+      { name: "ソーダ (炭酸水)", amount: "適量" }
+    ],
+    method: [
+      "氷を入れた大きめのグラスに果汁とグレナデンシロップを注ぎ、ステアします。",
+      "冷えたソーダを静かに加えます。",
+      "軽く1回混ぜ、オレンジを飾ります。"
+    ]
   }
 };
 
@@ -2019,7 +2291,18 @@ const baseTints = {
   brandy: "rgba(189, 93, 30, 0.45)",     // Deep cognac copper color
   peach: "rgba(255, 240, 220, 0.25)",    // Pale warm peach tint
   cassis: "rgba(136, 14, 79, 0.6)",      // Rich violet/ruby syrup color
-  coffee: "rgba(78, 52, 46, 0.7)"        // Rich dark coffee syrup color
+  coffee: "rgba(78, 52, 46, 0.7)",       // Rich dark coffee syrup color
+
+  // Non-alcoholic bases. These ids are shared with mixerDefinitions on
+  // purpose — a carton of orange juice is one bottle on the shelf whether it
+  // is carrying the drink or joining it.
+  ginger: "rgba(244, 208, 63, 0.5)",     // Pale ginger ale gold
+  orange: "rgba(255, 167, 38, 0.8)",     // Orange juice
+  soda: "rgba(224, 242, 241, 0.3)",      // Plain soda water
+  tomato: "rgba(211, 47, 47, 0.9)",      // Tomato juice
+  pineapple: "rgba(255, 235, 59, 0.7)",  // Pineapple juice
+  grapefruit: "rgba(255, 245, 157, 0.7)",// Grapefruit juice
+  cranberry: "rgba(178, 24, 44, 0.82)"   // Cranberry juice
 };
 
 // All available 15 mixers information for dynamic rendering
@@ -2059,14 +2342,48 @@ const mixerDefinitions = {
   maraschino_liq: { name: "マラスキーノ", en: "MARASCHINO LIQUEUR", icon: "ML", color: "rgba(255, 255, 255, 0.1)" },
   maraschino_cherry: { name: "マラスキーノ・チェリー", en: "MARASCHINO CHERRY", icon: "MC", color: "rgba(213, 0, 0, 0.9)" },
   sugar: { name: "砂糖 / シロップ", en: "SUGAR", icon: "SG", color: "rgba(255, 255, 255, 0.3)" },
-  brandy: { name: "ブランデー (ブレンド用)", en: "BRANDY MIX", icon: "BR", color: "rgba(189, 93, 30, 0.6)" }
+  brandy: { name: "ブランデー (ブレンド用)", en: "BRANDY MIX", icon: "BR", color: "rgba(189, 93, 30, 0.6)" },
+  egg_yolk: { name: "卵黄", en: "EGG YOLK", icon: "EY", color: "rgba(255, 193, 7, 0.9)" }
 };
+
+// ==========================================================================
+// 1b. COCKTAIL / MOCKTAIL
+// Whether a drink contains alcohol is not a label anyone has to remember to
+// attach — it is already written in the recipe key. A drink is a mocktail
+// when it is built on a non-alcoholic base and nothing alcoholic is mixed
+// into it. Deriving it means a new recipe can never be filed under the wrong
+// heading by omission.
+// ==========================================================================
+const NON_ALCOHOLIC_BASES = new Set([
+  'ginger', 'orange', 'soda', 'tomato', 'pineapple', 'grapefruit', 'cranberry'
+]);
+
+const SPIRIT_BASES = Object.keys(baseTints).filter(b => !NON_ALCOHOLIC_BASES.has(b));
+
+/**
+ * Mixers that would put alcohol back into a drink built on a soft base.
+ * Angostura bitters is deliberately absent: a dash is roughly a fifth of a
+ * millilitre, and the classics that use it that way — Florida above — are
+ * catalogued as non-alcoholic everywhere. The recipe says so in its own text.
+ */
+const ALCOHOLIC_MIXERS = new Set([
+  'curacao', 'blue_curacao', 'absinthe', 'whiskey', 'brandy', 'cassis',
+  'peach', 'coffee', 'cacao', 'campari', 'dry_vermouth', 'sweet_vermouth',
+  'maraschino_liq'
+]);
+
+function isMocktailKey(key) {
+  const parts = key.split('+');
+  return NON_ALCOHOLIC_BASES.has(parts[0])
+      && !parts.slice(1).some(m => ALCOHOLIC_MIXERS.has(m));
+}
 
 // ==========================================================================
 // 2. APPLICATION STATE
 // ==========================================================================
 const state = {
   currentMode: 'build',  // 'build' | 'dictionary' | 'mybar'
+  drinkType: 'all',      // 'all' | 'cocktail' | 'mocktail' — cuts across every mode
   galleryFilter: 'all',  // 'all' | 'iba' | base spirit key
   showResult: false,     // True when the user explicitly opens an extensible recipe
   selectedBase: null,    // 'gin' | 'vodka' | 'rum' | ...
@@ -2099,6 +2416,29 @@ const POUR_END = 1.55;
 // else is cheap to re-derive, so nothing else is stored.
 // ==========================================================================
 const MY_BAR_STORAGE_KEY = 'antigravity.mybar.v1';
+const DRINK_TYPE_STORAGE_KEY = 'antigravity.drinktype.v1';
+
+/**
+ * Someone who does not drink should not have to say so on every visit, so the
+ * cocktail/mocktail choice is remembered alongside the shelf.
+ */
+function readStoredDrinkType() {
+  let stored;
+  try {
+    stored = localStorage.getItem(DRINK_TYPE_STORAGE_KEY);
+  } catch {
+    return 'all';
+  }
+  return ['all', 'cocktail', 'mocktail'].includes(stored) ? stored : 'all';
+}
+
+function saveDrinkType() {
+  try {
+    localStorage.setItem(DRINK_TYPE_STORAGE_KEY, state.drinkType);
+  } catch {
+    // Storage unavailable — the choice just will not survive a reload.
+  }
+}
 
 /** Private browsing and blocked storage both throw; neither is worth an error. */
 function readStoredShelf() {
@@ -2163,6 +2503,14 @@ const cubeIceData = [
 // 3. DOM ELEMENTS
 // ==========================================================================
 const DOM = {
+  // Cocktail / mocktail switch
+  drinkTypeSwitch: document.getElementById('drink-type-switch'),
+  baseGroupSpirits: document.getElementById('base-group-spirits'),
+  baseGroupSoft: document.getElementById('base-group-soft'),
+  myBarBaseCategory: document.getElementById('mybar-base-category'),
+  resultTag: document.getElementById('result-tag'),
+  mocktailBadgeResult: document.getElementById('mocktail-badge-result'),
+
   // Tabs
   tabBuild: document.getElementById('tab-build'),
   tabDictionary: document.getElementById('tab-dictionary'),
@@ -2720,6 +3068,10 @@ function renderMixerButtons() {
   updateMixerButtonsAvailability();
 }
 
+// Mixers that turn a base into a named drink on their own, and so are worth
+// pointing at even though they lead nowhere further.
+const SPECIAL_SINGLE_MIXERS = new Set(['orange', 'ginger', 'soda', 'salt', 'curacao']);
+
 // Strictly enable/disable compatible mixers based on current selection path
 function updateMixerButtonsAvailability() {
   const base = state.selectedBase;
@@ -2766,8 +3118,11 @@ function updateMixerButtonsAvailability() {
         const numMixers = parts.length - 1;
         if (numMixers >= 2) {
           canBeMultiMixer = true;
-        } else if (numMixers === 1 && parts.length === 2 && (key.includes('orange') || key.includes('ginger') || key.includes('soda') || key.includes('salt') || key.includes('curacao'))) {
-          // Glow yellow for specialized single mixers
+        } else if (numMixers === 1 && SPECIAL_SINGLE_MIXERS.has(parts[1])) {
+          // Glow yellow for specialized single mixers. Matched against the
+          // mixer itself rather than the whole key: now that a drink can be
+          // built on orange juice or soda, a substring test on the key lights
+          // up every button on the board.
           canBeSingleMixerIrregular = true;
         }
       });
@@ -2823,18 +3178,23 @@ function updateIceButtonsUI() {
   });
 }
 
-// Base spirit key to Japanese name lookup
+// Base key to Japanese name lookup
 const baseNameMap = {
   gin: 'ジン', vodka: 'ウォッカ', rum: 'ラム', tequila: 'テキーラ',
   whiskey: 'ウイスキー', brandy: 'ブランデー', peach: 'ピーチ',
-  cassis: 'カシス', coffee: 'コーヒー'
+  cassis: 'カシス', coffee: 'コーヒー',
+  ginger: 'ジンジャーエール', orange: 'オレンジ', soda: 'ソーダ',
+  tomato: 'トマト', pineapple: 'パイナップル', grapefruit: 'グレープフルーツ',
+  cranberry: 'クランベリー'
 };
 
-// Base spirit key to icon lookup
+// Base key to icon lookup
 const baseIconMap = {
   gin: 'GI', vodka: 'VO', rum: 'RU', tequila: 'TE',
   whiskey: 'WH', brandy: 'BR', peach: 'PE',
-  cassis: 'CA', coffee: 'CO'
+  cassis: 'CA', coffee: 'CO',
+  ginger: 'GA', orange: 'OJ', soda: 'SW', tomato: 'TJ',
+  pineapple: 'PJ', grapefruit: 'GF', cranberry: 'CB'
 };
 
 /**
@@ -3408,6 +3768,30 @@ function drawMiniThumbnailAnimated(canvas, cocktail, baseKey, animState) {
   drawGalleryPhoto(canvas, cocktail, animState);
 }
 
+/**
+ * The single badge a card carries in its top-left corner. A drink is never
+ * both IBA-official and alcohol-free, so one slot is enough — and one slot
+ * means the corner can never stack two labels on top of each other.
+ */
+function appendCardBadge(card, data) {
+  const badge = document.createElement('span');
+  if (isIBACocktail(data)) {
+    badge.className = 'iba-badge';
+    badge.title = 'IBA Official Cocktail';
+    badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>IBA OFFICIAL';
+  } else if (isMocktail(data)) {
+    badge.className = 'mocktail-badge';
+    badge.title = 'ノンアルコールカクテル';
+    badge.textContent = 'ALCOHOL FREE';
+  } else {
+    return;
+  }
+  card.appendChild(badge);
+}
+
+/** "約12%" for a cocktail; a mocktail says what it is instead of "約0%". */
+const abvTagLabel = (data) => (data.abv === 0 ? 'ノンアル' : `約${data.abv}%`);
+
 /** Give a card its own ambient colour so hover glows match the drink. */
 function tintCard(card, data) {
   const [r, g, b] = toAmbientRGB(parseRGBA(data.color));
@@ -3572,6 +3956,7 @@ function renderGallery(query, animate = false) {
   // A chip is either one of the data-driven predicates or a base spirit key.
   const predicate = galleryPredicates[state.galleryFilter];
   const filtered = list.filter(item => {
+    if (!matchesDrinkType(item.data)) return false;
     if (predicate) {
       if (!predicate(item.data)) return false;
     } else if (item.baseKey !== state.galleryFilter) {
@@ -3585,7 +3970,10 @@ function renderGallery(query, animate = false) {
   });
   
   if (filtered.length === 0) {
-    DOM.galleryGrid.innerHTML = '<div class="gallery-empty">該当するカクテルが見つかりませんでした。</div>';
+    const what = state.drinkType === 'mocktail' ? 'モクテル'
+               : state.drinkType === 'cocktail' ? 'カクテル'
+               : 'ドリンク';
+    DOM.galleryGrid.innerHTML = `<div class="gallery-empty">該当する${what}が見つかりませんでした。</div>`;
     return;
   }
   
@@ -3602,13 +3990,7 @@ function renderGallery(query, animate = false) {
     card.style.setProperty('--i', index);
     tintCard(card, data);
 
-    if (isIBACocktail(data)) {
-      const ibaBadge = document.createElement('span');
-      ibaBadge.className = 'iba-badge';
-      ibaBadge.title = 'IBA Official Cocktail';
-      ibaBadge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>IBA OFFICIAL';
-      card.appendChild(ibaBadge);
-    }
+    appendCardBadge(card, data);
     
     // Thumbnail
     const thumbDiv = document.createElement('div');
@@ -3633,7 +4015,7 @@ function renderGallery(query, animate = false) {
     const tagEl = document.createElement('div');
     tagEl.className = 'gallery-card-tag';
     const icon = baseIconMap[baseKey] || '🍹';
-    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">約${data.abv}%</span>`;
+    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">${abvTagLabel(data)}</span>`;
     
     infoDiv.appendChild(nameEl);
     infoDiv.appendChild(enEl);
@@ -3655,6 +4037,13 @@ function renderGallery(query, animate = false) {
 /** Tick the ABV up from zero so the number lands with the bar. */
 function countUpABV(el, target, animate) {
   if (el._numAnim) cancelAnimationFrame(el._numAnim);
+  // Counting up to zero is a strange little animation, and "約 0%" reads like
+  // a rounding error rather than a promise. Say it plainly instead.
+  el.classList.toggle('is-alcohol-free', target === 0);
+  if (target === 0) {
+    el.textContent = 'ALCOHOL FREE';
+    return;
+  }
   if (!animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     el.textContent = `約 ${target}%`;
     return;
@@ -3681,14 +4070,36 @@ function countUpABV(el, target, animate) {
 const collectionsByName = (() => {
   const summer = new Set();
   const iba = new Set();
-  Object.values(cocktailDatabase).forEach(c => {
+  const mocktail = new Set();
+  Object.entries(cocktailDatabase).forEach(([key, c]) => {
     if (c.summer) summer.add(c.name);
     if (c.isIBA) iba.add(c.name);
+    if (isMocktailKey(key)) mocktail.add(c.name);
   });
-  return { summer, iba };
+  return { summer, iba, mocktail };
 })();
 
 const isIBACocktail = (data) => collectionsByName.iba.has(data.name);
+const isMocktail = (data) => collectionsByName.mocktail.has(data.name);
+
+/** Does this drink belong under the currently selected half of the index? */
+function matchesDrinkType(data, drinkType = state.drinkType) {
+  if (drinkType === 'all') return true;
+  return isMocktail(data) === (drinkType === 'mocktail');
+}
+
+/** How many distinct drinks sit on each side. Shown on the switch itself. */
+const drinkTypeCounts = (() => {
+  const seen = new Set();
+  const counts = { all: 0, cocktail: 0, mocktail: 0 };
+  Object.entries(cocktailDatabase).forEach(([key, data]) => {
+    if (seen.has(data.name)) return;
+    seen.add(data.name);
+    counts.all++;
+    counts[isMocktailKey(key) ? 'mocktail' : 'cocktail']++;
+  });
+  return counts;
+})();
 
 // ==========================================================================
 // 2c. ROUTING
@@ -3773,6 +4184,17 @@ function applyRoute() {
 function openRecipe(key) {
   const cocktail = cocktailDatabase[key];
   if (!cocktail) return false;
+
+  // A shared link points at one drink, and it has to open. If the switch is
+  // parked on the other half of the index, widen rather than refuse: the
+  // visitor asked for this drink by name.
+  if (!matchesDrinkType(cocktail)) {
+    state.drinkType = 'all';
+    saveDrinkType();
+    applyDrinkTypeChrome();
+    initGalleryFilters();
+  }
+
   const parts = key.split('+');
   state.selectedBase = parts[0];
   state.selectedMixers = parts.slice(1);
@@ -3796,6 +4218,16 @@ const galleryPredicates = {
   refreshing: (data) => data.taste.some(t => /さっぱり|爽快|すっきり|清涼感/.test(t)),
 };
 
+/**
+ * Which base chips belong under the current half of the index, in the order
+ * the base pickers use — spirits first, soft bases after.
+ */
+function basesForDrinkType(drinkType = state.drinkType) {
+  if (drinkType === 'cocktail') return SPIRIT_BASES;
+  if (drinkType === 'mocktail') return [...NON_ALCOHOLIC_BASES];
+  return [...SPIRIT_BASES, ...NON_ALCOHOLIC_BASES];
+}
+
 // Build the filter chips shown above the archive gallery
 function initGalleryFilters() {
   if (!DOM.galleryFilters) return;
@@ -3803,11 +4235,20 @@ function initGalleryFilters() {
     { id: 'all', label: 'すべて' },
     { id: 'summer', label: '☀ 夏向き' },
     { id: 'refreshing', label: 'さっぱり' },
-    { id: 'light', label: '低アルコール' },
-    { id: 'strong', label: '強め' },
-    { id: 'iba', label: '★ IBA公認' },
-    ...Object.keys(baseNameMap).map(b => ({ id: b, label: baseNameMap[b] }))
   ];
+  // Strength and IBA say nothing about a shelf of drinks that are all 0%.
+  if (state.drinkType !== 'mocktail') {
+    chips.push(
+      { id: 'light', label: '低アルコール' },
+      { id: 'strong', label: '強め' },
+      { id: 'iba', label: '★ IBA公認' },
+    );
+  }
+  chips.push(...basesForDrinkType().map(b => ({ id: b, label: baseNameMap[b] })));
+
+  // The chip that was active may have just been filtered out from under us.
+  if (!chips.some(c => c.id === state.galleryFilter)) state.galleryFilter = 'all';
+
   DOM.galleryFilters.innerHTML = '';
   chips.forEach(chip => {
     const btn = document.createElement('button');
@@ -3824,6 +4265,81 @@ function initGalleryFilters() {
     });
     DOM.galleryFilters.appendChild(btn);
   });
+}
+
+// ==========================================================================
+// 6b. COCKTAIL / MOCKTAIL SWITCH
+// The one control that sits above the three tabs, because it cuts across all
+// of them: it decides what this index is about tonight. Every list in the app
+// reads state.drinkType, so the switch itself only has to re-render whichever
+// view happens to be open.
+// ==========================================================================
+
+/** Is this base on offer under the current half of the index? */
+const baseAllowedForDrinkType = (base) =>
+  state.drinkType === 'all' ||
+  NON_ALCOHOLIC_BASES.has(base) === (state.drinkType === 'mocktail');
+
+/**
+ * Everything the switch changes about the frame of the app, as opposed to the
+ * lists inside it: which segment is lit, which base picker is offered, and
+ * the house accent colour (driven off the attribute, in CSS).
+ */
+function applyDrinkTypeChrome() {
+  document.documentElement.dataset.drinkType = state.drinkType;
+
+  if (DOM.drinkTypeSwitch) {
+    DOM.drinkTypeSwitch.dataset.active = state.drinkType;
+    DOM.drinkTypeSwitch.querySelectorAll('.drink-type-btn').forEach(btn => {
+      const on = btn.dataset.drinkType === state.drinkType;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', String(on));
+    });
+  }
+
+  DOM.baseGroupSpirits.classList.toggle('hidden', state.drinkType === 'mocktail');
+  DOM.baseGroupSoft.classList.toggle('hidden', state.drinkType === 'cocktail');
+  // Nothing on the spirit shelf can contribute to a mocktail, so the whole
+  // section goes away rather than sitting there greyed out. The ticks survive.
+  DOM.myBarBaseCategory.classList.toggle('hidden', state.drinkType === 'mocktail');
+}
+
+function setDrinkType(type) {
+  if (state.drinkType === type) return;
+  state.drinkType = type;
+  saveDrinkType();
+  applyDrinkTypeChrome();
+
+  // Re-render whichever view is open. The archive rebuilds its chips too,
+  // since half of them only apply to one side.
+  if (state.currentMode === 'dictionary') {
+    initGalleryFilters();
+    renderGallery(DOM.gallerySearch.value, true);
+  } else if (state.currentMode === 'mybar') {
+    updateMyBarResults();
+    if (starterSetBuilt) calculateStarterSet();
+  }
+
+  // A build in progress on a base that has just left the room cannot stay.
+  if (state.selectedBase && !baseAllowedForDrinkType(state.selectedBase)) {
+    resetGlass();
+  } else {
+    updateUI();
+  }
+}
+
+function initDrinkTypeSwitch() {
+  if (!DOM.drinkTypeSwitch) return;
+
+  DOM.drinkTypeSwitch.querySelectorAll('.dt-count').forEach(el => {
+    el.textContent = drinkTypeCounts[el.dataset.count];
+  });
+  DOM.drinkTypeSwitch.querySelectorAll('.drink-type-btn').forEach(btn => {
+    btn.addEventListener('click', () => setDrinkType(btn.dataset.drinkType));
+  });
+
+  state.drinkType = readStoredDrinkType();
+  applyDrinkTypeChrome();
 }
 
 // Sync State with UI and layout views
@@ -3872,7 +4388,9 @@ function updateUI() {
     renderGarnish(null);
     resetAmbientTint();
 
-    DOM.statusIndicator.textContent = "ベースとなるお酒を選択してください";
+    DOM.statusIndicator.textContent = state.drinkType === 'mocktail'
+      ? "ベースとなる割り材を選択してください"
+      : "ベースとなるお酒を選択してください";
     DOM.statusIndicator.classList.remove('ready');
     
     // UI Panels: Show controls, Hide results
@@ -3890,7 +4408,9 @@ function updateUI() {
     applyAmbientTint(state.targetColor);
 
 
-    const baseJp = document.getElementById(`btn-${selectedBase}`).querySelector('.btn-jp').textContent;
+    // Read from the lookup, not the button: soft bases share their id with a
+    // mixer button, so getElementById would be picking between duplicates.
+    const baseJp = baseNameMap[selectedBase] || selectedBase;
     DOM.statusIndicator.textContent = `${baseJp}を選択中。＋の付いた割り材を選んでください。`;
     DOM.statusIndicator.classList.remove('ready');
     
@@ -3917,7 +4437,10 @@ function updateUI() {
       if (isIBACocktail(cocktail)) ibaBadgeResult.classList.remove('hidden');
       else ibaBadgeResult.classList.add('hidden');
     }
-    
+    const alcoholFree = isMocktail(cocktail);
+    DOM.mocktailBadgeResult.classList.toggle('hidden', !alcoholFree);
+    DOM.resultTag.textContent = alcoholFree ? 'YOUR MOCKTAIL' : 'YOUR COCKTAIL';
+
     DOM.cocktailName.textContent = cocktail.name;
     DOM.cocktailEnName.textContent = cocktail.enName;
     countUpABV(DOM.abvValue, cocktail.abv, key !== state.lastResultKey);
@@ -4051,10 +4574,13 @@ function setMode(mode) {
   requestAnimationFrame(positionTabIndicator);
 }
 
+// The starter set builds a whole extra grid of cards, so it waits until the
+// accordion is actually opened rather than costing every visitor a page load.
+// Module scope, not a closure, because flipping the cocktail/mocktail switch
+// has to know whether there is a built grid to recompute.
+let starterSetBuilt = false;
+
 function initMyBarUI() {
-  // The starter set builds a whole extra grid of cards, so it waits until the
-  // accordion is actually opened rather than costing every visitor a page load.
-  let starterSetBuilt = false;
   DOM.starterSetToggle.addEventListener('click', () => {
     DOM.starterSetAccordion.classList.toggle('open');
     if (!starterSetBuilt && DOM.starterSetAccordion.classList.contains('open')) {
@@ -4066,18 +4592,20 @@ function initMyBarUI() {
   DOM.myBarBaseContainer.innerHTML = '';
   DOM.myBarMixerContainer.innerHTML = '';
   
-  // Render Bases
-  Object.keys(baseTints).forEach(base => {
+  // Render Bases — spirits only. The soft bases are juices and mixers you
+  // already tick below; a carton of orange juice should appear on the shelf
+  // once, under the heading a person would look for it.
+  SPIRIT_BASES.forEach(base => {
     const jpName = baseNameMap[base] || base;
     const icon = baseIconMap[base] || '🍹';
     const label = createMyBarCheckbox(base, jpName, icon);
     DOM.myBarBaseContainer.appendChild(label);
   });
-  
+
   // Render Mixers (skip ingredients already listed as base spirits above,
   // e.g. whiskey/brandy/cassis/coffee, to avoid duplicated chips)
   Object.entries(mixerDefinitions).forEach(([mixerId, def]) => {
-    if (baseTints[mixerId]) return;
+    if (SPIRIT_BASES.includes(mixerId)) return;
     const label = createMyBarCheckbox(mixerId, def.name, def.icon);
     DOM.myBarMixerContainer.appendChild(label);
   });
@@ -4134,10 +4662,11 @@ function updateMyBarResults() {
   Object.entries(cocktailDatabase).forEach(([key, data]) => {
     if (seen.has(data.name)) return;
     seen.add(data.name);
+    if (!matchesDrinkType(data)) return;
     const parts = key.split('+');
     list.push({ key, data, parts });
   });
-  
+
   list.forEach(item => {
     const missing = item.parts.filter(part => !state.myBarIngredients.has(part));
     
@@ -4155,10 +4684,11 @@ function updateMyBarResults() {
   
   // Sort and render makeable cocktails
   makeable.sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'));
-  DOM.myBarResultCount.textContent = `現在作れるカクテル：${makeable.length}種類`;
-  
+  const noun = state.drinkType === 'mocktail' ? 'モクテル' : 'カクテル';
+  DOM.myBarResultCount.textContent = `現在作れる${noun}：${makeable.length}種類`;
+
   if (makeable.length === 0) {
-    DOM.myBarGalleryGrid.innerHTML = '<div class="gallery-empty">手持ちの材料で作れるカクテルはまだありません。材料を追加してください。</div>';
+    DOM.myBarGalleryGrid.innerHTML = `<div class="gallery-empty">手持ちの材料で作れる${noun}はまだありません。材料を追加してください。</div>`;
   } else {
     // Every card pads its recipe list to the longest one so heights stay uniform.
     const maxRecipeRows = makeable.reduce((max, item) => Math.max(max, item.data.ingredients.length), 2);
@@ -4178,13 +4708,7 @@ function updateMyBarResults() {
       card.style.setProperty('--i', index);
       tintCard(card, data);
 
-      if (isIBACocktail(data)) {
-        const ibaBadge = document.createElement('span');
-        ibaBadge.className = 'iba-badge';
-        ibaBadge.title = 'IBA Official Cocktail';
-        ibaBadge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>IBA OFFICIAL';
-        card.appendChild(ibaBadge);
-      }
+      appendCardBadge(card, data);
       
       const thumbDiv = document.createElement('div');
       thumbDiv.className = 'gallery-card-thumb';
@@ -4207,7 +4731,7 @@ function updateMyBarResults() {
       const tagEl = document.createElement('div');
       tagEl.className = 'gallery-card-tag';
       const icon = baseIconMap[baseKey] || '🍹';
-      tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">約${data.abv}%</span>`;
+      tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">${abvTagLabel(data)}</span>`;
       
       infoDiv.appendChild(nameEl);
       infoDiv.appendChild(enEl);
@@ -4242,7 +4766,8 @@ function updateMyBarResults() {
     if (state.myBarIngredients.size === 0) {
       DOM.myBarTipsList.innerHTML = '<li>材料を選択すると、次に買うべきおすすめのお酒や割り材を提案します！</li>';
     } else {
-      DOM.myBarTipsList.innerHTML = '<li>これ以上作れるカクテルを増やすには、まだ足りない材料が多いようです。まずはベーススピリッツから集めてみましょう！</li>';
+      const firstBuy = state.drinkType === 'mocktail' ? 'ジュースや炭酸水' : 'ベーススピリッツ';
+      DOM.myBarTipsList.innerHTML = `<li>これ以上作れる${noun}を増やすには、まだ足りない材料が多いようです。まずは${firstBuy}から集めてみましょう！</li>`;
     }
   } else {
     topTips.forEach(tip => {
@@ -4252,7 +4777,7 @@ function updateMyBarResults() {
       else if (mixerDefinitions[tip.ingId]) ingName = mixerDefinitions[tip.ingId].name;
       
       const unlockExamples = tip.unlocks.slice(0, 2).join('や');
-      li.innerHTML = `<strong>${ingName}</strong> を追加すると、新たに「${unlockExamples}」など <strong>${tip.count}種類</strong> のカクテルが作れるようになります！`;
+      li.innerHTML = `<strong>${ingName}</strong> を追加すると、新たに「${unlockExamples}」など <strong>${tip.count}種類</strong> の${noun}が作れるようになります！`;
       DOM.myBarTipsList.appendChild(li);
     });
   }
@@ -4413,57 +4938,151 @@ function initAtmosphere() {
   }
 }
 
+const STARTER_SET_SIZE = 5;
+
+/**
+ * Choose the five bottles that finish the most recipes outright.
+ *
+ * The obvious shortcut — the two most common bases plus the three most common
+ * mixers — only looks right because the cocktail list is full of
+ * two-ingredient highballs. Applied to the mocktails, where almost nothing
+ * uses fewer than two mixers, it spends its slots on popular bottles that
+ * never meet in the same glass and completes precisely nothing. Greedy
+ * one-at-a-time does no better: for the first three picks every candidate
+ * completes zero drinks, so it has nothing to steer by.
+ *
+ * So this searches for the real answer. Any set of bottles completes exactly
+ * the recipes it contains, which means the best set is the union of some
+ * group of recipes that between them use no more than five ingredients — and
+ * unions pass five almost immediately, so the search tree stays small enough
+ * to walk exhaustively. Leftover slots go to the most common bottle left.
+ */
+function pickStarterItems(recipes) {
+  const parts = recipes.map(item => item.key.split('+'));
+
+  const frequency = {};
+  parts.forEach(p => p.forEach(x => { frequency[x] = (frequency[x] || 0) + 1; }));
+
+  const names = Object.keys(frequency);
+
+  /** Spend whatever slots the search left over on the commonest bottles. */
+  const fill = (items) => {
+    names.filter(x => !items.has(x))
+      .sort((a, b) => frequency[b] - frequency[a])
+      .slice(0, STARTER_SET_SIZE - items.size)
+      .forEach(x => items.add(x));
+    return items;
+  };
+
+  // A shelf is one bit per ingredient, across two words because a JS bitwise
+  // operand is only 32 bits wide. Sets and string keys were the obvious way
+  // to write this and cost over a tenth of a second on the full list — long
+  // enough to hitch the accordion open on a phone. Past 64 ingredients the
+  // search would need a third word, so rather than quietly return a wrong
+  // answer it falls back to raw frequency; the index would have to grow half
+  // again in variety before that can happen.
+  const WORD = 32;
+  if (names.length > WORD * 2) return fill(new Set());
+
+  const index = new Map(names.map((n, i) => [n, i]));
+  const masks = parts.map(p => {
+    let lo = 0, hi = 0;
+    p.forEach(x => {
+      const i = index.get(x);
+      if (i < WORD) lo |= 1 << i;
+      else hi |= 1 << (i - WORD);
+    });
+    return { lo, hi };
+  });
+
+  const popcount = (n) => {
+    n -= (n >>> 1) & 0x55555555;
+    n = (n & 0x33333333) + ((n >>> 2) & 0x33333333);
+    return (((n + (n >>> 4)) & 0x0f0f0f0f) * 0x01010101) >>> 24;
+  };
+  const size = (lo, hi) => popcount(lo) + popcount(hi);
+
+  // Fewest bottles wins a tie, so the spare slots are still free to be spent.
+  let bestCount = 0, bestLo = 0, bestHi = 0, bestSize = Infinity;
+
+  // Dozens of orderings arrive at the same shelf. What a shelf is worth, and
+  // what can still be added to it, depend only on the shelf — so each
+  // distinct one is walked exactly once.
+  const visited = new Set();
+
+  const walk = (lo, hi) => {
+    const id = lo + ':' + hi;
+    if (visited.has(id)) return;
+    visited.add(id);
+
+    let count = 0;
+    for (let i = 0; i < masks.length; i++) {
+      if ((masks[i].lo & ~lo) === 0 && (masks[i].hi & ~hi) === 0) count++;
+    }
+    const s = size(lo, hi);
+    if (count > bestCount || (count === bestCount && s < bestSize)) {
+      bestCount = count; bestLo = lo; bestHi = hi; bestSize = s;
+    }
+
+    for (let i = 0; i < masks.length; i++) {
+      const nextLo = lo | masks[i].lo;
+      const nextHi = hi | masks[i].hi;
+      if (nextLo === lo && nextHi === hi) continue;           // adds nothing
+      if (size(nextLo, nextHi) > STARTER_SET_SIZE) continue;
+      walk(nextLo, nextHi);
+    }
+  };
+  walk(0, 0);
+
+  return fill(new Set(names.filter((_, i) =>
+    i < WORD ? (bestLo >>> i) & 1 : (bestHi >>> (i - WORD)) & 1
+  )));
+}
+
 function calculateStarterSet() {
-  const baseFreq = {};
-  const mixerFreq = {};
   const seen = new Set();
   const validCocktails = [];
-  
+  const usedAsBase = new Set();
+
   Object.entries(cocktailDatabase).forEach(([key, data]) => {
     if (seen.has(data.name)) return;
     seen.add(data.name);
+    if (!matchesDrinkType(data)) return;
     validCocktails.push({ key, data });
-    
-    const parts = key.split('+');
-    const base = parts[0];
-    baseFreq[base] = (baseFreq[base] || 0) + 1;
-    for (let i = 1; i < parts.length; i++) {
-      const mixer = parts[i];
-      mixerFreq[mixer] = (mixerFreq[mixer] || 0) + 1;
-    }
+    usedAsBase.add(key.split('+')[0]);
   });
-  
-  const topBases = Object.keys(baseFreq).sort((a, b) => baseFreq[b] - baseFreq[a]).slice(0, 2);
-  const topMixers = Object.keys(mixerFreq).sort((a, b) => mixerFreq[b] - mixerFreq[a]).slice(0, 3);
-  const starterItems = new Set([...topBases, ...topMixers]);
-  
-  const makeable = [];
-  validCocktails.forEach(item => {
-    const parts = item.key.split('+');
-    const isMakeable = parts.every(part => starterItems.has(part));
-    if (isMakeable) {
-      makeable.push(item);
-    }
-  });
-  
+
+  const starterItems = pickStarterItems(validCocktails);
+
+  const makeable = validCocktails.filter(item =>
+    item.key.split('+').every(part => starterItems.has(part))
+  );
+
   makeable.sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'));
-  
-  DOM.starterSetDesc.innerHTML = `この <strong>${starterItems.size}種類</strong> のアイテムを揃えるだけで、以下の <strong>【${makeable.length}種類】</strong> の本格カクテルが作れるようになります！`;
-  
+
+  const starterNoun = state.drinkType === 'mocktail' ? 'モクテル' : 'カクテル';
+  DOM.starterSetDesc.innerHTML = `この <strong>${starterItems.size}種類</strong> のアイテムを揃えるだけで、以下の <strong>【${makeable.length}種類】</strong> の本格${starterNoun}が作れるようになります！`;
+
   DOM.starterSetItems.innerHTML = '';
-  topBases.forEach(base => {
+  // Bottles that carry a drink are shown first and marked as bases; the rest
+  // follow. An item can only be one or the other in a single list.
+  const ordered = [...starterItems].sort((a, b) =>
+    Number(usedAsBase.has(b)) - Number(usedAsBase.has(a)));
+
+  ordered.forEach(item => {
+    const isBase = usedAsBase.has(item);
     const span = document.createElement('span');
-    span.className = 'starter-item-badge base';
-    span.innerHTML = `${baseIconMap[base] || '🍹'} ${baseNameMap[base] || base}`;
+    span.className = isBase ? 'starter-item-badge base' : 'starter-item-badge';
+    const icon = isBase
+      ? (baseIconMap[item] || mixerDefinitions[item]?.icon || '🍹')
+      : (mixerDefinitions[item]?.icon || '✨');
+    const name = isBase
+      ? (baseNameMap[item] || mixerDefinitions[item]?.name || item)
+      : (mixerDefinitions[item]?.name || item);
+    span.innerHTML = `${icon} ${name}`;
     DOM.starterSetItems.appendChild(span);
   });
-  topMixers.forEach(mixer => {
-    const span = document.createElement('span');
-    span.className = 'starter-item-badge';
-    span.innerHTML = `${mixerDefinitions[mixer]?.icon || '✨'} ${mixerDefinitions[mixer]?.name || mixer}`;
-    DOM.starterSetItems.appendChild(span);
-  });
-  
+
   cancelCardAnimations(DOM.starterGalleryGrid);
   DOM.starterGalleryGrid.innerHTML = '';
   const maxRecipeRows = makeable.reduce((max, item) => Math.max(max, item.data.ingredients.length), 2);
@@ -4482,13 +5101,7 @@ function calculateStarterSet() {
     card.style.setProperty('--i', index);
     tintCard(card, data);
 
-    if (isIBACocktail(data)) {
-      const ibaBadge = document.createElement('span');
-      ibaBadge.className = 'iba-badge';
-      ibaBadge.title = 'IBA Official Cocktail';
-      ibaBadge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>IBA OFFICIAL';
-      card.appendChild(ibaBadge);
-    }
+    appendCardBadge(card, data);
     
     const thumbDiv = document.createElement('div');
     thumbDiv.className = 'gallery-card-thumb';
@@ -4511,7 +5124,7 @@ function calculateStarterSet() {
     const tagEl = document.createElement('div');
     tagEl.className = 'gallery-card-tag';
     const icon = baseIconMap[baseKey] || '🍹';
-    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">約${data.abv}%</span>`;
+    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">${abvTagLabel(data)}</span>`;
     
     infoDiv.appendChild(nameEl);
     infoDiv.appendChild(enEl);
@@ -4532,6 +5145,8 @@ function calculateStarterSet() {
 
   DOM.starterGalleryGrid.appendChild(fragment);
 }
+// First: it sets state.drinkType, and everything built below reads it.
+initDrinkTypeSwitch();
 initMyBarUI();
 initGalleryFilters();
 initEventListeners();
