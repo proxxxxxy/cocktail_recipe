@@ -738,6 +738,101 @@ input:focus-visible {
   .drink-type-btn small { letter-spacing: .1em; }
 }
 
+/* --------------------------------------------------------------------------
+   Guest mode
+   A menu is the index with the workshop taken away. Everything that exists to
+   help you build a drink — the tabs, the search, the shelf, the reset — is
+   for the host, and a guest holding a link should never meet any of it. What
+   stays is the masthead, the cocktail/mocktail switch, the taste filters and
+   the drinks themselves.
+   -------------------------------------------------------------------------- */
+:root[data-view="menu"] .intro,
+:root[data-view="menu"] .mode-tabs,
+:root[data-view="menu"] .dictionary-heading,
+:root[data-view="menu"] .gallery-search-wrapper,
+:root[data-view="menu"] .action-row {
+  display: none;
+}
+
+:root[data-view="menu"] .mode-view {
+  padding-top: 0;
+}
+
+/* The recipe a guest opened still needs its way back to the list. */
+:root[data-view="menu"] .result-actions {
+  display: flex;
+}
+
+.menu-masthead {
+  width: 100%;
+  margin-bottom: 44px;
+  text-align: center;
+}
+
+.menu-masthead .intro-rule {
+  width: min(300px, 55%);
+  margin: 26px auto 0;
+}
+
+.menu-title {
+  margin-top: 15px;
+  font-size: clamp(2.3rem, 4.4vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: .015em;
+}
+
+.menu-note {
+  margin-top: 22px;
+  color: #aaa294;
+  font-size: .88rem;
+  line-height: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Handing the menu over
+   One control, inside My Bar, beside the count it acts on. It is the only
+   thing this whole feature adds to the host's screen.
+   -------------------------------------------------------------------------- */
+.mybar-results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 18px;
+}
+
+.menu-share-btn {
+  /* Comfortably tappable with a thumb, which is how it will be used. */
+  min-height: 44px;
+  padding: 9px 18px;
+  border: 1px solid var(--line-strong);
+  background: rgba(var(--brass-rgb), .07);
+  color: #e6d7b8;
+  cursor: pointer;
+  font-size: .7rem;
+  letter-spacing: .1em;
+  white-space: nowrap;
+  transition: background .3s ease, border-color .3s ease, color .3s ease, transform .3s var(--ease-out);
+}
+
+.menu-share-btn:hover {
+  background: rgba(var(--brass-rgb), .16);
+  border-color: var(--brass);
+  color: var(--paper);
+  transform: translateY(-1px);
+}
+
+.menu-share-status {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: .7rem;
+  line-height: 1.9;
+  /* The link is printed here when the clipboard is unavailable, and a URL
+     has no spaces to break at. */
+  overflow-wrap: anywhere;
+}
+
 /* Alcohol-free counterpart to the IBA badge. Same corner, same footprint —
    the two never appear on one card, so they share the slot. */
 .mocktail-badge {
@@ -1252,19 +1347,23 @@ input:focus-visible {
   left: 11px;
 }
 
-.simulator-layout[data-mode="dictionary"] {
+.simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="menu"] {
   grid-template-columns: 1fr;
 }
 
-.simulator-layout[data-mode="dictionary"] .visualizer-card {
+.simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="menu"] .visualizer-card {
   display: none;
 }
 
-.simulator-layout[data-mode="dictionary"] .controls-card {
+.simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="menu"] .controls-card {
   padding: 32px 42px 45px;
 }
 
-.simulator-layout[data-mode="dictionary"] .gallery-grid {
+.simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="menu"] .gallery-grid {
   grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
   gap: 22px;
 }
@@ -1628,7 +1727,8 @@ input:focus-visible {
     min-height: 0;
   }
 
-  .simulator-layout[data-mode="dictionary"] .controls-card {
+  .simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="menu"] .controls-card {
     padding-inline: 28px;
   }
 }
@@ -1668,7 +1768,8 @@ input:focus-visible {
 
   .controls-card,
   .result-section,
-  .simulator-layout[data-mode="dictionary"] .controls-card {
+  .simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="menu"] .controls-card {
     padding: 24px 15px 28px;
   }
 
@@ -1687,7 +1788,8 @@ input:focus-visible {
   }
 
   .gallery-grid,
-  .simulator-layout[data-mode="dictionary"] .gallery-grid {
+  .simulator-layout[data-mode="dictionary"],
+.simulator-layout[data-mode="menu"] .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 9px;
   }

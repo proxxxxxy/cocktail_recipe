@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260727-mocktail-12">
+  <link rel="stylesheet" href="style.css?v=20260727-menu-13">
 </head>
 <body>
   <div class="intro-curtain" id="intro-curtain" aria-hidden="true">
@@ -53,6 +53,13 @@
         <strong>After dark,<br>choose well.</strong>
         <small>CURATED CLASSICS · HOME BAR EDITION</small>
       </div>
+    </section>
+
+    <section class="menu-masthead hidden" id="menu-masthead" aria-label="今夜のメニュー">
+      <p class="eyebrow">TONIGHT'S MENU</p>
+      <h1 class="menu-title">お好きな一杯を。</h1>
+      <span class="intro-rule" aria-hidden="true"></span>
+      <p class="menu-note" id="menu-note"></p>
     </section>
 
     <div class="drink-type-bar">
@@ -218,7 +225,13 @@
           </section>
 
           <section class="mybar-results-section">
-            <h2 class="control-title" id="mybar-result-count">現在作れるカクテル：0種類</h2>
+            <div class="mybar-results-head">
+              <h2 class="control-title" id="mybar-result-count">現在作れるカクテル：0種類</h2>
+              <button class="menu-share-btn" id="btn-share-menu" type="button">
+                メニューにして渡す <span aria-hidden="true">→</span>
+              </button>
+            </div>
+            <p class="menu-share-status hidden" id="menu-share-status" role="status"></p>
             <div class="gallery-grid" id="mybar-gallery-grid"></div>
           </section>
           <aside class="mybar-tips-section" id="mybar-tips-section">
@@ -279,6 +292,6 @@
     <span>DRINK RESPONSIBLY</span>
   </footer>
 
-  <script src="app.js?v=20260727-mocktail-12"></script>
+  <script src="app.js?v=20260727-menu-13"></script>
 </body>
 </html>

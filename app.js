@@ -2382,8 +2382,14 @@ function isMocktailKey(key) {
 // 2. APPLICATION STATE
 // ==========================================================================
 const state = {
-  currentMode: 'build',  // 'build' | 'dictionary' | 'mybar'
+  currentMode: 'build',  // 'build' | 'dictionary' | 'mybar' | 'menu'
   drinkType: 'all',      // 'all' | 'cocktail' | 'mocktail' — cuts across every mode
+
+  // Guest mode. menuShelf is the host's shelf, decoded out of the URL; it is
+  // never mixed into myBarIngredients, so reading someone's menu does not
+  // overwrite your own shelf.
+  menuCode: null,
+  menuShelf: null,
   galleryFilter: 'all',  // 'all' | 'iba' | base spirit key
   showResult: false,     // True when the user explicitly opens an extensible recipe
   selectedBase: null,    // 'gin' | 'vodka' | 'rum' | ...
@@ -2438,6 +2444,78 @@ function saveDrinkType() {
   } catch {
     // Storage unavailable — the choice just will not survive a reload.
   }
+}
+
+// ==========================================================================
+// 2d. THE SHELF, WRITTEN INTO A LINK
+// A guest's phone has no shelf on it, so a menu has to carry the host's in
+// its own URL: one bit per ingredient, packed six to a character. Forty-one
+// ingredients come to seven characters, short enough to stay readable and to
+// survive being pasted into a chat app.
+//
+// THE ORDER OF THIS LIST IS PART OF EVERY LINK EVER HANDED OUT. A new
+// ingredient goes on the END. Reordering or removing an entry silently
+// repoints every menu someone is still holding at a different shelf.
+// ==========================================================================
+const SHELF_VOCABULARY = [
+  'gin', 'vodka', 'rum', 'tequila',
+  'whiskey', 'brandy', 'peach', 'cassis',
+  'coffee', 'ginger', 'orange', 'soda',
+  'tomato', 'pineapple', 'grapefruit', 'cranberry',
+  'tonic', 'cola', 'milk', 'curacao',
+  'blue_curacao', 'coconut', 'lime', 'salt',
+  'mint', 'oolong', 'absinthe', 'dry_vermouth',
+  'sweet_vermouth', 'campari', 'bitters', 'olive',
+  'lemon', 'grenadine', 'cream', 'cacao',
+  'espresso', 'maraschino_liq', 'maraschino_cherry', 'sugar',
+  'egg_yolk',
+];
+
+// URL-safe base64 alphabet: nothing here needs escaping in a fragment.
+const SHELF_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+const SHELF_BITS_PER_CHAR = 6;
+
+/** An ingredient absent from the list would quietly vanish from every menu. */
+(function auditShelfVocabulary() {
+  const known = new Set(SHELF_VOCABULARY);
+  const missing = [...Object.keys(baseTints), ...Object.keys(mixerDefinitions)]
+    .filter(id => !known.has(id));
+  if (missing.length) {
+    console.warn(
+      `[shelf] ${missing.join(', ')} missing from SHELF_VOCABULARY — ` +
+      'append them to the END of the list, never in the middle.'
+    );
+  }
+})();
+
+function encodeShelf(ids) {
+  let code = '';
+  for (let i = 0; i < SHELF_VOCABULARY.length; i += SHELF_BITS_PER_CHAR) {
+    let chunk = 0;
+    for (let b = 0; b < SHELF_BITS_PER_CHAR; b++) {
+      if (ids.has(SHELF_VOCABULARY[i + b])) chunk |= 1 << b;
+    }
+    code += SHELF_ALPHABET[chunk];
+  }
+  return code;
+}
+
+/** Returns null for anything that is not a shelf, so a typo shows a 404 view
+ *  rather than an empty menu the guest would read as "nothing to drink". */
+function decodeShelf(code) {
+  if (!code) return null;
+  const ids = new Set();
+  for (let c = 0; c < code.length; c++) {
+    const chunk = SHELF_ALPHABET.indexOf(code[c]);
+    if (chunk < 0) return null;
+    for (let b = 0; b < SHELF_BITS_PER_CHAR; b++) {
+      // A longer code than this build understands — a link made after another
+      // ingredient was appended — simply drops the bits it has no name for.
+      const id = SHELF_VOCABULARY[c * SHELF_BITS_PER_CHAR + b];
+      if (id && (chunk & (1 << b))) ids.add(id);
+    }
+  }
+  return ids;
 }
 
 /** Private browsing and blocked storage both throw; neither is worth an error. */
@@ -2510,6 +2588,12 @@ const DOM = {
   myBarBaseCategory: document.getElementById('mybar-base-category'),
   resultTag: document.getElementById('result-tag'),
   mocktailBadgeResult: document.getElementById('mocktail-badge-result'),
+
+  // Guest menu
+  menuMasthead: document.getElementById('menu-masthead'),
+  menuNote: document.getElementById('menu-note'),
+  shareMenuBtn: document.getElementById('btn-share-menu'),
+  shareMenuStatus: document.getElementById('menu-share-status'),
 
   // Tabs
   tabBuild: document.getElementById('tab-build'),
@@ -3940,22 +4024,35 @@ function renderGallery(query, animate = false) {
   const q = (query || '').trim().toLowerCase();
   
   // Deduplicate by cocktail name (some have multiple key variants like margarita)
-  const seen = new Set();
+  const shelf = state.menuShelf;
+  const seen = new Map();
   const list = [];
   Object.entries(cocktailDatabase).forEach(([key, data]) => {
-    if (seen.has(data.name)) return;
-    seen.add(data.name);
     const baseKey = key.split('+')[0];
     const baseJp = baseNameMap[baseKey] || baseKey;
-    list.push({ key, data, baseKey, baseJp });
+    const pourable = !shelf || key.split('+').every(part => shelf.has(part));
+
+    // Margarita exists with and without a salt rim, moscow mule with and
+    // without lime. On a menu the variant that matters is the one the host
+    // can actually pour, so a pourable variant displaces a kept one that is
+    // not — otherwise whichever happened to be declared first would decide,
+    // and a guest would be offered a drink that cannot be made.
+    if (seen.has(data.name)) {
+      const kept = list[seen.get(data.name)];
+      if (pourable && !kept.pourable) Object.assign(kept, { key, baseKey, baseJp, pourable });
+      return;
+    }
+    seen.set(data.name, list.length);
+    list.push({ key, data, baseKey, baseJp, pourable });
   });
-  
+
   list.sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'));
 
   // Filter by the active chip, then by search query (name, english name, base).
   // A chip is either one of the data-driven predicates or a base spirit key.
   const predicate = galleryPredicates[state.galleryFilter];
   const filtered = list.filter(item => {
+    if (!item.pourable) return false;
     if (!matchesDrinkType(item.data)) return false;
     if (predicate) {
       if (!predicate(item.data)) return false;
@@ -3973,7 +4070,9 @@ function renderGallery(query, animate = false) {
     const what = state.drinkType === 'mocktail' ? 'モクテル'
                : state.drinkType === 'cocktail' ? 'カクテル'
                : 'ドリンク';
-    DOM.galleryGrid.innerHTML = `<div class="gallery-empty">該当する${what}が見つかりませんでした。</div>`;
+    DOM.galleryGrid.innerHTML = shelf
+      ? `<div class="gallery-empty">今夜お出しできる${what}はありませんでした。</div>`
+      : `<div class="gallery-empty">該当する${what}が見つかりませんでした。</div>`;
     return;
   }
   
@@ -4129,14 +4228,24 @@ let applyingRoute = false;
 // first tap back to the build tab does not push a redundant entry.
 const normalizedHash = () => location.hash || '#/';
 
+function openRecipeSlug() {
+  if (!state.showResult) return null;
+  const key = [state.selectedBase, ...[...state.selectedMixers].sort()].join('+');
+  const data = cocktailDatabase[key];
+  return data ? routeSlugByName.get(data.name) || null : null;
+}
+
 function currentRoute() {
-  if (state.showResult) {
-    const key = [state.selectedBase, ...[...state.selectedMixers].sort()].join('+');
-    const data = cocktailDatabase[key];
-    if (data && routeSlugByName.has(data.name)) {
-      return `#/recipe/${routeSlugByName.get(data.name)}`;
-    }
+  // A guest reading a menu stays inside it, recipes included, so the back
+  // button returns to the menu rather than dropping them into the builder.
+  if (state.menuCode) {
+    const slug = openRecipeSlug();
+    return slug
+      ? `#/menu/${state.menuCode}/recipe/${slug}`
+      : `#/menu/${state.menuCode}`;
   }
+  const slug = openRecipeSlug();
+  if (slug) return `#/recipe/${slug}`;
   if (state.currentMode === 'dictionary') return '#/archive';
   if (state.currentMode === 'mybar') return '#/mybar';
   return '#/';
@@ -4162,6 +4271,23 @@ function applyRoute() {
   applyingRoute = true;
   try {
     const hash = normalizedHash();
+
+    const menu = hash.match(/^#\/menu\/([A-Za-z0-9\-_]+)(?:\/recipe\/(.+))?$/);
+    if (menu) {
+      const shelf = decodeShelf(menu[1]);
+      if (shelf) {
+        enterMenuMode(menu[1], shelf);
+        if (menu[2]) {
+          const key = routeKeyBySlug.get(decodeURIComponent(menu[2]));
+          if (key) openRecipe(key);
+        }
+        return;
+      }
+    }
+    // Any other address leaves the menu behind — including a bad menu code,
+    // which lands in the ordinary index rather than on a blank page.
+    if (state.menuCode) exitMenuMode();
+
     const recipe = hash.match(/^#\/recipe\/(.+)$/);
     if (recipe) {
       const key = routeKeyBySlug.get(decodeURIComponent(recipe[1]));
@@ -4244,7 +4370,20 @@ function initGalleryFilters() {
       { id: 'iba', label: '★ IBA公認' },
     );
   }
-  chips.push(...basesForDrinkType().map(b => ({ id: b, label: baseNameMap[b] })));
+  // On a menu, a chip that filters down to nothing is worse than no chip:
+  // it reads as "we're out of gin" when it only means the host never had any.
+  let bases = basesForDrinkType();
+  if (state.menuShelf) {
+    const stocked = new Set();
+    Object.entries(cocktailDatabase).forEach(([key, data]) => {
+      const parts = key.split('+');
+      if (parts.every(p => state.menuShelf.has(p)) && matchesDrinkType(data)) {
+        stocked.add(parts[0]);
+      }
+    });
+    bases = bases.filter(b => stocked.has(b));
+  }
+  chips.push(...bases.map(b => ({ id: b, label: baseNameMap[b] })));
 
   // The chip that was active may have just been filtered out from under us.
   if (!chips.some(c => c.id === state.galleryFilter)) state.galleryFilter = 'all';
@@ -4312,7 +4451,11 @@ function setDrinkType(type) {
 
   // Re-render whichever view is open. The archive rebuilds its chips too,
   // since half of them only apply to one side.
-  if (state.currentMode === 'dictionary') {
+  if (state.currentMode === 'menu') {
+    initGalleryFilters();
+    renderGallery('', true);
+    renderMenuMasthead();
+  } else if (state.currentMode === 'dictionary') {
     initGalleryFilters();
     renderGallery(DOM.gallerySearch.value, true);
   } else if (state.currentMode === 'mybar') {
@@ -4347,7 +4490,7 @@ function updateUI() {
   const { selectedBase, selectedMixers, selectedIce } = state;
   DOM.simulatorLayout.dataset.mode = state.currentMode;
   if (DOM.stageNumber) {
-    const labels = { build: '01 / BUILD', dictionary: '02 / ARCHIVE', mybar: '03 / MY BAR' };
+    const labels = { build: '01 / BUILD', dictionary: '02 / ARCHIVE', mybar: '03 / MY BAR', menu: 'TONIGHT' };
     DOM.stageNumber.textContent = labels[state.currentMode] || '01 / BUILD';
   }
   DOM.viewRecipeBtn.classList.add('hidden');
@@ -4526,7 +4669,7 @@ function updateUI() {
   // clicking a gallery card, which reaches a finished recipe without going
   // through setMode. Parking the loop in setMode alone left the preview frozen
   // and the glass blank on exactly that route.
-  if (DOM.simulatorLayout.dataset.mode === 'dictionary') {
+  if (['dictionary', 'menu'].includes(DOM.simulatorLayout.dataset.mode)) {
     stopPreviewLoop();
   } else {
     startPreviewLoop();
@@ -4540,11 +4683,13 @@ function updateUI() {
 // ==========================================================================
 
 function setMode(mode) {
+  // Reaching for a tab is leaving the menu, whatever the URL still says.
+  if (state.menuCode) exitMenuMode();
   state.currentMode = mode;
-  
+
   // Hidden cards must not leave hover animation loops running.
   cancelCardAnimations();
-  
+
   DOM.tabBuild.classList.remove('active');
   DOM.tabDictionary.classList.remove('active');
   DOM.tabMyBar.classList.remove('active');
@@ -4579,6 +4724,107 @@ function setMode(mode) {
 // Module scope, not a closure, because flipping the cocktail/mocktail switch
 // has to know whether there is a built grid to recompute.
 let starterSetBuilt = false;
+
+// ==========================================================================
+// 7b. GUEST MODE
+// A menu is not a fourth tab. It is the same index with the builder taken
+// away: no tabs, no shelf, no live glass to pour into — just what the host
+// can actually make tonight, and the recipe behind each card. The one
+// control that stays is the cocktail/mocktail switch, so a guest who is not
+// drinking does not have to announce it to find their half of the list.
+// ==========================================================================
+
+function renderMenuMasthead() {
+  const pourable = DOM.galleryGrid.querySelectorAll('.gallery-card').length;
+  const noun = state.drinkType === 'mocktail' ? 'モクテル'
+             : state.drinkType === 'cocktail' ? 'カクテル'
+             : '杯';
+  DOM.menuNote.textContent = pourable
+    ? `今夜お出しできる ${pourable} ${noun}です。気になるものを選んでください。`
+    : '今夜お出しできるものがありません。';
+}
+
+function enterMenuMode(code, shelf) {
+  state.menuCode = code;
+  state.menuShelf = shelf;
+  state.currentMode = 'menu';
+  state.showResult = false;
+  state.selectedBase = null;
+  state.selectedMixers = [];
+  state.galleryFilter = 'all';
+
+  document.documentElement.dataset.view = 'menu';
+  cancelCardAnimations();
+
+  DOM.tabBuild.classList.remove('active');
+  DOM.tabDictionary.classList.remove('active');
+  DOM.tabMyBar.classList.remove('active');
+  DOM.viewBuild.classList.add('hidden');
+  DOM.viewMyBar.classList.add('hidden');
+  DOM.viewDictionary.classList.remove('hidden');
+  DOM.menuMasthead.classList.remove('hidden');
+
+  DOM.gallerySearch.value = '';
+  initGalleryFilters();
+  renderGallery('', true);
+  renderMenuMasthead();
+  updateUI();
+}
+
+/** Build the link a guest opens. Absolute, so it survives being pasted. */
+function menuLinkForShelf(shelf) {
+  const url = new URL(location.href);
+  url.hash = `#/menu/${encodeShelf(shelf)}`;
+  return url.toString();
+}
+
+function setShareStatus(text) {
+  DOM.shareMenuStatus.textContent = text;
+  DOM.shareMenuStatus.classList.toggle('hidden', !text);
+}
+
+/**
+ * Hand the shelf over. The share sheet is the good path on a phone — the
+ * host picks the recipient themselves, and nothing leaves the device until
+ * they do. Clipboard is the desktop path. If both are refused the link is
+ * simply printed, because a link you can read is still a link you can send.
+ */
+async function shareMenu() {
+  const shelf = state.myBarIngredients;
+  if (shelf.size === 0) {
+    setShareStatus('先に、手持ちの材料にチェックを入れてください。');
+    return;
+  }
+
+  const link = menuLinkForShelf(shelf);
+  const pourable = DOM.myBarGalleryGrid.querySelectorAll('.gallery-card').length;
+  const title = `今夜のメニュー — ${pourable}杯`;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, text: title, url: link });
+      setShareStatus('メニューを送りました。');
+      return;
+    } catch (err) {
+      // The host closed the sheet: that is an answer, not a failure.
+      if (err && err.name === 'AbortError') return;
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(link);
+    setShareStatus(`リンクをコピーしました（${pourable}杯）— ${link}`);
+  } catch {
+    setShareStatus(`このリンクを送ってください（${pourable}杯）— ${link}`);
+  }
+}
+
+function exitMenuMode() {
+  state.menuCode = null;
+  state.menuShelf = null;
+  delete document.documentElement.dataset.view;
+  DOM.menuMasthead.classList.add('hidden');
+}
 
 function initMyBarUI() {
   DOM.starterSetToggle.addEventListener('click', () => {
@@ -4651,6 +4897,8 @@ function syncMyBarCheckboxes() {
 }
 
 function updateMyBarResults() {
+  // The shelf just moved, so any link already offered is out of date.
+  setShareStatus('');
   cancelCardAnimations(DOM.myBarGalleryGrid);
   DOM.myBarGalleryGrid.innerHTML = '';
   const makeable = [];
@@ -4818,6 +5066,8 @@ function initEventListeners() {
     });
   });
   
+  DOM.shareMenuBtn.addEventListener('click', shareMenu);
+
   DOM.resetBtn.addEventListener('click', resetGlass);
   DOM.viewRecipeBtn.addEventListener('click', () => {
     state.showResult = true;
