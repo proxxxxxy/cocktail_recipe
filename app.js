@@ -2102,6 +2102,12 @@ function updateBubbles(currentY) {
 }
 
 function drawCocktail(timestamp) {
+  // Queue the next frame before drawing anything. If the draw below ever
+  // throws, the chain must not die — and because a dead chain leaves a stale
+  // frame id behind, startPreviewLoop() would refuse to revive it, freezing
+  // the glass for the rest of the session.
+  previewFrameId = requestAnimationFrame(drawCocktail);
+
   const w = DOM.canvas.width;
   const h = DOM.canvas.height;
 
@@ -2123,7 +2129,6 @@ function drawCocktail(timestamp) {
       mainPreview: true,
       pour: state.pourProgress
     });
-    previewFrameId = requestAnimationFrame(drawCocktail);
     return;
   }
   state.pourKey = null;
@@ -2292,8 +2297,6 @@ function drawCocktail(timestamp) {
     }
     ctx.restore();
   }
-
-  previewFrameId = requestAnimationFrame(drawCocktail);
 }
 
 /**
@@ -3580,6 +3583,17 @@ function updateUI() {
     DOM.resultPanel.classList.add('hidden');
     DOM.simulatorLayout.classList.remove('completed');
   }
+
+  // Decided here, and only here. The archive is the one layout that hides the
+  // visualizer, and every path through the app ends up in updateUI — including
+  // clicking a gallery card, which reaches a finished recipe without going
+  // through setMode. Parking the loop in setMode alone left the preview frozen
+  // and the glass blank on exactly that route.
+  if (DOM.simulatorLayout.dataset.mode === 'dictionary') {
+    stopPreviewLoop();
+  } else {
+    startPreviewLoop();
+  }
 }
 
 // ==========================================================================
@@ -3602,9 +3616,6 @@ function setMode(mode) {
   DOM.viewDictionary.classList.add('hidden');
   DOM.viewMyBar.classList.add('hidden');
   
-  // The archive hides the visualizer entirely; everything else shows it.
-  if (mode === 'dictionary') stopPreviewLoop(); else startPreviewLoop();
-
   if (mode === 'build') {
     DOM.tabBuild.classList.add('active');
     DOM.viewBuild.classList.remove('hidden');
