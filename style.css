@@ -823,6 +823,13 @@ input:focus-visible {
   display: block;
 }
 
+/* Clearance for a jump: the condensed masthead (66) + the pinned bar (~35)
+   + air. courseScrollTarget() reads this back, so the number lives here and
+   nowhere else. */
+.menu-course {
+  scroll-margin-top: 124px;
+}
+
 .menu-course + .menu-course {
   margin-top: 58px;
   padding-top: 46px;
@@ -1975,6 +1982,10 @@ input:focus-visible {
 
   .course-nav {
     top: 62px;
+  }
+
+  .menu-course {
+    scroll-margin-top: 118px;
   }
 
   .course-nav-btn {

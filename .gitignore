@@ -1,7 +1,12 @@
 # 旧バージョンのローカル控え（リポジトリには含めない）
+# 世代を戻したいときは git tag（backup-1, backup-2, ...）を使う
 *_backup.js
 *_backup.css
 *_backup.html
+*_backup2.js
+*_backup2.css
+*_backup2.html
+*_backup2.md
 
 # OS / エディタ
 Thumbs.db

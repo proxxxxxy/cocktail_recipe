@@ -4123,13 +4123,19 @@ const COURSES = [
    The bar pins under the masthead and puts every course one tap away.
    -------------------------------------------------------------------------- */
 
-const CONDENSED_HEADER_H = 66;   // .site-header-bar.is-condensed height
-
-/** Where the page must sit for a course heading to clear the fixed chrome. */
+/**
+ * Where the page must sit for a course heading to clear the pinned chrome.
+ *
+ * The clearance is the section's own CSS scroll-margin-top, so the masthead
+ * height, the bar height and the breathing room are declared once, in the
+ * stylesheet, beside the rules that create them. Adding them up in JS meant
+ * a hard-coded 66px that drifted from what the CSS actually did, and left
+ * the first course clearing the bar by eleven pixels.
+ */
 function courseScrollTarget(section) {
-  const navH = DOM.courseNav.classList.contains('hidden') ? 0 : DOM.courseNav.offsetHeight;
+  const margin = parseFloat(getComputedStyle(section).scrollMarginTop) || 0;
   const top = section.getBoundingClientRect().top + window.scrollY;
-  return Math.max(0, Math.round(top - CONDENSED_HEADER_H - navH - 12));
+  return Math.max(0, Math.round(top - margin));
 }
 
 function syncCourseNav() {
