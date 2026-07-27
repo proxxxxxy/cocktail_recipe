@@ -2590,6 +2590,7 @@ const DOM = {
   mocktailBadgeResult: document.getElementById('mocktail-badge-result'),
 
   // Guest menu
+  courseNav: document.getElementById('course-nav'),
   menuMasthead: document.getElementById('menu-masthead'),
   menuNote: document.getElementById('menu-note'),
   shareMenuBtn: document.getElementById('btn-share-menu'),
@@ -3858,15 +3859,19 @@ function drawMiniThumbnailAnimated(canvas, cocktail, baseKey, animState) {
  * means the corner can never stack two labels on top of each other.
  */
 function appendCardBadge(card, data) {
+  // Two labels, one shown at a time by CSS: at three columns a phone card is
+  // barely a hundred pixels wide, and "ALCOHOL FREE" spanned well over half
+  // of it — a badge that big stops being a note and becomes the card.
   const badge = document.createElement('span');
   if (isIBACocktail(data)) {
     badge.className = 'iba-badge';
     badge.title = 'IBA Official Cocktail';
-    badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>IBA OFFICIAL';
+    badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>'
+      + '<span class="badge-long">IBA OFFICIAL</span><span class="badge-short">IBA</span>';
   } else if (isMocktail(data)) {
     badge.className = 'mocktail-badge';
     badge.title = 'ノンアルコールカクテル';
-    badge.textContent = 'ALCOHOL FREE';
+    badge.innerHTML = '<span class="badge-long">ALCOHOL FREE</span><span class="badge-short">ノンアル</span>';
   } else {
     return;
   }
@@ -4054,6 +4059,8 @@ function renderGallery(query, animate = false) {
   cancelCardAnimations(DOM.galleryGrid);
   DOM.galleryGrid.innerHTML = '';
   DOM.galleryGrid.classList.remove('is-coursed');
+  // Only a coursed menu earns the jump bar; renderCourseNav brings it back.
+  DOM.courseNav.classList.add('hidden');
   const q = (query || '').trim().toLowerCase();
 
   const shelf = state.menuShelf;
@@ -4109,9 +4116,65 @@ const COURSES = [
   { id: 'digestif', label: '〆の一杯',     en: 'TO CLOSE', note: '食後に。甘いもの、濃いもの、ゆっくり飲むもの。' },
 ];
 
+/* --------------------------------------------------------------------------
+   Course jump bar
+   A 49-drink menu runs eight screens on a phone, which put 〆の一杯 six
+   screens down — far enough that most guests would never learn it existed.
+   The bar pins under the masthead and puts every course one tap away.
+   -------------------------------------------------------------------------- */
+
+const CONDENSED_HEADER_H = 66;   // .site-header-bar.is-condensed height
+
+/** Where the page must sit for a course heading to clear the fixed chrome. */
+function courseScrollTarget(section) {
+  const navH = DOM.courseNav.classList.contains('hidden') ? 0 : DOM.courseNav.offsetHeight;
+  const top = section.getBoundingClientRect().top + window.scrollY;
+  return Math.max(0, Math.round(top - CONDENSED_HEADER_H - navH - 12));
+}
+
+function syncCourseNav() {
+  if (DOM.courseNav.classList.contains('hidden')) return;
+  const buttons = [...DOM.courseNav.querySelectorAll('.course-nav-btn')];
+  if (!buttons.length) return;
+
+  // The active course is the last one whose heading has reached the bar.
+  let active = 0;
+  buttons.forEach((btn, i) => {
+    const section = document.getElementById(btn.dataset.course);
+    if (section && courseScrollTarget(section) <= window.scrollY + 2) active = i;
+  });
+  buttons.forEach((btn, i) => btn.classList.toggle('active', i === active));
+}
+
+function renderCourseNav(sections) {
+  DOM.courseNav.innerHTML = '';
+  // One course is not a set of courses, and needs no way to move between them.
+  if (sections.length < 2) {
+    DOM.courseNav.classList.add('hidden');
+    return;
+  }
+
+  sections.forEach(({ id, label, count }) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'course-nav-btn';
+    btn.dataset.course = id;
+    btn.innerHTML = `${label}<small>${count}</small>`;
+    btn.addEventListener('click', () => {
+      const section = document.getElementById(id);
+      if (section) window.scrollTo({ top: courseScrollTarget(section) });
+    });
+    DOM.courseNav.appendChild(btn);
+  });
+
+  DOM.courseNav.classList.remove('hidden');
+  syncCourseNav();
+}
+
 function renderMenuCourses(filtered, animate) {
   DOM.galleryGrid.classList.add('is-coursed');
   const fragment = document.createDocumentFragment();
+  const built = [];
 
   COURSES.forEach(course => {
     const items = filtered.filter(item => serveOf(item.data) === course.id);
@@ -4119,6 +4182,8 @@ function renderMenuCourses(filtered, animate) {
 
     const section = document.createElement('section');
     section.className = 'menu-course';
+    section.id = `course-${course.id}`;
+    built.push({ id: section.id, label: course.label, count: items.length });
 
     const heading = document.createElement('div');
     heading.className = 'menu-course-heading';
@@ -4137,6 +4202,7 @@ function renderMenuCourses(filtered, animate) {
   });
 
   DOM.galleryGrid.appendChild(fragment);
+  renderCourseNav(built);   // after insertion: the bar measures real sections
 }
 
 /** One archive/menu card. Shared so the two layouts cannot drift apart. */
@@ -4168,10 +4234,14 @@ function createGalleryCard({ key, data, baseKey, baseJp }, index) {
   enEl.className = 'gallery-card-en';
   enEl.textContent = data.enName;
 
+  // The base name is wrapped rather than left as bare text so that the
+  // three-column phone layout can drop it and keep the two-letter icon.
   const tagEl = document.createElement('div');
   tagEl.className = 'gallery-card-tag';
   const icon = baseIconMap[baseKey] || '🍹';
-  tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">${abvTagLabel(data)}</span>`;
+  tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span>`
+    + `<span class="gallery-card-base">${baseJp}ベース</span>`
+    + `<span class="gallery-card-abv">${abvTagLabel(data)}</span>`;
 
   infoDiv.appendChild(nameEl);
   infoDiv.appendChild(enEl);
@@ -5043,6 +5113,7 @@ function exitMenuMode() {
   delete document.documentElement.dataset.view;
   DOM.menuMasthead.classList.add('hidden');
   DOM.galleryGrid.classList.remove('is-coursed');
+  DOM.courseNav.classList.add('hidden');
   refreshDrinkTypeCounts();
 }
 
@@ -5287,6 +5358,16 @@ function initEventListeners() {
   });
   
   DOM.shareMenuBtn.addEventListener('click', shareMenu);
+
+  // Time-throttled rather than rAF-throttled: highlighting which course you
+  // are in is not animation, and this keeps working when frames do not.
+  let lastCourseSync = 0;
+  window.addEventListener('scroll', () => {
+    const now = performance.now();
+    if (now - lastCourseSync < 100) return;
+    lastCourseSync = now;
+    syncCourseNav();
+  }, { passive: true });
 
   DOM.resetBtn.addEventListener('click', resetGlass);
   DOM.viewRecipeBtn.addEventListener('click', () => {

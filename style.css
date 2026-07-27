@@ -763,6 +763,60 @@ input:focus-visible {
   display: flex;
 }
 
+/* The jump bar. Pins just under the condensed masthead (66px) so the course
+   you want is always one tap away rather than six screens down. */
+.course-nav {
+  position: sticky;
+  z-index: 50;
+  top: 66px;
+  display: flex;
+  justify-content: center;
+  gap: 1px;
+  margin: 0 auto 26px;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(6, 7, 6, .92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.course-nav-btn {
+  padding: 10px 16px;
+  background: transparent;
+  color: #8d867c;
+  cursor: pointer;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  transition: color .3s ease, background .3s ease, box-shadow .3s ease;
+}
+
+.course-nav-btn + .course-nav-btn {
+  border-left: 1px solid var(--line);
+}
+
+.course-nav-btn small {
+  margin-left: 7px;
+  color: var(--faint);
+  font: 400 .52rem/1 var(--sans);
+  letter-spacing: .08em;
+}
+
+.course-nav-btn:hover {
+  color: var(--paper);
+}
+
+.course-nav-btn.active {
+  background: rgba(var(--brass-rgb), .1);
+  box-shadow: inset 0 -2px 0 var(--brass);
+  color: var(--paper);
+}
+
+.course-nav-btn.active small {
+  color: var(--brass);
+}
+
 /* A menu reads as courses. The grid itself becomes a plain block so each
    course can carry its own heading and its own grid underneath. */
 .gallery-grid.is-coursed {
@@ -895,6 +949,11 @@ input:focus-visible {
   z-index: 5;
   top: 11px;
   left: 11px;
+}
+
+/* The short badge label only appears on the narrow phone card. */
+.badge-short {
+  display: none;
 }
 
 /* "ALCOHOL FREE" is a phrase, not a number — it should not be set in the
@@ -1850,20 +1909,81 @@ input:focus-visible {
   .gallery-grid,
   .simulator-layout[data-mode="dictionary"] .gallery-grid,
 .simulator-layout[data-mode="menu"] .gallery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px;
+    /* Three across on a phone. Two columns ran a 49-drink menu to eight
+       screens; three brings it to about half, at the price of a card narrow
+       enough that only the name, the base mark and the strength still fit —
+       which is all you need to pick one out and tap it. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
   }
 
+  /* Kept tight: the panel floats over the drink, and a two-line name plus
+     the tag row was swallowing two thirds of a 127px card. */
   .gallery-card-info {
-    padding: 45px 10px 11px;
+    padding: 20px 7px 7px;
   }
 
   .gallery-card-name {
-    font-size: .76rem;
+    font-size: .63rem;
+    line-height: 1.35;
+    letter-spacing: .01em;
+  }
+
+  /* The English name and the spelled-out base go first: latin text and
+     "グレープフルーツベース" both want width this card has not got. The
+     two-letter mark keeps the base readable. */
+  .gallery-card-en,
+  .gallery-card-base {
+    display: none;
   }
 
   .gallery-card-tag {
-    font-size: .57rem;
+    margin-top: 5px;
+    gap: 5px;
+    font-size: .52rem;
+  }
+
+  .gallery-card-tag-icon {
+    min-width: 19px;
+    height: 14px;
+    font-size: .4rem;
+  }
+
+  .gallery-card-abv {
+    font-size: .5rem;
+    letter-spacing: .02em;
+  }
+
+  /* Badges must shrink with the card or they cover half the drink. */
+  .gallery-card .iba-badge,
+  .gallery-card .mocktail-badge {
+    top: 6px;
+    left: 6px;
+    padding: 2px 4px;
+    font-size: .4rem;
+    letter-spacing: .04em;
+  }
+
+  .gallery-card .iba-badge svg,
+  .gallery-card .badge-long {
+    display: none;
+  }
+
+  .gallery-card .badge-short {
+    display: inline;
+  }
+
+  .course-nav {
+    top: 62px;
+  }
+
+  .course-nav-btn {
+    padding: 9px 10px;
+    font-size: .66rem;
+  }
+
+  .course-nav-btn small {
+    margin-left: 5px;
   }
 
   .profile-meta,
