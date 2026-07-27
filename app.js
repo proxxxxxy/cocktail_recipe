@@ -1607,6 +1607,164 @@ const cocktailDatabase = {
       "シェイカーに氷と全ての材料を入れ、シェイクします。",
       "冷やしたカクテルグラスに注ぎます。"
     ]
+  },
+
+  // --- SUMMER CLASSICS (ブルーキュラソー & トロピカル) ---
+  "vodka+blue_curacao+lemon": {
+    name: "ブルー・ラグーン",
+    enName: "Blue Lagoon",
+    abv: 20,
+    taste: ["甘酸っぱい", "爽快", "フルーティー"],
+    description: "「青い珊瑚礁」の名を持つ、夏のカクテルの代名詞。ブルーキュラソーの透明感のある青とレモンの酸味が、南国の海をそのままグラスに映し出したような一杯です。",
+    color: "rgba(2, 136, 209, 0.75)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "cube",
+    ingredients: [
+      { name: "ウォッカ", amount: "30 ml" },
+      { name: "ブルーキュラソー", amount: "20 ml" },
+      { name: "レモンジュース", amount: "20 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、シェイクします。",
+      "氷を入れたグラスに注ぎます。",
+      "レモンスライスを飾ります。"
+    ]
+  },
+  "rum+blue_curacao+lemon+pineapple": {
+    name: "ブルー・ハワイ",
+    enName: "Blue Hawaii",
+    abv: 12,
+    taste: ["トロピカル", "甘酸っぱい", "ジューシー"],
+    description: "1957年にハワイのバーテンダーが考案したトロピカルカクテルの王様。パイナップルの甘さとラムの香りに、ブルーキュラソーが常夏の海と空の色を添えます。",
+    color: "rgba(38, 166, 214, 0.7)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "crushed",
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "30 ml" },
+      { name: "ブルーキュラソー", amount: "15 ml" },
+      { name: "パイナップルジュース", amount: "30 ml" },
+      { name: "レモンジュース", amount: "15 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れ、シェイクします。",
+      "クラッシュアイスを詰めた大きめのグラスに注ぎます。",
+      "パイナップルとマラスキーノ・チェリーを飾ります。"
+    ]
+  },
+  "tequila+blue_curacao+lime+salt": {
+    name: "ブルー・マルガリータ",
+    enName: "Blue Margarita",
+    abv: 24,
+    taste: ["甘酸っぱい", "塩辛い", "キレがある"],
+    description: "定番マルガリータのホワイトキュラソーをブルーキュラソーに替えた夏の装い。スノースタイルの白い縁取りが、深い青のコントラストをより鮮やかに見せてくれます。",
+    color: "rgba(3, 155, 205, 0.8)",
+    hasBubbles: false,
+    garnish: "lime",
+    ice: "none",
+    saltRim: true,
+    ingredients: [
+      { name: "テキーラ", amount: "30 ml" },
+      { name: "ブルーキュラソー", amount: "15 ml" },
+      { name: "ライムジュース", amount: "15 ml" },
+      { name: "食塩 (スノースタイル用)", amount: "適量" }
+    ],
+    method: [
+      "カクテルグラスの縁をライムで湿らせ、塩をつけてスノースタイルにします。",
+      "シェイカーに氷とテキーラ、ブルーキュラソー、ライムジュースを入れシェイクします。",
+      "塩を落とさないよう、静かにグラスへ注ぎます。",
+      "ライムを飾ります。"
+    ]
+  },
+  "peach+blue_curacao+grapefruit": {
+    name: "チャイナ・ブルー",
+    enName: "China Blue",
+    abv: 8,
+    taste: ["フルーティー", "さっぱり", "ほろ苦い"],
+    description: "日本で生まれ、世界に広まった人気カクテル。ライチのような甘い香りのピーチリキュールに、グレープフルーツのほろ苦さが重なり、澄んだブルーへとグラデーションします。",
+    color: "rgba(77, 182, 200, 0.7)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "cube",
+    ingredients: [
+      { name: "ピーチリキュール", amount: "20 ml" },
+      { name: "ブルーキュラソー", amount: "10 ml" },
+      { name: "グレープフルーツジュース", amount: "60 ml" }
+    ],
+    method: [
+      "氷を入れたグラスにピーチリキュールとグレープフルーツジュースを注ぎ、ステアします。",
+      "ブルーキュラソーを静かに沈めるように加えます。",
+      "レモンスライスを飾ります。"
+    ]
+  },
+  "gin+blue_curacao+lemon": {
+    name: "ブルー・レディ",
+    enName: "Blue Lady",
+    abv: 20,
+    taste: ["甘酸っぱい", "華やか", "まろやか"],
+    description: "名門カクテル「ホワイト・レディ」を青く染めたバリエーション。卵白を加えてシェイクすることで、青い液体の上に白く繊細な泡の層が生まれます。",
+    color: "rgba(41, 121, 190, 0.85)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "none",
+    ingredients: [
+      { name: "ブルーキュラソー", amount: "30 ml" },
+      { name: "ドライ・ジン", amount: "15 ml" },
+      { name: "レモンジュース", amount: "15 ml" },
+      { name: "卵白", amount: "1個分" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "卵白が十分に泡立つよう、強めに長くシェイクします。",
+      "冷やしたカクテルグラスに注ぎ、レモンピールを飾ります。"
+    ]
+  },
+  "rum+coconut+pineapple": {
+    name: "ピニャ・コラーダ",
+    enName: "Pina Colada",
+    abv: 9,
+    taste: ["まろやか", "トロピカル", "甘い"],
+    description: "プエルトリコ生まれの国民的カクテルで、名前は「裏ごしパイナップル」の意味。ココナッツのコクとパイナップルの酸味が溶け合う、濃厚でクリーミーな一杯です。",
+    color: "rgba(250, 243, 224, 0.92)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "crushed",
+    isIBA: true,
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "30 ml" },
+      { name: "ココナッツミルク", amount: "30 ml" },
+      { name: "パイナップルジュース", amount: "90 ml" }
+    ],
+    method: [
+      "シェイカー（またはブレンダー）に氷と全ての材料を入れます。",
+      "全体が滑らかになるまでしっかりとシェイクします。",
+      "クラッシュアイスを詰めたグラスに注ぎ、パイナップルとチェリーを飾ります。"
+    ]
+  },
+  "whiskey+mint+sugar": {
+    name: "ミント・ジュレップ",
+    enName: "Mint Julep",
+    abv: 30,
+    taste: ["清涼感", "甘い", "力強い"],
+    description: "ケンタッキーダービーの公式ドリンクとして知られる、アメリカ南部の夏の定番。クラッシュアイスで冷やしたグラスから立ちのぼるミントの香りが暑さを忘れさせます。",
+    color: "rgba(196, 160, 90, 0.6)",
+    hasBubbles: false,
+    garnish: "mint",
+    ice: "crushed",
+    isIBA: true,
+    ingredients: [
+      { name: "バーボン・ウイスキー", amount: "60 ml" },
+      { name: "ミントの葉", amount: "8〜10 枚" },
+      { name: "砂糖 (またはシロップ)", amount: "2 tsp" },
+      { name: "水", amount: "少量" }
+    ],
+    method: [
+      "グラスにミントの葉、砂糖、少量の水を入れ、香りが立つよう軽くつぶします。",
+      "クラッシュアイスをグラスの半分まで詰め、バーボンを注ぎます。",
+      "グラスの外側が白く霜で覆われるまでステアします。",
+      "クラッシュアイスを山盛りに足し、ミントの束を高く飾ります。"
+    ]
   }
 };
 
@@ -1632,6 +1790,8 @@ const mixerDefinitions = {
   soda: { name: "ソーダ (炭酸水)", en: "SODA WATER", icon: "SW", color: "rgba(224, 242, 241, 0.3)" },
   milk: { name: "牛乳", en: "MILK", icon: "MK", color: "rgba(255, 255, 255, 0.95)" },
   curacao: { name: "ホワイトキュラソー", en: "TRIPLE SEC", icon: "TS", color: "rgba(255, 255, 255, 0.3)" },
+  blue_curacao: { name: "ブルーキュラソー", en: "BLUE CURACAO", icon: "BC", color: "rgba(2, 136, 209, 0.75)" },
+  coconut: { name: "ココナッツミルク", en: "COCONUT MILK", icon: "CN", color: "rgba(252, 248, 235, 0.95)" },
   lime: { name: "ライムジュース", en: "LIME JUICE", icon: "LI", color: "rgba(197, 225, 165, 0.5)" },
   grapefruit: { name: "グレープフルーツ", en: "GRAPEFRUIT JUICE", icon: "GF", color: "rgba(255, 245, 157, 0.7)" },
   salt: { name: "食塩 (スノースタイル用)", en: "SALT RIM", icon: "SL", color: "rgba(255, 255, 255, 0.9)" },
@@ -1678,8 +1838,16 @@ const state = {
   targetColor: [255, 255, 255, 0], // Target RGBA color components
   wavePhase: 0,
   bubbles: [],
-  saltRim: false
+  saltRim: false,
+
+  // Pour choreography for the large preview glass
+  pourKey: null,
+  pourProgress: 0,
+  lastResultKey: null
 };
+
+// Pour timeline: 0→1 fills the glass, 1→POUR_END lets the surface settle.
+const POUR_END = 1.55;
 
 // Pre-generate positions for crushed ice shards so they remain steady
 const crushedIceData = [];
@@ -1750,8 +1918,11 @@ const DOM = {
   statusIndicator: document.getElementById('status-indicator'),
   stageNumber: document.getElementById('stage-number'),
   glass: document.getElementById('cocktail-glass'),
+  glassDisplayArea: document.getElementById('glass-display-area'),
   simulatorLayout: document.querySelector('.simulator-layout'),
   visualizerCard: document.querySelector('.visualizer-card'),
+  headerBar: document.getElementById('site-header-bar'),
+  tabIndicator: document.getElementById('tab-indicator'),
   
   // Results panel
   resultPanel: document.getElementById('result-panel'),
@@ -1773,17 +1944,78 @@ const ctx = DOM.canvas.getContext('2d');
 // ==========================================================================
 
 function parseRGBA(str) {
-  if (str.includes('linear-gradient')) return [255, 120, 50, 0.7]; // gradient fallback
-  const match = str.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-  if (match) {
-    return [
-      parseInt(match[1]),
-      parseInt(match[2]),
-      parseInt(match[3]),
-      match[4] !== undefined ? parseFloat(match[4]) : 1.0
-    ];
-  }
-  return [255, 255, 255, 0.2];
+  const stops = [...str.matchAll(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/g)];
+  if (stops.length === 0) return [255, 255, 255, 0.2];
+
+  // A gradient carries several stops; average them so the drink still reports
+  // one representative colour instead of a hardcoded fallback.
+  const sum = stops.reduce((acc, m) => [
+    acc[0] + parseInt(m[1]),
+    acc[1] + parseInt(m[2]),
+    acc[2] + parseInt(m[3]),
+    acc[3] + (m[4] !== undefined ? parseFloat(m[4]) : 1)
+  ], [0, 0, 0, 0]);
+
+  return [
+    Math.round(sum[0] / stops.length),
+    Math.round(sum[1] / stops.length),
+    Math.round(sum[2] / stops.length),
+    sum[3] / stops.length
+  ];
+}
+
+/**
+ * The drink's colour, lifted toward a light that reads on a near-black panel.
+ * Very pale spirits would otherwise glow pure white and wash the room out.
+ */
+function toAmbientRGB(rgba) {
+  const [r255, g255, b255] = rgba;
+  const max = Math.max(r255, g255, b255);
+  const min = Math.min(r255, g255, b255);
+
+  // Effectively colourless (clear spirits, cream drinks): keep the house
+  // brass rather than lighting the room with grey.
+  if (max - min < 18) return [199, 164, 99];
+
+  const r = r255 / 255, g = g255 / 255, b = b255 / 255;
+  const mx = max / 255, mn = min / 255;
+  const d = mx - mn;
+
+  let hue;
+  if (mx === r) hue = ((g - b) / d) % 6;
+  else if (mx === g) hue = (b - r) / d + 2;
+  else hue = (r - g) / d + 4;
+  hue = (hue * 60 + 360) % 360;
+
+  // Saturation is driven by chroma, not by HSL saturation: a pale lavender
+  // Aviation has a high HSL figure purely because it is light, and would come
+  // back as vivid blue. Chroma matches what the eye actually reads.
+  const sat = Math.min(Math.max((max - min) / 255 * 1.55, 0.3), 0.62);
+  const targetL = 0.56;
+
+  const c = (1 - Math.abs(2 * targetL - 1)) * sat;
+  const x = c * (1 - Math.abs(((hue / 60) % 2) - 1));
+  const m = targetL - c / 2;
+
+  let out;
+  if (hue < 60) out = [c, x, 0];
+  else if (hue < 120) out = [x, c, 0];
+  else if (hue < 180) out = [0, c, x];
+  else if (hue < 240) out = [0, x, c];
+  else if (hue < 300) out = [x, 0, c];
+  else out = [c, 0, x];
+
+  return out.map(v => Math.round((v + m) * 255));
+}
+
+function applyAmbientTint(rgba) {
+  const [r, g, b] = toAmbientRGB(rgba);
+  document.documentElement.style.setProperty('--drink-rgb', `${r}, ${g}, ${b}`);
+}
+
+/** Drop back to the house brass defined on :root. */
+function resetAmbientTint() {
+  document.documentElement.style.removeProperty('--drink-rgb');
 }
 
 function calculateCurrentBlendColor() {
@@ -1878,13 +2110,23 @@ function drawCocktail(timestamp) {
   const previewCocktail = cocktailDatabase[previewKey];
   if (previewCocktail) {
     state.wavePhase += 0.04;
+
+    // Landing on a new recipe replays the pour from an empty glass.
+    if (previewKey !== state.pourKey) {
+      state.pourKey = previewKey;
+      state.pourProgress = 0;
+    }
+    state.pourProgress = Math.min(state.pourProgress + 0.021, POUR_END);
+
     drawGalleryPhoto(DOM.recipeCanvas, previewCocktail, {
       phase: state.wavePhase,
-      mainPreview: true
+      mainPreview: true,
+      pour: state.pourProgress
     });
-    requestAnimationFrame(drawCocktail);
+    previewFrameId = requestAnimationFrame(drawCocktail);
     return;
   }
+  state.pourKey = null;
 
   const recipeCtx = DOM.recipeCanvas.getContext('2d');
   recipeCtx.clearRect(0, 0, DOM.recipeCanvas.width, DOM.recipeCanvas.height);
@@ -2050,11 +2292,29 @@ function drawCocktail(timestamp) {
     }
     ctx.restore();
   }
-  
-  requestAnimationFrame(drawCocktail);
+
+  previewFrameId = requestAnimationFrame(drawCocktail);
 }
 
-requestAnimationFrame(drawCocktail);
+/**
+ * The live preview is a 60fps canvas, but the archive gallery hides the whole
+ * visualizer card. Park the loop whenever the glass is off screen so scrolling
+ * and hovering a long grid of cards gets the frame budget instead.
+ */
+let previewFrameId = null;
+
+function startPreviewLoop() {
+  if (previewFrameId === null) previewFrameId = requestAnimationFrame(drawCocktail);
+}
+
+function stopPreviewLoop() {
+  if (previewFrameId !== null) {
+    cancelAnimationFrame(previewFrameId);
+    previewFrameId = null;
+  }
+}
+
+startPreviewLoop();
 
 // ==========================================================================
 // 5. GUEST DETAILS & GARNISH DRAWING (HTML/DOM WRAPPERS)
@@ -2324,18 +2584,18 @@ function drawGarnishOnCanvas(ctx, garnish, topL, topR, glassTop) {
     ctx.quadraticCurveTo(cx + 5, cy - 15, cx + 2, cy - 19);
     ctx.stroke();
     // Fruit
-    const cherryGrad = ctx.createRadialGradient(cx - 2.5, cy - 2.5, 1, cx, cy, 8);
-    cherryGrad.addColorStop(0, '#ef5350');
-    cherryGrad.addColorStop(0.6, '#c62828');
-    cherryGrad.addColorStop(1, '#8e0000');
+    const cherryGrad = ctx.createRadialGradient(cx - 2, cy - 2, 1, cx, cy, 6.5);
+    cherryGrad.addColorStop(0, '#c0413f');
+    cherryGrad.addColorStop(0.6, '#96201f');
+    cherryGrad.addColorStop(1, '#5d0f10');
     ctx.fillStyle = cherryGrad;
     ctx.beginPath();
-    ctx.arc(cx, cy, 7.5, 0, Math.PI * 2);
+    ctx.arc(cx, cy, 6, 0, Math.PI * 2);
     ctx.fill();
     // Highlight
-    ctx.fillStyle = 'rgba(255,255,255,.55)';
+    ctx.fillStyle = 'rgba(255,255,255,.34)';
     ctx.beginPath();
-    ctx.ellipse(cx - 2.5, cy - 3, 2.2, 1.4, -0.6, 0, Math.PI * 2);
+    ctx.ellipse(cx - 2, cy - 2.4, 1.7, 1.1, -0.6, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
     return;
@@ -2478,23 +2738,24 @@ function drawGarnishOnCanvas(ctx, garnish, topL, topR, glassTop) {
   ctx.shadowOffsetX = 1;
   ctx.shadowOffsetY = 2;
 
-  // Colors
+  // Colours are deliberately knocked back from true fruit tones: at thumbnail
+  // size a fully saturated wheel reads as a sticker pasted onto the photo.
   let outerColor, innerColor, segmentColor, lineColor;
   if (garnish === 'lime') {
-    outerColor = '#2e7d32'; // dark green
-    innerColor = '#a5d6a7'; // light green background
-    segmentColor = '#81c784'; // mid green segments
-    lineColor = '#e8f5e9'; // soft white/green lines
+    outerColor = '#2a5730';
+    innerColor = '#93b088';
+    segmentColor = '#7ba072';
+    lineColor = '#ccd8c4';
   } else if (garnish === 'lemon') {
-    outerColor = '#f57f17'; // orange-yellow peel
-    innerColor = '#ffe082'; // bright light yellow background
-    segmentColor = '#fff59d'; // yellow pulp segments
-    lineColor = '#fffde7'; // soft white/yellow lines
+    outerColor = '#b07d24';
+    innerColor = '#dcc17c';
+    segmentColor = '#e3d596';
+    lineColor = '#e9e3cd';
   } else { // orange
-    outerColor = '#d84315'; // deep orange-red peel
-    innerColor = '#ffcc80'; // orange background
-    segmentColor = '#ffb74d'; // bright orange segments
-    lineColor = '#fff3e0'; // soft white/orange lines
+    outerColor = '#a34620';
+    innerColor = '#dcac73';
+    segmentColor = '#d29a52';
+    lineColor = '#ecdcc3';
   }
 
   // 1. Draw outer peel
@@ -2644,10 +2905,63 @@ function drawGalleryPhoto(canvas, cocktail, animState = null) {
   ctx.closePath();
   ctx.clip();
 
-  const liquidTop = type === 'stemmed' ? top + h * .07 : top + (bottom - top) * .18;
+  const restTop = type === 'stemmed' ? top + h * .07 : top + (bottom - top) * .18;
+
+  // Pour timeline. Cards render at rest (fill = 1); only the big preview pours.
+  const pour = animState?.pour;
+  const pouring = typeof pour === 'number';
+  const fillRaw = pouring ? Math.min(pour, 1) : 1;
+  const fill = 1 - Math.pow(1 - fillRaw, 3);
+  const settle = pouring ? Math.max(0, Math.min((pour - 1) / (POUR_END - 1), 1)) : 1;
+  const liquidTop = bottom - (bottom - restTop) * fill;
+
   const liquidStyle = getGalleryLiquidStyle(ctx, cocktail, liquidTop, bottom);
   ctx.fillStyle = liquidStyle;
   ctx.fillRect(leftTop, liquidTop, rightTop - leftTop, bottom - liquidTop);
+
+  // Falling stream, plus the disturbance it makes where it lands.
+  if (fill < 1) {
+    const streamX = w / 2 + Math.sin(phase * 2.6) * 1.1;
+    const streamW = w * .022;
+    ctx.save();
+    ctx.globalAlpha = .85;
+    ctx.fillStyle = liquidStyle;
+    ctx.fillRect(streamX - streamW / 2, top, streamW, liquidTop - top);
+    ctx.fillStyle = 'rgba(255,255,255,.22)';
+    ctx.fillRect(streamX - streamW / 2, top, streamW * .35, liquidTop - top);
+    ctx.strokeStyle = 'rgba(255,255,255,.4)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.ellipse(streamX, liquidTop, streamW * 1.6 + Math.abs(Math.sin(phase * 5)) * 4, 2.2, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Rings spreading out once the glass is full.
+  if (fill >= 1 && settle < 1) {
+    ctx.save();
+    for (let i = 0; i < 2; i++) {
+      const p = Math.min(settle + i * .28, 1);
+      if (p <= 0 || p >= 1) continue;
+      ctx.globalAlpha = (1 - p) * .5;
+      ctx.strokeStyle = 'rgba(255,255,255,.75)';
+      ctx.lineWidth = 1.1 - p * .6;
+      ctx.beginPath();
+      ctx.ellipse(w / 2, liquidTop, (rightTop - leftTop) * .5 * p, 3.4 * p, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // Meniscus: the bright lip of liquid where it meets the glass.
+  ctx.save();
+  ctx.globalAlpha = .5 + settle * .35;
+  ctx.strokeStyle = 'rgba(255,255,255,.5)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.ellipse(w / 2, liquidTop, (rightTop - leftTop) * .49, 2.6, 0, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.restore();
 
   const glow = ctx.createLinearGradient(leftTop, 0, rightTop, 0);
   glow.addColorStop(0, 'rgba(255,255,255,.04)');
@@ -2659,7 +2973,11 @@ function drawGalleryPhoto(canvas, cocktail, animState = null) {
   ctx.fillStyle = glow;
   ctx.fillRect(leftTop, top, rightTop - leftTop, bottom - top);
 
-  if (cocktail.ice !== 'none') {
+  // Ice and carbonation only read once there is enough liquid to hold them.
+  const contentsAlpha = Math.max(0, (fill - .45) / .55);
+
+  if (cocktail.ice !== 'none' && contentsAlpha > 0) {
+    ctx.globalAlpha = contentsAlpha;
     const cubes = cocktail.ice === 'crushed' ? 15 : 3;
     for (let i = 0; i < cubes; i++) {
       const baseSize = cocktail.ice === 'crushed' ? 5 + (i % 3) * 2 : 20 + i * 2;
@@ -2681,7 +2999,8 @@ function drawGalleryPhoto(canvas, cocktail, animState = null) {
     }
   }
 
-  if (cocktail.hasBubbles) {
+  if (cocktail.hasBubbles && contentsAlpha > 0) {
+    ctx.globalAlpha = contentsAlpha;
     ctx.fillStyle = 'rgba(255,255,255,.45)';
     for (let i = 0; i < 13; i++) {
       const x = w * (.36 + ((i * 17) % 31) / 100);
@@ -2692,6 +3011,7 @@ function drawGalleryPhoto(canvas, cocktail, animState = null) {
       ctx.fill();
     }
   }
+  ctx.globalAlpha = 1;
   ctx.restore();
 
   // Glass edges, rim and physically plausible specular reflections.
@@ -2747,8 +3067,18 @@ function drawGalleryPhoto(canvas, cocktail, animState = null) {
     ctx.fillRect(leftBottom + 2, bottom - 3, rightBottom - leftBottom - 4, 3);
   }
 
+  // The garnish is placed last, after the pour has settled.
   const garnish = getEffectiveGarnish(cocktail);
-  drawGarnishOnCanvas(ctx, garnish, leftTop, rightTop, top);
+  if (garnish) {
+    const drop = pouring ? settle : 1;
+    if (drop > 0) {
+      ctx.save();
+      ctx.globalAlpha = drop;
+      ctx.translate(0, (1 - drop) * -14);
+      drawGarnishOnCanvas(ctx, garnish, leftTop, rightTop, top);
+      ctx.restore();
+    }
+  }
 }
 
 // Gallery thumbnails use the same renderer for still and hover states.
@@ -2785,6 +3115,12 @@ function drawMiniThumbnailAnimated(canvas, cocktail, baseKey, animState) {
   drawGalleryPhoto(canvas, cocktail, animState);
 }
 
+/** Give a card its own ambient colour so hover glows match the drink. */
+function tintCard(card, data) {
+  const [r, g, b] = toAmbientRGB(parseRGBA(data.color));
+  card.style.setProperty('--drink-rgb', `${r}, ${g}, ${b}`);
+}
+
 function cancelCardAnimations(container = document) {
   container.querySelectorAll('.gallery-card').forEach(card => {
     if (card._animId) {
@@ -2794,7 +3130,118 @@ function cancelCardAnimations(container = document) {
   });
 }
 
-function renderGallery(query) {
+/* --------------------------------------------------------------------------
+   Thumbnail scheduling
+   A grid can hold every cocktail in the archive, and each thumbnail is a full
+   canvas paint. Drawing them all the moment a tab opens (or on every search
+   keystroke) blocks the main thread for hundreds of milliseconds, so a card
+   paints only once it is near the viewport, and hover motion is capped well
+   below the display refresh rate.
+   ------------------------------------------------------------------------ */
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const HOVER_FRAME_MS = 1000 / 30;
+const IDLE_THUMB_CHUNK = 6;
+
+const whenIdle = window.requestIdleCallback
+  ? (fn) => window.requestIdleCallback(fn, { timeout: 1200 })
+  : (fn) => setTimeout(fn, 60);
+
+// Canvases waiting for their first paint, keyed for both the observer and the
+// idle backfill so neither one can paint the same card twice.
+const pendingThumbs = new Set();
+let idleThumbScheduled = false;
+
+function paintThumb(canvas) {
+  if (!pendingThumbs.delete(canvas)) return;
+  if (thumbObserver) thumbObserver.unobserve(canvas);
+  // A rebuilt grid leaves its old canvases queued; drop them undrawn.
+  if (canvas.isConnected) canvas._drawStill();
+}
+
+/**
+ * Anything the observer has not reached yet is filled in during idle time, in
+ * small chunks. Scrolling still gets priority; this only guarantees that a
+ * thumbnail eventually appears even if intersections never fire.
+ */
+function scheduleIdleThumbs() {
+  if (idleThumbScheduled || pendingThumbs.size === 0) return;
+  idleThumbScheduled = true;
+  whenIdle(() => {
+    idleThumbScheduled = false;
+    let budget = IDLE_THUMB_CHUNK;
+    for (const canvas of [...pendingThumbs]) {
+      // Detached canvases cost nothing to clear, so they don't spend budget.
+      if (!canvas.isConnected) { paintThumb(canvas); continue; }
+      if (budget-- <= 0) break;
+      paintThumb(canvas);
+    }
+    scheduleIdleThumbs();
+  });
+}
+
+const thumbObserver = 'IntersectionObserver' in window
+  ? new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) paintThumb(entry.target);
+      });
+    }, { rootMargin: '320px 0px' })
+  : null;
+
+/**
+ * Wire a card's canvas up to lazy first paint plus its hover animation.
+ * Replaces the per-card duplication the three grids used to carry.
+ */
+function attachThumb(card, canvas, data, baseKey) {
+  canvas._drawStill = () => drawMiniThumbnail(canvas, data, baseKey);
+
+  if (thumbObserver) {
+    pendingThumbs.add(canvas);
+    thumbObserver.observe(canvas);
+    scheduleIdleThumbs();
+  } else {
+    canvas._drawStill();
+  }
+
+  if (prefersReducedMotion) return;
+
+  const animState = { phase: 0, bubbles: [], crushedIce: [] };
+
+  card.addEventListener('mouseenter', () => {
+    if (card._animId) return;
+    let last = 0;
+    const tick = (now) => {
+      if (now - last >= HOVER_FRAME_MS) {
+        last = now;
+        animState.phase += 0.12;
+        drawMiniThumbnailAnimated(canvas, data, baseKey, animState);
+      }
+      card._animId = requestAnimationFrame(tick);
+    };
+    card._animId = requestAnimationFrame(tick);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    if (card._animId) {
+      cancelAnimationFrame(card._animId);
+      card._animId = null;
+    }
+    drawStill();
+  });
+}
+
+/**
+ * Stagger card entrances, but only when the grid was rebuilt by a deliberate
+ * action. Re-animating on every search keystroke would strobe.
+ */
+function applyStagger(grid, animate) {
+  grid.classList.remove('is-staggered');
+  if (!animate) return;
+  void grid.offsetWidth; // restart the animation
+  grid.classList.add('is-staggered');
+}
+
+function renderGallery(query, animate = false) {
   cancelCardAnimations(DOM.galleryGrid);
   DOM.galleryGrid.innerHTML = '';
   const q = (query || '').trim().toLowerCase();
@@ -2828,11 +3275,18 @@ function renderGallery(query) {
     return;
   }
   
-  filtered.forEach(({ key, data, baseKey, baseJp }) => {
+  applyStagger(DOM.galleryGrid, animate);
+
+  // Build off-document so the grid only reflows once, not once per card.
+  const fragment = document.createDocumentFragment();
+
+  filtered.forEach(({ key, data, baseKey, baseJp }, index) => {
     const card = document.createElement('button');
     card.type = 'button';
     card.className = 'gallery-card';
     card.dataset.key = key;
+    card.style.setProperty('--i', index);
+    tintCard(card, data);
 
     if (data.isIBA) {
       const ibaBadge = document.createElement('span');
@@ -2887,49 +3341,30 @@ function renderGallery(query) {
       }
     });
     
-    DOM.galleryGrid.appendChild(card);
-    
-    // Draw mini thumbnail after appending (so canvas is in DOM)
-    drawMiniThumbnail(thumbCanvas, data, baseKey);
-
-    // Initialize animation state for hover animations
-    const animState = {
-      phase: 0,
-      bubbles: [],
-      crushedIce: []
-    };
-    
-    // Pre-populate crushed ice coords if this cocktail contains crushed ice
-    if (data.ice === 'crushed') {
-      for (let i = 0; i < 12; i++) {
-        animState.crushedIce.push({
-          x: thumbCanvas.width * (0.3 + Math.random() * 0.4),
-          y: thumbCanvas.height * (0.3 + Math.random() * 0.5),
-          size: 2 + Math.random() * 3,
-          wigglePhase: Math.random() * 10
-        });
-      }
-    }
-    
-    card.addEventListener('mouseenter', () => {
-      if (card._animId) return;
-      
-      const tick = () => {
-        animState.phase += 0.06;
-        drawMiniThumbnailAnimated(thumbCanvas, data, baseKey, animState);
-        card._animId = requestAnimationFrame(tick);
-      };
-      card._animId = requestAnimationFrame(tick);
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      if (card._animId) {
-        cancelAnimationFrame(card._animId);
-        card._animId = null;
-      }
-      drawMiniThumbnail(thumbCanvas, data, baseKey);
-    });
+    fragment.appendChild(card);
+    attachThumb(card, thumbCanvas, data, baseKey);
   });
+
+  DOM.galleryGrid.appendChild(fragment);
+}
+
+/** Tick the ABV up from zero so the number lands with the bar. */
+function countUpABV(el, target, animate) {
+  if (el._numAnim) cancelAnimationFrame(el._numAnim);
+  if (!animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = `約 ${target}%`;
+    return;
+  }
+
+  const started = performance.now();
+  const duration = 850;
+  const tick = (now) => {
+    const p = Math.min((now - started) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = `約 ${Math.round(target * eased)}%`;
+    if (p < 1) el._numAnim = requestAnimationFrame(tick);
+  };
+  el._numAnim = requestAnimationFrame(tick);
 }
 
 // Build the base/IBA filter chips shown above the archive gallery
@@ -2952,7 +3387,7 @@ function initGalleryFilters() {
       DOM.galleryFilters.querySelectorAll('.gallery-filter-chip').forEach(c => {
         c.classList.toggle('active', c.dataset.filter === chip.id);
       });
-      renderGallery(DOM.gallerySearch.value);
+      renderGallery(DOM.gallerySearch.value, true);
     });
     DOM.galleryFilters.appendChild(btn);
   });
@@ -3002,7 +3437,8 @@ function updateUI() {
     state.targetColor = [255, 255, 255, 0];
     state.saltRim = false;
     renderGarnish(null);
-    
+    resetAmbientTint();
+
     DOM.statusIndicator.textContent = "ベースとなるお酒を選択してください";
     DOM.statusIndicator.classList.remove('ready');
     
@@ -3018,7 +3454,9 @@ function updateUI() {
     state.targetColor = parseRGBA(baseColorStr);
     state.saltRim = false;
     renderGarnish(null);
-    
+    applyAmbientTint(state.targetColor);
+
+
     const baseJp = document.getElementById(`btn-${selectedBase}`).querySelector('.btn-jp').textContent;
     DOM.statusIndicator.textContent = `${baseJp}を選択中。＋の付いた割り材を選んでください。`;
     DOM.statusIndicator.classList.remove('ready');
@@ -3033,6 +3471,7 @@ function updateUI() {
     state.targetColor = calculateCurrentBlendColor();
     state.saltRim = !!cocktail.saltRim;
     renderGarnish(getEffectiveGarnish(cocktail));
+    applyAmbientTint(parseRGBA(cocktail.color));
     
     DOM.statusIndicator.textContent = hasRecipeExtension && !state.showResult
       ? `${cocktail.name}が作れます。レシピを見るか、素材を追加してください。`
@@ -3048,7 +3487,8 @@ function updateUI() {
     
     DOM.cocktailName.textContent = cocktail.name;
     DOM.cocktailEnName.textContent = cocktail.enName;
-    DOM.abvValue.textContent = `約 ${cocktail.abv}%`;
+    countUpABV(DOM.abvValue, cocktail.abv, key !== state.lastResultKey);
+    state.lastResultKey = key;
     DOM.abvFill.style.width = `${Math.min((cocktail.abv / 40) * 100, 100)}%`;
     
     let iceText = '氷なし';
@@ -3114,7 +3554,9 @@ function updateUI() {
     state.targetColor = calculateCurrentBlendColor();
     state.saltRim = false;
     renderGarnish(null);
-    
+    applyAmbientTint(state.targetColor);
+
+
     DOM.statusIndicator.textContent = "カスタムビルド中... 別の材料を加えるか、氷を調整してください。";
     DOM.statusIndicator.classList.remove('ready');
     
@@ -3144,6 +3586,9 @@ function setMode(mode) {
   DOM.viewDictionary.classList.add('hidden');
   DOM.viewMyBar.classList.add('hidden');
   
+  // The archive hides the visualizer entirely; everything else shows it.
+  if (mode === 'dictionary') stopPreviewLoop(); else startPreviewLoop();
+
   if (mode === 'build') {
     DOM.tabBuild.classList.add('active');
     DOM.viewBuild.classList.remove('hidden');
@@ -3151,22 +3596,29 @@ function setMode(mode) {
     DOM.tabDictionary.classList.add('active');
     DOM.viewDictionary.classList.remove('hidden');
     DOM.gallerySearch.value = '';
-    renderGallery('');
+    renderGallery('', true);
   } else if (mode === 'mybar') {
     DOM.tabMyBar.classList.add('active');
     DOM.viewMyBar.classList.remove('hidden');
     updateMyBarResults();
   }
-  
+
   resetGlass();
+  positionTabIndicator();
+  requestAnimationFrame(positionTabIndicator);
 }
 
 function initMyBarUI() {
+  // The starter set builds a whole extra grid of cards, so it waits until the
+  // accordion is actually opened rather than costing every visitor a page load.
+  let starterSetBuilt = false;
   DOM.starterSetToggle.addEventListener('click', () => {
     DOM.starterSetAccordion.classList.toggle('open');
+    if (!starterSetBuilt && DOM.starterSetAccordion.classList.contains('open')) {
+      starterSetBuilt = true;
+      calculateStarterSet();
+    }
   });
-
-  calculateStarterSet();
 
   DOM.myBarBaseContainer.innerHTML = '';
   DOM.myBarMixerContainer.innerHTML = '';
@@ -3259,14 +3711,20 @@ function updateMyBarResults() {
     // Every card pads its recipe list to the longest one so heights stay uniform.
     const maxRecipeRows = makeable.reduce((max, item) => Math.max(max, item.data.ingredients.length), 2);
     DOM.myBarGalleryGrid.style.setProperty('--recipe-rows', maxRecipeRows);
-    makeable.forEach(({ key, data }) => {
+    applyStagger(DOM.myBarGalleryGrid, true);
+
+    const fragment = document.createDocumentFragment();
+
+    makeable.forEach(({ key, data }, index) => {
       const baseKey = key.split('+')[0];
       const baseJp = baseNameMap[baseKey] || baseKey;
-      
+
       const card = document.createElement('button');
       card.type = 'button';
       card.className = 'gallery-card';
       card.dataset.key = key;
+      card.style.setProperty('--i', index);
+      tintCard(card, data);
 
       if (data.isIBA) {
         const ibaBadge = document.createElement('span');
@@ -3317,40 +3775,11 @@ function updateMyBarResults() {
         updateUI();
       });
       
-      DOM.myBarGalleryGrid.appendChild(card);
-      drawMiniThumbnail(thumbCanvas, data, baseKey);
-      
-      const animState = { phase: 0, bubbles: [], crushedIce: [] };
-      if (data.ice === 'crushed') {
-        for (let i = 0; i < 20; i++) {
-          animState.crushedIce.push({
-            x: 140 * (Math.random() * 0.6 + 0.2),
-            y: 140 * (Math.random() * 0.5 + 0.3),
-            size: Math.random() * 6 + 4,
-            wigglePhase: Math.random() * 10
-          });
-        }
-      }
-      
-      card.addEventListener('mouseenter', () => {
-        if (!card._animId) {
-          const animate = () => {
-            animState.phase += 0.05;
-            drawMiniThumbnail(thumbCanvas, data, baseKey, animState);
-            card._animId = requestAnimationFrame(animate);
-          };
-          animate();
-        }
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        if (card._animId) {
-          cancelAnimationFrame(card._animId);
-          card._animId = null;
-        }
-        drawMiniThumbnail(thumbCanvas, data, baseKey);
-      });
+      fragment.appendChild(card);
+      attachThumb(card, thumbCanvas, data, baseKey);
     });
+
+    DOM.myBarGalleryGrid.appendChild(fragment);
   }
   
   // Render TIPS (N-1 recommendations)
@@ -3426,15 +3855,65 @@ function initEventListeners() {
   // Bind Back to Build button on Completed card
   DOM.backToBuildBtn.addEventListener('click', resetGlass);
   
-  // Gallery search input: real-time filtering
+  // Gallery search input: filter on a short idle so a fast typist rebuilds
+  // the grid once rather than once per keystroke.
+  let searchTimer = null;
   DOM.gallerySearch.addEventListener('input', (e) => {
-    renderGallery(e.target.value);
+    const value = e.target.value;
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => renderGallery(value), 140);
   });
 }
 
+/** Slide the shared tab underline to whichever tab is active. */
+function positionTabIndicator() {
+  const indicator = DOM.tabIndicator;
+  const active = document.querySelector('.tab-btn.active');
+  if (!indicator || !active || !active.offsetParent) return;
+
+  const tabRect = active.getBoundingClientRect();
+  const barRect = active.parentElement.getBoundingClientRect();
+  const width = tabRect.width * 0.62;
+  indicator.style.width = `${width}px`;
+  indicator.style.transform =
+    `translateX(${tabRect.left - barRect.left + (tabRect.width - width) / 2}px)`;
+}
+
 function initAtmosphere() {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const panel = DOM.simulatorLayout;
+
+  document.documentElement.classList.add('js-ready');
+
+  // The opening title card is decorative; skip it entirely when motion is off.
+  const curtain = document.getElementById('intro-curtain');
+  if (curtain) {
+    if (prefersReducedMotion) {
+      curtain.remove();
+    } else {
+      setTimeout(() => curtain.remove(), 2100);
+    }
+  }
+
+  // Header condenses once the masthead has scrolled past.
+  const headerBar = DOM.headerBar;
+  if (headerBar) {
+    let scrollFrame = null;
+    const syncHeader = () => {
+      headerBar.classList.toggle('is-condensed', window.scrollY > 40);
+      scrollFrame = null;
+    };
+    syncHeader();
+    window.addEventListener('scroll', () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(syncHeader);
+    }, { passive: true });
+  }
+
+  positionTabIndicator();
+  window.addEventListener('resize', positionTabIndicator, { passive: true });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(positionTabIndicator);
+  }
 
   if (!prefersReducedMotion && panel) {
     let pointerFrame = null;
@@ -3446,17 +3925,30 @@ function initAtmosphere() {
 
       pointerFrame = requestAnimationFrame(() => {
         const rect = panel.getBoundingClientRect();
-        const x = ((pointerEvent.clientX - rect.left) / rect.width) * 100;
-        const y = ((pointerEvent.clientY - rect.top) / rect.height) * 100;
-        panel.style.setProperty('--spot-x', `${x.toFixed(1)}%`);
-        panel.style.setProperty('--spot-y', `${y.toFixed(1)}%`);
+        const relX = (pointerEvent.clientX - rect.left) / rect.width;
+        const relY = (pointerEvent.clientY - rect.top) / rect.height;
+        panel.style.setProperty('--spot-x', `${(relX * 100).toFixed(1)}%`);
+        panel.style.setProperty('--spot-y', `${(relY * 100).toFixed(1)}%`);
+
+        // The glass leans very slightly toward the pointer, as if catching light.
+        if (DOM.glassDisplayArea) {
+          DOM.glassDisplayArea.style.setProperty('--tilt-x', (relX - 0.5).toFixed(3));
+          DOM.glassDisplayArea.style.setProperty('--tilt-y', (relY - 0.5).toFixed(3));
+        }
         pointerFrame = null;
       });
+    }, { passive: true });
+
+    panel.addEventListener('pointerleave', () => {
+      if (!DOM.glassDisplayArea) return;
+      DOM.glassDisplayArea.style.setProperty('--tilt-x', '0');
+      DOM.glassDisplayArea.style.setProperty('--tilt-y', '0');
     }, { passive: true });
   }
 
   if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-    const revealTargets = document.querySelectorAll('.intro, .simulator-layout, .result-section, .site-footer');
+    // The hero runs on the load choreography instead, so it is not observed.
+    const revealTargets = document.querySelectorAll('.simulator-layout, .site-footer');
     document.documentElement.classList.add('motion-ready');
 
     const observer = new IntersectionObserver((entries) => {
@@ -3529,14 +4021,19 @@ function calculateStarterSet() {
   DOM.starterGalleryGrid.innerHTML = '';
   const maxRecipeRows = makeable.reduce((max, item) => Math.max(max, item.data.ingredients.length), 2);
   DOM.starterGalleryGrid.style.setProperty('--recipe-rows', maxRecipeRows);
-  makeable.forEach(({ key, data }) => {
+
+  const fragment = document.createDocumentFragment();
+
+  makeable.forEach(({ key, data }, index) => {
     const baseKey = key.split('+')[0];
     const baseJp = baseNameMap[baseKey] || baseKey;
-    
+
     const card = document.createElement('button');
     card.type = 'button';
     card.className = 'gallery-card';
     card.dataset.key = key;
+    card.style.setProperty('--i', index);
+    tintCard(card, data);
 
     if (data.isIBA) {
       const ibaBadge = document.createElement('span');
@@ -3587,40 +4084,11 @@ function calculateStarterSet() {
       updateUI();
     });
     
-    DOM.starterGalleryGrid.appendChild(card);
-    drawMiniThumbnail(thumbCanvas, data, baseKey);
-    
-    const animState = { phase: 0, bubbles: [], crushedIce: [] };
-    if (data.ice === 'crushed') {
-      for (let i = 0; i < 20; i++) {
-        animState.crushedIce.push({
-          x: 140 * (Math.random() * 0.6 + 0.2),
-          y: 140 * (Math.random() * 0.5 + 0.3),
-          size: Math.random() * 6 + 4,
-          wigglePhase: Math.random() * 10
-        });
-      }
-    }
-    
-    card.addEventListener('mouseenter', () => {
-      if (!card._animId) {
-        const animate = () => {
-          animState.phase += 0.05;
-          drawMiniThumbnail(thumbCanvas, data, baseKey, animState);
-          card._animId = requestAnimationFrame(animate);
-        };
-        animate();
-      }
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      if (card._animId) {
-        cancelAnimationFrame(card._animId);
-        card._animId = null;
-      }
-      drawMiniThumbnail(thumbCanvas, data, baseKey);
-    });
+    fragment.appendChild(card);
+    attachThumb(card, thumbCanvas, data, baseKey);
   });
+
+  DOM.starterGalleryGrid.appendChild(fragment);
 }
 initMyBarUI();
 initGalleryFilters();

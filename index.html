@@ -9,30 +9,46 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%B8%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+JP:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260716-refresh-2">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20260727-hover-1">
 </head>
 <body>
-  <div class="site-backdrop" aria-hidden="true"></div>
+  <div class="intro-curtain" id="intro-curtain" aria-hidden="true">
+    <div class="curtain-inner">
+      <span class="curtain-rule"></span>
+      <span class="curtain-word">ANTIGRAVITY</span>
+      <span class="curtain-rule"></span>
+    </div>
+    <span class="curtain-sub">COCKTAIL INDEX</span>
+  </div>
 
-  <header class="site-header">
-    <a class="wordmark" href="./" aria-label="ANTIGRAVITY ホーム">
-      <span class="wordmark-mark">A</span>
-      <span>
-        <strong>ANTIGRAVITY</strong>
-        <small>COCKTAIL INDEX</small>
-      </span>
-    </a>
-    <p class="header-note">A quiet guide to a better drink.</p>
-    <span class="edition">TOKYO · MMXXVI</span>
-  </header>
+  <div class="site-backdrop" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="site-header-bar" id="site-header-bar">
+    <header class="site-header">
+      <a class="wordmark" href="./" aria-label="ANTIGRAVITY ホーム">
+        <span class="wordmark-mark">A</span>
+        <span>
+          <strong>ANTIGRAVITY</strong>
+          <small>COCKTAIL INDEX</small>
+        </span>
+      </a>
+      <p class="header-note">A quiet guide to a better drink.</p>
+      <span class="edition">TOKYO · MMXXVI</span>
+    </header>
+  </div>
 
   <main class="app-shell">
-    <section class="intro">
-      <p class="eyebrow">THE HOME BARTENDER'S INDEX</p>
-      <h1>今夜の一杯を、<br><em>美しく選ぶ。</em></h1>
-      <p class="intro-copy">ベース、割り材、手元のボトルから。定番カクテルの正確なレシピへ、迷わず辿り着けます。</p>
-      <div class="intro-note" aria-hidden="true">
+    <section class="intro" id="intro">
+      <p class="eyebrow hero-item" style="--i:0">THE HOME BARTENDER'S INDEX</p>
+      <h1 class="hero-title">
+        <span class="hero-line" style="--i:1"><span>今夜の一杯を、</span></span>
+        <span class="hero-line" style="--i:2"><span><em>美しく選ぶ。</em></span></span>
+      </h1>
+      <span class="intro-rule hero-item" style="--i:3" aria-hidden="true"></span>
+      <p class="intro-copy hero-item" style="--i:4">ベース、割り材、手元のボトルから。定番カクテルの正確なレシピへ、迷わず辿り着けます。</p>
+      <div class="intro-note hero-item" style="--i:5" aria-hidden="true">
         <span>THE BAR IS OPEN</span>
         <strong>After dark,<br>choose well.</strong>
         <small>CURATED CLASSICS · HOME BAR EDITION</small>
@@ -45,7 +61,7 @@
           <span>LIVE PREVIEW</span>
           <span id="stage-number">01 / BUILD</span>
         </div>
-        <div class="glass-display-area">
+        <div class="glass-display-area" id="glass-display-area">
           <div class="glass-container" id="cocktail-glass">
             <div class="garnish-layer" id="garnish-layer"></div>
             <svg class="glass-svg" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
@@ -78,6 +94,7 @@
           <button class="tab-btn" id="tab-mybar" data-mode="mybar" role="tab" aria-selected="false" aria-controls="view-mybar">
             <span>03</span>手持ちから
           </button>
+          <span class="tab-indicator" id="tab-indicator" aria-hidden="true"></span>
         </div>
 
         <div id="view-build" class="mode-view" role="tabpanel" aria-labelledby="tab-build">
@@ -101,7 +118,7 @@
 
           <section class="control-group">
             <div class="section-heading">
-              <span>MIXER & LIQUEUR</span>
+              <span>MIXER &amp; LIQUEUR</span>
               <h2>合わせる素材</h2>
             </div>
             <div class="options-grid mixer-options" id="mixer-container"></div>
@@ -185,7 +202,7 @@
             <span class="iba-badge hidden" id="iba-badge-result" title="IBA Official Cocktail">IBA OFFICIAL</span>
           </div>
           <h2 class="cocktail-name" id="cocktail-name">ジントニック</h2>
-          <p class="cocktail-en-name" id="cocktail-en-name">Gin & Tonic</p>
+          <p class="cocktail-en-name" id="cocktail-en-name">Gin &amp; Tonic</p>
         </div>
 
         <div class="profile-meta">
@@ -223,6 +240,6 @@
     <span>DRINK RESPONSIBLY</span>
   </footer>
 
-  <script src="app.js?v=20260716-refresh-2"></script>
+  <script src="app.js?v=20260727-hover-1"></script>
 </body>
 </html>

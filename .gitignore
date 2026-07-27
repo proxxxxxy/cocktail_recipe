@@ -1,0 +1,9 @@
+# 旧バージョンのローカル控え（リポジトリには含めない）
+*_backup.js
+*_backup.css
+*_backup.html
+
+# OS / エディタ
+Thumbs.db
+desktop.ini
+.DS_Store
