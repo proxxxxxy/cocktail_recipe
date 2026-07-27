@@ -3203,7 +3203,10 @@ const mixerDefinitions = {
   chartreuse: { name: "シャルトリューズ・ヴェール", en: "GREEN CHARTREUSE", icon: "CT", color: "rgba(150, 190, 40, 0.75)" },
   benedictine: { name: "ベネディクティン", en: "BENEDICTINE", icon: "BN", color: "rgba(196, 140, 50, 0.7)" },
   drambuie: { name: "ドランブイ", en: "DRAMBUIE", icon: "DR", color: "rgba(190, 130, 45, 0.75)" },
-  creme_de_menthe: { name: "クレーム・ド・ミント (グリーン)", en: "CREME DE MENTHE", icon: "CM", color: "rgba(60, 190, 130, 0.8)" },
+  // Left uncoloured on the shelf on purpose: a Stinger wants the white and a
+  // Grasshopper the green, and they are the same bottle in every way that
+  // matters to a shelf. Each recipe says which it wants.
+  creme_de_menthe: { name: "クレーム・ド・ミント", en: "CREME DE MENTHE", icon: "CM", color: "rgba(60, 190, 130, 0.8)" },
   egg_white: { name: "卵白", en: "EGG WHITE", icon: "EW", color: "rgba(255, 255, 255, 0.55)" },
   raspberry: { name: "フランボワーズ・リキュール", en: "RASPBERRY LIQUEUR", icon: "RB", color: "rgba(180, 30, 70, 0.8)" },
   peychaud: { name: "ペイショーズ・ビターズ", en: "PEYCHAUD'S BITTERS", icon: "PB", color: "rgba(190, 40, 40, 0.85)" },
