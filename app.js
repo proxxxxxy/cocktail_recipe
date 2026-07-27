@@ -5864,6 +5864,16 @@ function updateUI() {
     DOM.iceStyleDisplay.textContent = `${glassLabel(cocktail)} ・ ${iceText}`;
     
     DOM.tasteBadges.innerHTML = '';
+    // When to drink it comes first, because it is the thing the taste words
+    // are evidence for — dry and bitter because it opens a meal, sweet and
+    // heavy because it closes one.
+    const course = COURSES.find(c => c.id === serveOf(cocktail));
+    if (course) {
+      const span = document.createElement('span');
+      span.className = 'badge badge-course';
+      span.textContent = course.label;
+      DOM.tasteBadges.appendChild(span);
+    }
     cocktail.taste.forEach(t => {
       const span = document.createElement('span');
       span.className = 'badge';

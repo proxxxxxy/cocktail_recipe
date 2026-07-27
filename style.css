@@ -916,6 +916,13 @@ input:focus-visible {
   line-height: 2;
 }
 
+/* The course reads as a heading among the taste words, not as one of them. */
+.badge-course {
+  border-color: var(--line-strong);
+  background: rgba(var(--brass-rgb), .1);
+  color: var(--brass);
+}
+
 /* For the guest who would rather be handed something than choose. */
 .omakase-btn {
   min-height: 44px;
