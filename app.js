@@ -4018,15 +4018,16 @@ function applyStagger(grid, animate) {
   grid.classList.add('is-staggered');
 }
 
-function renderGallery(query, animate = false) {
-  cancelCardAnimations(DOM.galleryGrid);
-  DOM.galleryGrid.innerHTML = '';
-  const q = (query || '').trim().toLowerCase();
-  
-  // Deduplicate by cocktail name (some have multiple key variants like margarita)
-  const shelf = state.menuShelf;
+/**
+ * One entry per drink, in display order, marked with whether the given shelf
+ * can pour it. Every count and every grid in the app is derived from this one
+ * function — the switch used to keep its own tally over the whole database
+ * and cheerfully told a guest "103" above a menu of 71.
+ */
+function buildDrinkList(shelf = state.menuShelf) {
   const seen = new Map();
   const list = [];
+
   Object.entries(cocktailDatabase).forEach(([key, data]) => {
     const baseKey = key.split('+')[0];
     const baseJp = baseNameMap[baseKey] || baseKey;
@@ -4046,7 +4047,17 @@ function renderGallery(query, animate = false) {
     list.push({ key, data, baseKey, baseJp, pourable });
   });
 
-  list.sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'));
+  return list.sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'));
+}
+
+function renderGallery(query, animate = false) {
+  cancelCardAnimations(DOM.galleryGrid);
+  DOM.galleryGrid.innerHTML = '';
+  DOM.galleryGrid.classList.remove('is-coursed');
+  const q = (query || '').trim().toLowerCase();
+
+  const shelf = state.menuShelf;
+  const list = buildDrinkList(shelf);
 
   // Filter by the active chip, then by search query (name, english name, base).
   // A chip is either one of the data-driven predicates or a base spirit key.
@@ -4076,61 +4087,102 @@ function renderGallery(query, animate = false) {
     return;
   }
   
+  // A menu reads as courses, the way a printed one does, so the guest is told
+  // when to drink each thing instead of having to filter for it. The archive
+  // stays a flat grid: it is a place to look things up, not to be served.
+  if (state.currentMode === 'menu') {
+    renderMenuCourses(filtered, animate);
+    return;
+  }
+
   applyStagger(DOM.galleryGrid, animate);
 
   // Build off-document so the grid only reflows once, not once per card.
   const fragment = document.createDocumentFragment();
+  filtered.forEach((item, index) => fragment.appendChild(createGalleryCard(item, index)));
+  DOM.galleryGrid.appendChild(fragment);
+}
 
-  filtered.forEach(({ key, data, baseKey, baseJp }, index) => {
-    const card = document.createElement('button');
-    card.type = 'button';
-    card.className = 'gallery-card';
-    card.dataset.key = key;
-    card.style.setProperty('--i', index);
-    tintCard(card, data);
+const COURSES = [
+  { id: 'aperitif', label: 'はじめの一杯', en: 'TO BEGIN', note: '食前に。乾いた口をひらく、軽くて切れのあるもの。' },
+  { id: 'anytime',  label: '食事とともに', en: 'THROUGH THE NIGHT', note: '通して飲めるもの。迷ったらこのあたりから。' },
+  { id: 'digestif', label: '〆の一杯',     en: 'TO CLOSE', note: '食後に。甘いもの、濃いもの、ゆっくり飲むもの。' },
+];
 
-    appendCardBadge(card, data);
-    
-    // Thumbnail
-    const thumbDiv = document.createElement('div');
-    thumbDiv.className = 'gallery-card-thumb';
-    const thumbCanvas = document.createElement('canvas');
-    thumbCanvas.width = 180;
-    thumbCanvas.height = 230;
-    thumbDiv.appendChild(thumbCanvas);
-    
-    // Info
-    const infoDiv = document.createElement('div');
-    infoDiv.className = 'gallery-card-info';
-    
-    const nameEl = document.createElement('div');
-    nameEl.className = 'gallery-card-name';
-    nameEl.textContent = data.name;
-    
-    const enEl = document.createElement('div');
-    enEl.className = 'gallery-card-en';
-    enEl.textContent = data.enName;
-    
-    const tagEl = document.createElement('div');
-    tagEl.className = 'gallery-card-tag';
-    const icon = baseIconMap[baseKey] || '🍹';
-    tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">${abvTagLabel(data)}</span>`;
-    
-    infoDiv.appendChild(nameEl);
-    infoDiv.appendChild(enEl);
-    infoDiv.appendChild(tagEl);
-    
-    card.appendChild(thumbDiv);
-    card.appendChild(infoDiv);
-    
-    // Click handler: select this cocktail
-    card.addEventListener('click', () => openRecipe(key));
-    
-    fragment.appendChild(card);
-    attachThumb(card, thumbCanvas, data, baseKey);
+function renderMenuCourses(filtered, animate) {
+  DOM.galleryGrid.classList.add('is-coursed');
+  const fragment = document.createDocumentFragment();
+
+  COURSES.forEach(course => {
+    const items = filtered.filter(item => serveOf(item.data) === course.id);
+    if (items.length === 0) return;   // an empty course is not a course
+
+    const section = document.createElement('section');
+    section.className = 'menu-course';
+
+    const heading = document.createElement('div');
+    heading.className = 'menu-course-heading';
+    heading.innerHTML =
+      `<span>${course.en}</span><h2>${course.label}<small>${items.length}杯</small></h2>` +
+      `<p>${course.note}</p>`;
+    section.appendChild(heading);
+
+    const grid = document.createElement('div');
+    grid.className = 'gallery-grid';
+    items.forEach((item, index) => grid.appendChild(createGalleryCard(item, index)));
+    applyStagger(grid, animate);
+    section.appendChild(grid);
+
+    fragment.appendChild(section);
   });
 
   DOM.galleryGrid.appendChild(fragment);
+}
+
+/** One archive/menu card. Shared so the two layouts cannot drift apart. */
+function createGalleryCard({ key, data, baseKey, baseJp }, index) {
+  const card = document.createElement('button');
+  card.type = 'button';
+  card.className = 'gallery-card';
+  card.dataset.key = key;
+  card.style.setProperty('--i', index);
+  tintCard(card, data);
+
+  appendCardBadge(card, data);
+
+  const thumbDiv = document.createElement('div');
+  thumbDiv.className = 'gallery-card-thumb';
+  const thumbCanvas = document.createElement('canvas');
+  thumbCanvas.width = 180;
+  thumbCanvas.height = 230;
+  thumbDiv.appendChild(thumbCanvas);
+
+  const infoDiv = document.createElement('div');
+  infoDiv.className = 'gallery-card-info';
+
+  const nameEl = document.createElement('div');
+  nameEl.className = 'gallery-card-name';
+  nameEl.textContent = data.name;
+
+  const enEl = document.createElement('div');
+  enEl.className = 'gallery-card-en';
+  enEl.textContent = data.enName;
+
+  const tagEl = document.createElement('div');
+  tagEl.className = 'gallery-card-tag';
+  const icon = baseIconMap[baseKey] || '🍹';
+  tagEl.innerHTML = `<span class="gallery-card-tag-icon" aria-hidden="true">${icon}</span> ${baseJp}ベース<span class="gallery-card-abv">${abvTagLabel(data)}</span>`;
+
+  infoDiv.appendChild(nameEl);
+  infoDiv.appendChild(enEl);
+  infoDiv.appendChild(tagEl);
+
+  card.appendChild(thumbDiv);
+  card.appendChild(infoDiv);
+  card.addEventListener('click', () => openRecipe(key));
+
+  attachThumb(card, thumbCanvas, data, baseKey);
+  return card;
 }
 
 /** Tick the ABV up from zero so the number lands with the bar. */
@@ -4166,6 +4218,69 @@ function countUpABV(el, target, animate) {
  * card per name. A flag set on the variant that loses the de-duplication would
  * otherwise vanish from its collection without a trace.
  */
+/**
+ * When in the evening a drink belongs.
+ *
+ * This is the oldest classification in bartending and it is not derivable
+ * from the recipe: an aperitif is dry, bitter or sparkling because it is
+ * meant to sharpen an appetite, and a digestif is sweet, rich or
+ * spirit-forward because it is meant to close the night. Both can be 26%,
+ * both can be shaken, and no field in the data tells them apart. So they are
+ * named, from the conventional placings — the Martini and the Negroni before
+ * dinner, the Alexander and the Black Russian after, XYZ because the name is
+ * the whole joke, Between the Sheets because it is a nightcap by definition.
+ *
+ * Anything not named here is served at any point, which is most of the list:
+ * highballs, sours and the tropical drinks belong wherever they are wanted.
+ */
+const SERVE_ORDER = {
+  aperitif: [
+    'ジントニック', 'ジン・リッキー', 'オレンジ・ブロッサム', 'ギムレット',
+    'アラウンド・ザ・ワールド', 'ジン・ソニック', 'ウォッカトニック',
+    'ウォッカ・リッキー', 'ブルドッグ', 'ソルティ・ドッグ', 'ブラッディ・メアリー',
+    'ウォッカ・ソニック', 'ソル・クバーノ', 'ダイキリ', 'エル・プレジデンテ',
+    'テコニック', 'テキーラ・ソーダ', 'マルガリータ', 'テキーラ・ソニック',
+    'ドライ・マティーニ', 'ネグローニ', 'アビエイション', 'ブールヴァルディエ',
+    'バカルディ', 'ホワイト・レディ', 'ブルー・マルガリータ',
+    'サラトガ・クーラー', 'シンデレラ', 'フロリダ', 'ヴァージン・メアリー',
+  ],
+  digestif: [
+    'アースクェイク', 'ジン・ミルク・パンチ', 'ブラック・ルシアン',
+    'ホワイト・ルシアン', 'XYZ', 'サイドカー', 'ピーチ・ミルク', 'カシス・ミルク',
+    'カルーア・ミルク', 'カルーア・ソーダ', 'カルーア・コーク', 'コーヒー・トニック',
+    'アレキサンダー', 'マンハッタン', 'オールド・ファッションド',
+    'ビトウィーン・ザ・シーツ', 'エスプレッソ・マティーニ',
+    'プッシーフット', 'ヴァージン・ピニャコラーダ',
+  ],
+};
+
+/**
+ * Season is a judgement too, and a looser one — a drink may suit more than
+ * one. Summer was already carried on the recipes themselves; the other three
+ * are named here. Spring runs floral and pale, autumn turns to whisky and
+ * brandy, winter to cream, coffee and the drinks you sip slowly.
+ */
+const SEASONS = {
+  spring: [
+    'オレンジ・ブロッサム', 'アビエイション', 'ファジーネーブル', 'ピーチ・フィズ',
+    'ピーチ・ミルク', 'バカルディ', 'ホワイト・レディ', 'カシス・オレンジ',
+    'カシス・ソーダ', 'シャーリー・テンプル', 'ジン・フィズ', 'シンデレラ',
+  ],
+  autumn: [
+    'ウイスキー・サワー', 'オールド・ファッションド', 'マンハッタン',
+    'ブールヴァルディエ', 'サイドカー', 'ホーセズ・ネック', 'フレンチ・ハイボール',
+    'フレンチ・コーク', 'ウイスキー・バック', 'ジャック・コーク', 'ネグローニ',
+    'ボストン・クーラー', 'レゲエ・パンチ', 'カシス・ウーロン', 'エル・ディアブロ',
+  ],
+  winter: [
+    'アレキサンダー', 'ブラック・ルシアン', 'ホワイト・ルシアン', 'カルーア・ミルク',
+    'カルーア・コーク', 'エスプレッソ・マティーニ', 'ジン・ミルク・パンチ',
+    'ビトウィーン・ザ・シーツ', 'XYZ', 'アースクェイク', 'ドライ・マティーニ',
+    'オールド・ファッションド', 'カシス・ミルク', 'プッシーフット',
+    'ヴァージン・メアリー', 'コーヒー・トニック',
+  ],
+};
+
 const collectionsByName = (() => {
   const summer = new Set();
   const iba = new Set();
@@ -4175,8 +4290,38 @@ const collectionsByName = (() => {
     if (c.isIBA) iba.add(c.name);
     if (isMocktailKey(key)) mocktail.add(c.name);
   });
-  return { summer, iba, mocktail };
+  return {
+    summer, iba, mocktail,
+    aperitif: new Set(SERVE_ORDER.aperitif),
+    digestif: new Set(SERVE_ORDER.digestif),
+    spring: new Set(SEASONS.spring),
+    autumn: new Set(SEASONS.autumn),
+    winter: new Set(SEASONS.winter),
+  };
 })();
+
+/** A drink named in a list that no longer exists would silently disappear. */
+(function auditCuratedLists() {
+  const names = new Set(Object.values(cocktailDatabase).map(c => c.name));
+  const stray = [...Object.entries(SERVE_ORDER), ...Object.entries(SEASONS)]
+    .flatMap(([label, list]) => list.filter(n => !names.has(n)).map(n => `${label}:${n}`));
+  if (stray.length) console.warn(`[curation] unknown drink names — ${stray.join(', ')}`);
+})();
+
+/** 'aperitif' | 'anytime' | 'digestif' */
+function serveOf(data) {
+  if (collectionsByName.aperitif.has(data.name)) return 'aperitif';
+  if (collectionsByName.digestif.has(data.name)) return 'digestif';
+  return 'anytime';
+}
+
+/** Northern-hemisphere meteorological seasons, which is what Tokyo uses. */
+function currentSeason(month = new Date().getMonth() + 1) {
+  if (month <= 2 || month === 12) return 'winter';
+  if (month <= 5) return 'spring';
+  if (month <= 8) return 'summer';
+  return 'autumn';
+}
 
 const isIBACocktail = (data) => collectionsByName.iba.has(data.name);
 const isMocktail = (data) => collectionsByName.mocktail.has(data.name);
@@ -4187,18 +4332,19 @@ function matchesDrinkType(data, drinkType = state.drinkType) {
   return isMocktail(data) === (drinkType === 'mocktail');
 }
 
-/** How many distinct drinks sit on each side. Shown on the switch itself. */
-const drinkTypeCounts = (() => {
-  const seen = new Set();
+/**
+ * How many drinks sit on each side of the switch — of the ones actually on
+ * offer. On a menu that means the host's shelf, not the whole archive.
+ */
+function countsByDrinkType() {
   const counts = { all: 0, cocktail: 0, mocktail: 0 };
-  Object.entries(cocktailDatabase).forEach(([key, data]) => {
-    if (seen.has(data.name)) return;
-    seen.add(data.name);
+  buildDrinkList().forEach(item => {
+    if (!item.pourable) return;
     counts.all++;
-    counts[isMocktailKey(key) ? 'mocktail' : 'cocktail']++;
+    counts[isMocktail(item.data) ? 'mocktail' : 'cocktail']++;
   });
   return counts;
-})();
+}
 
 // ==========================================================================
 // 2c. ROUTING
@@ -4338,10 +4484,18 @@ function openRecipe(key) {
 const galleryPredicates = {
   all: () => true,
   iba: (data) => isIBACocktail(data),
-  summer: (data) => collectionsByName.summer.has(data.name),
   light: (data) => data.abv <= 10,
   strong: (data) => data.abv >= 25,
   refreshing: (data) => data.taste.some(t => /さっぱり|爽快|すっきり|清涼感/.test(t)),
+
+  aperitif: (data) => serveOf(data) === 'aperitif',
+  anytime: (data) => serveOf(data) === 'anytime',
+  digestif: (data) => serveOf(data) === 'digestif',
+
+  spring: (data) => collectionsByName.spring.has(data.name),
+  summer: (data) => collectionsByName.summer.has(data.name),
+  autumn: (data) => collectionsByName.autumn.has(data.name),
+  winter: (data) => collectionsByName.winter.has(data.name),
 };
 
 /**
@@ -4355,54 +4509,106 @@ function basesForDrinkType(drinkType = state.drinkType) {
 }
 
 // Build the filter chips shown above the archive gallery
-function initGalleryFilters() {
-  if (!DOM.galleryFilters) return;
-  const chips = [
-    { id: 'all', label: 'すべて' },
-    { id: 'summer', label: '☀ 夏向き' },
-    { id: 'refreshing', label: 'さっぱり' },
-  ];
+const SEASON_LABELS = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
+
+/**
+ * The chips, in labelled rows.
+ *
+ * They used to be one flat wrap, which was fine at fifteen and would be a
+ * wall at twenty-six. Grouping them under headings costs a line of text per
+ * row and makes the whole set scannable: you look at "季節" when you want a
+ * season, and never read the other twenty chips at all.
+ */
+function galleryFilterGroups() {
+  const groups = [{ label: null, chips: [{ id: 'all', label: 'すべて' }] }];
+
+  // Serve order is the menu's own structure, so guests get it as headings
+  // rather than as chips; the archive is a lookup tool and takes the chips.
+  if (state.currentMode !== 'menu') {
+    groups.push({
+      label: 'いつ飲む',
+      chips: [
+        { id: 'aperitif', label: 'はじめに' },
+        { id: 'anytime', label: '食事とともに' },
+        { id: 'digestif', label: '〆に' },
+      ],
+    });
+  }
+
+  const now = currentSeason();
+  groups.push({
+    label: '季節',
+    chips: Object.keys(SEASON_LABELS).map(s => ({
+      id: s,
+      label: s === now ? `${SEASON_LABELS[s]}（今）` : SEASON_LABELS[s],
+    })),
+  });
+
   // Strength and IBA say nothing about a shelf of drinks that are all 0%.
+  const taste = [{ id: 'refreshing', label: 'さっぱり' }];
   if (state.drinkType !== 'mocktail') {
-    chips.push(
+    taste.push(
       { id: 'light', label: '低アルコール' },
       { id: 'strong', label: '強め' },
       { id: 'iba', label: '★ IBA公認' },
     );
   }
+  groups.push({ label: '好み', chips: taste });
+
   // On a menu, a chip that filters down to nothing is worse than no chip:
   // it reads as "we're out of gin" when it only means the host never had any.
   let bases = basesForDrinkType();
   if (state.menuShelf) {
     const stocked = new Set();
-    Object.entries(cocktailDatabase).forEach(([key, data]) => {
-      const parts = key.split('+');
-      if (parts.every(p => state.menuShelf.has(p)) && matchesDrinkType(data)) {
-        stocked.add(parts[0]);
-      }
+    buildDrinkList().forEach(item => {
+      if (item.pourable && matchesDrinkType(item.data)) stocked.add(item.baseKey);
     });
     bases = bases.filter(b => stocked.has(b));
   }
-  chips.push(...bases.map(b => ({ id: b, label: baseNameMap[b] })));
+  if (bases.length) {
+    groups.push({ label: 'ベース', chips: bases.map(b => ({ id: b, label: baseNameMap[b] })) });
+  }
+
+  return groups;
+}
+
+function initGalleryFilters() {
+  if (!DOM.galleryFilters) return;
+  const groups = galleryFilterGroups();
 
   // The chip that was active may have just been filtered out from under us.
-  if (!chips.some(c => c.id === state.galleryFilter)) state.galleryFilter = 'all';
+  const available = groups.flatMap(g => g.chips.map(c => c.id));
+  if (!available.includes(state.galleryFilter)) state.galleryFilter = 'all';
+
+  const select = (id) => {
+    state.galleryFilter = id;
+    DOM.galleryFilters.querySelectorAll('.gallery-filter-chip').forEach(c => {
+      c.classList.toggle('active', c.dataset.filter === id);
+    });
+    renderGallery(state.currentMode === 'menu' ? '' : DOM.gallerySearch.value, true);
+    if (state.currentMode === 'menu') renderMenuMasthead();
+  };
 
   DOM.galleryFilters.innerHTML = '';
-  chips.forEach(chip => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'gallery-filter-chip' + (state.galleryFilter === chip.id ? ' active' : '');
-    btn.dataset.filter = chip.id;
-    btn.textContent = chip.label;
-    btn.addEventListener('click', () => {
-      state.galleryFilter = chip.id;
-      DOM.galleryFilters.querySelectorAll('.gallery-filter-chip').forEach(c => {
-        c.classList.toggle('active', c.dataset.filter === chip.id);
-      });
-      renderGallery(DOM.gallerySearch.value, true);
+  groups.forEach(group => {
+    const row = document.createElement('div');
+    row.className = 'gallery-filter-group';
+    if (group.label) {
+      const label = document.createElement('span');
+      label.className = 'gallery-filter-label';
+      label.textContent = group.label;
+      row.appendChild(label);
+    }
+    group.chips.forEach(chip => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gallery-filter-chip' + (state.galleryFilter === chip.id ? ' active' : '');
+      btn.dataset.filter = chip.id;
+      btn.textContent = chip.label;
+      btn.addEventListener('click', () => select(chip.id));
+      row.appendChild(btn);
     });
-    DOM.galleryFilters.appendChild(btn);
+    DOM.galleryFilters.appendChild(row);
   });
 }
 
@@ -4471,12 +4677,19 @@ function setDrinkType(type) {
   }
 }
 
+/** Re-tally the switch. Called whenever what is on offer changes. */
+function refreshDrinkTypeCounts() {
+  if (!DOM.drinkTypeSwitch) return;
+  const counts = countsByDrinkType();
+  DOM.drinkTypeSwitch.querySelectorAll('.dt-count').forEach(el => {
+    el.textContent = counts[el.dataset.count];
+  });
+}
+
 function initDrinkTypeSwitch() {
   if (!DOM.drinkTypeSwitch) return;
 
-  DOM.drinkTypeSwitch.querySelectorAll('.dt-count').forEach(el => {
-    el.textContent = drinkTypeCounts[el.dataset.count];
-  });
+  refreshDrinkTypeCounts();
   DOM.drinkTypeSwitch.querySelectorAll('.drink-type-btn').forEach(btn => {
     btn.addEventListener('click', () => setDrinkType(btn.dataset.drinkType));
   });
@@ -4707,6 +4920,10 @@ function setMode(mode) {
     DOM.tabDictionary.classList.add('active');
     DOM.viewDictionary.classList.remove('hidden');
     DOM.gallerySearch.value = '';
+    // The chip set differs between the archive and a menu — serve order is
+    // headings there and chips here — so it is rebuilt on arrival rather than
+    // inherited from whichever view was open last.
+    initGalleryFilters();
     renderGallery('', true);
   } else if (mode === 'mybar') {
     DOM.tabMyBar.classList.add('active');
@@ -4755,6 +4972,7 @@ function enterMenuMode(code, shelf) {
 
   document.documentElement.dataset.view = 'menu';
   cancelCardAnimations();
+  refreshDrinkTypeCounts();   // the switch now counts the shelf, not the archive
 
   DOM.tabBuild.classList.remove('active');
   DOM.tabDictionary.classList.remove('active');
@@ -4824,6 +5042,8 @@ function exitMenuMode() {
   state.menuShelf = null;
   delete document.documentElement.dataset.view;
   DOM.menuMasthead.classList.add('hidden');
+  DOM.galleryGrid.classList.remove('is-coursed');
+  refreshDrinkTypeCounts();
 }
 
 function initMyBarUI() {
