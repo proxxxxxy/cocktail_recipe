@@ -97,6 +97,37 @@
     ];
     check(!stray.length, 'curated lists name real drinks', stray.join(' '));
 
+    // --- prose ---
+    // A Cyrillic word once made it into a description and survived a syntax
+    // check, a render and a read-through. Japanese, latin, digits and
+    // punctuation are the whole alphabet this book is written in.
+    const FOREIGN = /[Ѐ-ӿ가-힯฀-๿؀-ۿ]/;
+    const prose = [];
+    Object.entries(cocktailDatabase).forEach(([key, d]) => {
+      const strings = [d.name, d.enName, d.description,
+                       ...d.taste,
+                       ...d.ingredients.flatMap(i => [i.name, i.amount]),
+                       ...d.method];
+      strings.forEach(s => {
+        if (typeof s !== 'string' || !s.trim()) prose.push(`${key}: empty string`);
+        else if (FOREIGN.test(s)) prose.push(`${key}: foreign script in "${s.slice(0, 24)}"`);
+      });
+      if (d.taste.length < 2 || d.taste.length > 4) prose.push(`${key}: ${d.taste.length} taste words`);
+      if (d.description.length < 30) prose.push(`${key}: description too short`);
+      if (!d.method.length) prose.push(`${key}: no method`);
+      d.method.forEach(step => {
+        if (!/[。）」]$/.test(step)) prose.push(`${key}: step lacks a full stop — "${step.slice(-14)}"`);
+      });
+      if (!d.ingredients.length) prose.push(`${key}: no ingredients`);
+      if (typeof d.abv !== 'number' || d.abv < 0 || d.abv > 60) prose.push(`${key}: abv ${d.abv}`);
+      // A mocktail that claims alcohol, or a cocktail that claims none, is
+      // one of the two facts having been edited without the other.
+      const mock = isMocktailKey(key);
+      if (mock && d.abv !== 0) prose.push(`${key}: alcohol-free but ${d.abv}%`);
+      if (!mock && d.abv === 0) prose.push(`${key}: 0% but not classed alcohol-free`);
+    });
+    check(!prose.length, 'recipe prose is well formed', prose.slice(0, 8).join(' | '));
+
     const vocab = new Set(SHELF_VOCABULARY);
     const unlisted = [...Object.keys(baseTints), ...Object.keys(mixerDefinitions)]
       .filter(id => !vocab.has(id));
