@@ -235,6 +235,29 @@
     check(visible(document.getElementById('result-panel')), 'recipe panel is visible');
     check(document.getElementById('cocktail-name').textContent.length > 0, 'recipe has a name');
 
+    // Every drink must render its own strength. Checked through the
+    // un-animated path so the whole book can be covered in one pass — the
+    // count-up is the same value arrived at slowly, and reading it mid-flight
+    // says nothing except that it is mid-flight.
+    const abvEl = document.getElementById('abv-value');
+    const wrongAbv = [];
+    Object.values(cocktailDatabase).forEach(data => {
+      countUpABV(abvEl, data.abv, false);
+      const expected = data.abv === 0 ? 'ALCOHOL FREE' : `約 ${data.abv}%`;
+      if (abvEl.textContent !== expected) {
+        wrongAbv.push(`${data.name}: "${abvEl.textContent}" ≠ "${expected}"`);
+      }
+    });
+    check(!wrongAbv.length, 'every drink renders its own strength',
+          wrongAbv.slice(0, 4).join(' | '));
+
+    // And the animated path must settle on the same number.
+    openRecipe('rum+curacao+lemon');            // XYZ, 26%
+    await wait(950);
+    check(document.getElementById('abv-value').textContent === '約 26%',
+          'the count-up settles on the real strength',
+          document.getElementById('abv-value').textContent);
+
     // A menu, its counts, and a recipe reached from inside it.
     const shelf = new Set(SHELF_VOCABULARY);
     const code = encodeShelf(shelf);

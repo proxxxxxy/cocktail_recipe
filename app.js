@@ -5190,7 +5190,9 @@ function countUpABV(el, target, animate) {
   const started = performance.now();
   const duration = 850;
   const tick = (now) => {
-    const p = Math.min((now - started) / duration, 1);
+    // rAF hands back the frame's start time, which can precede the call that
+    // scheduled it; clamped, or the first tick renders a negative percentage.
+    const p = Math.min(Math.max((now - started) / duration, 0), 1);
     const eased = 1 - Math.pow(1 - p, 3);
     el.textContent = `約 ${Math.round(target * eased)}%`;
     if (p < 1) el._numAnim = requestAnimationFrame(tick);
