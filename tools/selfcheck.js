@@ -174,6 +174,35 @@
     check(!blank.length, 'every drink paints a thumbnail', blank.join(' | '));
   }
 
+  /**
+   * The page states its own size — in the meta description, in the share
+   * card and in the hero. Those numbers are written by hand and the book
+   * grows, so they are checked against the book rather than trusted.
+   */
+  function checkStatedCounts() {
+    const counts = countsByDrinkType();
+    const iba = buildDrinkList(null).filter(i => isIBACocktail(i.data)).length;
+    const claims = [
+      ['meta description', document.querySelector('meta[name="description"]')?.content],
+      ['og:description', document.querySelector('meta[property="og:description"]')?.content],
+      ['hero copy', document.querySelector('.intro-copy')?.textContent],
+    ];
+
+    const stale = [];
+    claims.forEach(([where, text]) => {
+      if (!text) return;
+      // Any 2-3 digit number in this copy is a claim about the collection.
+      (text.match(/\d{2,3}/g) || []).forEach(n => {
+        if (![counts.all, counts.mocktail, counts.cocktail, iba].includes(Number(n))) {
+          stale.push(`${where} says ${n}`);
+        }
+      });
+    });
+    check(!stale.length,
+          'the page states the collection size correctly',
+          `${stale.join(', ')} — actual ${counts.all}/${counts.mocktail}/iba ${iba}`);
+  }
+
   function checkNoDuplicateIds() {
     const seen = new Set(), dupes = new Set();
     document.querySelectorAll('[id]').forEach(el => {
@@ -381,6 +410,7 @@
 
     checkData();
     checkCodec();
+    checkStatedCounts();
     checkNoDuplicateIds();
     checkThumbnails();
     await checkModes();
