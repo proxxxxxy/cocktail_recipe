@@ -953,6 +953,14 @@ input:focus-visible {
   color: #6d6862;
 }
 
+/* Where we knowingly differ from the source we are citing. */
+.recipe-source .source-note {
+  margin-top: 6px;
+  color: #7d766c;
+  font-size: .58rem;
+  line-height: 1.8;
+}
+
 .sources-note {
   width: min(1380px, calc(100% - 64px));
   margin: 0 auto;

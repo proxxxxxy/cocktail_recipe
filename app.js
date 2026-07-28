@@ -994,8 +994,8 @@ const cocktailDatabase = {
     ice: "cube",
     isIBA: true,
     ingredients: [
-      { name: "ブランデー", amount: "45 ml" },
-      { name: "ジンジャーエール", amount: "適量" },
+      { name: "コニャック", amount: "40 ml" },
+      { name: "ジンジャーエール", amount: "120 ml" },
       { name: "レモンの皮 (螺旋状)", amount: "1個分" }
     ],
     method: [
@@ -1745,9 +1745,9 @@ const cocktailDatabase = {
     summer: true,
     isIBA: true,
     ingredients: [
-      { name: "ホワイト・ラム", amount: "30 ml" },
-      { name: "ココナッツミルク", amount: "30 ml" },
-      { name: "パイナップルジュース", amount: "90 ml" }
+      { name: "ホワイト・ラム", amount: "50 ml" },
+      { name: "ココナッツクリーム", amount: "30 ml" },
+      { name: "パイナップルジュース", amount: "50 ml" }
     ],
     method: [
       "シェイカー（またはブレンダー）に氷と全ての材料を入れます。",
@@ -1769,8 +1769,8 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "バーボン・ウイスキー", amount: "60 ml" },
-      { name: "ミントの葉", amount: "8〜10 枚" },
-      { name: "砂糖 (またはシロップ)", amount: "2 tsp" },
+      { name: "ミントの葉", amount: "4 房" },
+      { name: "粉砂糖", amount: "1 tsp" },
       { name: "水", amount: "少量" }
     ],
     method: [
@@ -1819,9 +1819,9 @@ const cocktailDatabase = {
     isIBA: true,
     summer: true,
     ingredients: [
-      { name: "ウォッカ", amount: "30 ml" },
-      { name: "クランベリージュース", amount: "60 ml" },
-      { name: "グレープフルーツジュース", amount: "60 ml" }
+      { name: "ウォッカ", amount: "40 ml" },
+      { name: "クランベリージュース", amount: "120 ml" },
+      { name: "グレープフルーツジュース", amount: "30 ml" }
     ],
     method: [
       "氷を詰めたタンブラーにウォッカを注ぎます。",
@@ -1956,8 +1956,8 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ホワイト・ラム", amount: "45 ml" },
       { name: "パイナップルジュース", amount: "45 ml" },
-      { name: "グレナデンシロップ", amount: "1 tsp" },
-      { name: "マラスキーノ", amount: "1 tsp" }
+      { name: "マラスキーノ・リキュール", amount: "7.5 ml" },
+      { name: "グレナデンシロップ", amount: "5 ml" }
     ],
     method: [
       "シェイカーに氷と全ての材料を入れ、しっかりとシェイクします。",
@@ -2073,10 +2073,10 @@ const cocktailDatabase = {
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "ドライ・ジン", amount: "22 ml" },
-      { name: "ホワイトキュラソー", amount: "22 ml" },
-      { name: "ドライ・ベルモット", amount: "22 ml" },
-      { name: "レモンジュース", amount: "22 ml" },
+      { name: "ドライ・ジン", amount: "30 ml" },
+      { name: "ホワイトキュラソー", amount: "30 ml" },
+      { name: "リレ・ブラン (またはドライ・ベルモット)", amount: "30 ml" },
+      { name: "レモンジュース", amount: "30 ml" },
       { name: "アブサン", amount: "グラスに回す分" }
     ],
     method: [
@@ -2141,9 +2141,10 @@ const cocktailDatabase = {
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "ドライ・ジン", amount: "60 ml" },
-      { name: "ハニーシロップ (蜂蜜:水 = 1:1)", amount: "20 ml" },
-      { name: "レモンジュース", amount: "20 ml" }
+      { name: "ドライ・ジン", amount: "52.5 ml" },
+      { name: "ハニーシロップ (蜂蜜:水 = 1:1)", amount: "2 tsp" },
+      { name: "レモンジュース", amount: "22.5 ml" },
+      { name: "オレンジジュース", amount: "22.5 ml" }
     ],
     method: [
       "蜂蜜は同量のぬるま湯で溶いてシロップにしておきます。",
@@ -2267,7 +2268,7 @@ const cocktailDatabase = {
       { name: "テキーラ", amount: "15 ml" },
       { name: "ホワイトキュラソー", amount: "15 ml" },
       { name: "レモンジュース", amount: "25 ml" },
-      { name: "シュガーシロップ", amount: "1 tsp" },
+      { name: "シュガーシロップ", amount: "30 ml" },
       { name: "コーラ", amount: "適量" }
     ],
     method: [
@@ -2385,7 +2386,7 @@ const cocktailDatabase = {
       { name: "コニャック", amount: "30 ml" },
       { name: "スイート・ベルモット", amount: "30 ml" },
       { name: "ベネディクティン", amount: "1 tsp" },
-      { name: "アンゴスチュラ・ビターズ", amount: "2 dash" }
+      { name: "ペイショーズ・ビターズ", amount: "2 dash" }
     ],
     method: [
       "ミキシンググラスに氷と全ての材料を入れます。",
@@ -2406,7 +2407,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "スコッチ・ウイスキー", amount: "45 ml" },
-      { name: "ドランブイ", amount: "20 ml" }
+      { name: "ドランブイ", amount: "25 ml" }
     ],
     method: [
       "氷を入れたロックグラスに材料を注ぎます。",
@@ -2448,7 +2449,7 @@ const cocktailDatabase = {
       { name: "ブレンデッド・スコッチ", amount: "60 ml" },
       { name: "ハニーシロップ (生姜を漬けたもの)", amount: "22 ml" },
       { name: "レモンジュース", amount: "22 ml" },
-      { name: "アイラ・モルト (フロート用)", amount: "1 tsp" }
+      { name: "アイラ・モルト (フロート用)", amount: "7.5 ml" }
     ],
     method: [
       "蜂蜜シロップに薄切りの生姜を漬け込んでおきます。",
@@ -2531,8 +2532,8 @@ const cocktailDatabase = {
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "シャンパン (辛口)", amount: "60 ml" },
-      { name: "オレンジジュース", amount: "60 ml" }
+      { name: "シャンパン / プロセッコ", amount: "75 ml" },
+      { name: "オレンジジュース", amount: "75 ml" }
     ],
     method: [
       "冷やしたフルートグラスにオレンジジュースを注ぎます。",
@@ -5358,6 +5359,7 @@ const SOURCES = {
 /** Drinks whose ingredients and quantities were read off the source itself. */
 const VERIFIED_AGAINST = {
   iba: [
+    // First pass
     'ネグローニ', 'サゼラック', 'マイタイ', 'マルガリータ', 'ダイキリ',
     'マンハッタン', 'ドライ・マティーニ', 'ウイスキー・サワー',
     'オールド・ファッションド', 'モヒート', 'エスプレッソ・マティーニ',
@@ -5365,7 +5367,34 @@ const VERIFIED_AGAINST = {
     'サイドカー', 'ホワイト・レディ', 'クローバー・クラブ', 'ラスト・ワード',
     'ブランブル', 'ジン・フィズ', 'フレンチ75', 'シンガポール・スリング',
     'ブールヴァルディエ', 'ブラック・ルシアン', 'スティンガー',
+    // Second pass — the remaining 27 IBA entries
+    'アビエイション', 'キューバリブレ', 'グラスホッパー',
+    'コープス・リヴァイヴァー No.2', 'セックス・オン・ザ・ビーチ',
+    'テキーラ・サンライズ', 'パローマ', 'ビトウィーン・ザ・シーツ',
+    'ピニャ・コラーダ', 'ブラッディ・メアリー', 'ペニシリン', 'ベリーニ',
+    'ホーセズ・ネック', 'ミモザ', 'ミント・ジュレップ', 'モスコミュール',
+    'ラスティ・ネイル', 'ロング・アイランド・アイス・ティー',
+    'ヴュー・カレ', 'キール', 'サウスサイド', 'シーブリーズ',
+    'ダーク・アンド・ストーミー', 'ビーズ・ニーズ', 'プランターズ・パンチ',
+    'メアリー・ピックフォード', 'アペロール・スプリッツ',
   ],
+};
+
+/**
+ * Where we knowingly pour something other than the cited source.
+ *
+ * A few drinks were checked against the IBA and deliberately left as they
+ * are, because the IBA spec is not the version a bar in Tokyo pours. Silently
+ * "correcting" them would be wrong, and silently keeping ours while claiming
+ * the citation would be worse. So the divergence is printed next to the
+ * citation and the reader can decide.
+ */
+const SOURCE_NOTES = {
+  'サウスサイド': 'IBAの公式仕様はレモン30mlですが、本書は一般的なライムの配合を採っています。',
+  'パローマ': 'IBAの公式仕様はピンクグレープフルーツ・ソーダ100ml。本書は果汁とソーダに分けた作り方です。',
+  'プランターズ・パンチ': 'IBAの公式仕様はラム45・ライム15・サトウキビジュース30のみ。本書は果汁を重ねる伝統的な配合です。',
+  'サゼラック': 'IBAの公式仕様はコニャック。本書は現在一般的なライ・ウイスキーを採っています。',
+  'ダーク・アンド・ストーミー': 'IBAの公式仕様ではライムは飾りのみ。本書は10mlを加えています。',
 };
 
 const sourceByName = (() => {
@@ -5997,9 +6026,11 @@ function updateUI() {
     // Say where this one came from — or admit that it has not been checked.
     const source = sourceOf(cocktail);
     if (source) {
+      const note = SOURCE_NOTES[cocktail.name];
       DOM.recipeSource.innerHTML =
         `出典：<a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.label}</a>` +
-        `<span>${source.org}</span>`;
+        `<span>${source.org}</span>` +
+        (note ? `<span class="source-note">${note}</span>` : '');
       DOM.recipeSource.classList.remove('is-unverified');
     } else {
       DOM.recipeSource.innerHTML =
