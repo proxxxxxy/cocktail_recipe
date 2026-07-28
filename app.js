@@ -3504,7 +3504,6 @@ const DOM = {
   // Build Mode selectors
   baseBtns: document.querySelectorAll('.base-btn'),
   mixerContainer: document.getElementById('mixer-container'),
-  iceBtns: document.querySelectorAll('.ice-btn'),
   resetBtn: document.getElementById('btn-reset'),
   viewRecipeBtn: document.getElementById('btn-view-recipe'),
   backToBuildBtn: document.getElementById('btn-back-to-build'),
@@ -4021,7 +4020,11 @@ function renderMixerButtons() {
     const btn = document.createElement('button');
     btn.className = 'select-btn mixer-btn';
     btn.dataset.mixer = mKey;
-    btn.id = `btn-${mKey}`;
+    // Namespaced away from the base buttons: several ingredients are both a
+    // base and a mixer — brandy, whiskey, gin — so `btn-brandy` existed twice
+    // in the document the moment you picked rum. Nothing reads these ids; the
+    // collision was simply invalid.
+    btn.id = `mixer-${mKey}`;
     const mixerColor = parseRGBA(def.color);
     btn.style.setProperty('--ingredient-rgb', `${mixerColor[0]}, ${mixerColor[1]}, ${mixerColor[2]}`);
     
@@ -4136,25 +4139,15 @@ function toggleMixer(mixerKey) {
     }
   }
   
-  // Auto-set ice when matching recipe completed
+  // The ice is the recipe's to decide, never the builder's. There used to be
+  // a picker for it, which did nothing that survived: the moment the mixers
+  // named a real drink, this line overwrote whatever had been chosen. A
+  // control whose answer is always discarded is worse than no control.
   const key = [state.selectedBase, ...[...state.selectedMixers].sort()].join('+');
   const cocktail = cocktailDatabase[key];
-  if (cocktail) {
-    state.selectedIce = cocktail.ice;
-  }
-  
-  updateUI();
-}
+  state.selectedIce = cocktail ? cocktail.ice : 'cube';
 
-function updateIceButtonsUI() {
-  DOM.iceBtns.forEach(btn => {
-    if (btn.dataset.ice === state.selectedIce) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-    btn.setAttribute('aria-pressed', String(btn.dataset.ice === state.selectedIce));
-  });
+  updateUI();
 }
 
 // Base key to Japanese name lookup
@@ -5798,9 +5791,6 @@ function updateUI() {
     btn.setAttribute('aria-pressed', String(btn.dataset.base === selectedBase));
   });
   
-  // Sync Ice Buttons active
-  updateIceButtonsUI();
-  
   // Render mixers
   renderMixerButtons();
   
@@ -6395,14 +6385,7 @@ function initEventListeners() {
       updateUI();
     });
   });
-  
-  DOM.iceBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.selectedIce = btn.dataset.ice;
-      updateUI();
-    });
-  });
-  
+    
   DOM.shareMenuBtn.addEventListener('click', shareMenu);
   DOM.omakaseBtn.addEventListener('click', pourOmakase);
 

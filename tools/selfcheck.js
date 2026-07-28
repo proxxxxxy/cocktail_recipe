@@ -238,13 +238,34 @@
           `${stale.join(', ')} — actual ${counts.all}/${counts.mocktail}/iba ${iba}`);
   }
 
+  /**
+   * Checked with a base selected, because that is when the mixer buttons
+   * exist — an empty build view has no collisions to find, which is why a
+   * duplicate `btn-brandy` survived until the ids were namespaced.
+   */
   function checkNoDuplicateIds() {
-    const seen = new Set(), dupes = new Set();
-    document.querySelectorAll('[id]').forEach(el => {
-      if (seen.has(el.id)) dupes.add(el.id);
-      seen.add(el.id);
+    const dupesFound = new Set();
+    const scan = () => {
+      const seen = new Set();
+      document.querySelectorAll('[id]').forEach(el => {
+        if (seen.has(el.id)) dupesFound.add(el.id);
+        seen.add(el.id);
+      });
+    };
+
+    setMode('build');
+    scan();
+    // rum and gin both offer spirits as mixers; sweep every base to be sure.
+    document.querySelectorAll('.base-btn').forEach(btn => {
+      state.selectedBase = btn.dataset.base;
+      state.selectedMixers = [];
+      state.showResult = false;
+      updateUI();
+      scan();
     });
-    check(dupes.size === 0, 'no duplicate element ids', [...dupes].join(' '));
+    resetGlass();
+
+    check(dupesFound.size === 0, 'no duplicate element ids', [...dupesFound].join(' '));
   }
 
   function checkNoSideScroll() {

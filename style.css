@@ -1123,9 +1123,6 @@ input:focus-visible {
   grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 }
 
-.ice-options {
-  grid-template-columns: repeat(3, 1fr);
-}
 
 .select-btn {
   min-height: 58px;
@@ -1960,8 +1957,7 @@ input:focus-visible {
     font-size: .67rem;
   }
 
-  .base-options,
-  .ice-options {
+  .base-options {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -2381,10 +2377,6 @@ input:focus-visible {
 #view-build .base-btn[data-base="peach"] { --ingredient-rgb: 238, 151, 124; }
 #view-build .base-btn[data-base="cassis"] { --ingredient-rgb: 159, 45, 99; }
 #view-build .base-btn[data-base="coffee"] { --ingredient-rgb: 126, 91, 66; }
-
-#view-build .ice-btn {
-  --ingredient-rgb: 183, 213, 218;
-}
 
 #view-build .mixer-btn.is-available {
   border-color: rgba(var(--ingredient-rgb), .58);
