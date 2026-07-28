@@ -1586,6 +1586,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ウォッカ", amount: "50 ml" },
       { name: "コーヒーリキュール", amount: "30 ml" },
+      { name: "シュガーシロップ", amount: "10 ml" },
       { name: "エスプレッソ (冷ましたもの)", amount: "1ショット" }
     ],
     method: [
@@ -1815,6 +1816,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lime",
     ice: "cube",
+    isIBA: true,
     summer: true,
     ingredients: [
       { name: "ウォッカ", amount: "30 ml" },
@@ -1949,6 +1951,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "cherry",
     ice: "none",
+    isIBA: true,
     summer: true,
     ingredients: [
       { name: "ホワイト・ラム", amount: "45 ml" },
@@ -1972,6 +1975,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "orange",
     ice: "crushed",
+    isIBA: true,
     summer: true,
     ingredients: [
       { name: "ダーク・ラム", amount: "45 ml" },
@@ -2025,8 +2029,8 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ドライ・ジン", amount: "30 ml" },
       { name: "レモンジュース", amount: "15 ml" },
-      { name: "シュガーシロップ", amount: "1 tsp" },
-      { name: "シャンパン (辛口)", amount: "適量" }
+      { name: "シュガーシロップ", amount: "15 ml" },
+      { name: "シャンパン (辛口)", amount: "60 ml" }
     ],
     method: [
       "シェイカーに氷、ジン、レモンジュース、シロップを入れてシェイクします。",
@@ -2094,7 +2098,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
-      { name: "クレーム・ド・フランボワーズ (ラズベリー)", amount: "15 ml" },
+      { name: "ラズベリー・シロップ (またはフランボワーズ・リキュール)", amount: "15 ml" },
       { name: "レモンジュース", amount: "15 ml" },
       { name: "卵白", amount: "1 個分" }
     ],
@@ -2135,6 +2139,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "lemon",
     ice: "none",
+    isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "60 ml" },
       { name: "ハニーシロップ (蜂蜜:水 = 1:1)", amount: "20 ml" },
@@ -2156,6 +2161,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "mint",
     ice: "none",
+    isIBA: true,
     summer: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "60 ml" },
@@ -2307,7 +2313,8 @@ const cocktailDatabase = {
       { name: "ダーク・ラム", amount: "30 ml" },
       { name: "ホワイトキュラソー", amount: "15 ml" },
       { name: "オルジェー・シロップ", amount: "15 ml" },
-      { name: "ライムジュース", amount: "20 ml" }
+      { name: "ライムジュース", amount: "30 ml" },
+      { name: "シュガーシロップ", amount: "7.5 ml" }
     ],
     method: [
       "シェイカーに氷と全ての材料を入れ、しっかりシェイクします。",
@@ -2325,6 +2332,7 @@ const cocktailDatabase = {
     hasBubbles: true,
     garnish: "lime",
     ice: "cube",
+    isIBA: true,
     summer: true,
     ingredients: [
       { name: "ダーク・ラム", amount: "60 ml" },
@@ -2342,7 +2350,7 @@ const cocktailDatabase = {
     enName: "Sazerac",
     abv: 30,
     taste: ["芳醇", "アニス香", "ほんのり甘い"],
-    description: "ニューオーリンズが生んだアメリカ最古級のカクテルで、同市の公式カクテルにも指定されています。アブサンはグラスに香りを移すためだけに使い、ペイショーズ・ビターズの薬草感が土台を作ります。",
+    description: "ニューオーリンズが生んだアメリカ最古級のカクテルで、同市の公式カクテルにも指定されています。アブサンはグラスに香りを移すためだけに使い、ペイショーズ・ビターズの薬草感が土台を作ります。IBAの公式仕様はコニャックですが、南北戦争後の入手難からライ・ウイスキーに置き換わり、現在はこちらが一般的です。",
     color: "rgba(196, 128, 56, 0.75)",
     hasBubbles: false,
     garnish: "lemon",
@@ -2351,7 +2359,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ライ・ウイスキー", amount: "50 ml" },
       { name: "角砂糖 (またはシロップ)", amount: "1 個" },
-      { name: "ペイショーズ・ビターズ", amount: "3 dash" },
+      { name: "ペイショーズ・ビターズ", amount: "2 dash" },
       { name: "アブサン", amount: "グラスに回す分" }
     ],
     method: [
@@ -2371,6 +2379,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: "cherry",
     ice: "cube",
+    isIBA: true,
     ingredients: [
       { name: "ライ・ウイスキー", amount: "30 ml" },
       { name: "コニャック", amount: "30 ml" },
@@ -2459,8 +2468,8 @@ const cocktailDatabase = {
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "ブランデー", amount: "45 ml" },
-      { name: "クレーム・ド・ミント (ホワイト)", amount: "15 ml" }
+      { name: "コニャック", amount: "50 ml" },
+      { name: "クレーム・ド・ミント (ホワイト)", amount: "20 ml" }
     ],
     method: [
       "シェイカーに氷と材料を入れ、しっかりシェイクします。",
@@ -2604,6 +2613,7 @@ const cocktailDatabase = {
     hasBubbles: false,
     garnish: null,
     ice: "none",
+    isIBA: true,
     ingredients: [
       { name: "辛口白ワイン", amount: "90 ml" },
       { name: "クレーム・ド・カシス", amount: "10 ml" }
@@ -2696,7 +2706,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "カシャッサ", amount: "60 ml" },
       { name: "ライム", amount: "1 個 (くし形に)" },
-      { name: "グラニュー糖", amount: "2 tsp" }
+      { name: "グラニュー糖", amount: "4 tsp" }
     ],
     method: [
       "ロックグラスにくし形のライムと砂糖を入れます。",
@@ -3481,6 +3491,9 @@ const DOM = {
   myBarBaseCategory: document.getElementById('mybar-base-category'),
   resultTag: document.getElementById('result-tag'),
   mocktailBadgeResult: document.getElementById('mocktail-badge-result'),
+
+  recipeSource: document.getElementById('recipe-source'),
+  sourcesBody: document.getElementById('sources-body'),
 
   // Guest menu
   courseNav: document.getElementById('course-nav'),
@@ -5325,6 +5338,50 @@ function serveOf(data) {
 }
 
 /**
+ * Where a recipe came from.
+ *
+ * Everything in this book was written from general knowledge of the standard
+ * literature, which is a respectable starting point and not a citation. A
+ * reader cannot tell the difference by looking, so drinks that have since
+ * been checked against a named, checkable source say so, and drinks that
+ * have not stay silent about it. Being able to see which is which is the
+ * whole point: an IBA number carries different weight from a recollection.
+ */
+const SOURCES = {
+  iba: {
+    label: 'IBA 公式レシピ',
+    org: '国際バーテンダー協会 (IBA)',
+    url: 'https://iba-world.com/cocktails/',
+  },
+};
+
+/** Drinks whose ingredients and quantities were read off the source itself. */
+const VERIFIED_AGAINST = {
+  iba: [
+    'ネグローニ', 'サゼラック', 'マイタイ', 'マルガリータ', 'ダイキリ',
+    'マンハッタン', 'ドライ・マティーニ', 'ウイスキー・サワー',
+    'オールド・ファッションド', 'モヒート', 'エスプレッソ・マティーニ',
+    'コスモポリタン', 'カイピリーニャ', 'ピスコ・サワー', 'アレキサンダー',
+    'サイドカー', 'ホワイト・レディ', 'クローバー・クラブ', 'ラスト・ワード',
+    'ブランブル', 'ジン・フィズ', 'フレンチ75', 'シンガポール・スリング',
+    'ブールヴァルディエ', 'ブラック・ルシアン', 'スティンガー',
+  ],
+};
+
+const sourceByName = (() => {
+  const map = new Map();
+  Object.entries(VERIFIED_AGAINST).forEach(([id, names]) =>
+    names.forEach(n => map.set(n, id)));
+  return map;
+})();
+
+/** The source this drink was checked against, or null if it has not been. */
+function sourceOf(data) {
+  const id = sourceByName.get(data.name);
+  return id ? SOURCES[id] : null;
+}
+
+/**
  * Glassware.
  *
  * Most of it follows from how the drink is iced — no ice means a stemmed
@@ -5358,8 +5415,9 @@ const GLASS_BY_NAME = {
   'ピニャ・コラーダ': 'hurricane', 'チチ': 'hurricane', 'ブルー・ハワイ': 'hurricane',
   'ヴァージン・ピニャコラーダ': 'hurricane', 'プランターズ・パンチ': 'hurricane',
   'ピーチ・フィズ': 'collins', 'ボストン・クーラー': 'collins',
-  'レモネード': 'collins', 'シンガポール・スリング': 'collins',
+  'レモネード': 'collins',
   'エンジェルス・キッス': 'liqueur',
+  'シンガポール・スリング': 'hurricane',
   'サゼラック': 'rocks', 'オールド・ファッションド': 'rocks', 'ネグローニ': 'rocks',
   'ブールヴァルディエ': 'rocks', 'ミント・ジュレップ': 'julep',
   // Crushed ice does not mean a julep cup, and a drink under 20% is not
@@ -5759,6 +5817,28 @@ function refreshDrinkTypeCounts() {
   });
 }
 
+/**
+ * The standing note at the foot of the page: which organisations were
+ * consulted, and how much of the book has actually been through them. The
+ * count is computed, so it cannot drift into a flattering claim.
+ */
+function renderSourcesNote() {
+  if (!DOM.sourcesBody) return;
+  const total = buildDrinkList(null).length;
+  const checked = buildDrinkList(null).filter(i => sourceOf(i.data)).length;
+
+  const cited = Object.entries(SOURCES).map(([id, src]) => {
+    const n = (VERIFIED_AGAINST[id] || []).length;
+    return `<a href="${src.url}" target="_blank" rel="noopener noreferrer">${src.label}</a>`
+         + `（${src.org}）${n}種`;
+  }).join(' ・ ');
+
+  DOM.sourcesBody.innerHTML =
+    `全${total}種のうち${checked}種を一次資料と照合済み。照合先：${cited}。` +
+    `残り${total - checked}種は標準的なレシピ集の内容に基づく記載で、` +
+    `各レシピにその旨を明記しています。`;
+}
+
 function initDrinkTypeSwitch() {
   if (!DOM.drinkTypeSwitch) return;
 
@@ -5913,6 +5993,19 @@ function updateUI() {
       li.textContent = step;
       DOM.methodOl.appendChild(li);
     });
+
+    // Say where this one came from — or admit that it has not been checked.
+    const source = sourceOf(cocktail);
+    if (source) {
+      DOM.recipeSource.innerHTML =
+        `出典：<a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.label}</a>` +
+        `<span>${source.org}</span>`;
+      DOM.recipeSource.classList.remove('is-unverified');
+    } else {
+      DOM.recipeSource.innerHTML =
+        '出典：一次資料との照合はまだです<span>標準的なレシピ集の内容に基づく記載</span>';
+      DOM.recipeSource.classList.add('is-unverified');
+    }
     
     if (hasRecipeExtension && !state.showResult) {
       // A valid recipe may still lead to a multi-ingredient recipe.
@@ -6769,6 +6862,7 @@ function calculateStarterSet() {
 }
 // First: it sets state.drinkType, and everything built below reads it.
 initDrinkTypeSwitch();
+renderSourcesNote();
 initMyBarUI();
 initGalleryFilters();
 initEventListeners();

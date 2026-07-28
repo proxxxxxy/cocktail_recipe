@@ -916,6 +916,87 @@ input:focus-visible {
   line-height: 2;
 }
 
+/* --------------------------------------------------------------------------
+   Attribution
+   Small, and deliberately not hidden. Whether a recipe has been read off a
+   named source or written from recollection is the difference between a
+   reference and a good guess, and the reader is entitled to tell them apart
+   without having to ask.
+   -------------------------------------------------------------------------- */
+.recipe-source {
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--faint);
+  font-size: .62rem;
+  line-height: 1.9;
+  letter-spacing: .04em;
+}
+
+.recipe-source a {
+  color: var(--brass);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(var(--brass-rgb), .4);
+}
+
+.recipe-source a:hover {
+  color: var(--paper);
+}
+
+.recipe-source span {
+  display: block;
+  color: #5f5c56;
+  font-size: .58rem;
+}
+
+.recipe-source.is-unverified {
+  color: #6d6862;
+}
+
+.sources-note {
+  width: min(1380px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 0 0 40px;
+  color: #5f5c56;
+  font-size: .6rem;
+  line-height: 2;
+}
+
+.sources-label {
+  margin-bottom: 6px;
+  color: var(--faint);
+  font: 500 .5rem/1 var(--sans);
+  letter-spacing: .22em;
+}
+
+.sources-note a {
+  color: #8a8175;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(138, 129, 117, .4);
+}
+
+.sources-note a:hover {
+  color: var(--paper);
+}
+
+@media (max-width: 580px) {
+  .sources-note {
+    width: calc(100% - 24px);
+    padding-bottom: 32px;
+  }
+}
+
+/* Attribution belongs on the printed page too — arguably most of all. */
+@media print {
+  .recipe-source,
+  .sources-note {
+    color: #444 !important;
+    font-size: 7pt;
+  }
+  .recipe-source a,
+  .sources-note a { color: #444 !important; }
+}
+
 /* The course reads as a heading among the taste words, not as one of them. */
 .badge-course {
   border-color: var(--line-strong);
