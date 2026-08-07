@@ -2801,6 +2801,180 @@ const cocktailDatabase = {
     ]
   },
 
+  // --- PARFAIT AMOUR / BLUE CURAÇAO / MALIBU ---
+  "gin+lemon+parfait_amour+soda+sugar": {
+    name: "バイオレット・フィズ",
+    enName: "Violet Fizz",
+    abv: 12,
+    taste: ["甘酸っぱい", "フローラル", "爽快"],
+    description: "ジン・フィズのシロップをパルフェタムールに置き換えた、菫色のフィズ。パルフェタムールは「完全なる愛」の意で、スミレとバニラ、オレンジの皮を漬け込んだ甘い香りのリキュールです。",
+    color: "rgba(186, 148, 214, 0.62)",
+    hasBubbles: true,
+    garnish: "lemon",
+    ice: "cube",
+    ingredients: [
+      { name: "ドライ・ジン", amount: "45 ml" },
+      { name: "パルフェタムール", amount: "20 ml" },
+      { name: "レモンジュース", amount: "20 ml" },
+      { name: "シュガーシロップ", amount: "1 tsp" },
+      { name: "ソーダ (炭酸水)", amount: "適量" }
+    ],
+    method: [
+      "シェイカーに氷、ジン、パルフェタムール、レモン、シロップを入れてシェイクします。",
+      "氷を入れたタンブラーに注ぎます。",
+      "冷えたソーダで満たし、軽く一度だけ混ぜてレモンを飾ります。"
+    ]
+  },
+  "gin+lemon+parfait_amour": {
+    name: "ブルー・ムーン",
+    enName: "Blue Moon",
+    abv: 25,
+    taste: ["フローラル", "甘酸っぱい", "華やか"],
+    description: "「実現しないこと」の比喩である青い月を名に持つ、パルフェタムールのスミレ香が真正面に立つショートカクテル。グラスの中の色は青というより、灯りの下で紫に転びます。",
+    color: "rgba(150, 110, 200, 0.78)",
+    hasBubbles: false,
+    garnish: "lemon",
+    ice: "none",
+    ingredients: [
+      { name: "ドライ・ジン", amount: "45 ml" },
+      { name: "パルフェタムール", amount: "15 ml" },
+      { name: "レモンジュース", amount: "15 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "しっかりとシェイクします。",
+      "冷やしたカクテルグラスに注ぎ、レモンピールを飾ります。"
+    ]
+  },
+  "rum+blue_curacao+coconut+pineapple": {
+    name: "ブルー・ハワイアン",
+    enName: "Blue Hawaiian",
+    abv: 10,
+    taste: ["トロピカル", "まろやか", "甘い"],
+    description: "ブルー・ハワイにココナッツを加えた姉妹分。レモンで澄ませる「ハワイ」に対し、こちらはココナッツで濁らせるため、青が乳白色に溶けた独特の色になります。",
+    color: "rgba(140, 200, 220, 0.85)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "crushed",
+    summer: true,
+    ingredients: [
+      { name: "ホワイト・ラム", amount: "30 ml" },
+      { name: "ブルーキュラソー", amount: "15 ml" },
+      { name: "ココナッツミルク", amount: "30 ml" },
+      { name: "パイナップルジュース", amount: "60 ml" }
+    ],
+    method: [
+      "シェイカーに氷と全ての材料を入れます。",
+      "全体が均一に濁るまで、しっかりとシェイクします。",
+      "クラッシュアイスを詰めたグラスに注ぎ、パイナップルとチェリーを飾ります。"
+    ]
+  },
+  "malibu+cola": {
+    name: "マリブ・コーク",
+    enName: "Malibu & Coke",
+    abv: 6,
+    taste: ["甘い", "ココナッツの香り", "爽快"],
+    description: "ココナッツを漬け込んだカリブのラム「マリブ」を、コーラで割っただけの一杯。南国の甘い香りとコーラの酸味がよく合い、度数の割に飲み口が軽いのが身上です。",
+    color: "rgba(90, 55, 45, 0.85)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "マリブ", amount: "45 ml" },
+      { name: "コーラ", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を満たしたタンブラーにマリブを注ぎます。",
+      "冷えたコーラで満たします。",
+      "底から一度だけ持ち上げるように混ぜ、ライムを飾ります。"
+    ]
+  },
+  "malibu+pineapple": {
+    name: "マリブ・パイン",
+    enName: "Malibu & Pineapple",
+    abv: 6,
+    taste: ["トロピカル", "甘い", "ジューシー"],
+    description: "ココナッツとパイナップルという、南国の定番の取り合わせ。ピニャ・コラーダをはるかに簡単にしたような味わいで、シェイクもブレンダーも要りません。",
+    color: "rgba(250, 235, 130, 0.75)",
+    hasBubbles: false,
+    garnish: "cherry",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "マリブ", amount: "45 ml" },
+      { name: "パイナップルジュース", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を満たしたタンブラーにマリブを注ぎます。",
+      "よく冷えたパイナップルジュースで満たします。",
+      "軽くステアし、パイナップルを飾ります。"
+    ]
+  },
+  "malibu+milk": {
+    name: "マリブ・ミルク",
+    enName: "Malibu & Milk",
+    abv: 6,
+    taste: ["クリーミー", "甘い", "ココナッツの香り"],
+    description: "牛乳で割ると、ココナッツの香りが乳脂肪に乗って一段とふくらみます。カルーア・ミルクと並ぶ、甘い一杯の代表格。よく冷やすほど香りが締まります。",
+    color: "rgba(252, 250, 240, 0.95)",
+    hasBubbles: false,
+    garnish: null,
+    ice: "cube",
+    ingredients: [
+      { name: "マリブ", amount: "45 ml" },
+      { name: "牛乳", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を入れたグラスにマリブを注ぎます。",
+      "よく冷えた牛乳で満たします。",
+      "分離しないよう、静かにステアします。"
+    ]
+  },
+  "malibu+orange": {
+    name: "マリブ・オレンジ",
+    enName: "Malibu & Orange",
+    abv: 6,
+    taste: ["フルーティー", "甘い", "さっぱり"],
+    description: "オレンジの酸がココナッツの甘さを切り、後口を軽くします。マリブの割り方の中では最もさっぱりする組み合わせで、食事の途中にも置けます。",
+    color: "rgba(255, 180, 70, 0.8)",
+    hasBubbles: false,
+    garnish: "orange",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "マリブ", amount: "45 ml" },
+      { name: "オレンジジュース", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を満たしたタンブラーにマリブを注ぎます。",
+      "よく冷えたオレンジジュースで満たします。",
+      "軽くステアし、オレンジを飾ります。"
+    ]
+  },
+  "malibu+blue_curacao+soda": {
+    name: "マリブ・サーフ",
+    enName: "Malibu Surf",
+    abv: 8,
+    taste: ["爽快", "甘い", "トロピカル"],
+    description: "マリブにブルーキュラソーを重ね、ソーダで伸ばした一杯。名の通り波の色をしていて、ココナッツの甘い香りだけが南国から残ります。",
+    color: "rgba(60, 180, 220, 0.75)",
+    hasBubbles: true,
+    garnish: "lime",
+    ice: "cube",
+    summer: true,
+    ingredients: [
+      { name: "マリブ", amount: "30 ml" },
+      { name: "ブルーキュラソー", amount: "10 ml" },
+      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" }
+    ],
+    method: [
+      "氷を満たしたタンブラーにマリブとブルーキュラソーを注ぎ、軽く混ぜます。",
+      "冷えたソーダで静かに満たします。",
+      "一度だけ底から混ぜ、ライムを飾ります。"
+    ]
+  },
+
   // --- NON-ALCOHOLIC (MOCKTAIL) ---
   // Keyed on a non-alcoholic base exactly like every other drink, so the
   // build view, My Bar and the archive all reach them by the same route.
@@ -3159,6 +3333,7 @@ const baseTints = {
   cachaca: "rgba(250, 248, 235, 0.2)",     // Clear cane spirit
   apple_brandy: "rgba(205, 133, 63, 0.45)",// Calvados amber
   cacao: "rgba(121, 85, 72, 0.8)",         // Crème de cacao
+  malibu: "rgba(250, 246, 234, 0.3)",      // Coconut rum, near-clear
 
   // Non-alcoholic bases. These ids are shared with mixerDefinitions on
   // purpose — a carton of orange juice is one bottle on the shelf whether it
@@ -3235,7 +3410,9 @@ const mixerDefinitions = {
   galliano: { name: "ガリアーノ", en: "GALLIANO", icon: "GL", color: "rgba(240, 200, 60, 0.8)" },
   gin: { name: "ジン (ブレンド用)", en: "GIN MIX", icon: "GI", color: "rgba(224, 242, 241, 0.3)" },
   rum: { name: "ラム (ブレンド用)", en: "RUM MIX", icon: "RU", color: "rgba(255, 248, 220, 0.35)" },
-  tequila: { name: "テキーラ (ブレンド用)", en: "TEQUILA MIX", icon: "TE", color: "rgba(244, 255, 220, 0.3)" }
+  tequila: { name: "テキーラ (ブレンド用)", en: "TEQUILA MIX", icon: "TE", color: "rgba(244, 255, 220, 0.3)" },
+  parfait_amour: { name: "パルフェタムール", en: "PARFAIT AMOUR", icon: "PA", color: "rgba(150, 110, 200, 0.78)" },
+  malibu: { name: "マリブ (ココナッツラム)", en: "MALIBU", icon: "ML", color: "rgba(250, 246, 234, 0.35)" }
 };
 
 // ==========================================================================
@@ -3264,7 +3441,7 @@ const ALCOHOLIC_MIXERS = new Set([
   'maraschino_liq',
   'champagne', 'white_wine', 'aperol', 'amaretto', 'chartreuse', 'benedictine',
   'drambuie', 'creme_de_menthe', 'raspberry', 'cherry_brandy', 'galliano',
-  'gin', 'rum', 'tequila',
+  'gin', 'rum', 'tequila', 'parfait_amour', 'malibu',
   // Peychaud's is left out for the same reason as Angostura: a dash is a
   // fifth of a millilitre, and the drinks that use it that way are
   // catalogued as non-alcoholic everywhere.
@@ -3373,6 +3550,8 @@ const SHELF_VOCABULARY = [
   'benedictine', 'drambuie', 'creme_de_menthe', 'egg_white',
   'raspberry', 'peychaud', 'honey', 'orgeat',
   'cherry_brandy', 'galliano',
+  // Appended 2026-08-07.
+  'parfait_amour', 'malibu',
 ];
 
 // URL-safe base64 alphabet: nothing here needs escaping in a fragment.
@@ -4171,6 +4350,7 @@ const baseNameMap = {
   cassis: 'カシス', coffee: 'コーヒー',
   champagne: 'シャンパン', white_wine: '白ワイン', pisco: 'ピスコ',
   cachaca: 'カシャッサ', apple_brandy: 'カルヴァドス', cacao: 'カカオ',
+  malibu: 'マリブ',
   ginger: 'ジンジャーエール', orange: 'オレンジ', soda: 'ソーダ',
   tomato: 'トマト', pineapple: 'パイナップル', grapefruit: 'グレープフルーツ',
   cranberry: 'クランベリー'
@@ -4182,7 +4362,7 @@ const baseIconMap = {
   whiskey: 'WH', brandy: 'BR', peach: 'PE',
   cassis: 'CA', coffee: 'CO',
   champagne: 'CH', white_wine: 'WW', pisco: 'PS',
-  cachaca: 'CQ', apple_brandy: 'CV', cacao: 'CC',
+  cachaca: 'CQ', apple_brandy: 'CV', cacao: 'CC', malibu: 'ML',
   ginger: 'GA', orange: 'OJ', soda: 'SW', tomato: 'TJ',
   pineapple: 'PJ', grapefruit: 'GF', cranberry: 'CB'
 };
@@ -5255,7 +5435,7 @@ const SERVE_ORDER = {
     'フレンチ75', 'コープス・リヴァイヴァー No.2', 'クローバー・クラブ',
     'サウスサイド', 'キール・ロワイヤル', 'ミモザ', 'ベリーニ',
     'アペロール・スプリッツ', 'キール', 'スプリッツァー', 'ピスコ・サワー',
-    'ジャック・ローズ', 'グレープフルーツ・スカッシュ',
+    'ジャック・ローズ', 'グレープフルーツ・スカッシュ', 'ブルー・ムーン',
   ],
   digestif: [
     'アースクェイク', 'ジン・ミルク・パンチ', 'ブラック・ルシアン',
@@ -5266,7 +5446,7 @@ const SERVE_ORDER = {
     'プッシーフット', 'ヴァージン・ピニャコラーダ',
     'ゴッドマザー', 'サゼラック', 'ヴュー・カレ', 'ラスティ・ネイル',
     'ゴッドファーザー', 'スティンガー', 'シャンゼリゼ',
-    'グラスホッパー', 'エンジェルス・キッス',
+    'グラスホッパー', 'エンジェルス・キッス', 'マリブ・ミルク',
   ],
 };
 
@@ -5283,6 +5463,7 @@ const SEASONS = {
     'カシス・ソーダ', 'シャーリー・テンプル', 'ジン・フィズ', 'シンデレラ',
     'フレンチ75', 'クローバー・クラブ', 'ピンク・レディ', 'ビーズ・ニーズ',
     'キール・ロワイヤル', 'ミモザ', 'ベリーニ', 'キール',
+    'バイオレット・フィズ', 'ブルー・ムーン',
   ],
   autumn: [
     'ウイスキー・サワー', 'オールド・ファッションド', 'マンハッタン',
@@ -5297,7 +5478,7 @@ const SEASONS = {
     'カルーア・コーク', 'エスプレッソ・マティーニ', 'ジン・ミルク・パンチ',
     'ビトウィーン・ザ・シーツ', 'XYZ', 'アースクェイク', 'ドライ・マティーニ',
     'オールド・ファッションド', 'カシス・ミルク', 'プッシーフット',
-    'ヴァージン・メアリー', 'コーヒー・トニック',
+    'ヴァージン・メアリー', 'コーヒー・トニック', 'マリブ・ミルク',
     'サゼラック', 'ヴュー・カレ', 'ラスティ・ネイル', 'ゴッドファーザー',
     'ゴッドマザー', 'スティンガー', 'グラスホッパー', 'エンジェルス・キッス',
     'ペニシリン',
@@ -5443,6 +5624,7 @@ const GLASS_BY_NAME = {
   'モスコミュール': 'mug', 'ヴァージン・モスコミュール': 'mug',
   'ピニャ・コラーダ': 'hurricane', 'チチ': 'hurricane', 'ブルー・ハワイ': 'hurricane',
   'ヴァージン・ピニャコラーダ': 'hurricane', 'プランターズ・パンチ': 'hurricane',
+  'ブルー・ハワイアン': 'hurricane',
   'ピーチ・フィズ': 'collins', 'ボストン・クーラー': 'collins',
   'レモネード': 'collins',
   'エンジェルス・キッス': 'liqueur',

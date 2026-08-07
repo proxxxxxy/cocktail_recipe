@@ -65,6 +65,7 @@ const SECTIONS = [
   ['cassis', 'カシスリキュールベースのカクテル', 'Cassis Base'],
   ['coffee', 'コーヒーリキュールベースのカクテル', 'Coffee Base'],
   ['cacao', 'カカオリキュールベースのカクテル', 'Cacao Base'],
+  ['malibu', 'マリブ (ココナッツラム) ベースのカクテル', 'Malibu Base'],
   ['champagne', 'シャンパンベースのカクテル', 'Champagne Base'],
   ['white_wine', '白ワインベースのカクテル', 'White Wine Base'],
   ['pisco', 'ピスコベースのカクテル', 'Pisco Base'],

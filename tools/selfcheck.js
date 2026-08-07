@@ -184,6 +184,26 @@
     check(fails === 0, 'shelf codec round-trips', `${fails} failures / 200`);
     check(decodeShelf('!!!') === null, 'shelf codec rejects rubbish');
     check(decodeShelf('') === null, 'shelf codec rejects an empty code');
+
+    // Menu links already in someone's chat history were minted against a
+    // shorter vocabulary. They must still name the same bottles — that is the
+    // entire reason SHELF_VOCABULARY is append-only, and it is worth proving
+    // rather than trusting, because the failure is silent and remote.
+    const LEGACY = [
+      // 7 characters, from the 41-ingredient era
+      { code: 'H4wQBMM', expect: ['gin', 'vodka', 'rum', 'ginger', 'orange', 'soda'] },
+      { code: '38wT4_M', expect: ['gin', 'vodka', 'rum', 'whiskey', 'brandy', 'coffee'] },
+    ];
+    const broken = LEGACY.filter(({ code, expect }) => {
+      const shelf = decodeShelf(code);
+      return !shelf || !expect.every(id => shelf.has(id));
+    }).map(l => l.code);
+    check(!broken.length, 'menu links from older builds still decode', broken.join(' '));
+
+    // A code from before an ingredient existed must not suddenly contain it.
+    const old = decodeShelf('______f');
+    check(old && old.size === 41,
+          'a 41-ingredient code still means 41 ingredients', old ? String(old.size) : 'null');
   }
 
   // ------------------------------------------------------------- rendering --
