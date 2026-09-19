@@ -25,6 +25,26 @@ const ALCOHOL_FREE_BASES = new Set([
 // required from here — it touches window the moment it loads — so the rule
 // is restated rather than shared.
 const GLASS_BY_NAME = {
+  "シャンディガフ": 'タンブラー',
+  "レッド・アイ": 'タンブラー',
+  "ドッグズ・ノーズ": 'タンブラー',
+  "レッド・バード": 'タンブラー',
+  "パナシェ": 'タンブラー',
+  "ビター・オレンジ": 'タンブラー',
+  "ディーゼル": 'タンブラー',
+  "ダブルカルチャード": 'タンブラー',
+  "ビア・スプリッツァー": 'ワイングラス',
+  "スネークバイト": 'タンブラー',
+  "ブラック・ベルベット": 'フルートグラス',
+  "ボイラーメーカー": 'タンブラー',
+  "モナコ": 'タンブラー',
+  "タンゴ": 'タンブラー',
+  "チェラーダ": 'タンブラー',
+  "ミチェラーダ": 'タンブラー',
+  "ピコン・ビエール": 'タンブラー',
+  "ビア・バスター": 'タンブラー',
+  "アイスド・ラズベリー": 'タンブラー',
+  "ハーフ＆ハーフ": 'タンブラー',
   'アメリカーノ': 'ロックグラス', 'フレンチ・コネクション': 'ロックグラス',
   'グリーン・アイズ': 'ハリケーングラス',
   'フレンチ75': 'フルートグラス', 'キール・ロワイヤル': 'フルートグラス',
@@ -57,6 +77,8 @@ function glassOf(data) {
 // Section order and headings. A base spirit missing from this list is an error
 // rather than a silent omission from the document.
 const SECTIONS = [
+  ['beer', 'ビールベースのカクテル', 'Beer Base'],
+  ['stout', 'スタウト（黒ビール）ベースのカクテル', 'Stout Base'],
   ['campari', 'カンパリベースのカクテル', 'Campari Base'],
   ['midori', 'MIDORI（メロンリキュール）ベースのカクテル', 'Midori Base'],
   ['gin', 'ジンベースのカクテル', 'Gin Base'],

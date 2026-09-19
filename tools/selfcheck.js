@@ -35,6 +35,20 @@
     const keys = Object.keys(cocktailDatabase);
     check(keys.length > 0, 'database is not empty', `${keys.length} keys`);
 
+    const beerKeys = keys.filter(key => key.split('+').some(id => id === 'beer' || id === 'stout'));
+    check(beerKeys.length === 20 && beerKeys.every(key => {
+      const data = cocktailDatabase[key];
+      return sourceOf(data)?.url === data.sourceUrl && SOURCE_NOTES[data.name] &&
+        !isMocktailKey(key) && ['highball', 'wine', 'flute'].includes(glassOf(data)) &&
+        (glassOf(data) !== 'highball' || getGalleryGlassType(data) === 'highball');
+    }), 'twenty named beer cocktails have sources, notes and suitable glassware');
+    check(['beer', 'stout', 'cider', 'picon', 'vodka'].every(id =>
+      ALCOHOLIC_MIXERS.has(id) && !isMocktailKey('soda+' + id)),
+      'beer and new alcoholic mixers cannot be classified as mocktails');
+    const beerShelf = new Set(['beer', 'ginger', 'stout', 'champagne', 'cider']);
+    check(JSON.stringify([...decodeShelf(encodeShelf(beerShelf))].sort()) === JSON.stringify([...beerShelf].sort()),
+      'beer, stout and cider survive shared shelf encoding independently');
+
     const badSort = [];
     const unknownBase = [];
     const unknownMixer = [];
@@ -506,11 +520,32 @@
     const issues = [];
     for (const id of Object.keys(baseNameMap)) {
       DOM.galleryFilters.querySelector('[data-filter="' + id + '"]').click();
-      const expected = buildDrinkList(null).filter(item => item.key.split('+').includes(id))
+      const expected = buildDrinkList(null).filter(item => item.key.split('+').includes(id) ||
+        (id === 'beer' && item.key.split('+').includes('stout')))
         .map(item => item.data.name).sort();
       if (JSON.stringify(shownNames()) !== JSON.stringify(expected)) issues.push(id);
     }
     check(!issues.length, 'every ingredient chip shows all matching recipes, including mixer use', issues.join(', '));
+
+    DOM.galleryFilters.querySelector('[data-filter="beer"]').click();
+    check(shownNames().length === 20 && shownNames().includes('レッド・バード') &&
+      shownNames().includes('ブラック・ベルベット'),
+      'beer chip includes all twenty drinks across vodka and stout bases');
+    state.galleryFilter = 'all';
+    const beerNames = Object.entries(cocktailDatabase).filter(([key]) =>
+      key.split('+').some(id => id === 'beer' || id === 'stout')).map(([, d]) => d.name);
+    const beerQueries = ['ビール', 'beer', 'BEER'].every(query => {
+      renderGallery(query);
+      return beerNames.every(name => shownNames().includes(name));
+    });
+    check(beerQueries, 'beer drinks are searchable in Japanese and English');
+    const lagerOnly = buildDrinkList(new Set(['beer', 'ginger', 'champagne'])).filter(i => i.pourable);
+    const stoutOnly = buildDrinkList(new Set(['stout', 'champagne'])).filter(i => i.pourable);
+    check(lagerOnly.some(i => i.data.name === 'シャンディガフ') &&
+      !lagerOnly.some(i => ['ブラック・ベルベット', 'ハーフ＆ハーフ', 'スネークバイト'].includes(i.data.name)) &&
+      stoutOnly.some(i => i.data.name === 'ブラック・ベルベット') &&
+      !stoutOnly.some(i => i.data.name === 'ハーフ＆ハーフ'),
+      'shelf matching does not substitute lager, stout or cider for each other');
 
     DOM.galleryFilters.querySelector('[data-filter="midori"]').click();
     check(shownNames().length === 5 && shownNames().includes('メロン・ボール') &&

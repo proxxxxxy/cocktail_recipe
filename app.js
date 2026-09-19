@@ -3,9 +3,688 @@
  */
 
 // ==========================================================================
-// 1. COCKTAIL DATABASE (Strictly real classic/IBA standard recipes)
+// 1. COCKTAIL DATABASE (Real named cocktails and source-documented recipes)
 // ==========================================================================
 const cocktailDatabase = {
+  // Beer cocktails: source-specific recipes, with conversions documented below.
+  "beer+ginger": {
+    "name": "シャンディガフ",
+    "enName": "Shandy Gaff",
+    "abv": 2.5,
+    "taste": [
+      "爽快",
+      "甘口",
+      "スパイシー"
+    ],
+    "description": "ジンジャーエールの甘さと生姜の香りを、ビールの苦みが引き締める定番。よく冷やした材料を静かに注ぐだけで作れる、軽やかな一杯です。",
+    "color": "rgba(222, 180, 78, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "100 ml"
+      },
+      {
+        "name": "ジンジャーエール",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.asahibeer.co.jp/cocktailguide/recipe/index.psp.html?ID=1010400460"
+  },
+  "beer+tomato": {
+    "name": "レッド・アイ",
+    "enName": "Red Eye",
+    "abv": 2.5,
+    "taste": [
+      "さっぱり",
+      "旨味",
+      "ほろ苦い"
+    ],
+    "description": "トマトジュースの柔らかな酸味と旨味をビールに重ねた定番。果実系とは違う食事向けの味わいで、シンプルな材料から赤い一杯に仕上がります。",
+    "color": "rgba(212, 83, 48, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "100 ml"
+      },
+      {
+        "name": "トマトジュース",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column/red-eye/"
+  },
+  "beer+gin": {
+    "name": "ドッグズ・ノーズ",
+    "enName": "Dogs Nose",
+    "abv": 12.7,
+    "taste": [
+      "辛口",
+      "ハーブ",
+      "爽快"
+    ],
+    "description": "ビールにジンのジュニパーの香りを重ねる、辛口のビアカクテル。炭酸の軽快さを残しつつ、いつものラガーよりもしっかりした飲みごたえになります。",
+    "color": "rgba(220, 172, 58, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "200 ml"
+      },
+      {
+        "name": "ドライジン（47%）",
+        "amount": "45 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.suntory.co.jp/wnb/essay/62.html"
+  },
+  "vodka+beer+tomato": {
+    "name": "レッド・バード",
+    "enName": "Red Bird",
+    "abv": 8.6,
+    "taste": [
+      "旨味",
+      "まろやか",
+      "ほろ苦い"
+    ],
+    "description": "レッド・アイにウォッカを加えた、赤いビアカクテル。トマトの味わいを中心にしながらアルコールの輪郭が増し、ゆっくり楽しむ食中の一杯になります。",
+    "color": "rgba(205, 73, 39, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ウォッカ",
+        "amount": "30 ml"
+      },
+      {
+        "name": "トマトジュース",
+        "amount": "60 ml"
+      },
+      {
+        "name": "ビール（ラガー）",
+        "amount": "120 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.suntory.co.jp/wnb/essay/62.html"
+  },
+  "beer+lemonade": {
+    "name": "パナシェ",
+    "enName": "Panache",
+    "abv": 2.5,
+    "taste": [
+      "爽快",
+      "柑橘",
+      "甘酸っぱい"
+    ],
+    "description": "冷たいレモンスカッシュとビールを半量ずつ合わせる、柑橘の香りが爽やかな一杯。フランス語の名前を持ち、材料二つで気軽に作れるビアカクテルです。",
+    "color": "rgba(230, 206, 113, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "100 ml"
+      },
+      {
+        "name": "レモンスカッシュ（加糖・炭酸入り）",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column/panache_bitterorange/"
+  },
+  "beer+orange": {
+    "name": "ビター・オレンジ",
+    "enName": "Bitter Orange",
+    "abv": 2.5,
+    "taste": [
+      "フルーティー",
+      "柑橘",
+      "ほろ苦い"
+    ],
+    "description": "オレンジの果汁感とビールのほろ苦さを同時に楽しむカクテル。果汁を同量加えるため飲み口が柔らかく、使うビールによって苦みの出方も変わります。",
+    "color": "rgba(239, 161, 43, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガーまたはIPA）",
+        "amount": "100 ml"
+      },
+      {
+        "name": "オレンジジュース",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column/panache_bitterorange/"
+  },
+  "beer+cola": {
+    "name": "ディーゼル",
+    "enName": "Diesel",
+    "abv": 2.5,
+    "taste": [
+      "甘口",
+      "カラメル",
+      "ほろ苦い"
+    ],
+    "description": "コーラの甘さとビールの麦芽感が重なる、濃い琥珀色のカクテル。炭酸同士なので混ぜすぎずに仕上げると、軽快な口当たりを保てます。",
+    "color": "rgba(111, 66, 33, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "100 ml"
+      },
+      {
+        "name": "コーラ",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.1001cocktails.com/recettes/recette_diesel_355587.aspx"
+  },
+  "beer+calpis": {
+    "name": "ダブルカルチャード",
+    "enName": "Double Cultured",
+    "abv": 4.3,
+    "taste": [
+      "甘酸っぱい",
+      "まろやか",
+      "爽快"
+    ],
+    "description": "カルピスの原液をビールで割る、乳酸飲料の甘酸っぱさが特徴のカクテル。乳酸菌と酵母という二つの発酵を名前に持ち、淡くにごった色合いになります。",
+    "color": "rgba(226, 218, 166, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "180 ml"
+      },
+      {
+        "name": "カルピス（希釈用原液）",
+        "amount": "30 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column_cat/beer_plan/"
+  },
+  "beer+white_wine": {
+    "name": "ビア・スプリッツァー",
+    "enName": "Beer Spritzer",
+    "abv": 8.5,
+    "taste": [
+      "辛口",
+      "爽快",
+      "フルーティー"
+    ],
+    "description": "白ワインをビールで伸ばす、ワインの香りと麦芽のコクを合わせたカクテル。辛口の白ワインを使えば甘さを抑えた仕上がりになり、料理にも合わせやすい一杯です。",
+    "color": "rgba(220, 206, 136, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "100 ml"
+      },
+      {
+        "name": "辛口白ワイン",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "白ワインとビール、ワイングラスを冷やします。",
+      "白ワインを注いでからビールを加え、静かに混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column_tag/ビア・スプリッツァー/"
+  },
+  "beer+cider": {
+    "name": "スネークバイト",
+    "enName": "Snakebite",
+    "abv": 4,
+    "taste": [
+      "フルーティー",
+      "爽快",
+      "甘酸っぱい"
+    ],
+    "description": "リンゴの発泡酒シードルとビールを同量で合わせるカクテル。果実の香りが麦芽の風味に重なり、ジュース割りとは異なるすっきりとした味になります。",
+    "color": "rgba(214, 177, 74, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "100 ml"
+      },
+      {
+        "name": "シードル・スイート（3%）",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.asahibeer.co.jp/cocktailguide/recipe/index.psp.html?ID=2000000092"
+  },
+  "stout+champagne": {
+    "name": "ブラック・ベルベット",
+    "enName": "Black Velvet",
+    "abv": 8.5,
+    "taste": [
+      "香ばしい",
+      "辛口",
+      "まろやか"
+    ],
+    "description": "スタウトとシャンパンの泡を合わせる、黒い色合いのカクテル。麦芽の焙煎香にワインの酸味が加わり、材料二つながら奥行きのある味を楽しめます。",
+    "color": "rgba(45, 30, 25, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": false,
+    "ingredients": [
+      {
+        "name": "スタウト（黒ビール）",
+        "amount": "90 ml"
+      },
+      {
+        "name": "シャンパン",
+        "amount": "90 ml"
+      }
+    ],
+    "method": [
+      "材料とフルートグラスを冷やします。",
+      "スタウトとシャンパンをゆっくり注ぎ合わせます。"
+    ],
+    "sourceUrl": "https://www.guinness.com/en-af/experiences/recipes/guinness-black-velvet"
+  },
+  "beer+whiskey": {
+    "name": "ボイラーメーカー",
+    "enName": "Boilermaker",
+    "abv": 8.9,
+    "taste": [
+      "香ばしい",
+      "コク",
+      "辛口"
+    ],
+    "description": "ウイスキーの樽香をビールに重ねる、材料二つの力強いカクテル。ここではグラスの中で静かに混ぜるスタイルを採用し、麦芽と樽の風味をゆっくり味わいます。",
+    "color": "rgba(186, 130, 44, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": false,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "240 ml"
+      },
+      {
+        "name": "バーボンウイスキー",
+        "amount": "30 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.abc.virginia.gov/products/recipes/historical/boilermaker"
+  },
+  "beer+grenadine+lemonade": {
+    "name": "モナコ",
+    "enName": "Monaco",
+    "abv": 3.4,
+    "taste": [
+      "甘口",
+      "フルーティー",
+      "爽快"
+    ],
+    "description": "ビールにレモン系の炭酸飲料とグレナデンを重ねた、赤みのあるカクテル。シロップの甘さを炭酸と麦芽のほろ苦さでまとめる、フランスのカフェ風の一杯です。",
+    "color": "rgba(222, 113, 89, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "150 ml"
+      },
+      {
+        "name": "レモンスカッシュ（加糖・炭酸入り）",
+        "amount": "50 ml"
+      },
+      {
+        "name": "グレナデンシロップ",
+        "amount": "20 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.destinationcocktails.fr/recette/recette-monaco/"
+  },
+  "beer+grenadine": {
+    "name": "タンゴ",
+    "enName": "Tango",
+    "abv": 4.4,
+    "taste": [
+      "甘口",
+      "フルーティー",
+      "ほろ苦い"
+    ],
+    "description": "グレナデンシロップでビールに甘さと赤い色を添えるシンプルなカクテル。モナコからレモン系炭酸を抜いた形で、よりビールの味わいが前に出ます。",
+    "color": "rgba(200, 100, 72, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "150 ml"
+      },
+      {
+        "name": "グレナデンシロップ",
+        "amount": "20 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.destinationcocktails.fr/recette/recette-monaco/"
+  },
+  "beer+lime+salt": {
+    "name": "チェラーダ",
+    "enName": "Chelada",
+    "abv": 4.3,
+    "taste": [
+      "酸っぱい",
+      "塩味",
+      "爽快"
+    ],
+    "description": "よく冷えたビールにライムをしっかり搾り、塩で輪郭をつけるメキシコの一杯。トマトや辛味ソースを使わず、柑橘とビールのすっきりした味を楽しみます。",
+    "color": "rgba(218, 190, 87, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（メキシカンラガー）",
+        "amount": "360 ml"
+      },
+      {
+        "name": "ライムジュース",
+        "amount": "60 ml"
+      },
+      {
+        "name": "塩",
+        "amount": "少々（縁用と味付け用）"
+      }
+    ],
+    "method": [
+      "大きめのタンブラーの縁を少量のライムジュースでぬらし、塩をつけます。",
+      "残りのライムジュースと塩ひとつまみを入れます。",
+      "冷えたビールをゆっくり注ぎ、泡が塩の縁まで達しないようにして軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.craftbeering.com/chelada-beer-authentic-recipe/"
+  },
+  "beer+hot_sauce+lime+oregano+salt+tomato": {
+    "name": "ミチェラーダ",
+    "enName": "Michelada",
+    "abv": 4,
+    "taste": [
+      "スパイシー",
+      "酸っぱい",
+      "旨味"
+    ],
+    "description": "ビールをライム、トマト、辛味ソースで仕上げるメキシコ系カクテル。ここではオレガノも加えるレストランの配合を採用し、香りと旨味のある一杯にします。",
+    "color": "rgba(197, 112, 56, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "cube",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（メキシカンラガー）",
+        "amount": "330 ml"
+      },
+      {
+        "name": "トマトジュース",
+        "amount": "60 ml"
+      },
+      {
+        "name": "ライムジュース",
+        "amount": "26 ml"
+      },
+      {
+        "name": "タバスコ",
+        "amount": "5 dash"
+      },
+      {
+        "name": "塩",
+        "amount": "少々（縁用と味付け用）"
+      },
+      {
+        "name": "乾燥オレガノ",
+        "amount": "ひとつまみ"
+      }
+    ],
+    "method": [
+      "大きめのタンブラーの縁をライムでぬらし、塩をつけます。",
+      "果汁、トマトジュース、タバスコ、塩、オレガノを混ぜます。",
+      "氷を4個入れ、冷えたビールを静かに注いで軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.tabasco.com/recipe/michelada-by-madre-liverpool/"
+  },
+  "beer+picon": {
+    "name": "ピコン・ビエール",
+    "enName": "Picon Biere",
+    "abv": 6.4,
+    "taste": [
+      "ほろ苦い",
+      "オレンジ",
+      "ハーブ"
+    ],
+    "description": "オレンジやハーブの苦みを持つピコンをビールに加えるフランスのカクテル。果汁割りとは違う複雑な甘苦さがあり、冷えたラガーの味を引き締めます。",
+    "color": "rgba(176, 113, 35, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": false,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "250 ml"
+      },
+      {
+        "name": "ピコン・ビエール（リキュール）",
+        "amount": "30 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.piconaperitif.com/fr-fr/recette-picon-biere/"
+  },
+  "vodka+beer+hot_sauce": {
+    "name": "ビア・バスター",
+    "enName": "Beer Buster",
+    "abv": 14,
+    "taste": [
+      "スパイシー",
+      "辛口",
+      "力強い"
+    ],
+    "description": "ウォッカとビールにタバスコの刺激を添えたカクテル。軽い見た目でも度数はしっかりあるため、小さめの量をゆっくり味わいたいスパイシーな一杯です。",
+    "color": "rgba(215, 165, 55, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ウォッカ（50%）",
+        "amount": "60 ml"
+      },
+      {
+        "name": "ビール（ラガー）",
+        "amount": "240 ml"
+      },
+      {
+        "name": "タバスコ",
+        "amount": "2 dash"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.crystalmixer.com/beer-buster-recipe/"
+  },
+  "beer+lime+raspberry+raspberry_juice": {
+    "name": "アイスド・ラズベリー",
+    "enName": "Iced Raspberry",
+    "abv": 4.8,
+    "taste": [
+      "甘酸っぱい",
+      "ベリー",
+      "フルーティー"
+    ],
+    "description": "ラズベリー果汁とリキュールを重ね、ライムで引き締めるビアカクテル。ベリーの香りと赤い色が特徴で、ビールのほろ苦さが甘さの余韻を整えます。",
+    "color": "rgba(206, 67, 103, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール（ラガー）",
+        "amount": "200 ml"
+      },
+      {
+        "name": "ラズベリージュース",
+        "amount": "60 ml"
+      },
+      {
+        "name": "ラズベリーリキュール",
+        "amount": "30 ml"
+      },
+      {
+        "name": "ライム",
+        "amount": "1/2個（2切れ）"
+      }
+    ],
+    "method": [
+      "大きめのタンブラーと材料をよく冷やします。",
+      "ビールを注ぎ、ラズベリーリキュールと果汁を加えます。",
+      "ライム2切れを搾り入れ、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.destinationcocktails.fr/recette/iced-raspberry/"
+  },
+  "beer+stout": {
+    "name": "ハーフ＆ハーフ",
+    "enName": "Half and Half",
+    "abv": 4.6,
+    "taste": [
+      "香ばしい",
+      "コク",
+      "ほろ苦い"
+    ],
+    "description": "ラガーとスタウトを半量ずつ合わせる、ビール同士のカクテル。軽い麦芽感に焙煎の香りを重ねられ、スタウトを静かに注ぐと二層の見た目も楽しめます。",
+    "color": "rgba(91, 60, 31, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": false,
+    "ingredients": [
+      {
+        "name": "ラガービール",
+        "amount": "150 ml"
+      },
+      {
+        "name": "ギネス・ドラフト（スタウト）",
+        "amount": "150 ml"
+      }
+    ],
+    "method": [
+      "大きめのタンブラーとビールを冷やします。",
+      "ラガーを注ぎ、スプーンの背に伝わせてスタウトを静かに重ねます。",
+      "層を残す場合は混ぜずに提供します。"
+    ],
+    "sourceUrl": "https://www.barbizmag.com/recipes-2/holidays/guinness-half-half-recipe/"
+  },
   // Approachable classics, checked against the individual primary sources.
   "campari+grapefruit+tonic": {
     name: "スプモーニ", enName: "Spumoni", abv: 5,
@@ -3480,6 +4159,8 @@ const cocktailDatabase = {
 
 // Base spirit default tints (when only base is selected)
 const baseTints = {
+  beer: "rgba(221, 173, 66, 0.8)",
+  stout: "rgba(70, 45, 30, 0.9)",
   campari: "rgba(213, 0, 0, 0.85)",
   midori: "rgba(100, 210, 35, 0.75)",
   gin: "rgba(224, 242, 241, 0.15)",     // Clear with a tiny greenish/blue tint
@@ -3516,6 +4197,16 @@ const baseTints = {
 
 // All available 15 mixers information for dynamic rendering
 const mixerDefinitions = {
+  beer: {"name":"ビール（ラガー）","en":"BEER LAGER","icon":"BE","color":"rgba(221, 173, 66, 0.8)"},
+  stout: {"name":"スタウト（黒ビール）","en":"STOUT DARK BEER","icon":"ST","color":"rgba(137, 101, 78, 0.8)"},
+  cider: {"name":"シードル（リンゴの発泡酒）","en":"HARD CIDER","icon":"CI","color":"rgba(225, 197, 113, 0.8)"},
+  lemonade: {"name":"レモンスカッシュ（加糖）","en":"SPARKLING LEMONADE","icon":"LS","color":"rgba(235, 227, 134, 0.8)"},
+  calpis: {"name":"カルピス（希釈用原液）","en":"CALPIS CONCENTRATE","icon":"CL","color":"rgba(232, 230, 208, 0.8)"},
+  picon: {"name":"ピコン・ビエール","en":"PICON BIERE","icon":"PI","color":"rgba(172, 110, 51, 0.8)"},
+  hot_sauce: {"name":"タバスコ（ホットソース）","en":"HOT SAUCE","icon":"HS","color":"rgba(209, 78, 54, 0.8)"},
+  oregano: {"name":"乾燥オレガノ","en":"OREGANO","icon":"OR","color":"rgba(138, 160, 98, 0.8)"},
+  raspberry_juice: {"name":"ラズベリージュース","en":"RASPBERRY JUICE","icon":"RJ","color":"rgba(206, 76, 114, 0.8)"},
+  vodka: {"name":"ウォッカ（ブレンド用）","en":"VODKA","icon":"VO","color":"rgba(200, 219, 225, 0.8)"},
   vanilla_liqueur: { name: "バニラリキュール", en: "VANILLA LIQUEUR", icon: "VL", color: "rgba(245, 225, 180, 0.5)" },
   ginger_beer: { name: "ジンジャービア（ノンアルコール）", en: "GINGER BEER", icon: "GB", color: "rgba(240, 220, 150, 0.6)" },
   midori: { name: "MIDORI（メロンリキュール）", en: "MIDORI MELON LIQUEUR", icon: "MI", color: "rgba(100, 210, 35, 0.75)" },
@@ -3607,6 +4298,7 @@ const SPIRIT_BASES = Object.keys(baseTints).filter(b => !NON_ALCOHOLIC_BASES.has
  * catalogued as non-alcoholic everywhere. The recipe says so in its own text.
  */
 const ALCOHOLIC_MIXERS = new Set([
+  'beer', 'stout', 'cider', 'picon', 'vodka',
   'vanilla_liqueur',
   'midori',
   'curacao', 'blue_curacao', 'absinthe', 'whiskey', 'brandy', 'cassis',
@@ -3728,6 +4420,8 @@ const SHELF_VOCABULARY = [
   // Appended 2026-09-19. Preserve all previous menu codes.
   'midori', 'sour_mix',
   'vanilla_liqueur', 'ginger_beer',
+  // Beer expansion: append only; never reorder older shared-menu bits.
+  'beer', 'stout', 'cider', 'lemonade', 'calpis', 'picon', 'hot_sauce', 'oregano', 'raspberry_juice',
 ];
 
 // URL-safe base64 alphabet: nothing here needs escaping in a fragment.
@@ -4521,6 +5215,7 @@ function toggleMixer(mixerKey) {
 
 // Base key to Japanese name lookup
 const baseNameMap = {
+  beer: 'ビール', stout: '黒ビール（スタウト）',
   campari: 'カンパリ',
   gin: 'ジン', vodka: 'ウォッカ', rum: 'ラム', tequila: 'テキーラ',
   whiskey: 'ウイスキー', brandy: 'ブランデー', peach: 'ピーチ',
@@ -4535,6 +5230,7 @@ const baseNameMap = {
 
 // Base key to icon lookup
 const baseIconMap = {
+  beer: 'BE', stout: 'ST',
   campari: 'CP',
   gin: 'GI', vodka: 'VO', rum: 'RU', tequila: 'TE',
   whiskey: 'WH', brandy: 'BR', peach: 'PE',
@@ -4812,6 +5508,8 @@ function drawGarnishOnCanvas(ctx, garnish, topL, topR, glassTop) {
  * Render the gallery grid with cocktail cards. Accepts optional search query.
  */
 function getGalleryGlassType(cocktail) {
+  // An ice-free beer still belongs in a tumbler, not a martini glass.
+  if (GLASS_BY_NAME[cocktail.name] === 'highball') return 'highball';
   if (cocktail.ice === 'none') return 'stemmed';
   if (cocktail.ice === 'crushed') return 'julep';
   if (cocktail.abv >= 20 || !cocktail.hasBubbles) return 'rocks';
@@ -5345,6 +6043,12 @@ function searchHaystack(item) {
   return (item.data._haystack = words.join(' ').toLowerCase());
 }
 
+// Discovery groups stout with beer; shelf matching intentionally remains exact.
+function recipeUsesIngredient(key, id) {
+  const parts = key.split('+');
+  return parts.includes(id) || (id === 'beer' && parts.includes('stout'));
+}
+
 function renderGallery(query, animate = false) {
   cancelCardAnimations(DOM.galleryGrid);
   DOM.galleryGrid.innerHTML = '';
@@ -5364,7 +6068,7 @@ function renderGallery(query, animate = false) {
     if (!matchesDrinkType(item.data)) return false;
     if (predicate) {
       if (!predicate(item.data)) return false;
-    } else if (!item.key.split('+').includes(state.galleryFilter)) {
+    } else if (!recipeUsesIngredient(item.key, state.galleryFilter)) {
       return false;
     }
     if (!q) return true;
@@ -5603,6 +6307,7 @@ function countUpABV(el, target, animate) {
  */
 const SERVE_ORDER = {
   aperitif: [
+    'シャンディガフ', 'パナシェ', 'ビター・オレンジ', 'ドッグズ・ノーズ', 'ピコン・ビエール',
     'スプモーニ', 'アメリカーノ', 'ガリバルディ',
     'ジャパニーズ・スリッパー',
     'ジントニック', 'ジン・リッキー', 'オレンジ・ブロッサム', 'ギムレット',
@@ -5641,6 +6346,7 @@ const SERVE_ORDER = {
  */
 const SEASONS = {
   spring: [
+    'モナコ', 'タンゴ', 'アイスド・ラズベリー', 'ビア・スプリッツァー',
     'フレンチ・マティーニ', 'ガリバルディ',
     'ジャパニーズ・スリッパー', 'メロン・ボール',
     'オレンジ・ブロッサム', 'アビエイション', 'ファジーネーブル', 'ピーチ・フィズ',
@@ -5651,6 +6357,7 @@ const SEASONS = {
     'バイオレット・フィズ', 'ブルー・ムーン',
   ],
   autumn: [
+    'スネークバイト', 'ボイラーメーカー', 'ハーフ＆ハーフ',
     'アメリカーノ', 'フレンチ・コネクション',
     'ミッドタウン・ミューズ',
     'ウイスキー・サワー', 'オールド・ファッションド', 'マンハッタン',
@@ -5661,6 +6368,7 @@ const SEASONS = {
     'ジャック・ローズ', 'ハネムーン',
   ],
   winter: [
+    'ブラック・ベルベット', 'ピコン・ビエール',
     'アレキサンダー', 'ブラック・ルシアン', 'ホワイト・ルシアン', 'カルーア・ミルク',
     'カルーア・コーク', 'エスプレッソ・マティーニ', 'ジン・ミルク・パンチ',
     'ビトウィーン・ザ・シーツ', 'XYZ', 'アースクェイク', 'ドライ・マティーニ',
@@ -5717,6 +6425,17 @@ function serveOf(data) {
  * whole point: an IBA number carries different weight from a recollection.
  */
 const SOURCES = {
+  asahi: {"label":"アサヒ公式レシピ","org":"アサヒビール","url":"https://www.asahibeer.co.jp/cocktailguide/"},
+  nipponbeer: {"label":"日本ビール公式レシピ","org":"日本ビール","url":"https://www.nipponbeer.jp/column_cat/beer_plan/"},
+  guinness: {"label":"Guinness公式レシピ","org":"Guinness","url":"https://www.guinness.com/en-af/experiences/recipes/guinness-black-velvet"},
+  cocktails1001: {"label":"1001Cocktails掲載レシピ","org":"1001Cocktails","url":"https://www.1001cocktails.com/recettes/recette_diesel_355587.aspx"},
+  virginia: {"label":"Virginia ABC掲載レシピ","org":"Virginia ABC","url":"https://www.abc.virginia.gov/products/recipes/historical/boilermaker"},
+  destination: {"label":"Destination Cocktails掲載レシピ","org":"Destination Cocktails","url":"https://www.destinationcocktails.fr/recette/recette-monaco/"},
+  craftbeering: {"label":"Craft Beering掲載レシピ","org":"Milena Perrine / Craft Beering","url":"https://www.craftbeering.com/chelada-beer-authentic-recipe/"},
+  tabasco: {"label":"TABASCO公式レシピ","org":"Madre Liverpool / TABASCO","url":"https://www.tabasco.com/recipe/michelada-by-madre-liverpool/"},
+  picon: {"label":"Picon公式レシピ","org":"Picon","url":"https://www.piconaperitif.com/fr-fr/recette-picon-biere/"},
+  crystalmixer: {"label":"Crystal Mixer掲載レシピ","org":"Crystal Mixer","url":"https://www.crystalmixer.com/beer-buster-recipe/"},
+  barbusiness: {"label":"Guinness提供レシピ","org":"Bar Business","url":"https://www.barbizmag.com/recipes-2/holidays/guinness-half-half-recipe/"},
   suntory: { label: 'サントリー公式レシピ', org: 'サントリー', url: 'https://www.suntory.co.jp/wnb/essay/104.html' },
   midori: {
     label: 'MIDORI 公式レシピ', org: 'MIDORI / Suntory Global Spirits',
@@ -5731,8 +6450,19 @@ const SOURCES = {
 
 /** Drinks whose ingredients and quantities were read off the source itself. */
 const VERIFIED_AGAINST = {
+  asahi: ["シャンディガフ","スネークバイト"],
+  nipponbeer: ["レッド・アイ","パナシェ","ビター・オレンジ","ダブルカルチャード","ビア・スプリッツァー"],
+  guinness: ["ブラック・ベルベット"],
+  cocktails1001: ["ディーゼル"],
+  virginia: ["ボイラーメーカー"],
+  destination: ["モナコ","タンゴ","アイスド・ラズベリー"],
+  craftbeering: ["チェラーダ"],
+  tabasco: ["ミチェラーダ"],
+  picon: ["ピコン・ビエール"],
+  crystalmixer: ["ビア・バスター"],
+  barbusiness: ["ハーフ＆ハーフ"],
   midori: ['ジャパニーズ・スリッパー', 'メロン・ボール', 'ミッドタウン・ミューズ', 'サザン・ベル'],
-  suntory: ['グリーン・アイズ', 'スプモーニ'],
+  suntory: ['グリーン・アイズ', 'スプモーニ', 'ドッグズ・ノーズ', 'レッド・バード'],
   iba: [
     'アメリカーノ', 'ガリバルディ', 'フレンチ・コネクション', 'フレンチ・マティーニ',
     // First pass
@@ -5766,6 +6496,26 @@ const VERIFIED_AGAINST = {
  * citation and the reader can decide.
  */
 const SOURCE_NOTES = {
+  "シャンディガフ": "公式の100mlずつの配合。度数はビール5%で計算。",
+  "レッド・アイ": "出典の同量比率を各100mlに換算。度数はビール5%で計算。",
+  "ドッグズ・ノーズ": "公式のジン45mlに対し、適量のビールを200mlの目安で記載。ジン47%、ビール5%で計算。",
+  "レッド・バード": "出典のウォッカ30ml版を採用し、適量のビールは120mlとしています。ウォッカ40%、ビール5%で加水前約8.6%です。",
+  "パナシェ": "出典の1:1を各100mlへ換算。度数はビール5%。無糖の炭酸水とは別材料です。",
+  "ビター・オレンジ": "出典の1:1を各100mlに換算。度数は5%のビールを使った場合。IPAでは製品により変わります。",
+  "ディーゼル": "公開レシピの7clずつを100mlずつに拡大。度数はビール5%。地域によって同名の別配合があります。",
+  "ダブルカルチャード": "出典のカルピス原液1:ビール6を30ml:180mlに換算。ビール5%で計算。カルピスウォーターではありません。",
+  "ビア・スプリッツァー": "同量の配合を各100mlへ換算。白ワイン12%、ビール5%で計算。",
+  "スネークバイト": "公式の100mlずつに準拠。ビール5%、シードル3%。出典のゴブレットに代えて図はタンブラーです。",
+  "ブラック・ベルベット": "公式の各90mlに準拠。スタウト5%、シャンパン12%を仮定した概算です。",
+  "ボイラーメーカー": "Virginia ABC掲載の混ぜる方式を参考に、分量は本書の一杯分の目安です。ウイスキー40%、ビール5%で計算。ショットグラスを落とす方式は採用していません。",
+  "モナコ": "出典のclをmlへ換算。フランスのlimonadeを加糖レモンスカッシュで代用。ビール5%で計算。",
+  "タンゴ": "出典のTangoの説明に従い、モナコからlimonadeを除いた配合。ビール5%で計算。",
+  "チェラーダ": "出典の12oz:2ozを1oz約30mlで換算。ビール5%で計算。任意の氷と飾りは省略しています。",
+  "ミチェラーダ": "TABASCO掲載のMadre Liverpool版。大さじは約15ml、ビール1本は330mlを目安に換算。ビール5%で氷の加水前約4%。",
+  "ピコン・ビエール": "公式の3cl:25clをmlへ換算。ピコン18%、ビール5%で計算。",
+  "ビア・バスター": "公開レシピの100 proofウォッカ2oz・ビール8ozを1oz約30mlで換算。ウォッカ50%、ビール5%で計算。",
+  "アイスド・ラズベリー": "出典の材料表を採用（手順中のライム1個という表記とは異なります）。ビール5%、リキュール15%、ライム果汁約15mlで概算。任意の氷・飾りは省略。",
+  "ハーフ＆ハーフ": "Guinness提供レシピの等量比率を各150mlへ縮小。ラガー5%、スタウト4.2%で概算。図は混合色を示し、二層の描画は省略しています。",
   'スプモーニ': 'サントリー公式の配合に準拠。適量のトニックは90mlを一杯分の目安にしています。度数はカンパリ25%を使う場合の加水前の概算です。',
   'アメリカーノ': 'IBA公式で少量とされるソーダを30mlの目安で記載。度数はカンパリ25%、ベルモット16%で加水前の概算です。グラス図ではオレンジのみを描画しています。',
   'ガリバルディ': 'IBA公式の45ml:120mlに準拠。カンパリ・オレンジとしても知られる組み合わせです。度数はカンパリ25%を使う場合の加水前の概算です。',
@@ -5820,6 +6570,26 @@ const GLASS_NAMES = {
 };
 
 const GLASS_BY_NAME = {
+  "シャンディガフ": 'highball',
+  "レッド・アイ": 'highball',
+  "ドッグズ・ノーズ": 'highball',
+  "レッド・バード": 'highball',
+  "パナシェ": 'highball',
+  "ビター・オレンジ": 'highball',
+  "ディーゼル": 'highball',
+  "ダブルカルチャード": 'highball',
+  "ビア・スプリッツァー": 'wine',
+  "スネークバイト": 'highball',
+  "ブラック・ベルベット": 'flute',
+  "ボイラーメーカー": 'highball',
+  "モナコ": 'highball',
+  "タンゴ": 'highball',
+  "チェラーダ": 'highball',
+  "ミチェラーダ": 'highball',
+  "ピコン・ビエール": 'highball',
+  "ビア・バスター": 'highball',
+  "アイスド・ラズベリー": 'highball',
+  "ハーフ＆ハーフ": 'highball',
   'アメリカーノ': 'rocks', 'フレンチ・コネクション': 'rocks',
   'グリーン・アイズ': 'hurricane',
   'フレンチ75': 'flute', 'キール・ロワイヤル': 'flute', 'ミモザ': 'flute',
@@ -6114,7 +6884,7 @@ function galleryFilterGroups() {
         item.key.split('+').forEach(id => stocked.add(id));
       }
     });
-    bases = bases.filter(b => stocked.has(b));
+    bases = bases.filter(b => stocked.has(b) || (b === 'beer' && stocked.has('stout')));
   }
   if (bases.length) {
     groups.push({ label: '使用材料', chips: bases.map(b => ({ id: b, label: baseNameMap[b] })) });
@@ -6254,7 +7024,7 @@ function renderSourcesNote() {
   }).join(' ・ ');
 
   DOM.sourcesBody.innerHTML =
-    `全${total}種のうち${checked}種を一次資料と照合済み。照合先：${cited}。` +
+    `全${total}種のうち${checked}種に確認済みの出典レシピがあります（公式・専門サイト）。分量の換算や変更は各レシピに記載。参照先：${cited}。` +
     `残り${total - checked}種は標準的なレシピ集の内容に基づく記載で、` +
     `各レシピにその旨を明記しています。`;
 }
