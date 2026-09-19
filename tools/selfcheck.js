@@ -76,6 +76,23 @@
     check(!unknownMixer.length, 'every recipe mixer exists', unknownMixer.join(' '));
     check(!missingFields.length, 'every recipe has the required fields', missingFields.join(' | '));
 
+    const midoriDrinks = buildDrinkList(null).filter(item => item.key.split('+').includes('midori'));
+    check(midoriDrinks.length === 7 && midoriDrinks.every(item =>
+      !isMocktailKey(item.key) && searchHaystack(item).includes('midori') &&
+      sourceOf(item.data)?.url === item.data.sourceUrl &&
+      item.data.sourceUrl.startsWith('https://www.midori-world.com/recipes/')),
+      'all seven MIDORI drinks are searchable, alcoholic and individually sourced');
+    const midoriShelf = new Set(['midori', 'orange']);
+    const restoredMidoriShelf = decodeShelf(encodeShelf(midoriShelf));
+    const midoriMenu = buildDrinkList(restoredMidoriShelf).filter(item => item.pourable);
+    check(restoredMidoriShelf.size === 2 && restoredMidoriShelf.has('midori') &&
+      restoredMidoriShelf.has('orange') && midoriMenu.length === 1 &&
+      midoriMenu[0].key === 'midori+orange',
+      'MIDORI shelf round-trip offers only the drink its ingredients can make');
+    check(!isMocktailKey('orange+midori') &&
+      decodeShelf(encodeShelf(new Set(['sour_mix'])))?.has('sour_mix'),
+      'MIDORI mixer is alcoholic and sour mix survives menu sharing');
+
     // Names are the join key for collections and for routing, so a drink
     // that exists under several keys — margarita with and without a salt
     // rim — must still be one drink everywhere downstream. This used to

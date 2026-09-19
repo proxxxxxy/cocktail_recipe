@@ -55,6 +55,7 @@ function glassOf(data) {
 // Section order and headings. A base spirit missing from this list is an error
 // rather than a silent omission from the document.
 const SECTIONS = [
+  ['midori', 'MIDORI（メロンリキュール）ベースのカクテル', 'Midori Base'],
   ['gin', 'ジンベースのカクテル', 'Gin Base'],
   ['vodka', 'ウォッカベースのカクテル', 'Vodka Base'],
   ['rum', 'ラムベースのカクテル', 'Rum Base'],
