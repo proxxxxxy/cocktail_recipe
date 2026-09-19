@@ -188,6 +188,7 @@ CSSの一括置換をミスして**「名前から」タブを画面から丸ご
 2. **`SHELF_VOCABULARY` の末尾**に追加 ← 不変条件1-1
 3. アルコールを含むなら `ALCOHOLIC_MIXERS` に追加（モクテル判定に効く）
 4. 新ベースなら `index.html` にボタン、`tools/gen-recipes.js` の `SECTIONS` にも追加
+5. 新ベースなら `style.css` の `#view-build .base-btn[data-base="材料ID"]` に `--ingredient-rgb` を設定。未設定だと共通の金色になる。通常時と選択時を確認する
 
 ### カクテル/モクテルの判定は書かない
 

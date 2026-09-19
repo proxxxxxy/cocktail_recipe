@@ -2466,6 +2466,22 @@ input:focus-visible {
 #view-build .base-btn[data-base="peach"] { --ingredient-rgb: 238, 151, 124; }
 #view-build .base-btn[data-base="cassis"] { --ingredient-rgb: 159, 45, 99; }
 #view-build .base-btn[data-base="coffee"] { --ingredient-rgb: 126, 91, 66; }
+/* Every base gets an accent; keep additions in step with the base picker. */
+#view-build .base-btn[data-base="champagne"] { --ingredient-rgb: 229, 209, 153; }
+#view-build .base-btn[data-base="white_wine"] { --ingredient-rgb: 210, 220, 163; }
+#view-build .base-btn[data-base="pisco"] { --ingredient-rgb: 183, 202, 225; }
+#view-build .base-btn[data-base="cachaca"] { --ingredient-rgb: 126, 192, 145; }
+#view-build .base-btn[data-base="apple_brandy"] { --ingredient-rgb: 217, 157, 94; }
+#view-build .base-btn[data-base="cacao"] { --ingredient-rgb: 180, 133, 108; }
+#view-build .base-btn[data-base="malibu"] { --ingredient-rgb: 230, 219, 197; }
+#view-build .base-btn[data-base="midori"] { --ingredient-rgb: 157, 215, 78; }
+#view-build .base-btn[data-base="ginger"] { --ingredient-rgb: 219, 183, 101; }
+#view-build .base-btn[data-base="orange"] { --ingredient-rgb: 242, 163, 69; }
+#view-build .base-btn[data-base="soda"] { --ingredient-rgb: 161, 209, 220; }
+#view-build .base-btn[data-base="tomato"] { --ingredient-rgb: 223, 108, 91; }
+#view-build .base-btn[data-base="pineapple"] { --ingredient-rgb: 228, 215, 109; }
+#view-build .base-btn[data-base="grapefruit"] { --ingredient-rgb: 235, 166, 153; }
+#view-build .base-btn[data-base="cranberry"] { --ingredient-rgb: 211, 106, 142; }
 
 #view-build .mixer-btn.is-available {
   border-color: rgba(var(--ingredient-rgb), .58);
