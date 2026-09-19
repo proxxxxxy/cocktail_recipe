@@ -405,6 +405,12 @@ input:focus-visible {
     var(--panel);
 }
 
+.visualizer-column {
+  min-width: 0;
+  /* Fill the entire grid row behind the shorter, sticky preview. */
+  background: #080907;
+}
+
 .visualizer-card {
   min-height: 680px;
   position: relative;
@@ -1620,8 +1626,8 @@ input:focus-visible {
   grid-template-columns: 1fr;
 }
 
-.simulator-layout[data-mode="dictionary"] .visualizer-card,
-.simulator-layout[data-mode="menu"] .visualizer-card {
+.simulator-layout[data-mode="dictionary"] .visualizer-column,
+.simulator-layout[data-mode="menu"] .visualizer-column {
   display: none;
 }
 
@@ -2192,6 +2198,7 @@ input:focus-visible {
   .course-nav,
   .gallery-filters,
   .gallery-search-wrapper,
+  .visualizer-column,
   .visualizer-card,
   .action-row,
   .starter-set-accordion,
