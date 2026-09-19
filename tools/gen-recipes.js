@@ -25,6 +25,7 @@ const ALCOHOL_FREE_BASES = new Set([
 // required from here — it touches window the moment it loads — so the rule
 // is restated rather than shared.
 const GLASS_BY_NAME = {
+  'アメリカーノ': 'ロックグラス', 'フレンチ・コネクション': 'ロックグラス',
   'グリーン・アイズ': 'ハリケーングラス',
   'フレンチ75': 'フルートグラス', 'キール・ロワイヤル': 'フルートグラス',
   'ミモザ': 'フルートグラス', 'ベリーニ': 'フルートグラス',
@@ -56,6 +57,7 @@ function glassOf(data) {
 // Section order and headings. A base spirit missing from this list is an error
 // rather than a silent omission from the document.
 const SECTIONS = [
+  ['campari', 'カンパリベースのカクテル', 'Campari Base'],
   ['midori', 'MIDORI（メロンリキュール）ベースのカクテル', 'Midori Base'],
   ['gin', 'ジンベースのカクテル', 'Gin Base'],
   ['vodka', 'ウォッカベースのカクテル', 'Vodka Base'],

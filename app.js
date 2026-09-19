@@ -6,6 +6,93 @@
 // 1. COCKTAIL DATABASE (Strictly real classic/IBA standard recipes)
 // ==========================================================================
 const cocktailDatabase = {
+  // Approachable classics, checked against the individual primary sources.
+  "campari+grapefruit+tonic": {
+    name: "スプモーニ", enName: "Spumoni", abv: 5,
+    taste: ["ほろ苦い", "爽快", "柑橘"],
+    description: "カンパリのほろ苦さにグレープフルーツの酸味とトニックの炭酸を重ねたロングカクテル。氷の入ったグラスで軽く混ぜるだけで、爽やかな食前の一杯になります。",
+    color: "rgba(235, 128, 95, 0.75)", hasBubbles: true, garnish: "orange", ice: "cube", summer: true,
+    sourceUrl: "https://bar-navi.blog.suntory.co.jp/sp/001786.html",
+    ingredients: [
+      { name: "カンパリ", amount: "30 ml" },
+      { name: "グレープフルーツジュース", amount: "45 ml" },
+      { name: "トニックウォーター", amount: "適量（目安 90 ml）" },
+      { name: "オレンジスライス", amount: "1枚" }
+    ],
+    method: [
+      "タンブラーに氷を満たし、カンパリとグレープフルーツジュースを注ぎます。",
+      "冷えたトニックウォーターで満たし、炭酸を逃がさないよう軽く混ぜます。",
+      "オレンジスライスを飾ります。"
+    ]
+  },
+  "campari+soda+sweet_vermouth": {
+    name: "アメリカーノ", enName: "Americano", abv: 14, isIBA: true,
+    taste: ["ほろ苦い", "ハーブ", "軽やか"],
+    description: "カンパリとスイートベルモットを同量で合わせ、少量のソーダで軽く仕上げる食前酒。ハーブの香りと甘苦さを、オレンジとレモンの香りが引き立てます。",
+    color: "rgba(185, 65, 40, 0.8)", hasBubbles: true, garnish: "orange", ice: "cube",
+    sourceUrl: "https://iba-world.com/iba-cocktail/americano/",
+    ingredients: [
+      { name: "カンパリ", amount: "30 ml" },
+      { name: "スイート・ベルモット", amount: "30 ml" },
+      { name: "ソーダ", amount: "少量（目安 30 ml）" },
+      { name: "オレンジスライス", amount: "1/2枚" },
+      { name: "レモンピール", amount: "1片" }
+    ],
+    method: [
+      "ロックグラスに氷を満たし、カンパリとスイートベルモットを注ぎます。",
+      "ソーダを少量加え、そっと混ぜます。",
+      "半分に切ったオレンジスライスとレモンピールを飾ります。"
+    ]
+  },
+  "campari+orange": {
+    name: "ガリバルディ", enName: "Garibaldi", abv: 7, isIBA: true,
+    taste: ["ほろ苦い", "フルーティー", "柑橘"],
+    description: "カンパリと搾りたてのオレンジジュースを合わせた、材料二つのカクテル。果汁の甘酸っぱさがカンパリの苦味をやわらげ、鮮やかな赤橙色に仕上がります。",
+    color: "rgba(240, 112, 55, 0.9)", hasBubbles: false, garnish: "orange", ice: "cube", summer: true,
+    sourceUrl: "https://iba-world.com/iba-cocktail/garibaldi/",
+    ingredients: [
+      { name: "カンパリ", amount: "45 ml" },
+      { name: "搾りたてのオレンジジュース", amount: "120 ml" },
+      { name: "オレンジカット", amount: "1個" }
+    ],
+    method: [
+      "タンブラーに氷を満たし、カンパリとオレンジジュースを注ぎます。",
+      "軽く混ぜ、オレンジカットを飾ります。"
+    ]
+  },
+  "brandy+amaretto": {
+    name: "フレンチ・コネクション", enName: "French Connection", abv: 30, isIBA: true,
+    taste: ["芳醇", "甘い", "アーモンド"],
+    description: "コニャックとアマレットを同量で合わせる、材料二つのロックカクテル。ブランデーの豊かな香りに杏仁を思わせる甘い香りが重なり、食後にゆっくり楽しめます。",
+    color: "rgba(180, 111, 49, 0.85)", hasBubbles: false, garnish: null, ice: "cube",
+    sourceUrl: "https://iba-world.com/iba-cocktail/french-connection/",
+    ingredients: [
+      { name: "コニャック", amount: "35 ml" },
+      { name: "アマレット", amount: "35 ml" }
+    ],
+    method: [
+      "ロックグラスに氷を入れ、コニャックとアマレットを注ぎます。",
+      "そっと混ぜて冷やします。"
+    ]
+  },
+  "vodka+pineapple+raspberry": {
+    name: "フレンチ・マティーニ", enName: "French Martini", abv: 22, isIBA: true,
+    taste: ["甘酸っぱい", "ベリー", "フルーティー"],
+    description: "ウォッカにラズベリーリキュールとパイナップルジュースを合わせる、果実味のあるショートカクテル。三つの液体材料をシェイクし、レモンの香りで仕上げます。",
+    color: "rgba(215, 144, 132, 0.85)", hasBubbles: false, garnish: null, ice: "none",
+    sourceUrl: "https://iba-world.com/iba-cocktail/french-martini/",
+    ingredients: [
+      { name: "ウォッカ", amount: "45 ml" },
+      { name: "ラズベリーリキュール", amount: "15 ml" },
+      { name: "フレッシュ・パイナップルジュース", amount: "15 ml" },
+      { name: "レモンピール", amount: "1片" }
+    ],
+    method: [
+      "シェイカーにウォッカ、ラズベリーリキュール、パイナップルジュースと氷を入れます。",
+      "よくシェイクし、氷を除いて冷やしたカクテルグラスに注ぎます。",
+      "レモンピールを液面に向けて搾り、香りを移します。"
+    ]
+  },
   // MIDORI official recipes; quantities scale the published parts to one serving.
   "midori+curacao+lemon": {
     name: "ジャパニーズ・スリッパー", enName: "Japanese Slipper", abv: 13,
@@ -3393,6 +3480,7 @@ const cocktailDatabase = {
 
 // Base spirit default tints (when only base is selected)
 const baseTints = {
+  campari: "rgba(213, 0, 0, 0.85)",
   midori: "rgba(100, 210, 35, 0.75)",
   gin: "rgba(224, 242, 241, 0.15)",     // Clear with a tiny greenish/blue tint
   vodka: "rgba(255, 255, 255, 0.15)",   // Clear translucent white
@@ -4433,6 +4521,7 @@ function toggleMixer(mixerKey) {
 
 // Base key to Japanese name lookup
 const baseNameMap = {
+  campari: 'カンパリ',
   gin: 'ジン', vodka: 'ウォッカ', rum: 'ラム', tequila: 'テキーラ',
   whiskey: 'ウイスキー', brandy: 'ブランデー', peach: 'ピーチ',
   cassis: 'カシス', coffee: 'コーヒー',
@@ -4446,6 +4535,7 @@ const baseNameMap = {
 
 // Base key to icon lookup
 const baseIconMap = {
+  campari: 'CP',
   gin: 'GI', vodka: 'VO', rum: 'RU', tequila: 'TE',
   whiskey: 'WH', brandy: 'BR', peach: 'PE',
   cassis: 'CA', coffee: 'CO',
@@ -5513,6 +5603,7 @@ function countUpABV(el, target, animate) {
  */
 const SERVE_ORDER = {
   aperitif: [
+    'スプモーニ', 'アメリカーノ', 'ガリバルディ',
     'ジャパニーズ・スリッパー',
     'ジントニック', 'ジン・リッキー', 'オレンジ・ブロッサム', 'ギムレット',
     'アラウンド・ザ・ワールド', 'ジン・ソニック', 'ウォッカトニック',
@@ -5528,6 +5619,7 @@ const SERVE_ORDER = {
     'ジャック・ローズ', 'グレープフルーツ・スカッシュ', 'ブルー・ムーン',
   ],
   digestif: [
+    'フレンチ・コネクション',
     'ミッドタウン・ミューズ',
     'アースクェイク', 'ジン・ミルク・パンチ', 'ブラック・ルシアン',
     'ホワイト・ルシアン', 'XYZ', 'サイドカー', 'ピーチ・ミルク', 'カシス・ミルク',
@@ -5549,6 +5641,7 @@ const SERVE_ORDER = {
  */
 const SEASONS = {
   spring: [
+    'フレンチ・マティーニ', 'ガリバルディ',
     'ジャパニーズ・スリッパー', 'メロン・ボール',
     'オレンジ・ブロッサム', 'アビエイション', 'ファジーネーブル', 'ピーチ・フィズ',
     'ピーチ・ミルク', 'バカルディ', 'ホワイト・レディ', 'カシス・オレンジ',
@@ -5558,6 +5651,7 @@ const SEASONS = {
     'バイオレット・フィズ', 'ブルー・ムーン',
   ],
   autumn: [
+    'アメリカーノ', 'フレンチ・コネクション',
     'ミッドタウン・ミューズ',
     'ウイスキー・サワー', 'オールド・ファッションド', 'マンハッタン',
     'ブールヴァルディエ', 'サイドカー', 'ホーセズ・ネック', 'フレンチ・ハイボール',
@@ -5638,8 +5732,9 @@ const SOURCES = {
 /** Drinks whose ingredients and quantities were read off the source itself. */
 const VERIFIED_AGAINST = {
   midori: ['ジャパニーズ・スリッパー', 'メロン・ボール', 'ミッドタウン・ミューズ', 'サザン・ベル'],
-  suntory: ['グリーン・アイズ'],
+  suntory: ['グリーン・アイズ', 'スプモーニ'],
   iba: [
+    'アメリカーノ', 'ガリバルディ', 'フレンチ・コネクション', 'フレンチ・マティーニ',
     // First pass
     'ネグローニ', 'サゼラック', 'マイタイ', 'マルガリータ', 'ダイキリ',
     'マンハッタン', 'ドライ・マティーニ', 'ウイスキー・サワー',
@@ -5671,6 +5766,11 @@ const VERIFIED_AGAINST = {
  * citation and the reader can decide.
  */
 const SOURCE_NOTES = {
+  'スプモーニ': 'サントリー公式の配合に準拠。適量のトニックは90mlを一杯分の目安にしています。度数はカンパリ25%を使う場合の加水前の概算です。',
+  'アメリカーノ': 'IBA公式で少量とされるソーダを30mlの目安で記載。度数はカンパリ25%、ベルモット16%で加水前の概算です。グラス図ではオレンジのみを描画しています。',
+  'ガリバルディ': 'IBA公式の45ml:120mlに準拠。カンパリ・オレンジとしても知られる組み合わせです。度数はカンパリ25%を使う場合の加水前の概算です。',
+  'フレンチ・コネクション': 'IBA公式の35ml:35mlに準拠。度数はコニャック40%、アマレット28%、氷の加水約10mlを仮定した目安です。',
+  'フレンチ・マティーニ': 'IBA公式の45ml:15ml:15mlに準拠。度数はウォッカ40%、ラズベリーリキュール20%、シェイクの加水約20mlを仮定した目安です。',
   'グリーン・アイズ': 'サントリー公式の配合とブレンダーで作る手順に準拠。公式のゴブレットに代えて、本書のグラス図は大型のハリケーングラスを表示しています。度数はラム40%、MIDORI 20%、氷の加水を約80mlと仮定した概算で、氷の量や溶け方によって変わります。',
   'ミッドタウン・ミューズ': '公式の比率をMIDORI20ml・山崎12年45ml・バニラリキュール10mlに換算。公式のオレンジピールはフレームドですが、本書では火を使わず香りを移します。ピールの描画は省略しています。度数は山崎43%、MIDORI20%、バニラリキュール20%、ステアの加水15mlを仮定した目安です。',
   'サザン・ベル': '公式の2:2:1.5をMIDORI30ml・バーボン30ml・レモン22.5mlに換算。公式で適量のジンジャービアは100mlを一杯分の目安とし、ノンアルコール製品を使用します。度数はMIDORI20%、メーカーズマーク45%と氷の加水を少量見込んだ概算です。',
@@ -5720,6 +5820,7 @@ const GLASS_NAMES = {
 };
 
 const GLASS_BY_NAME = {
+  'アメリカーノ': 'rocks', 'フレンチ・コネクション': 'rocks',
   'グリーン・アイズ': 'hurricane',
   'フレンチ75': 'flute', 'キール・ロワイヤル': 'flute', 'ミモザ': 'flute',
   'ベリーニ': 'flute', 'デス・イン・ジ・アフタヌーン': 'flute',

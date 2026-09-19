@@ -2475,6 +2475,7 @@ input:focus-visible {
 #view-build .base-btn[data-base="cacao"] { --ingredient-rgb: 180, 133, 108; }
 #view-build .base-btn[data-base="malibu"] { --ingredient-rgb: 230, 219, 197; }
 #view-build .base-btn[data-base="midori"] { --ingredient-rgb: 157, 215, 78; }
+#view-build .base-btn[data-base="campari"] { --ingredient-rgb: 226, 91, 96; }
 #view-build .base-btn[data-base="ginger"] { --ingredient-rgb: 219, 183, 101; }
 #view-build .base-btn[data-base="orange"] { --ingredient-rgb: 242, 163, 69; }
 #view-build .base-btn[data-base="soda"] { --ingredient-rgb: 161, 209, 220; }
