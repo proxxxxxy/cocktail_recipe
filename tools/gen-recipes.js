@@ -25,6 +25,7 @@ const ALCOHOL_FREE_BASES = new Set([
 // required from here — it touches window the moment it loads — so the rule
 // is restated rather than shared.
 const GLASS_BY_NAME = {
+  'グリーン・アイズ': 'ハリケーングラス',
   'フレンチ75': 'フルートグラス', 'キール・ロワイヤル': 'フルートグラス',
   'ミモザ': 'フルートグラス', 'ベリーニ': 'フルートグラス',
   'デス・イン・ジ・アフタヌーン': 'フルートグラス',

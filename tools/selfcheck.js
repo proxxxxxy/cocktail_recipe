@@ -77,17 +77,17 @@
     check(!missingFields.length, 'every recipe has the required fields', missingFields.join(' | '));
 
     const midoriDrinks = buildDrinkList(null).filter(item => item.key.split('+').includes('midori'));
-    check(midoriDrinks.length === 7 && midoriDrinks.every(item =>
+    check(midoriDrinks.length === 5 && midoriDrinks.every(item =>
       !isMocktailKey(item.key) && searchHaystack(item).includes('midori') &&
       sourceOf(item.data)?.url === item.data.sourceUrl &&
-      item.data.sourceUrl.startsWith('https://www.midori-world.com/recipes/')),
-      'all seven MIDORI drinks are searchable, alcoholic and individually sourced');
-    const midoriShelf = new Set(['midori', 'orange']);
+      /^https:\/\/www\.(midori-world\.com\/recipes\/|suntory\.co\.jp\/wnb\/essay\/)/.test(item.data.sourceUrl) && !item.data.name.startsWith('ミドリ・')),
+      'all five named MIDORI drinks are searchable, alcoholic and individually sourced');
+    const midoriShelf = new Set(['midori', 'curacao', 'lemon']);
     const restoredMidoriShelf = decodeShelf(encodeShelf(midoriShelf));
     const midoriMenu = buildDrinkList(restoredMidoriShelf).filter(item => item.pourable);
-    check(restoredMidoriShelf.size === 2 && restoredMidoriShelf.has('midori') &&
-      restoredMidoriShelf.has('orange') && midoriMenu.length === 1 &&
-      midoriMenu[0].key === 'midori+orange',
+    check(restoredMidoriShelf.size === 3 && restoredMidoriShelf.has('midori') &&
+      restoredMidoriShelf.has('curacao') && restoredMidoriShelf.has('lemon') && midoriMenu.length === 1 &&
+      midoriMenu[0].key === 'midori+curacao+lemon',
       'MIDORI shelf round-trip offers only the drink its ingredients can make');
     check(!isMocktailKey('orange+midori') &&
       decodeShelf(encodeShelf(new Set(['sour_mix'])))?.has('sour_mix'),

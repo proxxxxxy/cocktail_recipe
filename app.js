@@ -16,15 +16,6 @@ const cocktailDatabase = {
     ingredients: [{ name: "MIDORI（メロンリキュール）", amount: "30 ml" }, { name: "トリプルセック", amount: "30 ml" }, { name: "レモンジュース", amount: "30 ml" }, { name: "マラスキーノチェリー", amount: "1個" }],
     method: ["シェイカーにMIDORI、トリプルセック、レモンジュースと氷を入れます。", "よくシェイクし、氷を除いて冷やしたカクテルグラスに注ぎます。", "マラスキーノチェリーを飾ります。"]
   },
-  "midori+sour_mix": {
-    name: "ミドリ・サワー", enName: "Midori Sour", abv: 10,
-    taste: ["甘酸っぱい", "メロン", "爽やか"],
-    description: "MIDORIとサワーミックスを同量で合わせる、公式のシンプルなサワー。メロンの甘さと柑橘の酸味を氷の入ったグラスで楽しむ一杯です。",
-    color: "rgba(135, 210, 45, 0.8)", hasBubbles: false, garnish: "lemon", ice: "cube",
-    sourceUrl: "https://www.midori-world.com/recipes/midori-sour/",
-    ingredients: [{ name: "MIDORI（メロンリキュール）", amount: "45 ml" }, { name: "サワーミックス（ノンアルコールの甘酸っぱい柑橘ミックス）", amount: "45 ml" }, { name: "レモンカット", amount: "1個" }],
-    method: ["グラスに氷を満たし、MIDORIとサワーミックスを注ぎます。", "軽く混ぜ、レモンカットを飾ります。"]
-  },
   "vodka+midori+orange": {
     name: "メロン・ボール", enName: "Melon Ball", abv: 10,
     taste: ["フルーティー", "メロン", "甘い"],
@@ -34,41 +25,64 @@ const cocktailDatabase = {
     ingredients: [{ name: "ウォッカ", amount: "30 ml" }, { name: "MIDORI（メロンリキュール）", amount: "30 ml" }, { name: "オレンジジュース", amount: "適量（目安 120 ml）" }, { name: "オレンジスライス", amount: "1枚" }],
     method: ["グラスに氷を満たし、ウォッカとMIDORIを注ぎます。", "オレンジジュースで満たし、オレンジスライスを飾ります。"]
   },
-  "midori+orange": {
-    name: "ミドリ・オレンジ", enName: "Midori Orange", abv: 7,
-    taste: ["フルーティー", "甘い", "柑橘"],
-    description: "MIDORIをオレンジジュースで割る、混ぜるだけの手軽なロングカクテル。メロンの甘い香りとオレンジの酸味を、氷で冷やして楽しめます。",
-    color: "rgba(180, 200, 55, 0.85)", hasBubbles: false, garnish: "orange", ice: "cube", summer: true,
-    sourceUrl: "https://www.midori-world.com/recipes/midori-orange/",
-    ingredients: [{ name: "MIDORI（メロンリキュール）", amount: "45 ml" }, { name: "オレンジジュース", amount: "90 ml" }, { name: "オレンジスライス", amount: "1枚" }],
-    method: ["グラスに氷を満たし、MIDORIとオレンジジュースを注ぎます。", "軽く混ぜ、オレンジスライスを飾ります。"]
+  "rum+coconut+lime+midori+pineapple": {
+    name: "グリーン・アイズ", enName: "Green Eyes", abv: 8,
+    taste: ["トロピカル", "甘酸っぱい", "クリーミー"],
+    description: "ゴールドラムにメロン、パイナップル、ココナッツミルクを合わせ、氷ごとブレンドするフローズンカクテル。ライムの酸味が甘さを引き締め、涼やかな口当たりに仕上がります。",
+    color: "rgba(170, 210, 110, 0.9)", hasBubbles: false, garnish: "lime", ice: "crushed", summer: true,
+    sourceUrl: "https://www.suntory.co.jp/wnb/essay/104.html",
+    ingredients: [
+      { name: "ゴールドラム", amount: "30 ml" },
+      { name: "MIDORI（メロンリキュール）", amount: "25 ml" },
+      { name: "パイナップルジュース", amount: "45 ml" },
+      { name: "ココナッツミルク", amount: "15 ml" },
+      { name: "ライムジュース", amount: "15 ml" },
+      { name: "クラッシュドアイス", amount: "1カップ" },
+      { name: "ライムスライス", amount: "1枚" }
+    ],
+    method: [
+      "ブレンダーにすべての液体材料とクラッシュドアイス1カップを入れます。",
+      "氷の粒が細かくなり、なめらかなフローズン状になるまでブレンドします。",
+      "大型グラスに注ぎ、ライムスライスを飾ってストローを添えます。"
+    ]
   },
-  "midori+ginger+lime": {
-    name: "ミドリ・ジンジャーエール＆ライム", enName: "Midori Ginger Ale and Lime", abv: 6,
+  "whiskey+bitters+midori+vanilla_liqueur": {
+    name: "ミッドタウン・ミューズ", enName: "Midtown Muse", abv: 28,
+    taste: ["芳醇", "バニラ", "ほろ苦い"],
+    description: "ウイスキーにMIDORIとバニラリキュールを重ね、ビターズで輪郭を整えるショートカクテル。メロンの甘い香りと樽香を、静かにステアしてまとめます。",
+    color: "rgba(160, 170, 65, 0.8)", hasBubbles: false, garnish: null, ice: "none",
+    sourceUrl: "https://www.midori-world.com/recipes/midtown-muse/",
+    ingredients: [
+      { name: "山崎12年", amount: "45 ml" },
+      { name: "MIDORI（メロンリキュール）", amount: "20 ml" },
+      { name: "バニラリキュール", amount: "10 ml" },
+      { name: "アンゴスチュラ・ビターズ", amount: "2〜3 dash" },
+      { name: "オレンジピール", amount: "1片" }
+    ],
+    method: [
+      "ミキシンググラスにウイスキー、MIDORI、バニラリキュール、ビターズと氷を入れます。",
+      "よく冷えるまでステアし、氷を除いて冷やしたカクテルグラスに注ぎます。",
+      "オレンジピールを搾って香りを移し、縁に添えます。"
+    ]
+  },
+  "whiskey+ginger_beer+lemon+midori+mint": {
+    name: "サザン・ベル", enName: "Southern Belle", abv: 10,
     taste: ["爽快", "甘酸っぱい", "スパイシー"],
-    description: "MIDORIのメロンの香りに、ジンジャーエールの軽い刺激と搾りたてのライムを合わせる一杯。炭酸を残すようにそっと混ぜて仕上げます。",
-    color: "rgba(130, 205, 55, 0.7)", hasBubbles: true, garnish: "lime", ice: "cube", summer: true,
-    sourceUrl: "https://www.midori-world.com/recipes/midori-ginger-ale-and-lime/",
-    ingredients: [{ name: "MIDORI（メロンリキュール）", amount: "45 ml" }, { name: "ジンジャーエール", amount: "90 ml" }, { name: "ライムカット", amount: "1〜2個（搾る用）＋1個（飾り用・任意）" }],
-    method: ["グラスに氷を満たし、MIDORIを注ぎます。", "ライムカットを1〜2個搾り、そのままグラスに入れます。", "ジンジャーエールを注ぎ、底からそっと混ぜます。", "好みで飾り用のライムカットを添えます。"]
-  },
-  "midori+lemon+tonic": {
-    name: "ミドリ・トニック＆レモン", enName: "Midori Tonic and Lemon", abv: 6,
-    taste: ["ほろ苦い", "爽快", "メロン"],
-    description: "MIDORIの甘いメロン香をトニックのほろ苦さで引き締めるロングカクテル。レモンを搾って加えることで、後味に爽やかな酸味が残ります。",
-    color: "rgba(110, 210, 50, 0.65)", hasBubbles: true, garnish: "lemon", ice: "cube", summer: true,
-    sourceUrl: "https://www.midori-world.com/recipes/midori-tonic-and-lemon/",
-    ingredients: [{ name: "MIDORI（メロンリキュール）", amount: "45 ml" }, { name: "トニックウォーター", amount: "90 ml" }, { name: "レモンカット", amount: "1個（搾る用）＋1個（飾り用）" }],
-    method: ["グラスに氷を満たし、MIDORIを注ぎます。", "レモンカットを1個搾り、そのままグラスに入れます。", "トニックウォーターを注ぎ、炭酸を逃がさないよう軽く混ぜます。", "飾り用のレモンカットを添えます。"]
-  },
-  "midori+cranberry+lime": {
-    name: "ミドリ・クランベリー＆ライム", enName: "Midori Cranberry and Lime", abv: 6,
-    taste: ["甘酸っぱい", "フルーティー", "爽やか"],
-    description: "メロンの甘い香りにクランベリーの酸味とライムを重ねた、果実感のあるロングカクテル。MIDORIの緑と赤い果汁が混ざる、落ち着いた色合いも特徴です。",
-    color: "rgba(165, 110, 65, 0.8)", hasBubbles: false, garnish: "lime", ice: "cube", summer: true,
-    sourceUrl: "https://www.midori-world.com/recipes/midori-cranberry-and-lime/",
-    ingredients: [{ name: "MIDORI（メロンリキュール）", amount: "45 ml" }, { name: "クランベリージュース", amount: "90 ml" }, { name: "ライムカット", amount: "1個" }],
-    method: ["グラスに氷を満たし、MIDORIを注ぎます。", "ライムカットを搾り、そのままグラスに入れます。", "クランベリージュースを注ぎ、そっと混ぜます。"]
+    description: "バーボンとメロンリキュールにレモンとミントを合わせ、ジンジャービアで満たす一杯。樽の香りに柑橘とハーブ、生姜の刺激が重なるロングカクテルです。",
+    color: "rgba(155, 190, 65, 0.75)", hasBubbles: true, garnish: "mint", ice: "cube", summer: true,
+    sourceUrl: "https://www.midori-world.com/recipes/southern-belle/",
+    ingredients: [
+      { name: "メーカーズマーク（バーボン）", amount: "30 ml" },
+      { name: "MIDORI（メロンリキュール）", amount: "30 ml" },
+      { name: "レモンジュース", amount: "22.5 ml" },
+      { name: "ミント", amount: "6枚＋飾り用" },
+      { name: "ジンジャービア（ノンアルコール）", amount: "適量（目安 100 ml）" }
+    ],
+    method: [
+      "背の高いグラスにバーボン、MIDORI、レモンジュース、ミント6枚を入れます。",
+      "氷を加えてよく混ぜ、ジンジャービアで満たします。",
+      "飾り用のミントを添えます。"
+    ]
   },
   // --- GIN BASE ---
   "gin+tonic": {
@@ -3414,6 +3428,8 @@ const baseTints = {
 
 // All available 15 mixers information for dynamic rendering
 const mixerDefinitions = {
+  vanilla_liqueur: { name: "バニラリキュール", en: "VANILLA LIQUEUR", icon: "VL", color: "rgba(245, 225, 180, 0.5)" },
+  ginger_beer: { name: "ジンジャービア（ノンアルコール）", en: "GINGER BEER", icon: "GB", color: "rgba(240, 220, 150, 0.6)" },
   midori: { name: "MIDORI（メロンリキュール）", en: "MIDORI MELON LIQUEUR", icon: "MI", color: "rgba(100, 210, 35, 0.75)" },
   sour_mix: { name: "サワーミックス（ノンアルコール）", en: "SOUR MIX", icon: "SM", color: "rgba(235, 240, 165, 0.6)" },
   tonic: { name: "トニックウォーター", en: "TONIC WATER", icon: "TW", color: "rgba(224, 247, 250, 0.4)" },
@@ -3503,6 +3519,7 @@ const SPIRIT_BASES = Object.keys(baseTints).filter(b => !NON_ALCOHOLIC_BASES.has
  * catalogued as non-alcoholic everywhere. The recipe says so in its own text.
  */
 const ALCOHOLIC_MIXERS = new Set([
+  'vanilla_liqueur',
   'midori',
   'curacao', 'blue_curacao', 'absinthe', 'whiskey', 'brandy', 'cassis',
   'peach', 'coffee', 'cacao', 'campari', 'dry_vermouth', 'sweet_vermouth',
@@ -3622,6 +3639,7 @@ const SHELF_VOCABULARY = [
   'parfait_amour', 'malibu',
   // Appended 2026-09-19. Preserve all previous menu codes.
   'midori', 'sour_mix',
+  'vanilla_liqueur', 'ginger_beer',
 ];
 
 // URL-safe base64 alphabet: nothing here needs escaping in a fragment.
@@ -5494,7 +5512,7 @@ function countUpABV(el, target, animate) {
  */
 const SERVE_ORDER = {
   aperitif: [
-    'ジャパニーズ・スリッパー', 'ミドリ・サワー', 'ミドリ・トニック＆レモン',
+    'ジャパニーズ・スリッパー',
     'ジントニック', 'ジン・リッキー', 'オレンジ・ブロッサム', 'ギムレット',
     'アラウンド・ザ・ワールド', 'ジン・ソニック', 'ウォッカトニック',
     'ウォッカ・リッキー', 'ブルドッグ', 'ソルティ・ドッグ', 'ブラッディ・メアリー',
@@ -5509,6 +5527,7 @@ const SERVE_ORDER = {
     'ジャック・ローズ', 'グレープフルーツ・スカッシュ', 'ブルー・ムーン',
   ],
   digestif: [
+    'ミッドタウン・ミューズ',
     'アースクェイク', 'ジン・ミルク・パンチ', 'ブラック・ルシアン',
     'ホワイト・ルシアン', 'XYZ', 'サイドカー', 'ピーチ・ミルク', 'カシス・ミルク',
     'カルーア・ミルク', 'カルーア・ソーダ', 'カルーア・コーク', 'コーヒー・トニック',
@@ -5529,7 +5548,7 @@ const SERVE_ORDER = {
  */
 const SEASONS = {
   spring: [
-    'ジャパニーズ・スリッパー', 'ミドリ・サワー', 'メロン・ボール', 'ミドリ・オレンジ',
+    'ジャパニーズ・スリッパー', 'メロン・ボール',
     'オレンジ・ブロッサム', 'アビエイション', 'ファジーネーブル', 'ピーチ・フィズ',
     'ピーチ・ミルク', 'バカルディ', 'ホワイト・レディ', 'カシス・オレンジ',
     'カシス・ソーダ', 'シャーリー・テンプル', 'ジン・フィズ', 'シンデレラ',
@@ -5538,6 +5557,7 @@ const SEASONS = {
     'バイオレット・フィズ', 'ブルー・ムーン',
   ],
   autumn: [
+    'ミッドタウン・ミューズ',
     'ウイスキー・サワー', 'オールド・ファッションド', 'マンハッタン',
     'ブールヴァルディエ', 'サイドカー', 'ホーセズ・ネック', 'フレンチ・ハイボール',
     'フレンチ・コーク', 'ウイスキー・バック', 'ジャック・コーク', 'ネグローニ',
@@ -5602,6 +5622,7 @@ function serveOf(data) {
  * whole point: an IBA number carries different weight from a recollection.
  */
 const SOURCES = {
+  suntory: { label: 'サントリー公式レシピ', org: 'サントリー', url: 'https://www.suntory.co.jp/wnb/essay/104.html' },
   midori: {
     label: 'MIDORI 公式レシピ', org: 'MIDORI / Suntory Global Spirits',
     url: 'https://www.midori-world.com/recipes/',
@@ -5615,8 +5636,8 @@ const SOURCES = {
 
 /** Drinks whose ingredients and quantities were read off the source itself. */
 const VERIFIED_AGAINST = {
-  midori: ['ジャパニーズ・スリッパー', 'ミドリ・サワー', 'メロン・ボール', 'ミドリ・オレンジ',
-    'ミドリ・ジンジャーエール＆ライム', 'ミドリ・トニック＆レモン', 'ミドリ・クランベリー＆ライム'],
+  midori: ['ジャパニーズ・スリッパー', 'メロン・ボール', 'ミッドタウン・ミューズ', 'サザン・ベル'],
+  suntory: ['グリーン・アイズ'],
   iba: [
     // First pass
     'ネグローニ', 'サゼラック', 'マイタイ', 'マルガリータ', 'ダイキリ',
@@ -5649,13 +5670,11 @@ const VERIFIED_AGAINST = {
  * citation and the reader can decide.
  */
 const SOURCE_NOTES = {
+  'グリーン・アイズ': 'サントリー公式の配合とブレンダーで作る手順に準拠。公式のゴブレットに代えて、本書のグラス図は大型のハリケーングラスを表示しています。度数はラム40%、MIDORI 20%、氷の加水を約80mlと仮定した概算で、氷の量や溶け方によって変わります。',
+  'ミッドタウン・ミューズ': '公式の比率をMIDORI20ml・山崎12年45ml・バニラリキュール10mlに換算。公式のオレンジピールはフレームドですが、本書では火を使わず香りを移します。ピールの描画は省略しています。度数は山崎43%、MIDORI20%、バニラリキュール20%、ステアの加水15mlを仮定した目安です。',
+  'サザン・ベル': '公式の2:2:1.5をMIDORI30ml・バーボン30ml・レモン22.5mlに換算。公式で適量のジンジャービアは100mlを一杯分の目安とし、ノンアルコール製品を使用します。度数はMIDORI20%、メーカーズマーク45%と氷の加水を少量見込んだ概算です。',
   'ジャパニーズ・スリッパー': '公式の1:1:1を各30mlに換算。度数はMIDORI 20%、トリプルセック20%を使う場合の加水前の目安です。40%の製品なら加水前は約20%になり、シェイクで薄まります。',
-  'ミドリ・サワー': '公式の1:1を各45mlに換算。サワーミックスはノンアルコールの製品を使用します。度数はMIDORI 20%で加水前の目安です。',
   'メロン・ボール': '公式はMIDORIとウォッカが1:1、オレンジジュースは適量。各30mlと果汁120mlを一杯分の目安にしています。度数はMIDORI 20%、ウォッカ40%で加水前の概算です。',
-  'ミドリ・オレンジ': '公式ページに併記されたMIDORI 1:オレンジ2のレシピを採用し、45ml:90mlに換算。スパークリングワインは加えません。度数はMIDORI 20%で加水前の目安です。',
-  'ミドリ・ジンジャーエール＆ライム': '公式の1:2を45ml:90mlに換算。度数はMIDORI 20%と搾ったライムを含む概算で、果汁量や氷の溶け方で変わります。',
-  'ミドリ・トニック＆レモン': '公式の1:2を45ml:90mlに換算。度数はMIDORI 20%と搾ったレモンを含む概算で、果汁量や氷の溶け方で変わります。',
-  'ミドリ・クランベリー＆ライム': '公式の1:2を45ml:90mlに換算。度数はMIDORI 20%と搾ったライムを含む概算で、果汁量や氷の溶け方で変わります。',
   'サウスサイド': 'IBAの公式仕様はレモン30mlですが、本書は一般的なライムの配合を採っています。',
   'パローマ': 'IBAの公式仕様はピンクグレープフルーツ・ソーダ100ml。本書は果汁とソーダに分けた作り方です。',
   'プランターズ・パンチ': 'IBAの公式仕様はラム45・ライム15・サトウキビジュース30のみ。本書は果汁を重ねる伝統的な配合です。',
@@ -5700,6 +5719,7 @@ const GLASS_NAMES = {
 };
 
 const GLASS_BY_NAME = {
+  'グリーン・アイズ': 'hurricane',
   'フレンチ75': 'flute', 'キール・ロワイヤル': 'flute', 'ミモザ': 'flute',
   'ベリーニ': 'flute', 'デス・イン・ジ・アフタヌーン': 'flute',
   'キール': 'wine', 'スプリッツァー': 'wine', 'オペレーター': 'wine',
