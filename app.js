@@ -5248,7 +5248,8 @@ function searchHaystack(item) {
     ...item.data.taste,
     ...item.data.ingredients.map(i => i.name),
     ...parts,
-    ...parts.map(p => mixerDefinitions[p]?.name || baseNameMap[p] || ''),
+    ...parts.map(p => mixerDefinitions[p]?.name || ''),
+    ...parts.map(p => baseNameMap[p] || ''),
     ...parts.map(p => mixerDefinitions[p]?.en || ''),
   ];
   return (item.data._haystack = words.join(' ').toLowerCase());
@@ -5265,15 +5266,15 @@ function renderGallery(query, animate = false) {
   const shelf = state.menuShelf;
   const list = buildDrinkList(shelf);
 
-  // Filter by the active chip, then by search query (name, english name, base).
-  // A chip is either one of the data-driven predicates or a base spirit key.
+  // Ingredient chips match any recipe ingredient, not just its base.
+  // Text search further narrows the selected chip's results.
   const predicate = galleryPredicates[state.galleryFilter];
   const filtered = list.filter(item => {
     if (!item.pourable) return false;
     if (!matchesDrinkType(item.data)) return false;
     if (predicate) {
       if (!predicate(item.data)) return false;
-    } else if (item.baseKey !== state.galleryFilter) {
+    } else if (!item.key.split('+').includes(state.galleryFilter)) {
       return false;
     }
     if (!q) return true;
@@ -6008,12 +6009,14 @@ function galleryFilterGroups() {
   if (state.menuShelf) {
     const stocked = new Set();
     buildDrinkList().forEach(item => {
-      if (item.pourable && matchesDrinkType(item.data)) stocked.add(item.baseKey);
+      if (item.pourable && matchesDrinkType(item.data)) {
+        item.key.split('+').forEach(id => stocked.add(id));
+      }
     });
     bases = bases.filter(b => stocked.has(b));
   }
   if (bases.length) {
-    groups.push({ label: 'ベース', chips: bases.map(b => ({ id: b, label: baseNameMap[b] })) });
+    groups.push({ label: '使用材料', chips: bases.map(b => ({ id: b, label: baseNameMap[b] })) });
   }
 
   return groups;

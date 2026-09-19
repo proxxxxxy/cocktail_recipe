@@ -99,7 +99,7 @@ s.onload = () => window.__selfcheck().then(r => console.log(r.summary, r.failure
 document.head.appendChild(s);
 ```
 
-74項目。上の3つの不変条件、全モードが**実際に画面に見えているか**、
+79項目。上の3つの不変条件、全モードが**実際に画面に見えているか**、
 カウントと表示枚数の一致、ルーティングの往復、メニューコードの後方互換、
 全カクテルのサムネイルと度数表示、日本語文の体裁、グラス表示と手順文の整合までを見ます。
 
@@ -114,7 +114,7 @@ document.head.appendChild(s);
 ```bash
 node tools/gen-recipes.js
 node tools/stamp-version.js
-# ブラウザでセルフチェック → 74/74
+# ブラウザでセルフチェック → 79/79
 git add -A && git commit && git push
 ```
 

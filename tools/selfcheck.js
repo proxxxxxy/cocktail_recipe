@@ -496,6 +496,53 @@
     setMode('build');
   }
 
+  // Ingredient filters must include spirits used as mixers as well as bases.
+  function checkIngredientFilters() {
+    setDrinkType('all');
+    setMode('dictionary');
+    DOM.gallerySearch.value = '';
+    const shownNames = () => [...DOM.galleryGrid.querySelectorAll('.gallery-card')]
+      .filter(visible).map(card => cocktailDatabase[card.dataset.key].name).sort();
+    const issues = [];
+    for (const id of Object.keys(baseNameMap)) {
+      DOM.galleryFilters.querySelector('[data-filter="' + id + '"]').click();
+      const expected = buildDrinkList(null).filter(item => item.key.split('+').includes(id))
+        .map(item => item.data.name).sort();
+      if (JSON.stringify(shownNames()) !== JSON.stringify(expected)) issues.push(id);
+    }
+    check(!issues.length, 'every ingredient chip shows all matching recipes, including mixer use', issues.join(', '));
+
+    DOM.galleryFilters.querySelector('[data-filter="midori"]').click();
+    check(shownNames().length === 5 && shownNames().includes('メロン・ボール') &&
+      shownNames().includes('グリーン・アイズ'),
+      'MIDORI chip displays all five drinks across different bases');
+
+    DOM.galleryFilters.querySelector('[data-filter="all"]').click();
+    const queryIssues = [];
+    for (const query of ['MIDORI', 'midori', 'ミドリ']) {
+      renderGallery(query);
+      if (shownNames().length !== 5 || !shownNames().includes('メロン・ボール')) queryIssues.push(query);
+    }
+    check(!queryIssues.length, 'MIDORI text search accepts English and Japanese names', queryIssues.join(', '));
+
+    state.galleryFilter = 'midori';
+    renderGallery('メロン・ボール');
+    check(shownNames().length === 1 && shownNames()[0] === 'メロン・ボール',
+      'ingredient chips and text search narrow results together');
+
+    const shelf = new Set(['vodka', 'midori', 'orange']);
+    enterMenuMode(encodeShelf(shelf), shelf);
+    const menuChip = DOM.galleryFilters.querySelector('[data-filter="midori"]');
+    if (menuChip) menuChip.click();
+    check(!!menuChip && shownNames().length === 1 && shownNames()[0] === 'メロン・ボール',
+      'shared menu offers MIDORI chip when MIDORI is only a mixer');
+    exitMenuMode();
+    state.galleryFilter = 'all';
+    DOM.gallerySearch.value = '';
+    setDrinkType('all');
+    setMode('build');
+  }
+
   // ------------------------------------------------------------------ run ---
   window.__selfcheck = async function selfcheck() {
     results.length = 0;
@@ -509,6 +556,7 @@
     await checkModes();
     await checkDrinkType();
     await checkRoutes();
+    checkIngredientFilters();
 
     const failed = results.filter(r => !r.pass);
     return {
