@@ -3,9 +3,688 @@
  */
 
 // ==========================================================================
-// 1. COCKTAIL DATABASE (Strictly real classic/IBA standard recipes)
+// 1. COCKTAIL DATABASE (Real named cocktails and source-documented recipes)
 // ==========================================================================
 const cocktailDatabase = {
+  // Beer cocktails: source-specific recipes, with conversions documented below.
+  "beer+ginger": {
+    "name": "シャンディガフ",
+    "enName": "Shandy Gaff",
+    "abv": 2.5,
+    "taste": [
+      "爽快",
+      "甘口",
+      "スパイシー"
+    ],
+    "description": "ジンジャーエールの甘さと生姜の香りを、ビールの苦みが引き締める定番。よく冷やした材料を静かに注ぐだけで作れる、軽やかな一杯です。 材料の補足：ビール：ラガー。",
+    "color": "rgba(222, 180, 78, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "100 ml"
+      },
+      {
+        "name": "ジンジャーエール",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.asahibeer.co.jp/cocktailguide/recipe/index.psp.html?ID=1010400460"
+  },
+  "beer+tomato": {
+    "name": "レッド・アイ",
+    "enName": "Red Eye",
+    "abv": 2.5,
+    "taste": [
+      "さっぱり",
+      "旨味",
+      "ほろ苦い"
+    ],
+    "description": "トマトジュースの柔らかな酸味と旨味をビールに重ねた定番。果実系とは違う食事向けの味わいで、シンプルな材料から赤い一杯に仕上がります。 材料の補足：ビール：ラガー。",
+    "color": "rgba(212, 83, 48, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "100 ml"
+      },
+      {
+        "name": "トマトジュース",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column/red-eye/"
+  },
+  "beer+gin": {
+    "name": "ドッグズ・ノーズ",
+    "enName": "Dogs Nose",
+    "abv": 12.7,
+    "taste": [
+      "辛口",
+      "ハーブ",
+      "爽快"
+    ],
+    "description": "ビールにジンのジュニパーの香りを重ねる、辛口のビアカクテル。炭酸の軽快さを残しつつ、いつものラガーよりもしっかりした飲みごたえになります。 材料の補足：ビール：ラガー。ドライジン：47%。",
+    "color": "rgba(220, 172, 58, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "200 ml"
+      },
+      {
+        "name": "ドライジン",
+        "amount": "45 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.suntory.co.jp/wnb/essay/62.html"
+  },
+  "vodka+beer+tomato": {
+    "name": "レッド・バード",
+    "enName": "Red Bird",
+    "abv": 8.6,
+    "taste": [
+      "旨味",
+      "まろやか",
+      "ほろ苦い"
+    ],
+    "description": "レッド・アイにウォッカを加えた、赤いビアカクテル。トマトの味わいを中心にしながらアルコールの輪郭が増し、ゆっくり楽しむ食中の一杯になります。 材料の補足：ビール：ラガー。",
+    "color": "rgba(205, 73, 39, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ウォッカ",
+        "amount": "30 ml"
+      },
+      {
+        "name": "トマトジュース",
+        "amount": "60 ml"
+      },
+      {
+        "name": "ビール",
+        "amount": "120 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.suntory.co.jp/wnb/essay/62.html"
+  },
+  "beer+lemonade": {
+    "name": "パナシェ",
+    "enName": "Panache",
+    "abv": 2.5,
+    "taste": [
+      "爽快",
+      "柑橘",
+      "甘酸っぱい"
+    ],
+    "description": "冷たいレモンスカッシュとビールを半量ずつ合わせる、柑橘の香りが爽やかな一杯。フランス語の名前を持ち、材料二つで気軽に作れるビアカクテルです。 材料の補足：ビール：ラガー。レモンスカッシュ：加糖・炭酸入り。",
+    "color": "rgba(230, 206, 113, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "100 ml"
+      },
+      {
+        "name": "レモンスカッシュ",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column/panache_bitterorange/"
+  },
+  "beer+orange": {
+    "name": "ビター・オレンジ",
+    "enName": "Bitter Orange",
+    "abv": 2.5,
+    "taste": [
+      "フルーティー",
+      "柑橘",
+      "ほろ苦い"
+    ],
+    "description": "オレンジの果汁感とビールのほろ苦さを同時に楽しむカクテル。果汁を同量加えるため飲み口が柔らかく、使うビールによって苦みの出方も変わります。 材料の補足：ビール：ラガーまたはIPA。",
+    "color": "rgba(239, 161, 43, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "100 ml"
+      },
+      {
+        "name": "オレンジジュース",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column/panache_bitterorange/"
+  },
+  "beer+cola": {
+    "name": "ディーゼル",
+    "enName": "Diesel",
+    "abv": 2.5,
+    "taste": [
+      "甘口",
+      "カラメル",
+      "ほろ苦い"
+    ],
+    "description": "コーラの甘さとビールの麦芽感が重なる、濃い琥珀色のカクテル。炭酸同士なので混ぜすぎずに仕上げると、軽快な口当たりを保てます。 材料の補足：ビール：ラガー。",
+    "color": "rgba(111, 66, 33, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "100 ml"
+      },
+      {
+        "name": "コーラ",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.1001cocktails.com/recettes/recette_diesel_355587.aspx"
+  },
+  "beer+calpis": {
+    "name": "ダブルカルチャード",
+    "enName": "Double Cultured",
+    "abv": 4.3,
+    "taste": [
+      "甘酸っぱい",
+      "まろやか",
+      "爽快"
+    ],
+    "description": "カルピスの原液をビールで割る、乳酸飲料の甘酸っぱさが特徴のカクテル。乳酸菌と酵母という二つの発酵を名前に持ち、淡くにごった色合いになります。 材料の補足：ビール：ラガー。カルピス：希釈用原液。",
+    "color": "rgba(226, 218, 166, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "180 ml"
+      },
+      {
+        "name": "カルピス",
+        "amount": "30 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column_cat/beer_plan/"
+  },
+  "beer+white_wine": {
+    "name": "ビア・スプリッツァー",
+    "enName": "Beer Spritzer",
+    "abv": 8.5,
+    "taste": [
+      "辛口",
+      "爽快",
+      "フルーティー"
+    ],
+    "description": "白ワインをビールで伸ばす、ワインの香りと麦芽のコクを合わせたカクテル。辛口の白ワインを使えば甘さを抑えた仕上がりになり、料理にも合わせやすい一杯です。 材料の補足：ビール：ラガー。",
+    "color": "rgba(220, 206, 136, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "100 ml"
+      },
+      {
+        "name": "辛口白ワイン",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "白ワインとビール、ワイングラスを冷やします。",
+      "白ワインを注いでからビールを加え、静かに混ぜます。"
+    ],
+    "sourceUrl": "https://www.nipponbeer.jp/column_tag/ビア・スプリッツァー/"
+  },
+  "beer+cider": {
+    "name": "スネークバイト",
+    "enName": "Snakebite",
+    "abv": 4,
+    "taste": [
+      "フルーティー",
+      "爽快",
+      "甘酸っぱい"
+    ],
+    "description": "リンゴの発泡酒シードルとビールを同量で合わせるカクテル。果実の香りが麦芽の風味に重なり、ジュース割りとは異なるすっきりとした味になります。 材料の補足：ビール：ラガー。シードル・スイート：3%。",
+    "color": "rgba(214, 177, 74, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "100 ml"
+      },
+      {
+        "name": "シードル・スイート",
+        "amount": "100 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.asahibeer.co.jp/cocktailguide/recipe/index.psp.html?ID=2000000092"
+  },
+  "stout+champagne": {
+    "name": "ブラック・ベルベット",
+    "enName": "Black Velvet",
+    "abv": 8.5,
+    "taste": [
+      "香ばしい",
+      "辛口",
+      "まろやか"
+    ],
+    "description": "スタウトとシャンパンの泡を合わせる、黒い色合いのカクテル。麦芽の焙煎香にワインの酸味が加わり、材料二つながら奥行きのある味を楽しめます。",
+    "color": "rgba(45, 30, 25, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": false,
+    "ingredients": [
+      {
+        "name": "スタウト",
+        "amount": "90 ml"
+      },
+      {
+        "name": "シャンパン",
+        "amount": "90 ml"
+      }
+    ],
+    "method": [
+      "材料とフルートグラスを冷やします。",
+      "スタウトとシャンパンをゆっくり注ぎ合わせます。"
+    ],
+    "sourceUrl": "https://www.guinness.com/en-af/experiences/recipes/guinness-black-velvet"
+  },
+  "beer+whiskey": {
+    "name": "ボイラーメーカー",
+    "enName": "Boilermaker",
+    "abv": 8.9,
+    "taste": [
+      "香ばしい",
+      "コク",
+      "辛口"
+    ],
+    "description": "ウイスキーの樽香をビールに重ねる、材料二つの力強いカクテル。ここではグラスの中で静かに混ぜるスタイルを採用し、麦芽と樽の風味をゆっくり味わいます。 材料の補足：ビール：ラガー。",
+    "color": "rgba(186, 130, 44, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": false,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "240 ml"
+      },
+      {
+        "name": "バーボンウイスキー",
+        "amount": "30 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.abc.virginia.gov/products/recipes/historical/boilermaker"
+  },
+  "beer+grenadine+lemonade": {
+    "name": "モナコ",
+    "enName": "Monaco",
+    "abv": 3.4,
+    "taste": [
+      "甘口",
+      "フルーティー",
+      "爽快"
+    ],
+    "description": "ビールにレモン系の炭酸飲料とグレナデンを重ねた、赤みのあるカクテル。シロップの甘さを炭酸と麦芽のほろ苦さでまとめる、フランスのカフェ風の一杯です。 材料の補足：ビール：ラガー。レモンスカッシュ：加糖・炭酸入り。",
+    "color": "rgba(222, 113, 89, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "150 ml"
+      },
+      {
+        "name": "レモンスカッシュ",
+        "amount": "50 ml"
+      },
+      {
+        "name": "グレナデンシロップ",
+        "amount": "20 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.destinationcocktails.fr/recette/recette-monaco/"
+  },
+  "beer+grenadine": {
+    "name": "タンゴ",
+    "enName": "Tango",
+    "abv": 4.4,
+    "taste": [
+      "甘口",
+      "フルーティー",
+      "ほろ苦い"
+    ],
+    "description": "グレナデンシロップでビールに甘さと赤い色を添えるシンプルなカクテル。モナコからレモン系炭酸を抜いた形で、よりビールの味わいが前に出ます。 材料の補足：ビール：ラガー。",
+    "color": "rgba(200, 100, 72, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "150 ml"
+      },
+      {
+        "name": "グレナデンシロップ",
+        "amount": "20 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.destinationcocktails.fr/recette/recette-monaco/"
+  },
+  "beer+lime+salt": {
+    "name": "チェラーダ",
+    "enName": "Chelada",
+    "abv": 4.3,
+    "taste": [
+      "酸っぱい",
+      "塩味",
+      "爽快"
+    ],
+    "description": "よく冷えたビールにライムをしっかり搾り、塩で輪郭をつけるメキシコの一杯。トマトや辛味ソースを使わず、柑橘とビールのすっきりした味を楽しみます。 材料の補足：ビール：メキシカンラガー。",
+    "color": "rgba(218, 190, 87, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "360 ml"
+      },
+      {
+        "name": "ライムジュース",
+        "amount": "60 ml"
+      },
+      {
+        "name": "塩",
+        "amount": "少々（縁用と味付け用）"
+      }
+    ],
+    "method": [
+      "大きめのタンブラーの縁を少量のライムジュースでぬらし、塩をつけます。",
+      "残りのライムジュースと塩ひとつまみを入れます。",
+      "冷えたビールをゆっくり注ぎ、泡が塩の縁まで達しないようにして軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.craftbeering.com/chelada-beer-authentic-recipe/"
+  },
+  "beer+hot_sauce+lime+oregano+salt+tomato": {
+    "name": "ミチェラーダ",
+    "enName": "Michelada",
+    "abv": 4,
+    "taste": [
+      "スパイシー",
+      "酸っぱい",
+      "旨味"
+    ],
+    "description": "ビールをライム、トマト、辛味ソースで仕上げるメキシコ系カクテル。ここではオレガノも加えるレストランの配合を採用し、香りと旨味のある一杯にします。 材料の補足：ビール：メキシカンラガー。",
+    "color": "rgba(197, 112, 56, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "cube",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "330 ml"
+      },
+      {
+        "name": "トマトジュース",
+        "amount": "60 ml"
+      },
+      {
+        "name": "ライムジュース",
+        "amount": "26 ml"
+      },
+      {
+        "name": "タバスコ",
+        "amount": "5 dash"
+      },
+      {
+        "name": "塩",
+        "amount": "少々（縁用と味付け用）"
+      },
+      {
+        "name": "乾燥オレガノ",
+        "amount": "ひとつまみ"
+      }
+    ],
+    "method": [
+      "大きめのタンブラーの縁をライムでぬらし、塩をつけます。",
+      "果汁、トマトジュース、タバスコ、塩、オレガノを混ぜます。",
+      "氷を4個入れ、冷えたビールを静かに注いで軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.tabasco.com/recipe/michelada-by-madre-liverpool/"
+  },
+  "beer+picon": {
+    "name": "ピコン・ビエール",
+    "enName": "Picon Biere",
+    "abv": 6.4,
+    "taste": [
+      "ほろ苦い",
+      "オレンジ",
+      "ハーブ"
+    ],
+    "description": "オレンジやハーブの苦みを持つピコンをビールに加えるフランスのカクテル。果汁割りとは違う複雑な甘苦さがあり、冷えたラガーの味を引き締めます。 材料の補足：ビール：ラガー。",
+    "color": "rgba(176, 113, 35, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": false,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "250 ml"
+      },
+      {
+        "name": "ピコン・ビエール",
+        "amount": "30 ml"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.piconaperitif.com/fr-fr/recette-picon-biere/"
+  },
+  "vodka+beer+hot_sauce": {
+    "name": "ビア・バスター",
+    "enName": "Beer Buster",
+    "abv": 14,
+    "taste": [
+      "スパイシー",
+      "辛口",
+      "力強い"
+    ],
+    "description": "ウォッカとビールにタバスコの刺激を添えたカクテル。軽い見た目でも度数はしっかりあるため、小さめの量をゆっくり味わいたいスパイシーな一杯です。 材料の補足：ウォッカ：50%。ビール：ラガー。",
+    "color": "rgba(215, 165, 55, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ウォッカ",
+        "amount": "60 ml"
+      },
+      {
+        "name": "ビール",
+        "amount": "240 ml"
+      },
+      {
+        "name": "タバスコ",
+        "amount": "2 dash"
+      }
+    ],
+    "method": [
+      "材料とタンブラーをあらかじめ冷やします。",
+      "ビール以外の材料を注ぎ、ビールをゆっくり加えます。",
+      "泡をつぶさないよう、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.crystalmixer.com/beer-buster-recipe/"
+  },
+  "beer+lime+raspberry+raspberry_juice": {
+    "name": "アイスド・ラズベリー",
+    "enName": "Iced Raspberry",
+    "abv": 4.8,
+    "taste": [
+      "甘酸っぱい",
+      "ベリー",
+      "フルーティー"
+    ],
+    "description": "ラズベリー果汁とリキュールを重ね、ライムで引き締めるビアカクテル。ベリーの香りと赤い色が特徴で、ビールのほろ苦さが甘さの余韻を整えます。 材料の補足：ビール：ラガー。",
+    "color": "rgba(206, 67, 103, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": true,
+    "ingredients": [
+      {
+        "name": "ビール",
+        "amount": "200 ml"
+      },
+      {
+        "name": "ラズベリージュース",
+        "amount": "60 ml"
+      },
+      {
+        "name": "ラズベリーリキュール",
+        "amount": "30 ml"
+      },
+      {
+        "name": "ライム",
+        "amount": "1/2個（2切れ）"
+      }
+    ],
+    "method": [
+      "大きめのタンブラーと材料をよく冷やします。",
+      "ビールを注ぎ、ラズベリーリキュールと果汁を加えます。",
+      "ライム2切れを搾り入れ、ごく軽く混ぜます。"
+    ],
+    "sourceUrl": "https://www.destinationcocktails.fr/recette/iced-raspberry/"
+  },
+  "beer+stout": {
+    "name": "ハーフ＆ハーフ",
+    "enName": "Half and Half",
+    "abv": 4.6,
+    "taste": [
+      "香ばしい",
+      "コク",
+      "ほろ苦い"
+    ],
+    "description": "ラガーとスタウトを半量ずつ合わせる、ビール同士のカクテル。軽い麦芽感に焙煎の香りを重ねられ、スタウトを静かに注ぐと二層の見た目も楽しめます。",
+    "color": "rgba(91, 60, 31, 0.85)",
+    "hasBubbles": true,
+    "garnish": null,
+    "ice": "none",
+    "summer": false,
+    "ingredients": [
+      {
+        "name": "ラガービール",
+        "amount": "150 ml"
+      },
+      {
+        "name": "ギネス・ドラフト",
+        "amount": "150 ml"
+      }
+    ],
+    "method": [
+      "大きめのタンブラーとビールを冷やします。",
+      "ラガーを注ぎ、スプーンの背に伝わせてスタウトを静かに重ねます。",
+      "層を残す場合は混ぜずに提供します。"
+    ],
+    "sourceUrl": "https://www.barbizmag.com/recipes-2/holidays/guinness-half-half-recipe/"
+  },
   // Approachable classics, checked against the individual primary sources.
   "campari+grapefruit+tonic": {
     name: "スプモーニ", enName: "Spumoni", abv: 5,
@@ -52,7 +731,7 @@ const cocktailDatabase = {
     sourceUrl: "https://iba-world.com/iba-cocktail/garibaldi/",
     ingredients: [
       { name: "カンパリ", amount: "45 ml" },
-      { name: "搾りたてのオレンジジュース", amount: "120 ml" },
+      { name: "オレンジジュース", amount: "120 ml" },
       { name: "オレンジカット", amount: "1個" }
     ],
     method: [
@@ -78,13 +757,13 @@ const cocktailDatabase = {
   "vodka+pineapple+raspberry": {
     name: "フレンチ・マティーニ", enName: "French Martini", abv: 22, isIBA: true,
     taste: ["甘酸っぱい", "ベリー", "フルーティー"],
-    description: "ウォッカにラズベリーリキュールとパイナップルジュースを合わせる、果実味のあるショートカクテル。三つの液体材料をシェイクし、レモンの香りで仕上げます。",
+    description: "ウォッカにラズベリーリキュールとパイナップルジュースを合わせる、果実味のあるショートカクテル。三つの液体材料をシェイクし、レモンの香りで仕上げます。公式レシピではフレッシュなパイナップルジュースを使用します。",
     color: "rgba(215, 144, 132, 0.85)", hasBubbles: false, garnish: null, ice: "none",
     sourceUrl: "https://iba-world.com/iba-cocktail/french-martini/",
     ingredients: [
       { name: "ウォッカ", amount: "45 ml" },
       { name: "ラズベリーリキュール", amount: "15 ml" },
-      { name: "フレッシュ・パイナップルジュース", amount: "15 ml" },
+      { name: "パイナップルジュース", amount: "15 ml" },
       { name: "レモンピール", amount: "1片" }
     ],
     method: [
@@ -100,7 +779,7 @@ const cocktailDatabase = {
     description: "メロンの甘い香りにオレンジリキュールとレモンを同量ずつ重ねた、緑色のショートカクテル。シェイクで冷やすと酸味がすっきりと広がります。",
     color: "rgba(145, 210, 45, 0.8)", hasBubbles: false, garnish: "cherry", ice: "none",
     sourceUrl: "https://www.midori-world.com/recipes/japanese-slipper/",
-    ingredients: [{ name: "MIDORI（メロンリキュール）", amount: "30 ml" }, { name: "トリプルセック", amount: "30 ml" }, { name: "レモンジュース", amount: "30 ml" }, { name: "マラスキーノチェリー", amount: "1個" }],
+    ingredients: [{ name: "MIDORI", amount: "30 ml" }, { name: "トリプルセック", amount: "30 ml" }, { name: "レモンジュース", amount: "30 ml" }, { name: "マラスキーノチェリー", amount: "1個" }],
     method: ["シェイカーにMIDORI、トリプルセック、レモンジュースと氷を入れます。", "よくシェイクし、氷を除いて冷やしたカクテルグラスに注ぎます。", "マラスキーノチェリーを飾ります。"]
   },
   "vodka+midori+orange": {
@@ -109,7 +788,7 @@ const cocktailDatabase = {
     description: "MIDORIとウォッカを同量で注ぎ、オレンジジュースで満たすロングカクテル。メロンと柑橘の香りが重なり、果実感のあるまろやかな味わいになります。",
     color: "rgba(170, 195, 55, 0.85)", hasBubbles: false, garnish: "orange", ice: "cube", summer: true,
     sourceUrl: "https://www.midori-world.com/recipes/melon-ball/",
-    ingredients: [{ name: "ウォッカ", amount: "30 ml" }, { name: "MIDORI（メロンリキュール）", amount: "30 ml" }, { name: "オレンジジュース", amount: "適量（目安 120 ml）" }, { name: "オレンジスライス", amount: "1枚" }],
+    ingredients: [{ name: "ウォッカ", amount: "30 ml" }, { name: "MIDORI", amount: "30 ml" }, { name: "オレンジジュース", amount: "適量（目安 120 ml）" }, { name: "オレンジスライス", amount: "1枚" }],
     method: ["グラスに氷を満たし、ウォッカとMIDORIを注ぎます。", "オレンジジュースで満たし、オレンジスライスを飾ります。"]
   },
   "rum+coconut+lime+midori+pineapple": {
@@ -120,7 +799,7 @@ const cocktailDatabase = {
     sourceUrl: "https://www.suntory.co.jp/wnb/essay/104.html",
     ingredients: [
       { name: "ゴールドラム", amount: "30 ml" },
-      { name: "MIDORI（メロンリキュール）", amount: "25 ml" },
+      { name: "MIDORI", amount: "25 ml" },
       { name: "パイナップルジュース", amount: "45 ml" },
       { name: "ココナッツミルク", amount: "15 ml" },
       { name: "ライムジュース", amount: "15 ml" },
@@ -141,7 +820,7 @@ const cocktailDatabase = {
     sourceUrl: "https://www.midori-world.com/recipes/midtown-muse/",
     ingredients: [
       { name: "山崎12年", amount: "45 ml" },
-      { name: "MIDORI（メロンリキュール）", amount: "20 ml" },
+      { name: "MIDORI", amount: "20 ml" },
       { name: "バニラリキュール", amount: "10 ml" },
       { name: "アンゴスチュラ・ビターズ", amount: "2〜3 dash" },
       { name: "オレンジピール", amount: "1片" }
@@ -155,15 +834,15 @@ const cocktailDatabase = {
   "whiskey+ginger_beer+lemon+midori+mint": {
     name: "サザン・ベル", enName: "Southern Belle", abv: 10,
     taste: ["爽快", "甘酸っぱい", "スパイシー"],
-    description: "バーボンとメロンリキュールにレモンとミントを合わせ、ジンジャービアで満たす一杯。樽の香りに柑橘とハーブ、生姜の刺激が重なるロングカクテルです。",
+    description: "バーボンとメロンリキュールにレモンとミントを合わせ、ジンジャービアで満たす一杯。樽の香りに柑橘とハーブ、生姜の刺激が重なるロングカクテルです。 材料の補足：メーカーズマーク：バーボン。ジンジャービア：ノンアルコール。",
     color: "rgba(155, 190, 65, 0.75)", hasBubbles: true, garnish: "mint", ice: "cube", summer: true,
     sourceUrl: "https://www.midori-world.com/recipes/southern-belle/",
     ingredients: [
-      { name: "メーカーズマーク（バーボン）", amount: "30 ml" },
-      { name: "MIDORI（メロンリキュール）", amount: "30 ml" },
+      { name: "メーカーズマーク", amount: "30 ml" },
+      { name: "MIDORI", amount: "30 ml" },
       { name: "レモンジュース", amount: "22.5 ml" },
       { name: "ミント", amount: "6枚＋飾り用" },
-      { name: "ジンジャービア（ノンアルコール）", amount: "適量（目安 100 ml）" }
+      { name: "ジンジャービア", amount: "適量（目安 100 ml）" }
     ],
     method: [
       "背の高いグラスにバーボン、MIDORI、レモンジュース、ミント6枚を入れます。",
@@ -207,7 +886,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
-      { name: "フレッシュ・レモン果汁", amount: "10 ml" },
+      { name: "レモンジュース", amount: "10 ml" },
       { name: "ジンジャーエール", amount: "適量 (約 120 ml)" }
     ],
     method: [
@@ -228,8 +907,8 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" },
-      { name: "フレッシュ・ライム", amount: "1/2 個" }
+      { name: "ソーダ", amount: "適量 (約 120 ml)" },
+      { name: "ライム", amount: "1/2 個" }
     ],
     method: [
       "グラスの底にライム1/2個を絞り、皮ごとそのまま入れます。",
@@ -329,9 +1008,9 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
-      { name: "フレッシュ・レモン果汁", amount: "30 ml" },
+      { name: "レモンジュース", amount: "30 ml" },
       { name: "シュガーシロップ", amount: "10 ml" },
-      { name: "ソーダ (炭酸水)", amount: "約 80 ml" }
+      { name: "ソーダ", amount: "約 80 ml" }
     ],
     method: [
       "シェイカーにジン、レモン果汁、シロップ、氷を入れてしっかりシェイクします。",
@@ -352,7 +1031,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
       { name: "トニックウォーター", amount: "60 ml" },
-      { name: "ソーダ (炭酸水)", amount: "60 ml" },
+      { name: "ソーダ", amount: "60 ml" },
       { name: "ライムカット", amount: "1個" }
     ],
     method: [
@@ -373,7 +1052,7 @@ const cocktailDatabase = {
     ice: "none",
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
-      { name: "牛乳 (ミルク)", amount: "120 ml" },
+      { name: "牛乳", amount: "120 ml" },
       { name: "シュガーシロップ", amount: "1 tsp" }
     ],
     method: [
@@ -409,7 +1088,7 @@ const cocktailDatabase = {
     enName: "Moscow Mule",
     abv: 10,
     taste: ["スパイシー", "爽快", "キレがある"],
-    description: "「モスクワのラバ（強情者）」という意味を持つ世界的有名カクテル。ウォッカのクリアな喉ごしにライムの酸味、ジンジャーエールの辛みが爽快です。",
+    description: "「モスクワのラバ（強情者）」という意味を持つ世界的有名カクテル。ウォッカのクリアな喉ごしにライムの酸味、ジンジャーエールの辛みが爽快です。 材料の補足：ジンジャーエール：ジンジャービア。",
     color: "rgba(230, 200, 160, 0.65)",
     hasBubbles: true,
     garnish: "lime",
@@ -417,7 +1096,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ウォッカ", amount: "45 ml" },
-      { name: "ジンジャーエール (ジンジャービア)", amount: "120 ml" },
+      { name: "ジンジャーエール", amount: "120 ml" },
       { name: "ライムジュース", amount: "10 ml" }
     ],
     method: [
@@ -437,7 +1116,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ウォッカ", amount: "45 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量" },
+      { name: "ソーダ", amount: "適量" },
       { name: "カットレモン", amount: "1個" }
     ],
     method: [
@@ -488,7 +1167,7 @@ const cocktailDatabase = {
     enName: "Salty Dog",
     abv: 13,
     taste: ["さっぱり", "塩気と酸味", "フルーティー"],
-    description: "グラスのフチに塩を飾る「スノースタイル」が特徴のカクテル。グレープフルーツのさっぱりした酸味と苦味に塩気が絡み、絶妙な味わいを生み出します。",
+    description: "グラスのフチに塩を飾る「スノースタイル」が特徴のカクテル。グレープフルーツのさっぱりした酸味と苦味に塩気が絡み、絶妙な味わいを生み出します。 材料の補足：塩：スノースタイル用。",
     color: "rgba(255, 249, 196, 0.75)",
     hasBubbles: false,
     garnish: null,
@@ -498,7 +1177,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ウォッカ", amount: "40 ml" },
       { name: "グレープフルーツジュース", amount: "適量" },
-      { name: "塩 (スノースタイル用)", amount: "適量" }
+      { name: "塩", amount: "適量" }
     ],
     method: [
       "グラスのフチを濡らし、塩をまぶします（スノースタイル）。",
@@ -601,7 +1280,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ウォッカ", amount: "45 ml" },
       { name: "トニックウォーター", amount: "60 ml" },
-      { name: "ソーダ (炭酸水)", amount: "60 ml" }
+      { name: "ソーダ", amount: "60 ml" }
     ],
     method: [
       "氷入りグラスにウォッカを注ぎ、トニックとソーダを注ぎ込み、優しくステアします。"
@@ -644,7 +1323,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ホワイト・ラム", amount: "50 ml" },
       { name: "コーラ", amount: "120 ml" },
-      { name: "フレッシュ・ライム果汁", amount: "10 ml" }
+      { name: "ライムジュース", amount: "10 ml" }
     ],
     method: [
       "グラスに氷を入れ、ラムとライムジュースを注ぎ軽くかき混ぜます。",
@@ -665,10 +1344,10 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ホワイト・ラム", amount: "45 ml" },
-      { name: "フレッシュ・ライム果汁", amount: "20 ml" },
+      { name: "ライムジュース", amount: "20 ml" },
       { name: "ミントの葉", amount: "6枚" },
       { name: "砂糖", amount: "2 tsp" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "グラスの底にミント、砂糖、ライム果汁を入れ、マドラーで優しく潰します。",
@@ -688,7 +1367,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ホワイト・ラム", amount: "45 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" },
+      { name: "ソーダ", amount: "適量 (約 120 ml)" },
       { name: "ライムカット", amount: "1個" }
     ],
     method: [
@@ -728,7 +1407,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ホワイト・ラム", amount: "45 ml" },
-      { name: "フレッシュ・レモン果汁", amount: "20 ml" },
+      { name: "レモンジュース", amount: "20 ml" },
       { name: "シュガーシロップ", amount: "1 tsp" },
       { name: "ジンジャーエール", amount: "適量" }
     ],
@@ -811,7 +1490,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ホワイト・ラム", amount: "45 ml" },
       { name: "トニックウォーター", amount: "60 ml" },
-      { name: "ソーダ (炭酸水)", amount: "60 ml" }
+      { name: "ソーダ", amount: "60 ml" }
     ],
     method: [
       "氷入りグラスにラムを注ぎ、トニックとソーダを同量注ぎ、軽くステアします。"
@@ -892,7 +1571,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "テキーラ", amount: "45 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "氷を入れたグラスにテキーラを注ぎ、ソーダをゆっくりと注ぎ入れ、軽く1ステアしてライムを添えます。"
@@ -903,7 +1582,7 @@ const cocktailDatabase = {
     enName: "Margarita",
     abv: 26,
     taste: ["強い", "塩気と酸味", "さっぱり"],
-    description: "テキーラをベースにした、世界で最も人気のあるIBA公認クラシックショートカクテル。キュラソーのオレンジの甘味とライムの酸味、グラスの縁の塩が完璧に調和します。",
+    description: "テキーラをベースにした、世界で最も人気のあるIBA公認クラシックショートカクテル。キュラソーのオレンジの甘味とライムの酸味、グラスの縁の塩が完璧に調和します。 材料の補足：塩：スノースタイル用。",
     color: "rgba(224, 242, 241, 0.35)",
     hasBubbles: false,
     garnish: "lime",
@@ -914,7 +1593,7 @@ const cocktailDatabase = {
       { name: "テキーラ", amount: "50 ml" },
       { name: "ホワイトキュラソー", amount: "20 ml" },
       { name: "ライムジュース", amount: "15 ml" },
-      { name: "塩 (スノースタイル用)", amount: "適量" }
+      { name: "塩", amount: "適量" }
     ],
     method: [
       "カクテルグラスのフチを濡らし、塩をまぶします（スノースタイル）。",
@@ -926,7 +1605,7 @@ const cocktailDatabase = {
     enName: "Margarita (Standard)",
     abv: 26,
     taste: ["強い", "塩気と酸味", "さっぱり"],
-    description: "テキーラをベースにした、世界で最も人気のあるIBA公認クラシックショートカクテル。キュラソーのオレンジの甘味とライムの酸味、グラスのフチの塩が完璧に調和します。",
+    description: "テキーラをベースにした、世界で最も人気のあるIBA公認クラシックショートカクテル。キュラソーのオレンジの甘味とライムの酸味、グラスのフチの塩が完璧に調和します。 材料の補足：塩：スノースタイル用。",
     color: "rgba(224, 242, 241, 0.35)",
     hasBubbles: false,
     garnish: "lime",
@@ -938,7 +1617,7 @@ const cocktailDatabase = {
       { name: "テキーラ", amount: "50 ml" },
       { name: "ホワイトキュラソー", amount: "20 ml" },
       { name: "ライムジュース", amount: "15 ml" },
-      { name: "塩 (スノースタイル用)", amount: "適量" }
+      { name: "塩", amount: "適量" }
     ],
     method: [
       "カクテルグラスのフチを濡らし、塩をまぶします（スノースタイル）。",
@@ -1001,7 +1680,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "テキーラ", amount: "45 ml" },
       { name: "グレープフルーツジュース", amount: "60 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量" },
+      { name: "ソーダ", amount: "適量" },
       { name: "ライムカット", amount: "1個" }
     ],
     method: [
@@ -1022,7 +1701,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "テキーラ", amount: "45 ml" },
       { name: "トニックウォーター", amount: "60 ml" },
-      { name: "ソーダ (炭酸水)", amount: "60 ml" }
+      { name: "ソーダ", amount: "60 ml" }
     ],
     method: [
       "氷を満たしたグラスにテキーラを注ぎ、トニックとソーダを満たし、軽くステアしてライムを添えます。"
@@ -1042,7 +1721,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ウイスキー", amount: "40 ml" },
-      { name: "ソーダ (炭酸水)", amount: "120 ml" }
+      { name: "ソーダ", amount: "120 ml" }
     ],
     method: [
       "グラスに氷をたっぷり入れ、ウイスキーを注いでステアし冷やします。",
@@ -1119,7 +1798,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ブランデー", amount: "40 ml" },
-      { name: "ソーダ (炭酸水)", amount: "120 ml" }
+      { name: "ソーダ", amount: "120 ml" }
     ],
     method: [
       "氷入りグラスにブランデーを注いで冷やします。",
@@ -1131,14 +1810,14 @@ const cocktailDatabase = {
     enName: "Sidecar",
     abv: 26,
     taste: ["強い", "甘酸っぱい", "芳醇"],
-    description: "ブランデーベースを代表するIBA公認クラシックショートカクテル。ブランデーの豊かなコク、ホワイトキュラソーのオレンジの甘味、レモンの酸味が三位一体となった最高峰のカクテルです。",
+    description: "ブランデーベースを代表するIBA公認クラシックショートカクテル。ブランデーの豊かなコク、ホワイトキュラソーのオレンジの甘味、レモンの酸味が三位一体となった最高峰のカクテルです。 材料の補足：ブランデー：コニャック。",
     color: "rgba(235, 160, 60, 0.65)",
     hasBubbles: false,
     garnish: "lemon",
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "ブランデー (コニャック)", amount: "50 ml" },
+      { name: "ブランデー", amount: "50 ml" },
       { name: "ホワイトキュラソー", amount: "20 ml" },
       { name: "レモンジュース", amount: "20 ml" }
     ],
@@ -1152,7 +1831,7 @@ const cocktailDatabase = {
     enName: "Horse's Neck",
     abv: 11,
     taste: ["芳醇", "スパイシー", "レモンのアロマ"],
-    description: "「馬の首」という名を持つ伝統的なカクテル。螺旋状に剥いたレモンの皮をグラスに飾り、ブランデーの芳醇なブドウの香りとジンジャーの辛みが調和します。",
+    description: "「馬の首」という名を持つ伝統的なカクテル。螺旋状に剥いたレモンの皮をグラスに飾り、ブランデーの芳醇なブドウの香りとジンジャーの辛みが調和します。 材料の補足：レモンの皮：螺旋状。",
     color: "rgba(215, 130, 60, 0.55)",
     hasBubbles: true,
     garnish: "lemon",
@@ -1161,7 +1840,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "コニャック", amount: "40 ml" },
       { name: "ジンジャーエール", amount: "120 ml" },
-      { name: "レモンの皮 (螺旋状)", amount: "1個分" }
+      { name: "レモンの皮", amount: "1個分" }
     ],
     method: [
       "らせん状に剥いたレモンの皮をグラスに入れ、端をフチに掛けます。",
@@ -1201,7 +1880,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ピーチリキュール", amount: "45 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "氷を満たしたグラスにリキュールを注ぎ、冷えたソーダを満たして底から優しく1回ステアします。レモンを添えます。"
@@ -1238,7 +1917,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "ピーチリキュール", amount: "45 ml" },
-      { name: "牛乳 (ミルク)", amount: "120 ml" }
+      { name: "牛乳", amount: "120 ml" }
     ],
     method: [
       "氷を満たしたロックグラスにピーチリキュールと牛乳を注ぎ、きれいな乳白色になるまでしっかりとかき混ぜます。"
@@ -1277,7 +1956,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "カシスリキュール", amount: "45 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "氷を満たしたグラスにカシスを注ぎ、冷えたソーダを満たして、底からしっかりステアします。レモンを添えます。"
@@ -1295,7 +1974,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "カシスリキュール", amount: "45 ml" },
-      { name: "牛乳 (ミルク)", amount: "120 ml" }
+      { name: "牛乳", amount: "120 ml" }
     ],
     method: [
       "グラスに氷をたっぷり入れ、カシスリキュールを注ぎます。",
@@ -1314,7 +1993,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "カシスリキュール", amount: "30 ml" },
-      { name: "フレッシュ・レモン果汁", amount: "10 ml" },
+      { name: "レモンジュース", amount: "10 ml" },
       { name: "コーラ", amount: "適量" }
     ],
     method: [
@@ -1334,7 +2013,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "カシスリキュール", amount: "30 ml" },
-      { name: "フレッシュ・レモン果汁", amount: "10 ml" },
+      { name: "レモンジュース", amount: "10 ml" },
       { name: "ジンジャーエール", amount: "適量" }
     ],
     method: [
@@ -1374,7 +2053,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "カシスリキュール", amount: "45 ml" },
       { name: "トニックウォーター", amount: "60 ml" },
-      { name: "ソーダ (炭酸水)", amount: "60 ml" }
+      { name: "ソーダ", amount: "60 ml" }
     ],
     method: [
       "氷入りグラスにカシスを注ぎ、トニックとソーダを注いで底からしっかりステアします。"
@@ -1387,14 +2066,14 @@ const cocktailDatabase = {
     enName: "Kahlua & Milk",
     abv: 6,
     taste: ["クリーミー", "極甘", "大人気デザート"],
-    description: "言わずと知れたカクテル界の極甘レジェンド。下にコーヒーリキュール、上に牛乳をそっと浮かべた2層スタイルが特徴的で、混ぜて飲むと濃厚なコーヒー牛乳味になります。",
+    description: "言わずと知れたカクテル界の極甘レジェンド。下にコーヒーリキュール、上に牛乳をそっと浮かべた2層スタイルが特徴的で、混ぜて飲むと濃厚なコーヒー牛乳味になります。 材料の補足：コーヒーリキュール：カルーア。",
     color: "linear-gradient(to top, rgba(78, 52, 46, 0.95) 0%, rgba(255, 255, 255, 0.9) 70%)",
     hasBubbles: false,
     garnish: null,
     ice: "cube",
     ingredients: [
-      { name: "コーヒーリキュール (カルーア)", amount: "45 ml" },
-      { name: "牛乳 (ミルク)", amount: "120 ml" }
+      { name: "コーヒーリキュール", amount: "45 ml" },
+      { name: "牛乳", amount: "120 ml" }
     ],
     method: [
       "グラスに氷を満たし、まずコーヒーリキュールを注ぎます。",
@@ -1413,7 +2092,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "コーヒーリキュール", amount: "45 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "グラスに氷を詰め、コーヒーリキュールを注ぎます。",
@@ -1549,14 +2228,14 @@ const cocktailDatabase = {
     enName: "Manhattan",
     abv: 32,
     taste: ["芳醇", "ビター＆スイート", "スパイシー"],
-    description: "「カクテルの女王」と称される名作。ウイスキーの力強さにスイートベルモットの甘味とビターズの香りが合わさる都会的な一杯。",
+    description: "「カクテルの女王」と称される名作。ウイスキーの力強さにスイートベルモットの甘味とビターズの香りが合わさる都会的な一杯。 材料の補足：ライ・ウイスキー：またはバーボン。",
     color: "rgba(183, 28, 28, 0.8)",
     hasBubbles: false,
     garnish: "cherry",
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "ライ・ウイスキー (またはバーボン)", amount: "50 ml" },
+      { name: "ライ・ウイスキー", amount: "50 ml" },
       { name: "スイート・ベルモット", amount: "20 ml" },
       { name: "アンゴスチュラ・ビターズ", amount: "1ダッシュ" },
       { name: "マラスキーノ・チェリー", amount: "1個" }
@@ -1676,7 +2355,7 @@ const cocktailDatabase = {
     enName: "Between the Sheets",
     abv: 30,
     taste: ["強い", "甘酸っぱい", "芳醇"],
-    description: "「シーツの間」という名を持つセクシーなカクテル。ブランデーとラムという2つの強いお酒が織りなす、パンチがありつつも華やかな味わい。",
+    description: "「シーツの間」という名を持つセクシーなカクテル。ブランデーとラムという2つの強いお酒が織りなす、パンチがありつつも華やかな味わい。 材料の補足：ブランデー：コニャック。",
     color: "rgba(255, 204, 128, 0.7)",
     hasBubbles: false,
     garnish: "lemon",
@@ -1684,7 +2363,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ホワイト・ラム", amount: "30 ml" },
-      { name: "ブランデー (コニャック)", amount: "30 ml" },
+      { name: "ブランデー", amount: "30 ml" },
       { name: "ホワイトキュラソー", amount: "30 ml" },
       { name: "レモンジュース", amount: "20 ml" }
     ],
@@ -1698,7 +2377,7 @@ const cocktailDatabase = {
     enName: "Moscow Mule",
     abv: 12,
     taste: ["スパイシー", "爽快", "キレがある"],
-    description: "「モスクワのラバ（キックが強い）」という意味。ウォッカのクセのなさにジンジャーエールの辛みとライムの酸味が映える、定番中の定番。",
+    description: "「モスクワのラバ（キックが強い）」という意味。ウォッカのクセのなさにジンジャーエールの辛みとライムの酸味が映える、定番中の定番。 材料の補足：ジンジャーエール：ジンジャービア。",
     color: "rgba(244, 208, 63, 0.5)",
     hasBubbles: true,
     garnish: "lime",
@@ -1707,7 +2386,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ウォッカ", amount: "45 ml" },
-      { name: "ジンジャーエール (ジンジャービア)", amount: "120 ml" },
+      { name: "ジンジャーエール", amount: "120 ml" },
       { name: "ライムジュース", amount: "10 ml" }
     ],
     method: [
@@ -1720,7 +2399,7 @@ const cocktailDatabase = {
     enName: "Bloody Mary",
     abv: 10,
     taste: ["塩辛い", "スパイシー", "旨味"],
-    description: "トマトジュースの旨味とウォッカを合わせた、「飲むサラダ」とも呼ばれるカクテル。タバスコやウスターソースなどで好みの味にアレンジできます。",
+    description: "トマトジュースの旨味とウォッカを合わせた、「飲むサラダ」とも呼ばれるカクテル。タバスコやウスターソースなどで好みの味にアレンジできます。 材料の補足：スパイス：タバスコ・塩コショウ等。",
     color: "rgba(211, 47, 47, 0.95)",
     hasBubbles: false,
     garnish: "lemon",
@@ -1730,7 +2409,7 @@ const cocktailDatabase = {
       { name: "ウォッカ", amount: "45 ml" },
       { name: "トマトジュース", amount: "90 ml" },
       { name: "レモンジュース", amount: "15 ml" },
-      { name: "スパイス (タバスコ・塩コショウ等)", amount: "少々" }
+      { name: "スパイス", amount: "少々" }
     ],
     method: [
       "氷を入れたグラスに材料をすべて注ぎ、ステアします。",
@@ -1742,7 +2421,7 @@ const cocktailDatabase = {
     enName: "Espresso Martini",
     abv: 20,
     taste: ["コーヒーの苦味", "甘い", "濃厚"],
-    description: "現代のクラシックとも言える、ロンドンのバーテンダーが考案したカクテル。エスプレッソの濃厚な香りとクリーミーな泡が特徴です。",
+    description: "現代のクラシックとも言える、ロンドンのバーテンダーが考案したカクテル。エスプレッソの濃厚な香りとクリーミーな泡が特徴です。 材料の補足：エスプレッソ：冷ましたもの。",
     color: "rgba(46, 31, 25, 0.95)",
     hasBubbles: false,
     garnish: "coffee_bean",
@@ -1752,7 +2431,7 @@ const cocktailDatabase = {
       { name: "ウォッカ", amount: "50 ml" },
       { name: "コーヒーリキュール", amount: "30 ml" },
       { name: "シュガーシロップ", amount: "10 ml" },
-      { name: "エスプレッソ (冷ましたもの)", amount: "1ショット" }
+      { name: "エスプレッソ", amount: "1ショット" }
     ],
     method: [
       "シェイカーに氷と全ての材料を入れ、強い力でしっかりとシェイクし泡立てます。",
@@ -1832,7 +2511,7 @@ const cocktailDatabase = {
     enName: "Blue Margarita",
     abv: 24,
     taste: ["甘酸っぱい", "塩辛い", "キレがある"],
-    description: "定番マルガリータのホワイトキュラソーをブルーキュラソーに替えた夏の装い。スノースタイルの白い縁取りが、深い青のコントラストをより鮮やかに見せてくれます。",
+    description: "定番マルガリータのホワイトキュラソーをブルーキュラソーに替えた夏の装い。スノースタイルの白い縁取りが、深い青のコントラストをより鮮やかに見せてくれます。 材料の補足：食塩：スノースタイル用。",
     color: "rgba(3, 155, 205, 0.8)",
     hasBubbles: false,
     garnish: "lime",
@@ -1843,7 +2522,7 @@ const cocktailDatabase = {
       { name: "テキーラ", amount: "30 ml" },
       { name: "ブルーキュラソー", amount: "15 ml" },
       { name: "ライムジュース", amount: "15 ml" },
-      { name: "食塩 (スノースタイル用)", amount: "適量" }
+      { name: "食塩", amount: "適量" }
     ],
     method: [
       "カクテルグラスの縁をライムで湿らせ、塩をつけてスノースタイルにします。",
@@ -1952,7 +2631,7 @@ const cocktailDatabase = {
     enName: "Cosmopolitan",
     abv: 24,
     taste: ["甘酸っぱい", "華やか", "ドライ"],
-    description: "90年代のニューヨークで一世を風靡し、今なお愛され続けるモダンクラシック。クランベリーのルビー色と、ライムとキュラソーが描く輪郭の美しさで知られます。",
+    description: "90年代のニューヨークで一世を風靡し、今なお愛され続けるモダンクラシック。クランベリーのルビー色と、ライムとキュラソーが描く輪郭の美しさで知られます。 材料の補足：ウォッカ：シトロン。",
     color: "rgba(199, 43, 74, 0.85)",
     hasBubbles: false,
     garnish: "lime",
@@ -1960,7 +2639,7 @@ const cocktailDatabase = {
     isIBA: true,
     summer: true,
     ingredients: [
-      { name: "ウォッカ (シトロン)", amount: "40 ml" },
+      { name: "ウォッカ", amount: "40 ml" },
       { name: "ホワイトキュラソー", amount: "15 ml" },
       { name: "クランベリージュース", amount: "30 ml" },
       { name: "ライムジュース", amount: "15 ml" }
@@ -2185,7 +2864,7 @@ const cocktailDatabase = {
     enName: "French 75",
     abv: 16,
     taste: ["爽快", "甘酸っぱい", "華やか"],
-    description: "第一次大戦下のパリ「ハリーズ・ニューヨーク・バー」で生まれ、当時のフランス軍75mm砲の衝撃になぞらえて名付けられた一杯。ジンのサワーをシャンパンで伸ばすため、軽やかに見えて芯が強く残ります。",
+    description: "第一次大戦下のパリ「ハリーズ・ニューヨーク・バー」で生まれ、当時のフランス軍75mm砲の衝撃になぞらえて名付けられた一杯。ジンのサワーをシャンパンで伸ばすため、軽やかに見えて芯が強く残ります。 材料の補足：シャンパン：辛口。",
     color: "rgba(246, 232, 178, 0.6)",
     hasBubbles: true,
     garnish: "lemon",
@@ -2195,7 +2874,7 @@ const cocktailDatabase = {
       { name: "ドライ・ジン", amount: "30 ml" },
       { name: "レモンジュース", amount: "15 ml" },
       { name: "シュガーシロップ", amount: "15 ml" },
-      { name: "シャンパン (辛口)", amount: "60 ml" }
+      { name: "シャンパン", amount: "60 ml" }
     ],
     method: [
       "シェイカーに氷、ジン、レモンジュース、シロップを入れてシェイクします。",
@@ -2231,7 +2910,7 @@ const cocktailDatabase = {
     enName: "Corpse Reviver No.2",
     abv: 24,
     taste: ["爽快", "甘酸っぱい", "ハーバル"],
-    description: "「死者をも蘇らせる」迎え酒として1930年の『サヴォイ・カクテルブック』に載った一杯。同書は「四杯続けて飲めば再び死ぬ」と釘を刺しています。アブサンはグラスに回して香りだけを残します。",
+    description: "「死者をも蘇らせる」迎え酒として1930年の『サヴォイ・カクテルブック』に載った一杯。同書は「四杯続けて飲めば再び死ぬ」と釘を刺しています。アブサンはグラスに回して香りだけを残します。 材料の補足：リレ・ブラン：またはドライ・ベルモット。",
     color: "rgba(238, 240, 205, 0.6)",
     hasBubbles: false,
     garnish: "lemon",
@@ -2240,7 +2919,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "ドライ・ジン", amount: "30 ml" },
       { name: "ホワイトキュラソー", amount: "30 ml" },
-      { name: "リレ・ブラン (またはドライ・ベルモット)", amount: "30 ml" },
+      { name: "リレ・ブラン", amount: "30 ml" },
       { name: "レモンジュース", amount: "30 ml" },
       { name: "アブサン", amount: "グラスに回す分" }
     ],
@@ -2255,7 +2934,7 @@ const cocktailDatabase = {
     enName: "Clover Club",
     abv: 18,
     taste: ["まろやか", "甘酸っぱい", "ベリー"],
-    description: "20世紀初頭フィラデルフィアの紳士クラブの名を冠した、淡紅色のサワー。卵白を硬くシェイクして立てた泡が、ラズベリーの酸味をやわらかく包みます。",
+    description: "20世紀初頭フィラデルフィアの紳士クラブの名を冠した、淡紅色のサワー。卵白を硬くシェイクして立てた泡が、ラズベリーの酸味をやわらかく包みます。 材料の補足：ラズベリー・シロップ：またはフランボワーズ・リキュール。",
     color: "rgba(228, 132, 148, 0.82)",
     hasBubbles: false,
     garnish: null,
@@ -2263,7 +2942,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "45 ml" },
-      { name: "ラズベリー・シロップ (またはフランボワーズ・リキュール)", amount: "15 ml" },
+      { name: "ラズベリー・シロップ", amount: "15 ml" },
       { name: "レモンジュース", amount: "15 ml" },
       { name: "卵白", amount: "1 個分" }
     ],
@@ -2299,7 +2978,7 @@ const cocktailDatabase = {
     enName: "Bee's Knees",
     abv: 22,
     taste: ["まろやか", "甘酸っぱい", "蜂蜜の香り"],
-    description: "禁酒法時代、質の悪いジンの匂いを蜂蜜とレモンで覆うために生まれたと伝わります。名前は当時の俗語で「最高のもの」。今では隠すもののない良いジンでこそ映える一杯です。",
+    description: "禁酒法時代、質の悪いジンの匂いを蜂蜜とレモンで覆うために生まれたと伝わります。名前は当時の俗語で「最高のもの」。今では隠すもののない良いジンでこそ映える一杯です。 材料の補足：ハニーシロップ：蜂蜜:水 = 1:1。",
     color: "rgba(240, 216, 140, 0.7)",
     hasBubbles: false,
     garnish: "lemon",
@@ -2307,7 +2986,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ドライ・ジン", amount: "52.5 ml" },
-      { name: "ハニーシロップ (蜂蜜:水 = 1:1)", amount: "2 tsp" },
+      { name: "ハニーシロップ", amount: "2 tsp" },
       { name: "レモンジュース", amount: "22.5 ml" },
       { name: "オレンジジュース", amount: "22.5 ml" }
     ],
@@ -2346,7 +3025,7 @@ const cocktailDatabase = {
     enName: "Bramble",
     abv: 20,
     taste: ["甘酸っぱい", "ベリー", "さっぱり"],
-    description: "1980年代ロンドンのバー「フレッズ・クラブ」でディック・ブラッドセルが創作した、現代の古典。クラッシュアイスの上からクレーム・ド・ミュール（黒すぐり色のブラックベリー・リキュール）を垂らし、茨（ブランブル）の名の通りの筋を描かせます。",
+    description: "1980年代ロンドンのバー「フレッズ・クラブ」でディック・ブラッドセルが創作した、現代の古典。クラッシュアイスの上からクレーム・ド・ミュール（黒すぐり色のブラックベリー・リキュール）を垂らし、茨（ブランブル）の名の通りの筋を描かせます。 材料の補足：クレーム・ド・ミュール：ブラックベリー。",
     color: "rgba(190, 60, 96, 0.75)",
     hasBubbles: false,
     garnish: "lemon",
@@ -2357,7 +3036,7 @@ const cocktailDatabase = {
       { name: "ドライ・ジン", amount: "50 ml" },
       { name: "レモンジュース", amount: "25 ml" },
       { name: "シュガーシロップ", amount: "10 ml" },
-      { name: "クレーム・ド・ミュール (ブラックベリー)", amount: "15 ml" }
+      { name: "クレーム・ド・ミュール", amount: "15 ml" }
     ],
     method: [
       "シェイカーに氷、ジン、レモン、シロップを入れてシェイクします。",
@@ -2493,7 +3172,7 @@ const cocktailDatabase = {
     enName: "Dark 'n' Stormy",
     abv: 10,
     taste: ["スパイシー", "コクのある甘み", "爽快"],
-    description: "バミューダの国民的一杯で、ダークラムがジンジャービアの上に落とす影を「嵐雲」に見立てた名前。混ぜずに層のまま供し、飲み手が崩していくのが作法です。",
+    description: "バミューダの国民的一杯で、ダークラムがジンジャービアの上に落とす影を「嵐雲」に見立てた名前。混ぜずに層のまま供し、飲み手が崩していくのが作法です。 材料の補足：ジンジャービア：またはジンジャーエール。",
     color: "rgba(150, 96, 44, 0.8)",
     hasBubbles: true,
     garnish: "lime",
@@ -2502,7 +3181,7 @@ const cocktailDatabase = {
     summer: true,
     ingredients: [
       { name: "ダーク・ラム", amount: "60 ml" },
-      { name: "ジンジャービア (またはジンジャーエール)", amount: "100 ml" },
+      { name: "ジンジャービア", amount: "100 ml" },
       { name: "ライムジュース", amount: "10 ml" }
     ],
     method: [
@@ -2516,7 +3195,7 @@ const cocktailDatabase = {
     enName: "Sazerac",
     abv: 30,
     taste: ["芳醇", "アニス香", "ほんのり甘い"],
-    description: "ニューオーリンズが生んだアメリカ最古級のカクテルで、同市の公式カクテルにも指定されています。アブサンはグラスに香りを移すためだけに使い、ペイショーズ・ビターズの薬草感が土台を作ります。IBAの公式仕様はコニャックですが、南北戦争後の入手難からライ・ウイスキーに置き換わり、現在はこちらが一般的です。",
+    description: "ニューオーリンズが生んだアメリカ最古級のカクテルで、同市の公式カクテルにも指定されています。アブサンはグラスに香りを移すためだけに使い、ペイショーズ・ビターズの薬草感が土台を作ります。IBAの公式仕様はコニャックですが、南北戦争後の入手難からライ・ウイスキーに置き換わり、現在はこちらが一般的です。 材料の補足：角砂糖：またはシロップ。",
     color: "rgba(196, 128, 56, 0.75)",
     hasBubbles: false,
     garnish: "lemon",
@@ -2524,7 +3203,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ライ・ウイスキー", amount: "50 ml" },
-      { name: "角砂糖 (またはシロップ)", amount: "1 個" },
+      { name: "角砂糖", amount: "1 個" },
       { name: "ペイショーズ・ビターズ", amount: "2 dash" },
       { name: "アブサン", amount: "グラスに回す分" }
     ],
@@ -2604,7 +3283,7 @@ const cocktailDatabase = {
     enName: "Penicillin",
     abv: 22,
     taste: ["スモーキー", "甘酸っぱい", "生姜の香り"],
-    description: "2005年ニューヨークのサム・ロスが創作した現代の古典。蜂蜜と生姜とレモンという風邪の民間薬の組み合わせに、アイラの煙を最後に浮かべます。名前はその処方箋めいた構成から。",
+    description: "2005年ニューヨークのサム・ロスが創作した現代の古典。蜂蜜と生姜とレモンという風邪の民間薬の組み合わせに、アイラの煙を最後に浮かべます。名前はその処方箋めいた構成から。 材料の補足：ハニーシロップ：生姜を漬けたもの。アイラ・モルト：フロート用。",
     color: "rgba(214, 166, 74, 0.75)",
     hasBubbles: false,
     garnish: "lemon",
@@ -2612,9 +3291,9 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ブレンデッド・スコッチ", amount: "60 ml" },
-      { name: "ハニーシロップ (生姜を漬けたもの)", amount: "22 ml" },
+      { name: "ハニーシロップ", amount: "22 ml" },
       { name: "レモンジュース", amount: "22 ml" },
-      { name: "アイラ・モルト (フロート用)", amount: "7.5 ml" }
+      { name: "アイラ・モルト", amount: "7.5 ml" }
     ],
     method: [
       "蜂蜜シロップに薄切りの生姜を漬け込んでおきます。",
@@ -2627,7 +3306,7 @@ const cocktailDatabase = {
     enName: "Stinger",
     abv: 32,
     taste: ["清涼感", "甘口", "芳醇"],
-    description: "「針を刺す」の名の通り、ブランデーの芳醇さの後にミントが鋭く抜けていく食後の定番。20世紀初頭のニューヨーク社交界で愛され、映画にもたびたび登場しました。",
+    description: "「針を刺す」の名の通り、ブランデーの芳醇さの後にミントが鋭く抜けていく食後の定番。20世紀初頭のニューヨーク社交界で愛され、映画にもたびたび登場しました。 材料の補足：クレーム・ド・ミント：ホワイト。",
     color: "rgba(198, 214, 190, 0.55)",
     hasBubbles: false,
     garnish: "mint",
@@ -2635,7 +3314,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "コニャック", amount: "50 ml" },
-      { name: "クレーム・ド・ミント (ホワイト)", amount: "20 ml" }
+      { name: "クレーム・ド・ミント", amount: "20 ml" }
     ],
     method: [
       "シェイカーに氷と材料を入れ、しっかりシェイクします。",
@@ -2670,14 +3349,14 @@ const cocktailDatabase = {
     enName: "Kir Royal",
     abv: 12,
     taste: ["フルーティー", "甘酸っぱい", "華やか"],
-    description: "白ワインで作るキールを、シャンパンに格上げした「王室風」。ディジョン市長フェリックス・キールが地元のカシスとワインを広めるために供したのが始まりです。",
+    description: "白ワインで作るキールを、シャンパンに格上げした「王室風」。ディジョン市長フェリックス・キールが地元のカシスとワインを広めるために供したのが始まりです。 材料の補足：シャンパン：辛口。",
     color: "rgba(180, 60, 110, 0.7)",
     hasBubbles: true,
     garnish: null,
     ice: "none",
     ingredients: [
       { name: "クレーム・ド・カシス", amount: "10 ml" },
-      { name: "シャンパン (辛口)", amount: "適量" }
+      { name: "シャンパン", amount: "適量" }
     ],
     method: [
       "冷やしたフルートグラスにカシスを注ぎます。",
@@ -2711,14 +3390,14 @@ const cocktailDatabase = {
     enName: "Bellini",
     abv: 8,
     taste: ["フルーティー", "みずみずしい甘口", "軽やか"],
-    description: "1948年ヴェネツィアのハリーズ・バーで生まれ、画家ベリーニの絵に見た桃色から名付けられました。本来は白桃のピューレを使い、プロセッコで伸ばします。",
+    description: "1948年ヴェネツィアのハリーズ・バーで生まれ、画家ベリーニの絵に見た桃色から名付けられました。本来は白桃のピューレを使い、プロセッコで伸ばします。 材料の補足：白桃のピューレ：またはピーチリキュール。",
     color: "rgba(250, 190, 170, 0.75)",
     hasBubbles: true,
     garnish: null,
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "白桃のピューレ (またはピーチリキュール)", amount: "50 ml" },
+      { name: "白桃のピューレ", amount: "50 ml" },
       { name: "プロセッコ / シャンパン", amount: "100 ml" }
     ],
     method: [
@@ -2742,7 +3421,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "プロセッコ", amount: "90 ml" },
       { name: "アペロール", amount: "60 ml" },
-      { name: "ソーダ (炭酸水)", amount: "30 ml" }
+      { name: "ソーダ", amount: "30 ml" }
     ],
     method: [
       "氷を満たした大きめのワイングラスにプロセッコを注ぎます。",
@@ -2755,14 +3434,14 @@ const cocktailDatabase = {
     enName: "Death in the Afternoon",
     abv: 18,
     taste: ["アニス香", "ドライ", "爽快"],
-    description: "ヘミングウェイが1935年の著名人カクテル集に寄せた自作。同名の闘牛論から名を取り、本人は「これを3〜5杯、ゆっくり飲むこと」と書き添えました。注ぐと乳白色に濁ります。",
+    description: "ヘミングウェイが1935年の著名人カクテル集に寄せた自作。同名の闘牛論から名を取り、本人は「これを3〜5杯、ゆっくり飲むこと」と書き添えました。注ぐと乳白色に濁ります。 材料の補足：シャンパン：辛口。",
     color: "rgba(226, 236, 214, 0.62)",
     hasBubbles: true,
     garnish: null,
     ice: "none",
     ingredients: [
       { name: "アブサン", amount: "30 ml" },
-      { name: "シャンパン (辛口)", amount: "適量" }
+      { name: "シャンパン", amount: "適量" }
     ],
     method: [
       "冷やしたフルートグラスにアブサンを注ぎます。",
@@ -2803,7 +3482,7 @@ const cocktailDatabase = {
     summer: true,
     ingredients: [
       { name: "辛口白ワイン", amount: "90 ml" },
-      { name: "ソーダ (炭酸水)", amount: "60 ml" }
+      { name: "ソーダ", amount: "60 ml" }
     ],
     method: [
       "氷を入れたワイングラスに冷えた白ワインを注ぎます。",
@@ -2838,7 +3517,7 @@ const cocktailDatabase = {
     enName: "Pisco Sour",
     abv: 20,
     taste: ["甘酸っぱい", "まろやか", "フルーティー"],
-    description: "ペルーとチリが起源を争う、ぶどうの蒸留酒ピスコのサワー。卵白の泡の上にビターズを数滴落とし、その模様ごと供するのが決まりです。ペルーでは2月の第一土曜が「ピスコ・サワーの日」。",
+    description: "ペルーとチリが起源を争う、ぶどうの蒸留酒ピスコのサワー。卵白の泡の上にビターズを数滴落とし、その模様ごと供するのが決まりです。ペルーでは2月の第一土曜が「ピスコ・サワーの日」。 材料の補足：レモン：またはライム。",
     color: "rgba(246, 240, 214, 0.8)",
     hasBubbles: false,
     garnish: null,
@@ -2846,7 +3525,7 @@ const cocktailDatabase = {
     isIBA: true,
     ingredients: [
       { name: "ピスコ", amount: "60 ml" },
-      { name: "レモン (またはライム) ジュース", amount: "30 ml" },
+      { name: "レモンジュース", amount: "30 ml" },
       { name: "シュガーシロップ", amount: "20 ml" },
       { name: "卵白", amount: "1 個分" },
       { name: "アンゴスチュラ・ビターズ", amount: "3 dash" }
@@ -2928,15 +3607,15 @@ const cocktailDatabase = {
     enName: "Grasshopper",
     abv: 15,
     taste: ["クリーミー", "甘口", "清涼感"],
-    description: "1918年ニューオーリンズのタジャック・バーが考案コンテストに出した一杯。「ばった」の名の通りの淡い緑と、ミントとカカオと生クリームが作るデザートそのものの味わいです。",
+    description: "1918年ニューオーリンズのタジャック・バーが考案コンテストに出した一杯。「ばった」の名の通りの淡い緑と、ミントとカカオと生クリームが作るデザートそのものの味わいです。 材料の補足：クレーム・ド・ミント：グリーン。クレーム・ド・カカオ：ホワイト。",
     color: "rgba(178, 226, 190, 0.9)",
     hasBubbles: false,
     garnish: "mint",
     ice: "none",
     isIBA: true,
     ingredients: [
-      { name: "クレーム・ド・ミント (グリーン)", amount: "20 ml" },
-      { name: "クレーム・ド・カカオ (ホワイト)", amount: "20 ml" },
+      { name: "クレーム・ド・ミント", amount: "20 ml" },
+      { name: "クレーム・ド・カカオ", amount: "20 ml" },
       { name: "生クリーム", amount: "20 ml" }
     ],
     method: [
@@ -2950,13 +3629,13 @@ const cocktailDatabase = {
     enName: "Angel's Kiss",
     abv: 16,
     taste: ["極甘", "クリーミー", "デザート感覚"],
-    description: "リキュールの上に生クリームを静かに重ねる、二層のプース・カフェ。天使の口づけの名の通り、頂に載せたチェリーが顔のように見える姿で供されます。",
+    description: "リキュールの上に生クリームを静かに重ねる、二層のプース・カフェ。天使の口づけの名の通り、頂に載せたチェリーが顔のように見える姿で供されます。 材料の補足：クレーム・ド・カカオ：ブラウン。",
     color: "rgba(150, 112, 96, 0.9)",
     hasBubbles: false,
     garnish: "cherry",
     ice: "none",
     ingredients: [
-      { name: "クレーム・ド・カカオ (ブラウン)", amount: "30 ml" },
+      { name: "クレーム・ド・カカオ", amount: "30 ml" },
       { name: "生クリーム", amount: "15 ml" }
     ],
     method: [
@@ -2982,7 +3661,7 @@ const cocktailDatabase = {
       { name: "パルフェタムール", amount: "20 ml" },
       { name: "レモンジュース", amount: "20 ml" },
       { name: "シュガーシロップ", amount: "1 tsp" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "シェイカーに氷、ジン、パルフェタムール、レモン、シロップを入れてシェイクします。",
@@ -3131,7 +3810,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "マリブ", amount: "30 ml" },
       { name: "ブルーキュラソー", amount: "10 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" }
+      { name: "ソーダ", amount: "適量 (約 120 ml)" }
     ],
     method: [
       "氷を満たしたタンブラーにマリブとブルーキュラソーを注ぎ、軽く混ぜます。",
@@ -3178,7 +3857,7 @@ const cocktailDatabase = {
     ice: "cube",
     summer: true,
     ingredients: [
-      { name: "フレッシュ・ライム果汁", amount: "20 ml" },
+      { name: "ライムジュース", amount: "20 ml" },
       { name: "シュガーシロップ", amount: "1 tsp" },
       { name: "ジンジャーエール", amount: "適量 (約 120 ml)" }
     ],
@@ -3215,7 +3894,7 @@ const cocktailDatabase = {
     enName: "Florida",
     abv: 0,
     taste: ["甘酸っぱい", "フレッシュ", "ほろ苦い"],
-    description: "禁酒法時代のアメリカで、フロリダ州産の柑橘を讃えて生まれたノンアルコールカクテル。オレンジの甘みをレモンが引き締め、ビターズがひと匙分の複雑さを与えます。仕上げのビターズにはごく微量のアルコールが含まれるため、完全に避けたい場合は省いてください。",
+    description: "禁酒法時代のアメリカで、フロリダ州産の柑橘を讃えて生まれたノンアルコールカクテル。オレンジの甘みをレモンが引き締め、ビターズがひと匙分の複雑さを与えます。仕上げのビターズにはごく微量のアルコールが含まれるため、完全に避けたい場合は省いてください。 材料の補足：砂糖：またはシュガーシロップ。",
     color: "rgba(250, 160, 52, 0.85)",
     hasBubbles: false,
     garnish: "orange",
@@ -3224,7 +3903,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "オレンジジュース", amount: "40 ml" },
       { name: "レモンジュース", amount: "20 ml" },
-      { name: "砂糖 (またはシュガーシロップ)", amount: "1 tsp" },
+      { name: "砂糖", amount: "1 tsp" },
       { name: "アンゴスチュラ・ビターズ", amount: "1 dash" }
     ],
     method: [
@@ -3260,17 +3939,17 @@ const cocktailDatabase = {
     enName: "Virgin Mojito",
     abv: 0,
     taste: ["清涼感", "さっぱり", "ハーバル"],
-    description: "モヒートからラムだけを抜いた、真夏の定番ノンアルコール。ミントを潰さずに押し当てて香りだけを移すのがコツで、青臭さの出ない澄んだ清涼感に仕上がります。",
+    description: "モヒートからラムだけを抜いた、真夏の定番ノンアルコール。ミントを潰さずに押し当てて香りだけを移すのがコツで、青臭さの出ない澄んだ清涼感に仕上がります。 材料の補足：砂糖：またはシュガーシロップ。",
     color: "rgba(198, 228, 190, 0.5)",
     hasBubbles: true,
     garnish: "mint",
     ice: "crushed",
     summer: true,
     ingredients: [
-      { name: "フレッシュ・ライム", amount: "1/2 個" },
+      { name: "ライム", amount: "1/2 個" },
       { name: "ミントの葉", amount: "10 〜 15 枚" },
-      { name: "砂糖 (またはシュガーシロップ)", amount: "2 tsp" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "砂糖", amount: "2 tsp" },
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "グラスにライムを絞り入れ、砂糖とミントの葉を加えます。",
@@ -3284,16 +3963,16 @@ const cocktailDatabase = {
     enName: "Lemonade",
     abv: 0,
     taste: ["さっぱり", "甘酸っぱい", "爽快"],
-    description: "17世紀のパリで売り歩かれた記録が残る、最も古い清涼飲料のひとつ。生のレモンと砂糖とソーダだけという構成ゆえに、果汁の鮮度がそのまま味に出ます。",
+    description: "17世紀のパリで売り歩かれた記録が残る、最も古い清涼飲料のひとつ。生のレモンと砂糖とソーダだけという構成ゆえに、果汁の鮮度がそのまま味に出ます。 材料の補足：砂糖：またはシュガーシロップ。",
     color: "rgba(250, 240, 180, 0.52)",
     hasBubbles: true,
     garnish: "lemon",
     ice: "cube",
     summer: true,
     ingredients: [
-      { name: "フレッシュ・レモン果汁", amount: "30 ml" },
-      { name: "砂糖 (またはシュガーシロップ)", amount: "2 tsp" },
-      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" }
+      { name: "レモンジュース", amount: "30 ml" },
+      { name: "砂糖", amount: "2 tsp" },
+      { name: "ソーダ", amount: "適量 (約 120 ml)" }
     ],
     method: [
       "グラスにレモン果汁と砂糖を入れ、砂糖が溶けるまでよく混ぜます。",
@@ -3313,7 +3992,7 @@ const cocktailDatabase = {
     ice: "cube",
     ingredients: [
       { name: "トマトジュース", amount: "適量 (約 120 ml)" },
-      { name: "フレッシュ・レモン果汁", amount: "10 ml" },
+      { name: "レモンジュース", amount: "10 ml" },
       { name: "塩・黒胡椒", amount: "各少々" },
       { name: "タバスコ / ウスターソース", amount: "お好みで" }
     ],
@@ -3357,9 +4036,9 @@ const cocktailDatabase = {
     summer: true,
     ingredients: [
       { name: "グレープフルーツジュース", amount: "45 ml" },
-      { name: "フレッシュ・ライム果汁", amount: "15 ml" },
+      { name: "ライムジュース", amount: "15 ml" },
       { name: "グレナデンシロップ", amount: "1 tsp" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "氷を入れたグラスにグレープフルーツジュースとライム果汁を注ぎ、ステアします。",
@@ -3393,15 +4072,15 @@ const cocktailDatabase = {
     enName: "Virgin Moscow Mule",
     abv: 0,
     taste: ["スパイシー", "さっぱり", "爽快"],
-    description: "モスコミュールからウォッカを抜いた一杯。もともとこのカクテルの正体はジンジャーとライムの取り合わせなので、酒がなくても味の骨格はほとんど変わりません。銅マグで供せばなお冷えます。",
+    description: "モスコミュールからウォッカを抜いた一杯。もともとこのカクテルの正体はジンジャーとライムの取り合わせなので、酒がなくても味の骨格はほとんど変わりません。銅マグで供せばなお冷えます。 材料の補足：ジンジャービア：またはジンジャーエール。",
     color: "rgba(238, 214, 150, 0.55)",
     hasBubbles: true,
     garnish: "lime",
     ice: "cube",
     summer: true,
     ingredients: [
-      { name: "フレッシュ・ライム果汁", amount: "15 ml" },
-      { name: "ジンジャービア (またはジンジャーエール)", amount: "適量 (約 120 ml)" }
+      { name: "ライムジュース", amount: "15 ml" },
+      { name: "ジンジャービア", amount: "適量 (約 120 ml)" }
     ],
     method: [
       "氷を満たしたマグまたはタンブラーにライム果汁を注ぎます。",
@@ -3423,7 +4102,7 @@ const cocktailDatabase = {
     ingredients: [
       { name: "グレープフルーツ果汁", amount: "60 ml" },
       { name: "シュガーシロップ", amount: "1 tsp" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "氷を入れたグラスにグレープフルーツ果汁とシロップを注ぎ、軽く混ぜます。",
@@ -3436,16 +4115,16 @@ const cocktailDatabase = {
     enName: "Honey Lemon Soda",
     abv: 0,
     taste: ["まろやか", "甘酸っぱい", "爽快"],
-    description: "蜂蜜をぬるま湯で溶いてから合わせるのが唯一のこつで、冷たい液体に直接落とすと底に沈んだまま溶けません。砂糖のレモネードより丸く、喉にやさしい後口になります。",
+    description: "蜂蜜をぬるま湯で溶いてから合わせるのが唯一のこつで、冷たい液体に直接落とすと底に沈んだまま溶けません。砂糖のレモネードより丸く、喉にやさしい後口になります。 材料の補足：ハニーシロップ：蜂蜜:湯 = 1:1。",
     color: "rgba(244, 226, 160, 0.55)",
     hasBubbles: true,
     garnish: "lemon",
     ice: "cube",
     summer: true,
     ingredients: [
-      { name: "ハニーシロップ (蜂蜜:湯 = 1:1)", amount: "20 ml" },
-      { name: "フレッシュ・レモン果汁", amount: "25 ml" },
-      { name: "ソーダ (炭酸水)", amount: "適量 (約 120 ml)" }
+      { name: "ハニーシロップ", amount: "20 ml" },
+      { name: "レモンジュース", amount: "25 ml" },
+      { name: "ソーダ", amount: "適量 (約 120 ml)" }
     ],
     method: [
       "蜂蜜は同量のぬるま湯で溶いてシロップにしておきます。",
@@ -3468,7 +4147,7 @@ const cocktailDatabase = {
       { name: "オレンジジュース", amount: "45 ml" },
       { name: "パイナップルジュース", amount: "45 ml" },
       { name: "グレナデンシロップ", amount: "1 tsp" },
-      { name: "ソーダ (炭酸水)", amount: "適量" }
+      { name: "ソーダ", amount: "適量" }
     ],
     method: [
       "氷を入れた大きめのグラスに果汁とグレナデンシロップを注ぎ、ステアします。",
@@ -3480,6 +4159,8 @@ const cocktailDatabase = {
 
 // Base spirit default tints (when only base is selected)
 const baseTints = {
+  beer: "rgba(221, 173, 66, 0.8)",
+  stout: "rgba(70, 45, 30, 0.9)",
   campari: "rgba(213, 0, 0, 0.85)",
   midori: "rgba(100, 210, 35, 0.75)",
   gin: "rgba(224, 242, 241, 0.15)",     // Clear with a tiny greenish/blue tint
@@ -3516,15 +4197,25 @@ const baseTints = {
 
 // All available 15 mixers information for dynamic rendering
 const mixerDefinitions = {
+  beer: {"name":"ビール","en":"BEER LAGER","icon":"BE","color":"rgba(221, 173, 66, 0.8)"},
+  stout: {"name":"スタウト","en":"STOUT DARK BEER","icon":"ST","color":"rgba(137, 101, 78, 0.8)"},
+  cider: {"name":"シードル","en":"HARD CIDER","icon":"CI","color":"rgba(225, 197, 113, 0.8)"},
+  lemonade: {"name":"レモンスカッシュ","en":"SPARKLING LEMONADE","icon":"LS","color":"rgba(235, 227, 134, 0.8)"},
+  calpis: {"name":"カルピス","en":"CALPIS CONCENTRATE","icon":"CL","color":"rgba(232, 230, 208, 0.8)"},
+  picon: {"name":"ピコン・ビエール","en":"PICON BIERE","icon":"PI","color":"rgba(172, 110, 51, 0.8)"},
+  hot_sauce: {"name":"タバスコ","en":"HOT SAUCE","icon":"HS","color":"rgba(209, 78, 54, 0.8)"},
+  oregano: {"name":"乾燥オレガノ","en":"OREGANO","icon":"OR","color":"rgba(138, 160, 98, 0.8)"},
+  raspberry_juice: {"name":"ラズベリージュース","en":"RASPBERRY JUICE","icon":"RJ","color":"rgba(206, 76, 114, 0.8)"},
+  vodka: {"name":"ウォッカ","en":"VODKA","icon":"VO","color":"rgba(200, 219, 225, 0.8)"},
   vanilla_liqueur: { name: "バニラリキュール", en: "VANILLA LIQUEUR", icon: "VL", color: "rgba(245, 225, 180, 0.5)" },
-  ginger_beer: { name: "ジンジャービア（ノンアルコール）", en: "GINGER BEER", icon: "GB", color: "rgba(240, 220, 150, 0.6)" },
-  midori: { name: "MIDORI（メロンリキュール）", en: "MIDORI MELON LIQUEUR", icon: "MI", color: "rgba(100, 210, 35, 0.75)" },
-  sour_mix: { name: "サワーミックス（ノンアルコール）", en: "SOUR MIX", icon: "SM", color: "rgba(235, 240, 165, 0.6)" },
+  ginger_beer: { name: "ジンジャービア", en: "GINGER BEER", icon: "GB", color: "rgba(240, 220, 150, 0.6)" },
+  midori: { name: "MIDORI", en: "MIDORI MELON LIQUEUR", icon: "MI", color: "rgba(100, 210, 35, 0.75)" },
+  sour_mix: { name: "サワーミックス", en: "SOUR MIX", icon: "SM", color: "rgba(235, 240, 165, 0.6)" },
   tonic: { name: "トニックウォーター", en: "TONIC WATER", icon: "TW", color: "rgba(224, 247, 250, 0.4)" },
   orange: { name: "オレンジジュース", en: "ORANGE JUICE", icon: "OJ", color: "rgba(255, 167, 38, 0.8)" },
   cola: { name: "コーラ", en: "COLA", icon: "CL", color: "rgba(62, 39, 35, 0.9)" },
   ginger: { name: "ジンジャーエール", en: "GINGER ALE", icon: "GA", color: "rgba(244, 208, 63, 0.5)" },
-  soda: { name: "ソーダ (炭酸水)", en: "SODA WATER", icon: "SW", color: "rgba(224, 242, 241, 0.3)" },
+  soda: { name: "ソーダ", en: "SODA WATER", icon: "SW", color: "rgba(224, 242, 241, 0.3)" },
   milk: { name: "牛乳", en: "MILK", icon: "MK", color: "rgba(255, 255, 255, 0.95)" },
   curacao: { name: "ホワイトキュラソー", en: "TRIPLE SEC", icon: "TS", color: "rgba(255, 255, 255, 0.3)" },
   blue_curacao: { name: "ブルーキュラソー", en: "BLUE CURACAO", icon: "BC", color: "rgba(2, 136, 209, 0.75)" },
@@ -3532,13 +4223,13 @@ const mixerDefinitions = {
   lime: { name: "ライムジュース", en: "LIME JUICE", icon: "LI", color: "rgba(197, 225, 165, 0.5)" },
   grapefruit: { name: "グレープフルーツ", en: "GRAPEFRUIT JUICE", icon: "GF", color: "rgba(255, 245, 157, 0.7)" },
   cranberry: { name: "クランベリージュース", en: "CRANBERRY JUICE", icon: "CB", color: "rgba(178, 24, 44, 0.82)" },
-  salt: { name: "食塩 (スノースタイル用)", en: "SALT RIM", icon: "SL", color: "rgba(255, 255, 255, 0.9)" },
+  salt: { name: "食塩", en: "SALT RIM", icon: "SL", color: "rgba(255, 255, 255, 0.9)" },
   pineapple: { name: "パイナップル", en: "PINEAPPLE JUICE", icon: "PJ", color: "rgba(255, 235, 59, 0.7)" },
   tomato: { name: "トマトジュース", en: "TOMATO JUICE", icon: "TJ", color: "rgba(211, 47, 47, 0.9)" },
   mint: { name: "ミント", en: "MINT", icon: "MT", color: "rgba(76, 175, 80, 0.7)" },
   oolong: { name: "ウーロン茶", en: "OOLONG TEA", icon: "OT", color: "rgba(150, 90, 40, 0.55)" },
   absinthe: { name: "アブサン", en: "ABSINTHE", icon: "AB", color: "rgba(129, 199, 132, 0.6)" },
-  whiskey: { name: "ウイスキー (ブレンド用)", en: "WHISKEY MIX", icon: "WH", color: "rgba(212, 143, 56, 0.6)" },
+  whiskey: { name: "ウイスキー", en: "WHISKEY MIX", icon: "WH", color: "rgba(212, 143, 56, 0.6)" },
   dry_vermouth: { name: "ドライ・ベルモット", en: "DRY VERMOUTH", icon: "DV", color: "rgba(238, 232, 170, 0.4)" },
   sweet_vermouth: { name: "スイート・ベルモット", en: "SWEET VERMOUTH", icon: "SV", color: "rgba(139, 0, 0, 0.8)" },
   campari: { name: "カンパリ", en: "CAMPARI", icon: "CP", color: "rgba(213, 0, 0, 0.85)" },
@@ -3555,12 +4246,12 @@ const mixerDefinitions = {
   maraschino_liq: { name: "マラスキーノ", en: "MARASCHINO LIQUEUR", icon: "ML", color: "rgba(255, 255, 255, 0.1)" },
   maraschino_cherry: { name: "マラスキーノ・チェリー", en: "MARASCHINO CHERRY", icon: "MC", color: "rgba(213, 0, 0, 0.9)" },
   sugar: { name: "砂糖 / シロップ", en: "SUGAR", icon: "SG", color: "rgba(255, 255, 255, 0.3)" },
-  brandy: { name: "ブランデー (ブレンド用)", en: "BRANDY MIX", icon: "BR", color: "rgba(189, 93, 30, 0.6)" },
+  brandy: { name: "ブランデー", en: "BRANDY MIX", icon: "BR", color: "rgba(189, 93, 30, 0.6)" },
   egg_yolk: { name: "卵黄", en: "EGG YOLK", icon: "EY", color: "rgba(255, 193, 7, 0.9)" },
 
   // The back bar a standard book actually calls for.
   champagne: { name: "シャンパン / スパークリング", en: "CHAMPAGNE", icon: "CH", color: "rgba(247, 231, 190, 0.5)" },
-  white_wine: { name: "白ワイン (辛口)", en: "DRY WHITE WINE", icon: "WW", color: "rgba(240, 234, 200, 0.45)" },
+  white_wine: { name: "白ワイン", en: "DRY WHITE WINE", icon: "WW", color: "rgba(240, 234, 200, 0.45)" },
   aperol: { name: "アペロール", en: "APEROL", icon: "AP", color: "rgba(240, 96, 20, 0.8)" },
   amaretto: { name: "アマレット", en: "AMARETTO", icon: "AM", color: "rgba(150, 75, 30, 0.75)" },
   chartreuse: { name: "シャルトリューズ・ヴェール", en: "GREEN CHARTREUSE", icon: "CT", color: "rgba(150, 190, 40, 0.75)" },
@@ -3579,11 +4270,11 @@ const mixerDefinitions = {
   orgeat: { name: "オルジェー・シロップ", en: "ORGEAT", icon: "OG", color: "rgba(250, 240, 220, 0.8)" },
   cherry_brandy: { name: "チェリーブランデー", en: "CHERRY BRANDY", icon: "CY", color: "rgba(170, 30, 50, 0.8)" },
   galliano: { name: "ガリアーノ", en: "GALLIANO", icon: "GL", color: "rgba(240, 200, 60, 0.8)" },
-  gin: { name: "ジン (ブレンド用)", en: "GIN MIX", icon: "GI", color: "rgba(224, 242, 241, 0.3)" },
-  rum: { name: "ラム (ブレンド用)", en: "RUM MIX", icon: "RU", color: "rgba(255, 248, 220, 0.35)" },
-  tequila: { name: "テキーラ (ブレンド用)", en: "TEQUILA MIX", icon: "TE", color: "rgba(244, 255, 220, 0.3)" },
+  gin: { name: "ジン", en: "GIN MIX", icon: "GI", color: "rgba(224, 242, 241, 0.3)" },
+  rum: { name: "ラム", en: "RUM MIX", icon: "RU", color: "rgba(255, 248, 220, 0.35)" },
+  tequila: { name: "テキーラ", en: "TEQUILA MIX", icon: "TE", color: "rgba(244, 255, 220, 0.3)" },
   parfait_amour: { name: "パルフェタムール", en: "PARFAIT AMOUR", icon: "PA", color: "rgba(150, 110, 200, 0.78)" },
-  malibu: { name: "マリブ (ココナッツラム)", en: "MALIBU", icon: "ML", color: "rgba(250, 246, 234, 0.35)" }
+  malibu: { name: "マリブ", en: "MALIBU", icon: "ML", color: "rgba(250, 246, 234, 0.35)" }
 };
 
 // ==========================================================================
@@ -3607,6 +4298,7 @@ const SPIRIT_BASES = Object.keys(baseTints).filter(b => !NON_ALCOHOLIC_BASES.has
  * catalogued as non-alcoholic everywhere. The recipe says so in its own text.
  */
 const ALCOHOLIC_MIXERS = new Set([
+  'beer', 'stout', 'cider', 'picon', 'vodka',
   'vanilla_liqueur',
   'midori',
   'curacao', 'blue_curacao', 'absinthe', 'whiskey', 'brandy', 'cassis',
@@ -3728,6 +4420,8 @@ const SHELF_VOCABULARY = [
   // Appended 2026-09-19. Preserve all previous menu codes.
   'midori', 'sour_mix',
   'vanilla_liqueur', 'ginger_beer',
+  // Beer expansion: append only; never reorder older shared-menu bits.
+  'beer', 'stout', 'cider', 'lemonade', 'calpis', 'picon', 'hot_sauce', 'oregano', 'raspberry_juice',
 ];
 
 // URL-safe base64 alphabet: nothing here needs escaping in a fragment.
@@ -4521,13 +5215,14 @@ function toggleMixer(mixerKey) {
 
 // Base key to Japanese name lookup
 const baseNameMap = {
+  beer: 'ビール', stout: '黒ビール',
   campari: 'カンパリ',
   gin: 'ジン', vodka: 'ウォッカ', rum: 'ラム', tequila: 'テキーラ',
   whiskey: 'ウイスキー', brandy: 'ブランデー', peach: 'ピーチ',
   cassis: 'カシス', coffee: 'コーヒー',
   champagne: 'シャンパン', white_wine: '白ワイン', pisco: 'ピスコ',
   cachaca: 'カシャッサ', apple_brandy: 'カルヴァドス', cacao: 'カカオ',
-  malibu: 'マリブ', midori: 'ミドリ（メロン）',
+  malibu: 'マリブ', midori: 'ミドリ',
   ginger: 'ジンジャーエール', orange: 'オレンジ', soda: 'ソーダ',
   tomato: 'トマト', pineapple: 'パイナップル', grapefruit: 'グレープフルーツ',
   cranberry: 'クランベリー'
@@ -4535,6 +5230,7 @@ const baseNameMap = {
 
 // Base key to icon lookup
 const baseIconMap = {
+  beer: 'BE', stout: 'ST',
   campari: 'CP',
   gin: 'GI', vodka: 'VO', rum: 'RU', tequila: 'TE',
   whiskey: 'WH', brandy: 'BR', peach: 'PE',
@@ -4812,6 +5508,8 @@ function drawGarnishOnCanvas(ctx, garnish, topL, topR, glassTop) {
  * Render the gallery grid with cocktail cards. Accepts optional search query.
  */
 function getGalleryGlassType(cocktail) {
+  // An ice-free beer still belongs in a tumbler, not a martini glass.
+  if (GLASS_BY_NAME[cocktail.name] === 'highball') return 'highball';
   if (cocktail.ice === 'none') return 'stemmed';
   if (cocktail.ice === 'crushed') return 'julep';
   if (cocktail.abv >= 20 || !cocktail.hasBubbles) return 'rocks';
@@ -5345,6 +6043,12 @@ function searchHaystack(item) {
   return (item.data._haystack = words.join(' ').toLowerCase());
 }
 
+// Discovery groups stout with beer; shelf matching intentionally remains exact.
+function recipeUsesIngredient(key, id) {
+  const parts = key.split('+');
+  return parts.includes(id) || (id === 'beer' && parts.includes('stout'));
+}
+
 function renderGallery(query, animate = false) {
   cancelCardAnimations(DOM.galleryGrid);
   DOM.galleryGrid.innerHTML = '';
@@ -5364,7 +6068,7 @@ function renderGallery(query, animate = false) {
     if (!matchesDrinkType(item.data)) return false;
     if (predicate) {
       if (!predicate(item.data)) return false;
-    } else if (!item.key.split('+').includes(state.galleryFilter)) {
+    } else if (!recipeUsesIngredient(item.key, state.galleryFilter)) {
       return false;
     }
     if (!q) return true;
@@ -5603,6 +6307,7 @@ function countUpABV(el, target, animate) {
  */
 const SERVE_ORDER = {
   aperitif: [
+    'シャンディガフ', 'パナシェ', 'ビター・オレンジ', 'ドッグズ・ノーズ', 'ピコン・ビエール',
     'スプモーニ', 'アメリカーノ', 'ガリバルディ',
     'ジャパニーズ・スリッパー',
     'ジントニック', 'ジン・リッキー', 'オレンジ・ブロッサム', 'ギムレット',
@@ -5641,6 +6346,7 @@ const SERVE_ORDER = {
  */
 const SEASONS = {
   spring: [
+    'モナコ', 'タンゴ', 'アイスド・ラズベリー', 'ビア・スプリッツァー',
     'フレンチ・マティーニ', 'ガリバルディ',
     'ジャパニーズ・スリッパー', 'メロン・ボール',
     'オレンジ・ブロッサム', 'アビエイション', 'ファジーネーブル', 'ピーチ・フィズ',
@@ -5651,6 +6357,7 @@ const SEASONS = {
     'バイオレット・フィズ', 'ブルー・ムーン',
   ],
   autumn: [
+    'スネークバイト', 'ボイラーメーカー', 'ハーフ＆ハーフ',
     'アメリカーノ', 'フレンチ・コネクション',
     'ミッドタウン・ミューズ',
     'ウイスキー・サワー', 'オールド・ファッションド', 'マンハッタン',
@@ -5661,6 +6368,7 @@ const SEASONS = {
     'ジャック・ローズ', 'ハネムーン',
   ],
   winter: [
+    'ブラック・ベルベット', 'ピコン・ビエール',
     'アレキサンダー', 'ブラック・ルシアン', 'ホワイト・ルシアン', 'カルーア・ミルク',
     'カルーア・コーク', 'エスプレッソ・マティーニ', 'ジン・ミルク・パンチ',
     'ビトウィーン・ザ・シーツ', 'XYZ', 'アースクェイク', 'ドライ・マティーニ',
@@ -5717,6 +6425,17 @@ function serveOf(data) {
  * whole point: an IBA number carries different weight from a recollection.
  */
 const SOURCES = {
+  asahi: {"label":"アサヒ公式レシピ","org":"アサヒビール","url":"https://www.asahibeer.co.jp/cocktailguide/"},
+  nipponbeer: {"label":"日本ビール公式レシピ","org":"日本ビール","url":"https://www.nipponbeer.jp/column_cat/beer_plan/"},
+  guinness: {"label":"Guinness公式レシピ","org":"Guinness","url":"https://www.guinness.com/en-af/experiences/recipes/guinness-black-velvet"},
+  cocktails1001: {"label":"1001Cocktails掲載レシピ","org":"1001Cocktails","url":"https://www.1001cocktails.com/recettes/recette_diesel_355587.aspx"},
+  virginia: {"label":"Virginia ABC掲載レシピ","org":"Virginia ABC","url":"https://www.abc.virginia.gov/products/recipes/historical/boilermaker"},
+  destination: {"label":"Destination Cocktails掲載レシピ","org":"Destination Cocktails","url":"https://www.destinationcocktails.fr/recette/recette-monaco/"},
+  craftbeering: {"label":"Craft Beering掲載レシピ","org":"Milena Perrine / Craft Beering","url":"https://www.craftbeering.com/chelada-beer-authentic-recipe/"},
+  tabasco: {"label":"TABASCO公式レシピ","org":"Madre Liverpool / TABASCO","url":"https://www.tabasco.com/recipe/michelada-by-madre-liverpool/"},
+  picon: {"label":"Picon公式レシピ","org":"Picon","url":"https://www.piconaperitif.com/fr-fr/recette-picon-biere/"},
+  crystalmixer: {"label":"Crystal Mixer掲載レシピ","org":"Crystal Mixer","url":"https://www.crystalmixer.com/beer-buster-recipe/"},
+  barbusiness: {"label":"Guinness提供レシピ","org":"Bar Business","url":"https://www.barbizmag.com/recipes-2/holidays/guinness-half-half-recipe/"},
   suntory: { label: 'サントリー公式レシピ', org: 'サントリー', url: 'https://www.suntory.co.jp/wnb/essay/104.html' },
   midori: {
     label: 'MIDORI 公式レシピ', org: 'MIDORI / Suntory Global Spirits',
@@ -5731,8 +6450,19 @@ const SOURCES = {
 
 /** Drinks whose ingredients and quantities were read off the source itself. */
 const VERIFIED_AGAINST = {
+  asahi: ["シャンディガフ","スネークバイト"],
+  nipponbeer: ["レッド・アイ","パナシェ","ビター・オレンジ","ダブルカルチャード","ビア・スプリッツァー"],
+  guinness: ["ブラック・ベルベット"],
+  cocktails1001: ["ディーゼル"],
+  virginia: ["ボイラーメーカー"],
+  destination: ["モナコ","タンゴ","アイスド・ラズベリー"],
+  craftbeering: ["チェラーダ"],
+  tabasco: ["ミチェラーダ"],
+  picon: ["ピコン・ビエール"],
+  crystalmixer: ["ビア・バスター"],
+  barbusiness: ["ハーフ＆ハーフ"],
   midori: ['ジャパニーズ・スリッパー', 'メロン・ボール', 'ミッドタウン・ミューズ', 'サザン・ベル'],
-  suntory: ['グリーン・アイズ', 'スプモーニ'],
+  suntory: ['グリーン・アイズ', 'スプモーニ', 'ドッグズ・ノーズ', 'レッド・バード'],
   iba: [
     'アメリカーノ', 'ガリバルディ', 'フレンチ・コネクション', 'フレンチ・マティーニ',
     // First pass
@@ -5766,6 +6496,26 @@ const VERIFIED_AGAINST = {
  * citation and the reader can decide.
  */
 const SOURCE_NOTES = {
+  "シャンディガフ": "公式の100mlずつの配合。度数はビール5%で計算。",
+  "レッド・アイ": "出典の同量比率を各100mlに換算。度数はビール5%で計算。",
+  "ドッグズ・ノーズ": "公式のジン45mlに対し、適量のビールを200mlの目安で記載。ジン47%、ビール5%で計算。",
+  "レッド・バード": "出典のウォッカ30ml版を採用し、適量のビールは120mlとしています。ウォッカ40%、ビール5%で加水前約8.6%です。",
+  "パナシェ": "出典の1:1を各100mlへ換算。度数はビール5%。無糖の炭酸水とは別材料です。",
+  "ビター・オレンジ": "出典の1:1を各100mlに換算。度数は5%のビールを使った場合。IPAでは製品により変わります。",
+  "ディーゼル": "公開レシピの7clずつを100mlずつに拡大。度数はビール5%。地域によって同名の別配合があります。",
+  "ダブルカルチャード": "出典のカルピス原液1:ビール6を30ml:180mlに換算。ビール5%で計算。カルピスウォーターではありません。",
+  "ビア・スプリッツァー": "同量の配合を各100mlへ換算。白ワイン12%、ビール5%で計算。",
+  "スネークバイト": "公式の100mlずつに準拠。ビール5%、シードル3%。出典のゴブレットに代えて図はタンブラーです。",
+  "ブラック・ベルベット": "公式の各90mlに準拠。スタウト5%、シャンパン12%を仮定した概算です。",
+  "ボイラーメーカー": "Virginia ABC掲載の混ぜる方式を参考に、分量は本書の一杯分の目安です。ウイスキー40%、ビール5%で計算。ショットグラスを落とす方式は採用していません。",
+  "モナコ": "出典のclをmlへ換算。フランスのlimonadeを加糖レモンスカッシュで代用。ビール5%で計算。",
+  "タンゴ": "出典のTangoの説明に従い、モナコからlimonadeを除いた配合。ビール5%で計算。",
+  "チェラーダ": "出典の12oz:2ozを1oz約30mlで換算。ビール5%で計算。任意の氷と飾りは省略しています。",
+  "ミチェラーダ": "TABASCO掲載のMadre Liverpool版。大さじは約15ml、ビール1本は330mlを目安に換算。ビール5%で氷の加水前約4%。",
+  "ピコン・ビエール": "公式の3cl:25clをmlへ換算。ピコン18%、ビール5%で計算。",
+  "ビア・バスター": "公開レシピの100 proofウォッカ2oz・ビール8ozを1oz約30mlで換算。ウォッカ50%、ビール5%で計算。",
+  "アイスド・ラズベリー": "出典の材料表を採用（手順中のライム1個という表記とは異なります）。ビール5%、リキュール15%、ライム果汁約15mlで概算。任意の氷・飾りは省略。",
+  "ハーフ＆ハーフ": "Guinness提供レシピの等量比率を各150mlへ縮小。ラガー5%、スタウト4.2%で概算。図は混合色を示し、二層の描画は省略しています。",
   'スプモーニ': 'サントリー公式の配合に準拠。適量のトニックは90mlを一杯分の目安にしています。度数はカンパリ25%を使う場合の加水前の概算です。',
   'アメリカーノ': 'IBA公式で少量とされるソーダを30mlの目安で記載。度数はカンパリ25%、ベルモット16%で加水前の概算です。グラス図ではオレンジのみを描画しています。',
   'ガリバルディ': 'IBA公式の45ml:120mlに準拠。カンパリ・オレンジとしても知られる組み合わせです。度数はカンパリ25%を使う場合の加水前の概算です。',
@@ -5820,6 +6570,26 @@ const GLASS_NAMES = {
 };
 
 const GLASS_BY_NAME = {
+  "シャンディガフ": 'highball',
+  "レッド・アイ": 'highball',
+  "ドッグズ・ノーズ": 'highball',
+  "レッド・バード": 'highball',
+  "パナシェ": 'highball',
+  "ビター・オレンジ": 'highball',
+  "ディーゼル": 'highball',
+  "ダブルカルチャード": 'highball',
+  "ビア・スプリッツァー": 'wine',
+  "スネークバイト": 'highball',
+  "ブラック・ベルベット": 'flute',
+  "ボイラーメーカー": 'highball',
+  "モナコ": 'highball',
+  "タンゴ": 'highball',
+  "チェラーダ": 'highball',
+  "ミチェラーダ": 'highball',
+  "ピコン・ビエール": 'highball',
+  "ビア・バスター": 'highball',
+  "アイスド・ラズベリー": 'highball',
+  "ハーフ＆ハーフ": 'highball',
   'アメリカーノ': 'rocks', 'フレンチ・コネクション': 'rocks',
   'グリーン・アイズ': 'hurricane',
   'フレンチ75': 'flute', 'キール・ロワイヤル': 'flute', 'ミモザ': 'flute',
@@ -6114,7 +6884,7 @@ function galleryFilterGroups() {
         item.key.split('+').forEach(id => stocked.add(id));
       }
     });
-    bases = bases.filter(b => stocked.has(b));
+    bases = bases.filter(b => stocked.has(b) || (b === 'beer' && stocked.has('stout')));
   }
   if (bases.length) {
     groups.push({ label: '使用材料', chips: bases.map(b => ({ id: b, label: baseNameMap[b] })) });
@@ -6254,7 +7024,7 @@ function renderSourcesNote() {
   }).join(' ・ ');
 
   DOM.sourcesBody.innerHTML =
-    `全${total}種のうち${checked}種を一次資料と照合済み。照合先：${cited}。` +
+    `全${total}種のうち${checked}種に確認済みの出典レシピがあります（公式・専門サイト）。分量の換算や変更は各レシピに記載。参照先：${cited}。` +
     `残り${total - checked}種は標準的なレシピ集の内容に基づく記載で、` +
     `各レシピにその旨を明記しています。`;
 }
